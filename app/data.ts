@@ -14,6 +14,7 @@ export type HistoriaScene = {
   mainImage: string;
   mapImage: string;
   video?: string;
+  videoPlayback?: 'loop' | 'hold';
   audio: string;
   discoveries: [HistoriaDiscovery, HistoriaDiscovery];
   quiz: [HistoriaQuiz, HistoriaQuiz];
@@ -157,6 +158,7 @@ export const historiaScenes: HistoriaScene[] = [
     mainImage: `${asset}/main/scene09.jpg`,
     mapImage: `${asset}/maps/scene09.jpg`,
     video: `${asset}/videos/scene09.mp4`,
+    videoPlayback: 'hold',
     ...media(9),
   },
   {

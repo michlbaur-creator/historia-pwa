@@ -60,6 +60,7 @@ export default function HistoriaPlayer() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pendingAudioStartRef = useRef(false);
   const swipeStartX = useRef<number | null>(null);
   const scene = historiaScenes[sceneIndex];
 
@@ -77,8 +78,15 @@ export default function HistoriaPlayer() {
   );
 
   useEffect(() => {
-    if (!playing) return;
-    void audioRef.current?.play().catch(() => setPlaying(false));
+    const audio = audioRef.current;
+    if (!audio || (!playing && !pendingAudioStartRef.current)) return;
+    pendingAudioStartRef.current = true;
+    if (audio.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      void audio.play().catch(() => {
+        pendingAudioStartRef.current = false;
+        setPlaying(false);
+      });
+    }
   }, [playing, scene.id]);
 
   useEffect(() => {
@@ -89,10 +97,11 @@ export default function HistoriaPlayer() {
       video.pause();
       return;
     }
+    if (scene.videoPlayback === 'hold' && video.ended) return;
     void video.play().catch(() => {
       // Das Hauptbild bleibt als Poster sichtbar, falls Video blockiert wird.
     });
-  }, [playing, scene.id, showMap]);
+  }, [playing, scene.id, scene.videoPlayback, showMap]);
 
   useEffect(() => {
     const current = timelineRef.current?.querySelector<HTMLElement>(
@@ -106,6 +115,7 @@ export default function HistoriaPlayer() {
   }, [sceneIndex]);
 
   function selectScene(index: number, startImmediately = false) {
+    pendingAudioStartRef.current = startImmediately;
     audioRef.current?.pause();
     setSceneIndex(index);
     setElapsed(0);
@@ -120,7 +130,10 @@ export default function HistoriaPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
-      if (audio.ended) audio.currentTime = 0;
+      if (audio.ended) {
+        audio.currentTime = 0;
+        if (videoRef.current) videoRef.current.currentTime = 0;
+      }
       void audio.play();
     } else {
       audio.pause();
@@ -129,6 +142,7 @@ export default function HistoriaPlayer() {
 
   function finishAudio() {
     if (sceneIndex < historiaScenes.length - 1) {
+      pendingAudioStartRef.current = true;
       setElapsed(0);
       setAudioDuration(0);
       setShowMap(true);
@@ -183,8 +197,22 @@ export default function HistoriaPlayer() {
           setElapsed(current);
           if (current >= 4) setShowMap(false);
         }}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
+        onCanPlay={(event) => {
+          if (!pendingAudioStartRef.current) return;
+          void event.currentTarget.play().catch(() => {
+            pendingAudioStartRef.current = false;
+            setPlaying(false);
+          });
+        }}
+        onPlay={() => {
+          pendingAudioStartRef.current = false;
+          setPlaying(true);
+        }}
+        onPause={(event) => {
+          if (!event.currentTarget.ended && !pendingAudioStartRef.current) {
+            setPlaying(false);
+          }
+        }}
         onEnded={finishAudio}
       >
         <track
@@ -277,7 +305,7 @@ export default function HistoriaPlayer() {
               preload="metadata"
               playsInline
               muted
-              loop
+              loop={scene.videoPlayback !== 'hold'}
               aria-hidden="true"
               className={styles.sceneVideo}
             />
