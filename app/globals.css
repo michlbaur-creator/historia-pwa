@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+:root {
+  --historia-sand: #f5eddb;
+  --historia-paper: #fffaf0;
+  --historia-ink: #20343b;
+  --historia-blue: #2f7189;
+  --historia-terracotta: #c56745;
+  --historia-gold: #d4a63d;
+  --historia-olive: #6f8458;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  min-width: 320px;
+  background: var(--historia-sand);
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--historia-sand);
+  color: var(--historia-ink);
+  font-family: 'Avenir Next', Avenir, 'Segoe UI', Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  color: inherit;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(197, 103, 69, 0.5);
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.36;
+}
+::selection {
+  background: rgba(212, 166, 61, 0.35);
+  color: var(--historia-ink);
+}

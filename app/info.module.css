@@ -1,0 +1,59 @@
+.shell {
+  min-height: 100vh;
+  padding: clamp(20px, 5vw, 64px) 16px;
+  background: linear-gradient(145deg, #faf4e7, #edf3ed);
+  color: #20343b;
+}
+.page {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid rgba(47, 113, 137, 0.18);
+  border-radius: 24px;
+  background: rgba(255, 250, 240, 0.86);
+  box-shadow: 0 20px 60px rgba(68, 54, 34, 0.1);
+}
+.page > a,
+.page section a {
+  color: #225568;
+}
+.eyebrow {
+  margin-top: 42px;
+  color: #c56745;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.page h1 {
+  margin: 0 0 30px;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 500;
+}
+.page h2 {
+  margin-top: 30px;
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.page p,
+.page address {
+  color: #42565a;
+  font-style: normal;
+  line-height: 1.7;
+}
+.lead {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+.contact {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #2f7189;
+  color: white !important;
+  text-decoration: none;
+  font-weight: 800;
+}
