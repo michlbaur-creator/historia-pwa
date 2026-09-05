@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import styles from '../info.module.css';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Impressum & Datenschutz | Historia',
 };

@@ -3,7 +3,7 @@ import './globals.css';
 import PwaRegister from './PwaRegister';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://historia-mibaso.mbaur747329.chatgpt.site'),
+  metadataBase: new URL('https://historia.mibaso.de'),
   title: 'Historia – klassische Weltgeschichte',
   description:
     'Eine schnelle, chronologische Reise durch die klassische Weltgeschichte.',
