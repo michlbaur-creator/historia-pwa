@@ -11,7 +11,13 @@ import {
   Play,
   RotateCcw,
 } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  type PointerEvent as ReactPointerEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { historiaScenes } from './data';
 import styles from './historia.module.css';
 
@@ -29,6 +35,7 @@ export default function HistoriaPlayer() {
   const [showMap, setShowMap] = useState(true);
   const [tab, setTab] = useState<Tab>('text');
   const timelineRef = useRef<HTMLDivElement>(null);
+  const swipeStartX = useRef<number | null>(null);
   const scene = historiaScenes[sceneIndex];
 
   const image = showMap ? scene.mapImage : scene.mainImage;
@@ -82,6 +89,21 @@ export default function HistoriaPlayer() {
     selectScene(
       Math.max(0, Math.min(historiaScenes.length - 1, sceneIndex + direction)),
     );
+  }
+
+  function startSwipe(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'touch') return;
+    swipeStartX.current = event.clientX;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function finishSwipe(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'touch' || swipeStartX.current === null) return;
+    const distance = event.clientX - swipeStartX.current;
+    swipeStartX.current = null;
+    if (distance < -48 && sceneIndex < historiaScenes.length - 1) {
+      stepScene(1);
+    }
   }
 
   return (
@@ -146,7 +168,14 @@ export default function HistoriaPlayer() {
       </section>
 
       <section className={styles.player}>
-        <div className={styles.imageStage}>
+        <div
+          className={styles.imageStage}
+          onPointerDown={startSwipe}
+          onPointerUp={finishSwipe}
+          onPointerCancel={() => {
+            swipeStartX.current = null;
+          }}
+        >
           <Image
             key={image}
             src={image}
@@ -166,7 +195,6 @@ export default function HistoriaPlayer() {
               <strong>{imageTitle}</strong>
               <span>{imageSubtitle}</span>
             </div>
-            <b>{showMap ? 'Karte' : 'Hauptbild'}</b>
           </div>
         </div>
 
