@@ -91,13 +91,13 @@ export default function HistoriaPlayer() {
     });
   }, [sceneIndex]);
 
-  function selectScene(index: number) {
+  function selectScene(index: number, startImmediately = false) {
     audioRef.current?.pause();
     setSceneIndex(index);
     setElapsed(0);
     setAudioDuration(0);
     setShowMap(true);
-    setPlaying(false);
+    setPlaying(startImmediately);
     setQuizQuestion(0);
     setQuizSelection(null);
   }
@@ -128,9 +128,10 @@ export default function HistoriaPlayer() {
     setElapsed(activeDuration);
   }
 
-  function stepScene(direction: -1 | 1) {
+  function stepScene(direction: -1 | 1, startImmediately = false) {
     selectScene(
       Math.max(0, Math.min(historiaScenes.length - 1, sceneIndex + direction)),
+      startImmediately,
     );
   }
 
@@ -145,7 +146,9 @@ export default function HistoriaPlayer() {
     const distance = event.clientX - swipeStartX.current;
     swipeStartX.current = null;
     if (distance < -48 && sceneIndex < historiaScenes.length - 1) {
-      stepScene(1);
+      stepScene(1, true);
+    } else if (distance > 48 && sceneIndex > 0) {
+      stepScene(-1, true);
     }
   }
 
