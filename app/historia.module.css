@@ -55,8 +55,8 @@
 .brandMark {
   position: relative;
   display: grid;
-  width: clamp(50px, 7vw, 68px);
-  height: clamp(50px, 7vw, 68px);
+  width: clamp(46px, 6vw, 58px);
+  height: clamp(46px, 6vw, 58px);
   flex: none;
   place-items: center;
   border-radius: 50%;
@@ -65,8 +65,8 @@
 }
 
 .brandMark svg {
-  width: 34px;
-  height: 34px;
+  width: 29px;
+  height: 29px;
   color: white;
 }
 
@@ -74,7 +74,7 @@
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
   color: var(--blue-deep);
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(1.75rem, 4vw, 2.65rem);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: 0.055em;
@@ -90,22 +90,25 @@
 
 .headerActions {
   display: flex;
+  align-items: stretch;
   flex: none;
-  gap: 8px;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .headerActions a,
 .headerActions button {
   display: inline-flex;
-  min-height: 40px;
+  min-width: 78px;
+  min-height: 30px;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 10px;
   border: 1px solid rgba(47, 113, 137, 0.17);
   border-radius: 999px;
   background: rgba(255, 250, 240, 0.76);
   color: var(--blue-deep);
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(70, 63, 48, 0.06);
@@ -197,10 +200,11 @@
   width: 31px;
   height: 31px;
   place-items: center;
-  border: 2px solid #d6cbb5;
+  border: 2px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
-  background: var(--paper);
-  color: var(--muted);
+  background: var(--milestone-color);
+  box-shadow: 0 2px 8px rgba(64, 79, 79, 0.13);
+  color: white;
   font-size: 0.58rem;
   font-weight: 900;
   transition: 0.2s ease;
@@ -217,15 +221,16 @@
 }
 
 .past .dot {
-  border-color: var(--gold);
-  background: #f7e5af;
-  color: #725717;
+  border-color: rgba(255, 255, 255, 0.82);
+  background: var(--milestone-color);
+  color: white;
 }
 
 .milestone[aria-current='step'] .dot {
-  border-color: var(--blue);
-  background: var(--blue);
-  box-shadow: 0 0 0 5px rgba(47, 113, 137, 0.14);
+  border-color: white;
+  background: var(--milestone-color);
+  box-shadow: 0 0 0 5px
+    color-mix(in srgb, var(--milestone-color) 19%, transparent);
   color: white;
   transform: translateY(-1px);
 }
@@ -241,7 +246,7 @@
 .sceneHeading h2 {
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.55rem, 4vw, 2.65rem);
+  font-size: clamp(1.18rem, 3vw, 2.1rem);
   color: var(--blue-deep);
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -351,7 +356,7 @@
   min-height: 38px;
   padding: 0 12px;
   border-radius: 999px;
-  background: var(--blue);
+  background: var(--terracotta);
   color: white;
   font-size: 0.68rem;
   font-weight: 600;
@@ -548,18 +553,39 @@
     padding-inline: 10px;
   }
   .header {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 14px;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .brandLockup {
+    gap: 9px;
+  }
+  .brandMark {
+    width: 44px;
+    height: 44px;
+  }
+  .brandMark svg {
+    width: 26px;
+    height: 26px;
+  }
+  .header h1 {
+    font-size: 1.65rem;
+  }
+  .subtitle {
+    max-width: 220px;
+    margin-top: 4px;
+    font-size: 0.6rem;
+    line-height: 1.25;
   }
   .headerActions {
-    justify-content: flex-end;
+    margin-left: auto;
   }
   .headerActions a,
   .headerActions button {
-    min-height: 36px;
-    padding-inline: 13px;
-    font-size: 0.65rem;
+    min-width: 70px;
+    min-height: 28px;
+    padding-inline: 8px;
+    font-size: 0.58rem;
   }
   .timelineCard {
     padding-inline: 8px;
@@ -569,6 +595,11 @@
   }
   .milestoneLabel {
     font-size: 0.48rem;
+  }
+  .sceneHeading h2 {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   .imageCaption strong {
     font-size: 1rem;

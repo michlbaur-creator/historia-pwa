@@ -12,6 +12,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import {
+  type CSSProperties,
   type PointerEvent as ReactPointerEvent,
   useEffect,
   useMemo,
@@ -22,6 +23,25 @@ import { historiaScenes } from './data';
 import styles from './historia.module.css';
 
 type Tab = 'text' | 'discover' | 'quiz';
+
+const timelineColors = [
+  '#c96d4d',
+  '#d5a13d',
+  '#68a6b8',
+  '#70917c',
+  '#bc705e',
+  '#8f75a2',
+  '#4f8493',
+  '#d28a48',
+  '#7f9c65',
+  '#b9758b',
+  '#4f9087',
+  '#7185ad',
+  '#c98254',
+  '#9877a2',
+  '#6098ac',
+  '#557d88',
+];
 
 function formatTime(value: number) {
   const seconds = Math.max(0, Math.floor(value));
@@ -151,6 +171,11 @@ export default function HistoriaPlayer() {
               <button
                 className={`${styles.milestone} ${index < sceneIndex ? styles.past : ''}`}
                 key={item.id}
+                style={
+                  {
+                    '--milestone-color': timelineColors[index],
+                  } as CSSProperties
+                }
                 onClick={() => selectScene(index)}
                 aria-current={index === sceneIndex ? 'step' : undefined}
                 aria-label={`Szene ${item.id}: ${item.title}`}
