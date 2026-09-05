@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 
 :root {
-  --historia-sand: #f2e4c9;
-  --historia-paper: #fff8e9;
-  --historia-ink: #20343b;
+  --historia-sand: #f8ecd4;
+  --historia-paper: #fffaf0;
+  --historia-ink: #315d6a;
   --historia-blue: #2f7189;
   --historia-terracotta: #c56745;
   --historia-gold: #d4a63d;
@@ -40,7 +40,7 @@ input:focus-visible {
 }
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.36;
+  opacity: 0.44;
 }
 ::selection {
   background: rgba(212, 166, 61, 0.35);

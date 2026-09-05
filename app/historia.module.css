@@ -1,10 +1,10 @@
 .shell {
-  --sand: #f2e4c9;
-  --paper: #fff8e9;
-  --ink: #20343b;
-  --muted: #6d7774;
+  --sand: #f8ecd4;
+  --paper: #fffaf0;
+  --ink: #315d6a;
+  --muted: #73888b;
   --blue: #2f7189;
-  --blue-deep: #225568;
+  --blue-deep: #2b6074;
   --terracotta: #c56745;
   --gold: #d4a63d;
   --olive: #6f8458;
@@ -14,15 +14,15 @@
   background:
     radial-gradient(
       circle at 8% 4%,
-      rgba(221, 169, 75, 0.2),
-      transparent 28rem
-    ),
-    radial-gradient(
-      circle at 93% 20%,
-      rgba(108, 145, 134, 0.15),
+      rgba(231, 181, 89, 0.12),
       transparent 30rem
     ),
-    linear-gradient(145deg, #f9ecd2 0%, #f2e2c3 54%, #e9eee1 100%);
+    radial-gradient(
+      circle at 94% 12%,
+      rgba(127, 167, 158, 0.1),
+      transparent 32rem
+    ),
+    linear-gradient(145deg, #fff6e5 0%, #f8e9ce 58%, #eef2e7 100%);
 }
 
 .header,
@@ -45,12 +45,8 @@
   padding: clamp(14px, 2.4vw, 22px) clamp(14px, 2.8vw, 26px);
   border: 1px solid rgba(47, 113, 137, 0.13);
   border-radius: 28px;
-  background: linear-gradient(
-    105deg,
-    rgba(255, 240, 211, 0.86),
-    rgba(220, 231, 218, 0.83)
-  );
-  box-shadow: 0 16px 45px rgba(79, 60, 34, 0.08);
+  background: linear-gradient(105deg, #fff1d6 0%, #edf1e4 100%);
+  box-shadow: 0 12px 36px rgba(99, 76, 43, 0.055);
 }
 
 .brandLockup {
@@ -83,7 +79,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   color: var(--blue-deep);
   font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: 0.055em;
   text-transform: uppercase;
@@ -93,7 +89,7 @@
   margin: 7px 0 0;
   color: var(--muted);
   font-size: clamp(0.7rem, 1.6vw, 0.9rem);
-  font-weight: 650;
+  font-weight: 450;
 }
 
 .headerActions {
@@ -114,10 +110,16 @@
   background: rgba(255, 250, 240, 0.76);
   color: var(--blue-deep);
   font-size: 0.7rem;
-  font-weight: 850;
+  font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(70, 63, 48, 0.06);
   cursor: pointer;
+}
+
+.headerActions svg {
+  width: 13px;
+  height: 13px;
+  margin-left: 4px;
 }
 
 .timelineCard {
@@ -244,7 +246,8 @@
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.55rem, 4vw, 2.65rem);
-  font-weight: 500;
+  color: var(--blue-deep);
+  font-weight: 400;
   letter-spacing: -0.025em;
 }
 
@@ -259,7 +262,7 @@
   border: 1px solid rgba(43, 72, 79, 0.2);
   border-radius: 24px;
   background: #c7c0a8;
-  box-shadow: 0 22px 58px rgba(72, 55, 31, 0.18);
+  box-shadow: 0 18px 48px rgba(91, 70, 40, 0.12);
 }
 
 .sceneImage {
@@ -281,54 +284,53 @@
   pointer-events: none;
 }
 
-.mediaBadge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  background: rgba(21, 48, 57, 0.68);
-  color: white;
-  font-size: 0.61rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  backdrop-filter: blur(10px);
-}
-
 .imageCaption {
   position: absolute;
   right: clamp(14px, 3vw, 28px);
   bottom: clamp(14px, 3vw, 24px);
   left: clamp(14px, 3vw, 28px);
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
   color: white;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
-.imageCaption span {
-  font-size: 0.73rem;
-  font-weight: 750;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.imageCaption > div {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
 }
+
 .imageCaption strong {
-  max-width: 62%;
   font-family: Georgia, serif;
-  font-size: clamp(0.95rem, 2vw, 1.4rem);
-  font-weight: 500;
-  text-align: right;
+  font-size: clamp(1rem, 2.1vw, 1.48rem);
+  font-weight: 400;
+}
+
+.imageCaption span {
+  overflow: hidden;
+  max-width: 46rem;
+  font-size: clamp(0.62rem, 1.3vw, 0.78rem);
+  font-weight: 450;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.imageCaption b {
+  flex: none;
+  font-size: 0.63rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .controls {
   display: grid;
   grid-template-areas: 'previous primary map progress next';
-  grid-template-columns: auto auto auto minmax(120px, 1fr) auto;
-  min-height: 58px;
+  grid-template-columns: 36px minmax(104px, 1.5fr) auto minmax(82px, 1fr) auto;
+  min-height: 56px;
   align-items: center;
   gap: 8px;
   padding: 10px 2px 0;
@@ -343,24 +345,30 @@
 }
 
 .previousControl {
+  display: grid;
   grid-area: previous;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   background: rgba(255, 250, 240, 0.8);
   color: var(--blue-deep);
-  font-weight: 900;
+  font-weight: 600;
+  place-items: center;
 }
 
 .primaryControl {
+  display: inline-flex;
   grid-area: primary;
   min-height: 38px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 999px;
   background: var(--terracotta);
   color: white;
   font-size: 0.68rem;
-  font-weight: 850;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .mapControl {
@@ -372,19 +380,31 @@
   background: #dcecf0;
   color: var(--blue-deep);
   font-size: 0.65rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .nextControl {
+  display: inline-flex;
   grid-area: next;
   min-height: 38px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-color: rgba(53, 111, 83, 0.28) !important;
   border-radius: 999px;
   background: #4f8a70;
   color: white;
   font-size: 0.68rem;
-  font-weight: 850;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.previousControl svg,
+.primaryControl svg,
+.nextControl svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
 }
 
 .progressGroup {
@@ -398,7 +418,7 @@
 .time {
   flex: none;
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -430,12 +450,12 @@
   background: rgba(255, 250, 240, 0.58);
   color: var(--muted);
   font-size: 0.69rem;
-  font-weight: 850;
+  font-weight: 550;
 }
 
 .episodeNav .episodeActive {
   border-color: var(--blue);
-  background: var(--blue);
+  background: #327d96;
   color: white;
 }
 
@@ -461,7 +481,7 @@
   background: transparent;
   color: var(--muted);
   font-size: 0.69rem;
-  font-weight: 850;
+  font-weight: 600;
 }
 
 .tabs button:last-child {
@@ -480,7 +500,7 @@
 .narration {
   max-width: 850px;
   margin: 0 auto;
-  color: #354a4f;
+  color: #365f69;
   font-family: Georgia, serif;
   font-size: clamp(1.02rem, 2vw, 1.22rem);
   line-height: 1.65;
@@ -496,6 +516,7 @@
   color: var(--blue-deep);
   font-family: Georgia, serif;
   font-size: 1.1rem;
+  font-weight: 500;
 }
 .placeholder span {
   color: var(--muted);
@@ -510,7 +531,7 @@
   padding-top: 28px;
   color: var(--muted);
   font-size: 0.68rem;
-  font-weight: 750;
+  font-weight: 550;
   text-align: center;
 }
 .footer a {
@@ -522,7 +543,7 @@
   border: 1px solid rgba(47, 113, 137, 0.24);
   border-radius: 999px;
   background: rgba(255, 250, 240, 0.64);
-  font-weight: 850;
+  font-weight: 600;
 }
 .footer span a {
   text-decoration: underline;
@@ -530,7 +551,7 @@
 }
 .footer small {
   font-size: 0.62rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {
@@ -562,26 +583,28 @@
     font-size: 0.48rem;
   }
   .imageCaption strong {
-    max-width: 66%;
+    font-size: 1rem;
   }
   .controls {
-    grid-template-areas:
-      'previous primary map next'
-      'progress progress progress progress';
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
-    gap: 7px;
+    grid-template-areas: 'previous primary map progress next';
+    grid-template-columns: 32px minmax(94px, 1.45fr) auto minmax(70px, 1fr) auto;
+    gap: 5px;
   }
   .primaryControl,
   .nextControl {
-    padding-inline: 10px;
-    font-size: 0.62rem;
+    min-height: 36px;
+    padding-inline: 8px;
+    font-size: 0.58rem;
   }
   .mapControl {
-    padding-inline: 8px;
-    font-size: 0.61rem;
+    padding-inline: 7px;
+    font-size: 0.58rem;
   }
   .progressGroup {
-    padding: 2px 4px 0;
+    gap: 5px;
+  }
+  .time {
+    font-size: 0.55rem;
   }
   .episodeNav {
     gap: 5px;

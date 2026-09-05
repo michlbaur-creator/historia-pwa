@@ -2,7 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock3 } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Clock3,
+  ExternalLink,
+  Pause,
+  Play,
+  RotateCcw,
+} from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { historiaScenes } from './data';
 import styles from './historia.module.css';
@@ -25,7 +33,8 @@ export default function HistoriaPlayer() {
 
   const image = showMap ? scene.mapImage : scene.mainImage;
   const progress = Math.min(100, (elapsed / scene.duration) * 100);
-  const status = showMap ? 'Orientierungskarte' : 'Historisches Hauptbild';
+  const imageTitle = scene.imageTitle ?? scene.people;
+  const imageSubtitle = scene.imageSubtitle ?? scene.place;
   const timelineProgress = useMemo(
     () =>
       ((sceneIndex + elapsed / scene.duration) / historiaScenes.length) * 100,
@@ -90,9 +99,11 @@ export default function HistoriaPlayer() {
           </div>
         </div>
         <nav className={styles.headerActions} aria-label="Direktnavigation">
-          <a href="https://evo.mibaso.de">Evo ↗</a>
+          <a href="https://evo.mibaso.de">
+            Evo <ExternalLink aria-hidden="true" />
+          </a>
           <button type="button" onClick={() => selectScene(0)}>
-            ↻ Anfang
+            <RotateCcw aria-hidden="true" /> Anfang
           </button>
         </nav>
       </header>
@@ -150,10 +161,12 @@ export default function HistoriaPlayer() {
             className={styles.sceneImage}
           />
           <div className={styles.imageShade} />
-          <div className={styles.mediaBadge}>{status}</div>
           <div className={styles.imageCaption}>
-            <span>{scene.place}</span>
-            <strong>{scene.people}</strong>
+            <div>
+              <strong>{imageTitle}</strong>
+              <span>{imageSubtitle}</span>
+            </div>
+            <b>{showMap ? 'Karte' : 'Hauptbild'}</b>
           </div>
         </div>
 
@@ -164,14 +177,22 @@ export default function HistoriaPlayer() {
             disabled={sceneIndex === 0}
             aria-label="Vorherige Szene"
           >
-            ←
+            <ArrowLeft aria-hidden="true" />
           </button>
           <button
             className={styles.primaryControl}
             onClick={() => setPlaying((value) => !value)}
             aria-label={playing ? 'Pause' : 'Abspielen'}
           >
-            {playing ? 'Ⅱ Pause' : '▶ Szene starten'}
+            {playing ? (
+              <>
+                <Pause aria-hidden="true" /> Pause
+              </>
+            ) : (
+              <>
+                <Play aria-hidden="true" /> Szene starten
+              </>
+            )}
           </button>
           <button
             className={styles.mapControl}
@@ -195,7 +216,7 @@ export default function HistoriaPlayer() {
             onClick={() => stepScene(1)}
             disabled={sceneIndex === historiaScenes.length - 1}
           >
-            Weiter →
+            Weiter <ArrowRight aria-hidden="true" />
           </button>
         </div>
       </section>

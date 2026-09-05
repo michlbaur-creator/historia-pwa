@@ -5,6 +5,8 @@ export type HistoriaScene = {
   date: string;
   place: string;
   people: string;
+  imageTitle?: string;
+  imageSubtitle?: string;
   duration: number;
   narration: string;
   mainImage: string;
@@ -21,6 +23,8 @@ export const historiaScenes: HistoriaScene[] = [
     date: 'um 3100 v. Chr.',
     place: 'Niltal',
     people: 'Narmer',
+    imageTitle: 'Narmer am Nil',
+    imageSubtitle: 'Aus zwei Herrschaftsgebieten entsteht ein Staat.',
     duration: 28,
     narration:
       'Unsere Reise beginnt am Nil, um 3100 vor Christus. Auf der Karte liegt Oberägypten im Süden – der Nil fließt eben Richtung Norden – und Unterägypten am Delta. König Narmer steht am Anfang ihrer Vereinigung. Aus zwei Herrschaftsgebieten wird ein mächtiger Staat. Der Pharao kontrolliert Land, Abgaben und Soldaten. So beginnt eine Königsherrschaft, die Ägypten erstaunliche dreitausend Jahre prägen wird.',
