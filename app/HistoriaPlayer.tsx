@@ -59,6 +59,7 @@ export default function HistoriaPlayer() {
   const [quizSelection, setQuizSelection] = useState<number | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const swipeStartX = useRef<number | null>(null);
   const scene = historiaScenes[sceneIndex];
 
@@ -79,6 +80,19 @@ export default function HistoriaPlayer() {
     if (!playing) return;
     void audioRef.current?.play().catch(() => setPlaying(false));
   }, [playing, scene.id]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    if (!playing) {
+      video.pause();
+      return;
+    }
+    void video.play().catch(() => {
+      // Das Hauptbild bleibt als Poster sichtbar, falls Video blockiert wird.
+    });
+  }, [playing, scene.id, showMap]);
 
   useEffect(() => {
     const current = timelineRef.current?.querySelector<HTMLElement>(
@@ -254,19 +268,34 @@ export default function HistoriaPlayer() {
             swipeStartX.current = null;
           }}
         >
-          <Image
-            key={image}
-            src={image}
-            alt={
-              showMap
-                ? `Karte zu ${scene.title}`
-                : `Historische Bildszene: ${scene.title}`
-            }
-            fill
-            priority={sceneIndex === 0}
-            sizes="(max-width: 980px) 100vw, 1120px"
-            className={styles.sceneImage}
-          />
+          {!showMap && scene.video ? (
+            <video
+              key={scene.video}
+              ref={videoRef}
+              src={scene.video}
+              poster={scene.mainImage}
+              preload="metadata"
+              playsInline
+              muted
+              loop
+              aria-hidden="true"
+              className={styles.sceneVideo}
+            />
+          ) : (
+            <Image
+              key={image}
+              src={image}
+              alt={
+                showMap
+                  ? `Karte zu ${scene.title}`
+                  : `Historische Bildszene: ${scene.title}`
+              }
+              fill
+              priority={sceneIndex === 0}
+              sizes="(max-width: 980px) 100vw, 1120px"
+              className={styles.sceneImage}
+            />
+          )}
           <div className={styles.imageShade} />
           <div className={styles.imageCaption}>
             <div>

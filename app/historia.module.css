@@ -272,6 +272,15 @@
   animation: reveal 0.42s ease;
 }
 
+.sceneVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: reveal 0.42s ease;
+}
+
 @keyframes reveal {
   from {
     opacity: 0.3;
@@ -836,6 +845,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .sceneImage {
+    animation: none;
+  }
+  .sceneVideo {
     animation: none;
   }
   .timelineFill,

@@ -13,6 +13,7 @@ export type HistoriaScene = {
   narration: string;
   mainImage: string;
   mapImage: string;
+  video?: string;
   audio: string;
   discoveries: [HistoriaDiscovery, HistoriaDiscovery];
   quiz: [HistoriaQuiz, HistoriaQuiz];
@@ -54,6 +55,7 @@ export const historiaScenes: HistoriaScene[] = [
       'Fünf Jahrhunderte später führt dich die Karte nach Gizeh, nahe der damaligen Hauptstadt Memphis. Pharao Cheops lässt hier die Große Pyramide errichten – ein Bauprojekt, bei dem ein guter Kalender sicher nicht genügt. Planung, Fachwissen und die Arbeit vieler Menschen machen sie möglich. Nach vielen Jahren ragt das höchste Bauwerk seiner Zeit über dem Niltal auf: Grabmal des Königs und weithin sichtbares Zeichen seiner Macht.',
     mainImage: `${asset}/main/scene02.jpg`,
     mapImage: `${asset}/maps/scene02.jpg`,
+    video: `${asset}/videos/scene02.mp4`,
     ...media(2),
   },
   {
@@ -82,6 +84,7 @@ export const historiaScenes: HistoriaScene[] = [
       '1274 vor Christus ziehen Ramses der Zweite und Hethiterkönig Muwatalli bei Kadesch gegeneinander. Die Karte zeigt dir ihre Marschrouten. Ramses gerät mit seinem Heer beinahe in eine Falle, schlägt sich aber frei. Einen klaren Sieger gibt es nicht – zu Hause lässt er sich trotzdem entsprechend feiern. Jahre später schließen beide Mächte einen Friedensvertrag. Großes Schlachtengetöse, am Ende also doch Diplomatie.',
     mainImage: `${asset}/main/scene04.jpg`,
     mapImage: `${asset}/maps/scene04.jpg`,
+    video: `${asset}/videos/scene04.mp4`,
     ...media(4),
   },
   {
@@ -110,6 +113,7 @@ export const historiaScenes: HistoriaScene[] = [
       'Nun prallen Persien und die griechischen Stadtstaaten aufeinander. 490 vor Christus scheitert Dareios Heer bei Marathon. Zehn Jahre später führt Xerxes eine neue Invasion: Leonidas fällt mit seinen Spartanern an den Thermopylen, Athen wird besetzt. Doch bei Salamis lockt Themistokles die persische Flotte in eine enge Meerenge. Dort zählt Größe plötzlich weniger als Beweglichkeit – und der Feldzug kippt zugunsten der Griechen.',
     mainImage: `${asset}/main/scene06.jpg`,
     mapImage: `${asset}/maps/scene06.jpg`,
+    video: `${asset}/videos/scene06.mp4`,
     ...media(6),
   },
   {
@@ -152,6 +156,7 @@ export const historiaScenes: HistoriaScene[] = [
       '334 vor Christus setzt Alexander von Makedonien nach Asien über. Die Karte folgt seinem Heer über Issos und Gaugamela bis nach Babylon und weiter nach Osten. Alexander besiegt Dareios den Dritten und erobert das Perserreich in wenigen Jahren. Doch 323 stirbt er in Babylon, erst 32 Jahre alt. Sein riesiges Reich überlebt ihn nicht lange: Alexanders Feldherren teilen es unter sich auf.',
     mainImage: `${asset}/main/scene09.jpg`,
     mapImage: `${asset}/maps/scene09.jpg`,
+    video: `${asset}/videos/scene09.mp4`,
     ...media(9),
   },
   {
