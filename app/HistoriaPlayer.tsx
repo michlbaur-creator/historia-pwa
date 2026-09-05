@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Clock3 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { historiaScenes } from './data';
 import styles from './historia.module.css';
@@ -77,11 +78,23 @@ export default function HistoriaPlayer() {
   return (
     <main className={styles.shell}>
       <header className={styles.header}>
-        <div>
-          <p className={styles.kicker}>Klassische Weltgeschichte</p>
-          <h1>Historia</h1>
+        <div className={styles.brandLockup}>
+          <span className={styles.brandMark} aria-hidden="true">
+            <Clock3 strokeWidth={2} />
+          </span>
+          <div>
+            <h1>Historia</h1>
+            <p className={styles.subtitle}>
+              Episode 1 · Pharaonen Griechen und Cäsaren
+            </p>
+          </div>
         </div>
-        <div className={styles.sister}>Schwesterprojekt von evo.mibaso.de</div>
+        <nav className={styles.headerActions} aria-label="Direktnavigation">
+          <a href="https://evo.mibaso.de">Evo ↗</a>
+          <button type="button" onClick={() => selectScene(0)}>
+            ↻ Anfang
+          </button>
+        </nav>
       </header>
 
       <section
@@ -118,13 +131,7 @@ export default function HistoriaPlayer() {
       </section>
 
       <section className={styles.sceneHeading}>
-        <div>
-          <p className={styles.date}>{scene.date}</p>
-          <h2>{scene.title}</h2>
-        </div>
-        <span className={styles.sceneCounter}>
-          {scene.id} / {historiaScenes.length}
-        </span>
+        <h2>{scene.title}</h2>
       </section>
 
       <section className={styles.player}>
@@ -152,11 +159,19 @@ export default function HistoriaPlayer() {
 
         <div className={styles.controls}>
           <button
+            className={styles.previousControl}
+            onClick={() => stepScene(-1)}
+            disabled={sceneIndex === 0}
+            aria-label="Vorherige Szene"
+          >
+            ←
+          </button>
+          <button
             className={styles.primaryControl}
             onClick={() => setPlaying((value) => !value)}
             aria-label={playing ? 'Pause' : 'Abspielen'}
           >
-            {playing ? 'Ⅱ' : '▶'}
+            {playing ? 'Ⅱ Pause' : '▶ Szene starten'}
           </button>
           <button
             className={styles.mapControl}
@@ -164,14 +179,24 @@ export default function HistoriaPlayer() {
           >
             {showMap ? 'Hauptbild' : 'Karte'}
           </button>
-          <span className={styles.time}>{formatTime(elapsed)}</span>
-          <div
-            className={styles.progressTrack}
-            aria-label="Fortschritt der Szene"
-          >
-            <div style={{ width: `${progress}%` }} />
+          <div className={styles.progressGroup}>
+            <div
+              className={styles.progressTrack}
+              aria-label="Fortschritt der Szene"
+            >
+              <div style={{ width: `${progress}%` }} />
+            </div>
+            <span className={styles.time}>
+              {formatTime(elapsed)} / {formatTime(scene.duration)}
+            </span>
           </div>
-          <span className={styles.time}>{formatTime(scene.duration)}</span>
+          <button
+            className={styles.nextControl}
+            onClick={() => stepScene(1)}
+            disabled={sceneIndex === historiaScenes.length - 1}
+          >
+            Weiter →
+          </button>
         </div>
       </section>
 
@@ -179,18 +204,6 @@ export default function HistoriaPlayer() {
         <button className={styles.episodeActive}>Episode 1</button>
         <button disabled>Episode 2</button>
         <button disabled>Episode 3</button>
-      </nav>
-
-      <nav className={styles.sceneNav} aria-label="Szenensteuerung">
-        <button onClick={() => stepScene(-1)} disabled={sceneIndex === 0}>
-          ← Zurück
-        </button>
-        <button
-          onClick={() => stepScene(1)}
-          disabled={sceneIndex === historiaScenes.length - 1}
-        >
-          Weiter →
-        </button>
       </nav>
 
       <section className={styles.contentCard}>
