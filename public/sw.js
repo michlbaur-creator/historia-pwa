@@ -1,4 +1,4 @@
-const CACHE = 'historia-v5';
+const CACHE = 'historia-v6';
 const CORE = ['/', '/manifest.webmanifest', '/favicon.svg', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', (event) => {

@@ -233,11 +233,14 @@ export default function HistoriaPlayer() {
             <p className={styles.subtitle}>
               Episode 1 · Pharaonen Griechen und Cäsaren
             </p>
+            <p className={styles.seriesRelation}>
+              Ein historischer Zoom in Episode 3 der Großen Zeitreise.
+            </p>
           </div>
         </div>
         <nav className={styles.headerActions} aria-label="Direktnavigation">
-          <a href="https://evo.mibaso.de">
-            Evo <ExternalLink aria-hidden="true" />
+          <a href="https://evo.mibaso.de/episode-3/?start=1">
+            Große Zeitreise <ExternalLink aria-hidden="true" />
           </a>
           <button type="button" onClick={() => selectScene(0)}>
             <RotateCcw aria-hidden="true" /> Anfang

@@ -88,6 +88,14 @@
   font-weight: 450;
 }
 
+.seriesRelation {
+  margin: 3px 0 0;
+  color: color-mix(in srgb, var(--blue-deep) 72%, var(--muted));
+  font-size: clamp(0.56rem, 1.25vw, 0.68rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
 .headerActions {
   display: flex;
   align-items: stretch;
@@ -777,12 +785,17 @@
     font-size: 0.6rem;
     line-height: 1.25;
   }
+  .seriesRelation {
+    max-width: 220px;
+    margin-top: 2px;
+    font-size: 0.49rem;
+  }
   .headerActions {
     margin-left: auto;
   }
   .headerActions a,
   .headerActions button {
-    min-width: 70px;
+    min-width: 88px;
     min-height: 28px;
     padding-inline: 8px;
     font-size: 0.58rem;
