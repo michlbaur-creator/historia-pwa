@@ -1,5 +1,5 @@
-const CACHE = 'historia-v4';
-const CORE = ['/', '/manifest.webmanifest', '/icon-192.jpg', '/icon-512.jpg'];
+const CACHE = 'historia-v5';
+const CORE = ['/', '/manifest.webmanifest', '/favicon.svg', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)));

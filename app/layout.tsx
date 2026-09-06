@@ -10,7 +10,14 @@ export const metadata: Metadata = {
   applicationName: 'Historia',
   manifest: '/manifest.webmanifest',
   appleWebApp: { capable: true, statusBarStyle: 'default', title: 'Historia' },
-  icons: { icon: '/icon-192.jpg', apple: '/icon-192.jpg' },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/icon-192.png',
+  },
   openGraph: {
     title: 'Historia – klassische Weltgeschichte',
     description:
