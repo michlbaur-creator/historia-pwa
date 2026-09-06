@@ -187,6 +187,7 @@ export const historiaScenes: HistoriaScene[] = [
       '218 vor Christus nimmt Hannibal den überraschend unbequemen Weg nach Italien: über die Alpen. Auf der Karte ziehen sein Heer und einige Elefanten von Spanien über die Alpen nach Italien. Er schlägt Rom mehrfach, kann die Stadt aber nicht bezwingen. Rom greift stattdessen Karthagos Machtbasis an. 202 besiegt Scipio Hannibal bei Zama. Nach drei Punischen Kriegen ist Karthago zerstört – und Rom beherrscht das westliche Mittelmeer.',
     mainImage: `${asset}/main/scene11.jpg`,
     mapImage: `${asset}/maps/scene11.jpg`,
+    video: `${asset}/videos/scene11.mp4`,
     ...media(11),
   },
   {
@@ -201,6 +202,7 @@ export const historiaScenes: HistoriaScene[] = [
       '49 vor Christus steht Caesar mit seiner Legion am Rubikon, der Grenze zu Italien. Er überschreitet den Fluss und beginnt den Bürgerkrieg gegen Pompeius. Caesar siegt und lässt sich zum Diktator auf Lebenszeit ernennen. Vielen Senatoren wird das eindeutig zu viel. Am 15. März 44 vor Christus ermorden sie ihn bei einer Senatssitzung. Die Republik ist damit keineswegs gerettet – der nächste Bürgerkrieg wartet schon.',
     mainImage: `${asset}/main/scene12.jpg`,
     mapImage: `${asset}/maps/scene12.jpg`,
+    video: `${asset}/videos/scene12.mp4`,
     ...media(12),
   },
   {
@@ -215,6 +217,7 @@ export const historiaScenes: HistoriaScene[] = [
       '31 vor Christus treffen bei Actium die Flotten Octavians und des Bündnisses von Marcus Antonius und Kleopatra aufeinander. Die Karte zeigt ihre geteilten Machtbereiche im östlichen Mittelmeer. Octavians Seite gewinnt; Antonius und Kleopatra fliehen nach Ägypten und sterben im folgenden Jahr. Ägypten wird römische Provinz. Octavian beherrscht nun die römische Welt – und aus dem jungen Erben Caesars wird bald Augustus.',
     mainImage: `${asset}/main/scene13.jpg`,
     mapImage: `${asset}/maps/scene13.jpg`,
+    video: `${asset}/videos/scene13.mp4`,
     ...media(13),
   },
   {
