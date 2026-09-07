@@ -747,9 +747,23 @@
   background: rgba(255, 250, 240, 0.64);
   font-weight: 600;
 }
-.footer span a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.footerLinks {
+  display: grid;
+  width: min(440px, 100%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.footerLinks a {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(47, 113, 137, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.64);
+  font-weight: 600;
+  text-align: center;
 }
 .footer small {
   font-size: 0.62rem;

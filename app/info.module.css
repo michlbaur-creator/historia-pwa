@@ -13,6 +13,26 @@
   background: rgba(255, 250, 240, 0.86);
   box-shadow: 0 20px 60px rgba(68, 54, 34, 0.1);
 }
+.aboutPage {
+  display: grid;
+  width: min(1040px, 100%);
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  padding: 0;
+  overflow: hidden;
+}
+.portrait {
+  min-height: 680px;
+  background: #e7dcc7;
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.aboutCopy {
+  padding: clamp(24px, 5vw, 52px);
+}
 .page > a,
 .page section a {
   color: #225568;
@@ -56,4 +76,23 @@
   color: white !important;
   text-decoration: none;
   font-weight: 800;
+}
+
+@media (max-width: 680px) {
+  .aboutPage {
+    grid-template-columns: 1fr;
+  }
+  .portrait {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+  .portrait img {
+    object-position: 50% 23%;
+  }
+  .aboutCopy {
+    padding: 24px 20px 28px;
+  }
+  .eyebrow {
+    margin-top: 32px;
+  }
 }

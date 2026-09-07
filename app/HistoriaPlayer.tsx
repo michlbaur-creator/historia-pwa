@@ -53,7 +53,7 @@ export default function HistoriaPlayer() {
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [showMap, setShowMap] = useState(true);
-  const [tab, setTab] = useState<Tab>('text');
+  const [tab, setTab] = useState<Tab>('discover');
   const [audioDuration, setAudioDuration] = useState(0);
   const [quizQuestion, setQuizQuestion] = useState(0);
   const [quizSelection, setQuizSelection] = useState<number | null>(null);
@@ -504,10 +504,10 @@ export default function HistoriaPlayer() {
 
       <footer className={styles.footer}>
         <a href="https://mibaso.de">⌂ Alle Mibaso-Apps</a>
-        <span>
-          <Link href="/ueber">Über mich</Link> ·{' '}
+        <nav className={styles.footerLinks} aria-label="Fußnavigation">
+          <Link href="/ueber">Über mich</Link>
           <Link href="/impressum">Impressum &amp; Datenschutz</Link>
-        </span>
+        </nav>
         <small>
           © 2026 Michael Baur · Kontakt:{' '}
           <a href="mailto:mibaur@me.com">mibaur@me.com</a>
