@@ -1,0 +1,889 @@
+import type { HistoriaScene } from './data';
+
+export const historiaEpisode2Scenes: HistoriaScene[] = [
+  {
+    id: 1,
+    shortTitle: 'Kalifenreich',
+    title: 'Mohammed und das Kalifenreich',
+    date: '622–750',
+    place: 'Arabien, Vorderer Orient und Mittelmeerraum',
+    people: 'Mohammed und die ersten Kalifen',
+    imageTitle: 'Von Medina in drei Kontinente',
+    imageSubtitle: 'Aus einer Glaubensgemeinschaft wird ein Großreich.',
+    duration: 31,
+    narration:
+      '622 zieht Mohammed von Mekka nach Medina. Diese Hidschra beginnt die islamische Zeitrechnung. In Medina entsteht eine neue religiöse und politische Gemeinschaft. Nach Mohammeds Tod 632 einigen Kalifen große Teile Arabiens und erobern Syrien, Ägypten, Persien, Nordafrika und Spanien. Auf der Karte wächst das Reich erstaunlich schnell – regieren lässt sich so viel Gebiet allerdings nicht mit einem einzigen Kamelritt.',
+    mapConcept:
+      'Arabien mit Mekka und Medina; anschließend Pfeile nach Syrien, Ägypten, Persien, Nordafrika und auf die Iberische Halbinsel. Keine scharf behaupteten Grenzen.',
+    mapDetails: ['Mekka', 'Medina', 'Damaskus', 'Bagdad', 'Ausbreitungswege'],
+    imageConcept:
+      'Eine frühe Stadt- und Verwaltungsszene in Medina; Mohammed selbst wird aus Respekt nicht bildlich dargestellt. Boten und Karten deuten die spätere Ausbreitung an.',
+    discoveries: [
+      {
+        label: 'Zeitpunkt verstehen',
+        title: 'Warum 622 zählt',
+        text: 'Die Auswanderung Mohammeds von Mekka nach Medina heißt Hidschra. Sie markiert den Beginn der islamischen Zeitrechnung, nicht Mohammeds Geburt.',
+      },
+      {
+        label: 'Ausbreitung verfolgen',
+        title: 'Glaube und Herrschaft',
+        text: 'Mohammeds Nachfolger waren religiöse und politische Führer. Ihre Heere eroberten in wenigen Generationen Gebiete auf drei Kontinenten.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Welches Ereignis beginnt die islamische Zeitrechnung?',
+        options: [
+          'Die Hidschra nach Medina',
+          'Die Eroberung Konstantinopels',
+          'Die Krönung Karls des Großen',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Hidschra von Mekka nach Medina im Jahr 622 ist der Ausgangspunkt der islamischen Zeitrechnung.',
+      },
+      {
+        question: 'Was entstand unter Mohammeds Nachfolgern?',
+        options: [
+          'Nur eine Handelsstadt',
+          'Ein weitreichendes Kalifenreich',
+          'Das Heilige Römische Reich',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Die ersten Kalifen verbanden religiöse Führung mit politischer Herrschaft und erweiterten das Reich stark.',
+      },
+    ],
+  },
+  {
+    id: 2,
+    shortTitle: 'Karl',
+    title: 'Karl der Große wird Kaiser',
+    date: '800',
+    place: 'Rom und Frankenreich',
+    people: 'Karl der Große und Papst Leo III.',
+    imageTitle: 'Kaiserkrönung in Rom',
+    imageSubtitle: 'Der Frankenkönig erhält eine neue, alte Würde.',
+    duration: 29,
+    narration:
+      'Am Weihnachtstag des Jahres 800 krönt Papst Leo der Dritte den Frankenkönig Karl in Rom zum Kaiser. Karl herrscht bereits über große Teile West- und Mitteleuropas. Grafen, Bischöfe und königliche Boten halten das Reich zusammen; Klöster und Hofschulen fördern Bildung und Schrift. Nach Karls Tod wird sein Reich geteilt. Die Kaiseridee bleibt jedoch – politische Wiederverwertung kann sehr langlebig sein.',
+    mapConcept:
+      'Das Frankenreich um 800 als weich begrenzte Fläche mit Aachen, Rom und den wichtigsten Reichsteilen. Ein Weg verbindet Aachen und den Krönungsort Rom.',
+    mapDetails: ['Aachen', 'Rom', 'Frankenreich', 'Weg zur Kaiserkrönung'],
+    imageConcept:
+      'Die Kaiserkrönung in Alt-St. Peter: Karl und Leo III. im Mittelpunkt, umgeben von Geistlichen und fränkischen Großen, feierlich, aber nicht überladen.',
+    discoveries: [
+      {
+        label: 'Macht verbinden',
+        title: 'König und Papst',
+        text: 'Die Krönung verbindet Karls militärisch errungene Herrschaft mit der religiösen Autorität des Papstes und belebt die weströmische Kaiseridee neu.',
+      },
+      {
+        label: 'Reich organisieren',
+        title: 'Boten statt Telefon',
+        text: 'Karl stützte sich auf Grafen, Bischöfe und kontrollierende Königsboten. Herrschaft über große Entfernungen blieb langsam und persönlich.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Wer krönt Karl im Jahr 800 zum Kaiser?',
+        options: ['Papst Leo III.', 'Sultan Mehmed II.', 'Otto I.'],
+        correctIndex: 0,
+        explanation: 'Papst Leo III. krönt Karl am Weihnachtstag 800 in Rom.',
+      },
+      {
+        question: 'Was geschieht nach Karls Tod mit seinem Reich?',
+        options: [
+          'Es wird geteilt',
+          'Es erobert China',
+          'Es bleibt unverändert bis 1815',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Karls Nachfolger teilen das Reich; die erneuerte Kaiseridee wirkt trotzdem weiter.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    shortTitle: 'Wikinger',
+    title: 'Die weiten Wege der Wikinger',
+    date: '793–1066',
+    place: 'Nordatlantik, Nordsee und Osteuropa',
+    people: 'Wikingerfahrer und Knut der Große',
+    imageTitle: 'Zwischen Überfall und Handel',
+    imageSubtitle: 'Nordische Schiffe verbinden erstaunlich ferne Küsten.',
+    duration: 31,
+    narration:
+      '793 überfallen nordische Seefahrer das Kloster Lindisfarne. Es folgen weitere Angriffe – aber die Wikinger rauben nicht nur. Sie handeln, siedeln und gründen Herrschaften. Ihre Schiffe erreichen Island, Grönland und Nordamerika; über russische Flüsse gelangen Händler bis Byzanz. Im 11. Jahrhundert regiert Knut der Große zeitweise England, Dänemark und Norwegen. Aus gefürchteten Fremden werden vielerorts Nachbarn mit ziemlich langen Reisewegen.',
+    mapConcept:
+      'Skandinavien im Zentrum; Pfeile westwärts über Island und Grönland bis Nordamerika sowie ostwärts über Flüsse nach Kiew und Konstantinopel.',
+    mapDetails: [
+      'Lindisfarne',
+      'Island',
+      'Grönland',
+      'Nordamerika',
+      'Kiew',
+      'Konstantinopel',
+    ],
+    imageConcept:
+      'Ein nordisches Langschiff erreicht einen lebhaften Handelsplatz. Waren, Werkzeuge und Siedler zeigen mehr als nur den bekannten Überfall.',
+    discoveries: [
+      {
+        label: 'Klischee prüfen',
+        title: 'Nicht nur Plünderer',
+        text: 'Wikinger waren Seefahrer aus Skandinavien, die je nach Ort und Zeit plünderten, handelten, siedelten oder als Söldner dienten.',
+      },
+      {
+        label: 'Routen lesen',
+        title: 'Westen und Osten',
+        text: 'Über den Atlantik erreichten sie Nordamerika. Flüsse führten sie zugleich durch Osteuropa bis zum Schwarzen Meer und nach Byzanz.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Was taten Wikinger außer zu plündern?',
+        options: [
+          'Sie handelten und siedelten',
+          'Sie bauten die Pyramiden',
+          'Sie gründeten das Kalifenreich',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Handel, Siedlung und Herrschaft gehörten ebenso zur Wikingerzeit wie Überfälle.',
+      },
+      {
+        question: 'Welche Räume verbanden ihre Routen?',
+        options: [
+          'Nur Skandinavien und England',
+          'Atlantik und Osteuropa',
+          'Nur das Mittelmeer',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Ihre Wege reichten westwärts über den Atlantik und ostwärts über Flüsse bis nach Byzanz.',
+      },
+    ],
+  },
+  {
+    id: 4,
+    shortTitle: 'Otto I.',
+    title: 'Otto I. und das neue Kaiserreich',
+    date: '962',
+    place: 'Ostfrankenreich und Rom',
+    people: 'Otto I. und Papst Johannes XII.',
+    imageTitle: 'Ein Kaiser reist nach Rom',
+    imageSubtitle: 'Aus königlicher Macht wird eine dauerhafte Reichsidee.',
+    duration: 28,
+    narration:
+      '955 besiegt König Otto der Erste ungarische Reiter auf dem Lechfeld. Der Sieg stärkt seine Stellung im Ostfrankenreich. Sieben Jahre später krönt ihn Papst Johannes der Zwölf in Rom zum Kaiser. Otto stützt sich auf Herzöge und besonders auf Bischöfe, die zugleich wichtige Reichsaufgaben übernehmen. Aus diesem Herrschaftsverband entwickelt sich später das Heilige Römische Reich – mit vielen Fürsten und entsprechend vielen Meinungen.',
+    mapConcept:
+      'Ostfrankenreich mit Aachen, Lechfeld und Rom. Die Reise zur Kaiserkrönung wird als Linie gezeigt; Reichsräume bleiben bewusst weich abgegrenzt.',
+    mapDetails: ['Ostfrankenreich', 'Lechfeld 955', 'Rom 962', 'Herzogtümer'],
+    imageConcept:
+      'Otto I. bei der Kaiserkrönung in Rom; Bischöfe und weltliche Große zeigen die beiden Stützen seiner Herrschaft.',
+    discoveries: [
+      {
+        label: 'Vorgeschichte',
+        title: 'Der Sieg auf dem Lechfeld',
+        text: 'Ottos Sieg 955 beendet die großen ungarischen Raubzüge nach Westen und stärkt seinen Anspruch auf die Kaiserwürde.',
+      },
+      {
+        label: 'Herrschaft verstehen',
+        title: 'Kaiser ohne Hauptstadtstaat',
+        text: 'Das Reich war kein moderner Zentralstaat. Der Kaiser musste mit Herzögen, Bischöfen und anderen Großen immer wieder zusammenarbeiten.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Welcher Sieg stärkt Otto I. vor seiner Kaiserkrönung?',
+        options: [
+          'Der Sieg auf dem Lechfeld',
+          'Der Sieg bei Waterloo',
+          'Die Einnahme Jerusalems',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Der Lechfeld-Sieg von 955 stärkt Ottos Königtum erheblich.',
+      },
+      {
+        question: 'Auf wen stützt Otto seine Herrschaft besonders?',
+        options: [
+          'Nur auf Bauern',
+          'Auf Herzöge und Bischöfe',
+          'Auf mongolische Reiter',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Herzöge und Bischöfe waren wichtige Träger der ottonischen Herrschaft.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    shortTitle: 'Kreuzzüge',
+    title: 'Kreuzfahrer ziehen nach Jerusalem',
+    date: '1096–1291',
+    place: 'Europa und östlicher Mittelmeerraum',
+    people: 'Urban II., Saladin und Richard Löwenherz',
+    imageTitle: 'Kampf um Jerusalem',
+    imageSubtitle:
+      'Religiöse Versprechen und Machtpolitik treiben lange Kriege an.',
+    duration: 32,
+    narration:
+      '1095 ruft Papst Urban der Zweite zum Kreuzzug nach Jerusalem auf. Im folgenden Jahr ziehen Heere Richtung Osten; 1099 erobern Kreuzfahrer die Stadt und richten ein Blutbad an. Sie gründen mehrere Herrschaften. 1187 gewinnt Sultan Saladin Jerusalem zurück. Richard Löwenherz führt daraufhin den Dritten Kreuzzug, ohne die Stadt zu erobern. 1291 fällt der letzte große Kreuzfahrerstützpunkt. Zwei Jahrhunderte Krieg – eindeutig keine kurze Pilgerfahrt.',
+    mapConcept:
+      'Pfeile von Westeuropa über Konstantinopel nach Jerusalem; Kreuzfahrerstaaten nur als weiche Flächen. Akkon und Saladins Machtzentrum werden markiert.',
+    mapDetails: [
+      'Clermont',
+      'Konstantinopel',
+      'Jerusalem',
+      'Akkon',
+      'Kreuzzugsrouten',
+    ],
+    imageConcept:
+      'Eine angespannte Begegnung vor Jerusalem mit christlichen und muslimischen Heeren; keine triumphale Siegerpose und keine drastische Gewalt.',
+    discoveries: [
+      {
+        label: 'Motive unterscheiden',
+        title: 'Glaube, Land und Macht',
+        text: 'Religiöse Ziele verbanden sich mit politischen Interessen, Beutehoffnungen und persönlichem Ehrgeiz. Die Teilnehmer handelten nicht aus einem einzigen Grund.',
+      },
+      {
+        label: 'Folgen sehen',
+        title: 'Gewalt gegen viele Gruppen',
+        text: 'Kreuzzugsheere töteten nicht nur Muslime. Auch jüdische Gemeinden und Christen anderer Traditionen wurden Opfer von Gewalt.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Wer ruft 1095 zum Kreuzzug auf?',
+        options: ['Papst Urban II.', 'Dschingis Khan', 'Ludwig XIV.'],
+        correctIndex: 0,
+        explanation:
+          'Papst Urban II. ruft 1095 in Clermont zum bewaffneten Zug nach Jerusalem auf.',
+      },
+      {
+        question: 'Wer gewinnt Jerusalem 1187 zurück?',
+        options: ['Richard Löwenherz', 'Saladin', 'Karl der Große'],
+        correctIndex: 1,
+        explanation:
+          'Sultan Saladin besiegt die Kreuzfahrer und gewinnt Jerusalem 1187 zurück.',
+      },
+    ],
+  },
+  {
+    id: 6,
+    shortTitle: 'Mongolen',
+    title: 'Dschingis Khan einigt die Mongolen',
+    date: '1206–1227',
+    place: 'Mongolei und Eurasien',
+    people: 'Dschingis Khan und seine Nachfolger',
+    imageTitle: 'Das Reich der schnellen Reiter',
+    imageSubtitle: 'Strenge Organisation trägt Eroberungen über Eurasien.',
+    duration: 30,
+    narration:
+      '1206 wird Temüdschin zum Dschingis Khan ausgerufen. Er einigt mongolische Gruppen, ordnet das Heer in feste Einheiten und setzt auf bewegliche Reiter, Kundschafter und klare Befehle. Seine Feldzüge erobern große Teile Zentralasiens und Nordchinas; Städte, die Widerstand leisten, werden oft brutal zerstört. Nach seinem Tod erweitern seine Nachfolger das Reich weiter. Die Karte wird riesig – der Preis für viele Eroberte ebenfalls.',
+    mapConcept:
+      'Mongolisches Kerngebiet mit Karakorum; breite Pfeile nach Nordchina, Zentralasien und Westen. Spätere Ausdehnung gestrichelt statt als scheinpräzise Grenze.',
+    mapDetails: [
+      'Mongolei',
+      'Karakorum',
+      'Nordchina',
+      'Zentralasien',
+      'Westliche Feldzüge',
+    ],
+    imageConcept:
+      'Dschingis Khan vor einem beweglichen Reiterheer in offener Steppe; Boten, Ersatzpferde und geordnete Verbände betonen Organisation statt Heldenkult.',
+    discoveries: [
+      {
+        label: 'Erfolg erklären',
+        title: 'Tempo plus Organisation',
+        text: 'Die Mongolen waren nicht einfach nur gute Reiter. Aufklärung, feste Heeresgliederung, Signalgebung und mehrere Pferde je Kämpfer erhöhten ihre Beweglichkeit.',
+      },
+      {
+        label: 'Doppelte Folge',
+        title: 'Zerstörung und Verbindung',
+        text: 'Eroberungen vernichteten Städte und Menschenleben. Zugleich verband die spätere mongolische Herrschaft Handelswege quer durch Eurasien enger.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Wie hieß Dschingis Khan ursprünglich?',
+        options: ['Temüdschin', 'Mehmed', 'Galilei'],
+        correctIndex: 0,
+        explanation: 'Temüdschin erhielt 1206 den Titel Dschingis Khan.',
+      },
+      {
+        question: 'Was machte das mongolische Heer besonders wirksam?',
+        options: [
+          'Nur größere Burgen',
+          'Beweglichkeit und klare Organisation',
+          'Eine starke Mittelmeerflotte',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Schnelle Reiterverbände, Aufklärung und klare Befehle ermöglichten weiträumige Feldzüge.',
+      },
+    ],
+  },
+  {
+    id: 7,
+    shortTitle: 'Pest',
+    title: 'Der Schwarze Tod erreicht Europa',
+    date: '1347–1353',
+    place: 'Europa, Mittelmeerraum und Asien',
+    people: 'Händler, Herrscher und Stadtbevölkerungen',
+    imageTitle: 'Eine Krankheit reist mit',
+    imageSubtitle: 'Handelswege verbinden Kontinente – auch für Erreger.',
+    duration: 31,
+    narration:
+      'Ab 1347 erreicht die Pest über Handelswege europäische Häfen. Das Bakterium Yersinia pestis verbreitet sich schnell; Flöhe, Nagetiere und wahrscheinlich weitere Übertragungswege spielen eine Rolle. In wenigen Jahren stirbt ein großer Teil der Bevölkerung Europas, auch Nordafrika und Asien sind schwer betroffen. Arbeit wird knapp, Löhne und soziale Beziehungen verändern sich. Die eng vernetzte Welt zeigt ihre Schattenseite – ohne auch nur einen Flugplan zu besitzen.',
+    mapConcept:
+      'Handelsrouten aus Zentralasien über das Schwarze Meer und Mittelmeer nach Europa. Ausbreitung mit datierten Pfeilen und Hafenpunkten, nicht als harte Fläche.',
+    mapDetails: [
+      'Schwarzes Meer',
+      'Konstantinopel',
+      'Messina',
+      'Genua',
+      'Handelswege',
+    ],
+    imageConcept:
+      'Ein mittelalterlicher Hafen mit ankommendem Handelsschiff und besorgten Menschen; Krankheit wird zurückhaltend und ohne drastische Leidensbilder gezeigt.',
+    discoveries: [
+      {
+        label: 'Ursache kennen',
+        title: 'Ein Bakterium, viele Wege',
+        text: 'Yersinia pestis verursacht die Pest. Flöhe und Nagetiere waren wichtige Überträger; bei bestimmten Formen konnte die Krankheit auch von Mensch zu Mensch gelangen.',
+      },
+      {
+        label: 'Folgen verstehen',
+        title: 'Wenn Arbeitskräfte fehlen',
+        text: 'Der massive Bevölkerungsverlust veränderte Besitz, Löhne und Abhängigkeiten. Die Folgen waren regional unterschiedlich und dauerten lange an.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Über welche Verbindungen erreicht die Pest viele Häfen?',
+        options: ['Über Handelswege', 'Über Eisenbahnen', 'Über Pilgerflüge'],
+        correctIndex: 0,
+        explanation:
+          'Fernhandel und Schifffahrt verbanden die betroffenen Regionen und beschleunigten die Ausbreitung.',
+      },
+      {
+        question: 'Welche gesellschaftliche Folge nennt die Szene?',
+        options: [
+          'Arbeit wird knapper',
+          'Alle Städte verschwinden',
+          'Der Handel endet für immer',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Durch den Bevölkerungsverlust fehlten Arbeitskräfte; das veränderte unter anderem Löhne und Abhängigkeiten.',
+      },
+    ],
+  },
+  {
+    id: 8,
+    shortTitle: 'Jeanne',
+    title: 'Jeanne d’Arc im Hundertjährigen Krieg',
+    date: '1337–1453',
+    place: 'Frankreich und England',
+    people: 'Jeanne d’Arc, Karl VII. und englische Könige',
+    imageTitle: 'Eine junge Frau verändert den Krieg',
+    imageSubtitle: 'Jeanne d’Arc wird zur Symbolfigur Frankreichs.',
+    duration: 31,
+    narration:
+      'Seit 1337 kämpfen englische und französische Könige um Thronansprüche und Gebiete in Frankreich – mit langen Pausen, weshalb „Hundertjähriger Krieg“ fast schon ordentlich klingt. 1429 hilft Jeanne d’Arc, die Belagerung von Orléans zu brechen und Karl den Siebten krönen zu lassen. Sie wird gefangen genommen und 1431 hingerichtet. Frankreich gewinnt später fast alle umkämpften Gebiete zurück; Jeanne wird zur nationalen Symbolfigur.',
+    mapConcept:
+      'Frankreich mit wechselnden englischen und französischen Einflussräumen als weiche Flächen; Orléans, Reims und Rouen werden markiert.',
+    mapDetails: [
+      'England',
+      'Orléans',
+      'Reims',
+      'Rouen',
+      'Wechselnde Machtbereiche',
+    ],
+    imageConcept:
+      'Jeanne d’Arc vor Orléans zwischen Soldaten und Stadtmauern, entschlossen, aber nicht als übernatürliche Heldin inszeniert.',
+    discoveries: [
+      {
+        label: 'Begriff prüfen',
+        title: 'Mehr als hundert Jahre',
+        text: 'Der Krieg dauerte von 1337 bis 1453, wurde aber immer wieder durch Waffenruhen und ruhigere Phasen unterbrochen.',
+      },
+      {
+        label: 'Symbol verstehen',
+        title: 'Jeannes Wirkung',
+        text: 'Jeanne führte nicht allein Frankreich zum Sieg. Ihr Auftreten stärkte jedoch Moral und Legitimität Karls VII. in einem entscheidenden Moment.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Welche Stadt wird 1429 mit Jeannes Hilfe entsetzt?',
+        options: ['Orléans', 'Rom', 'Wittenberg'],
+        correctIndex: 0,
+        explanation:
+          'Das Ende der Belagerung von Orléans wird zum Wendepunkt für die französische Seite.',
+      },
+      {
+        question: 'Warum ist der Name „Hundertjähriger Krieg“ vereinfacht?',
+        options: [
+          'Er dauerte länger und hatte Unterbrechungen',
+          'Er dauerte nur zehn Jahre',
+          'Er fand nur auf See statt',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Der Konflikt erstreckte sich über 116 Jahre, allerdings nicht als ununterbrochener Krieg.',
+      },
+    ],
+  },
+  {
+    id: 9,
+    shortTitle: 'Konstantinopel',
+    title: 'Mehmed II. erobert Konstantinopel',
+    date: '1453',
+    place: 'Bosporus',
+    people: 'Sultan Mehmed II. und Kaiser Konstantin XI.',
+    imageTitle: 'Das Ende von Byzanz',
+    imageSubtitle: 'Kanonen und Blockade brechen die Mauern Konstantinopels.',
+    duration: 29,
+    narration:
+      '1453 belagert der erst 21-jährige Sultan Mehmed der Zweite Konstantinopel. Große Kanonen beschießen die berühmten Mauern, osmanische Schiffe werden sogar über Land ins Goldene Horn gezogen. Nach fast zwei Monaten fällt die Stadt. Der letzte byzantinische Kaiser stirbt im Kampf. Mehmed macht Konstantinopel zur osmanischen Hauptstadt. Das Byzantinische Reich endet – die Stadt am Bosporus bleibt ein politischer und wirtschaftlicher Schlüsselort.',
+    mapConcept:
+      'Bosporus mit Konstantinopel, Goldenem Horn und osmanischem Umland. Belagerungslinien und der über Land geführte Schiffsweg werden markiert.',
+    mapDetails: [
+      'Bosporus',
+      'Konstantinopel',
+      'Goldenes Horn',
+      'Osmanische Belagerung',
+    ],
+    imageConcept:
+      'Mehmed II. beobachtet aus sicherer Entfernung die Belagerung; Mauern, Kanonen und Schiffe im Goldenen Horn bleiben räumlich klar lesbar.',
+    discoveries: [
+      {
+        label: 'Technik sehen',
+        title: 'Kanonen gegen Mauern',
+        text: 'Schwere Geschütze allein entschieden die Belagerung nicht, doch sie beschädigten Befestigungen, die viele frühere Angriffe abgewehrt hatten.',
+      },
+      {
+        label: 'Ort verstehen',
+        title: 'Schlüssel am Bosporus',
+        text: 'Die Stadt kontrollierte eine wichtige Meerenge zwischen Schwarzem Meer und Mittelmeer sowie die Verbindung zwischen Europa und Asien.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Wer erobert Konstantinopel 1453?',
+        options: ['Mehmed II.', 'Richard Löwenherz', 'George Washington'],
+        correctIndex: 0,
+        explanation:
+          'Sultan Mehmed II. führt die erfolgreiche osmanische Belagerung.',
+      },
+      {
+        question: 'Warum war Konstantinopel strategisch wichtig?',
+        options: [
+          'Wegen seiner Lage am Bosporus',
+          'Wegen seiner Lage in Amerika',
+          'Wegen seiner Kohleminen',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Stadt lag an einer zentralen Meerenge und verband Handels- und Machträume.',
+      },
+    ],
+  },
+  {
+    id: 10,
+    shortTitle: 'Amerika',
+    title: 'Kolumbus, Cortés und Pizarro',
+    date: '1492–1533',
+    place: 'Atlantik und Amerika',
+    people: 'Kolumbus, Cortés, Pizarro und indigene Herrscher',
+    imageTitle: 'Eroberung einer bewohnten Welt',
+    imageSubtitle: 'Spanische Expeditionen treffen auf große Reiche Amerikas.',
+    duration: 32,
+    narration:
+      '1492 erreicht Kolumbus im Auftrag Spaniens Inseln der Karibik und glaubt, einen Weg nach Asien gefunden zu haben. Für die dort lebenden Menschen beginnt eine Katastrophe: Eroberung, Zwangsarbeit und eingeschleppte Krankheiten zerstören Gemeinschaften. Cortés besiegt mit indigenen Verbündeten das Aztekenreich, Pizarro nutzt eine Krise im Inkareich. Europa entdeckt also keine leere Welt – es dringt gewaltsam in längst bewohnte Welten ein.',
+    mapConcept:
+      'Atlantikroute des Kolumbus in die Karibik; danach getrennte Punkte und Pfeile nach Tenochtitlan und Cajamarca/Cusco. Keine pauschale Kolonialfläche.',
+    mapDetails: ['Spanien', 'Karibik', 'Tenochtitlan', 'Cajamarca', 'Cusco'],
+    imageConcept:
+      'Eine erste Begegnung in der Karibik mit klarer Distanz und Unsicherheit; keine leere Landschaft und keine triumphale Erobererpose.',
+    discoveries: [
+      {
+        label: 'Sprache prüfen',
+        title: 'Keine „Entdeckung“ einer leeren Welt',
+        text: 'Amerika war seit Jahrtausenden bewohnt. „Entdeckung“ beschreibt deshalb nur die europäische Perspektive und verdeckt die Sicht der indigenen Gesellschaften.',
+      },
+      {
+        label: 'Eroberung erklären',
+        title: 'Nicht nur wenige Spanier',
+        text: 'Cortés und Pizarro nutzten bestehende Konflikte, lokale Verbündete, Waffen und Krankheiten. Die Eroberungen hatten mehrere Ursachen.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Was glaubte Kolumbus 1492 erreicht zu haben?',
+        options: ['Einen Weg nach Asien', 'Australien', 'Das Mongolenreich'],
+        correctIndex: 0,
+        explanation:
+          'Kolumbus hielt die Karibik zunächst für einen Teil der von ihm gesuchten Asienroute.',
+      },
+      {
+        question: 'Was erleichterte die spanischen Eroberungen?',
+        options: [
+          'Lokale Bündnisse und eingeschleppte Krankheiten',
+          'Eine völlig unbewohnte Landschaft',
+          'Die Hilfe Napoleons',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Indigene Verbündete, innere Konflikte und Krankheiten waren neben Waffentechnik entscheidend.',
+      },
+    ],
+  },
+  {
+    id: 11,
+    shortTitle: 'Luther',
+    title: 'Luther und die Reformation',
+    date: 'ab 1517',
+    place: 'Wittenberg und Europa',
+    people: 'Martin Luther, Fürsten und Kirchenvertreter',
+    imageTitle: 'Ein Streit wird europaweit',
+    imageSubtitle: 'Druckerpresse und Politik beschleunigen die Reformation.',
+    duration: 30,
+    narration:
+      '1517 kritisiert Martin Luther den Ablasshandel. Seine Thesen verbreiten sich dank des Buchdrucks schnell. Luther stellt die Autorität des Papstes infrage und übersetzt die Bibel ins Deutsche. Einige Fürsten schützen ihn – aus Überzeugung, aber auch aus politischem Interesse. Weitere Reformbewegungen entstehen, die katholische Kirche reagiert mit eigenen Reformen. Europa wird konfessionell gespalten. Aus einer theologischen Debatte ist ein Machtkampf mit sehr großer Auflage geworden.',
+    mapConcept:
+      'Wittenberg als Ausgangspunkt; Druck- und Reisewege in wichtige Städte des Reiches und Europas. Konfessionelle Räume nur weich und zeitbezogen darstellen.',
+    mapDetails: [
+      'Wittenberg',
+      'Worms',
+      'Rom',
+      'Druckwege',
+      'Reformationsräume',
+    ],
+    imageConcept:
+      'Luther in einer Druckerwerkstatt mit Flugschriften; Setzer, Leser und ein Bote zeigen, wie der Buchdruck die Debatte verbreitet.',
+    discoveries: [
+      {
+        label: 'Medienwirkung',
+        title: 'Der Buchdruck beschleunigt',
+        text: 'Flugschriften und Übersetzungen machten theologische Streitfragen für viel mehr Menschen erreichbar und vervielfachten die Wirkung einzelner Texte.',
+      },
+      {
+        label: 'Politik erkennen',
+        title: 'Glaube und Fürstenmacht',
+        text: 'Fürsten entschieden nicht nur aus Glaubensgründen. Die Reformation bot auch Chancen, kirchlichen Besitz und politische Selbstständigkeit zu gewinnen.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Was kritisiert Luther 1517 besonders?',
+        options: [
+          'Den Ablasshandel',
+          'Die Dampfmaschine',
+          'Die Kaiserkrönung Karls',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Kritik am Ablasshandel steht am Anfang des öffentlich sichtbaren Konflikts.',
+      },
+      {
+        question: 'Welches Medium beschleunigt die Verbreitung seiner Ideen?',
+        options: ['Der Buchdruck', 'Das Radio', 'Die Eisenbahn'],
+        correctIndex: 0,
+        explanation:
+          'Gedruckte Flugschriften und Bücher verbreiteten Luthers Positionen in kurzer Zeit.',
+      },
+    ],
+  },
+  {
+    id: 12,
+    shortTitle: 'Dreißig Jahre',
+    title: 'Der Dreißigjährige Krieg',
+    date: '1618–1648',
+    place: 'Mitteleuropa',
+    people: 'Kaiser, Fürsten und europäische Mächte',
+    imageTitle: 'Ein Krieg verwüstet Mitteleuropa',
+    imageSubtitle:
+      'Aus einem Konflikt im Reich wird ein europäischer Machtkampf.',
+    duration: 31,
+    narration:
+      '1618 werfen protestantische Adelige in Prag kaiserliche Statthalter aus einem Fenster. Der berühmte Fenstersturz löst nicht allein den Krieg aus, wird aber sein Startsignal. Aus Religions- und Verfassungskonflikten im Reich entsteht ein europäischer Machtkampf. Heere ziehen jahrzehntelang durch Mitteleuropa, plündern Dörfer und verbreiten Hunger und Seuchen. 1648 beendet der Westfälische Friede den Krieg und ordnet das Verhältnis von Kaiser, Reichsständen und Nachbarn neu.',
+    mapConcept:
+      'Mitteleuropa mit Prag, wichtigen Feldzugsräumen und den Verhandlungsorten Münster und Osnabrück. Bewegungen als Pfeile, Verwüstungsräume weich schraffiert.',
+    mapDetails: ['Prag', 'Böhmen', 'Mitteleuropa', 'Münster', 'Osnabrück'],
+    imageConcept:
+      'Ein erschöpftes Dorf nach dem Durchzug verschiedener Heere; Soldaten bleiben im Hintergrund, Zerstörung wird sichtbar, aber nicht drastisch gezeigt.',
+    discoveries: [
+      {
+        label: 'Ursachen ordnen',
+        title: 'Nicht nur Religion',
+        text: 'Konfessionelle Gegensätze waren wichtig. Ebenso ging es um Rechte der Reichsstände, die Macht des Kaisers und Interessen auswärtiger Staaten.',
+      },
+      {
+        label: 'Frieden verstehen',
+        title: 'Zwei Städte, viele Verträge',
+        text: 'Der Westfälische Friede wurde in Münster und Osnabrück ausgehandelt. Er bestand aus mehreren Verträgen und veränderte die Ordnung Europas.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Welches Ereignis gilt 1618 als Startsignal?',
+        options: [
+          'Der Prager Fenstersturz',
+          'Die Boston Tea Party',
+          'Die Schlacht bei Waterloo',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Der Prager Fenstersturz wird zum sichtbaren Auftakt des langen Konflikts.',
+      },
+      {
+        question: 'Was beendet den Krieg 1648?',
+        options: [
+          'Der Westfälische Friede',
+          'Die Magna Carta',
+          'Das Konzil von Nicäa',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Friedensverträge von Münster und Osnabrück beenden den Dreißigjährigen Krieg.',
+      },
+    ],
+  },
+  {
+    id: 13,
+    shortTitle: 'Ludwig XIV.',
+    title: 'Ludwig XIV. und Versailles',
+    date: '1643–1715',
+    place: 'Frankreich und Europa',
+    people: 'Ludwig XIV.',
+    imageTitle: 'Der Sonnenkönig inszeniert Macht',
+    imageSubtitle:
+      'Versailles wird Bühne, Regierungssitz und Kontrollinstrument.',
+    duration: 29,
+    narration:
+      'Ludwig der Vierzehnte regiert Frankreich mehr als siebzig Jahre. Er lässt Versailles zum gewaltigen Hof ausbauen und bindet viele Adelige an seine Nähe. Minister und Beamte stärken die königliche Verwaltung, während Ludwigs Kriege Frankreichs Grenzen und Einfluss erweitern sollen. Die prachtvolle Selbstdarstellung trägt ihm den Namen Sonnenkönig ein. Doch Hof und Kriege kosten enorme Summen – selbst sehr heller Glanz wirft einen ziemlich langen Schatten.',
+    mapConcept:
+      'Frankreich unter Ludwig XIV. mit Paris und Versailles; wichtige Kriegsräume an den Grenzen nur als datierte Pfeile und weiche Zonen.',
+    mapDetails: [
+      'Paris',
+      'Versailles',
+      'Frankreich',
+      'Grenzkriege',
+      'Europäische Rivalen',
+    ],
+    imageConcept:
+      'Ludwig XIV. im Spiegelsaal von Versailles, umgeben von Adeligen und Beamten; Pracht und politische Kontrolle werden zugleich sichtbar.',
+    discoveries: [
+      {
+        label: 'Hof verstehen',
+        title: 'Versailles bindet den Adel',
+        text: 'Nähe zum König brachte Ämter und Ansehen. Das aufwendige Hofleben beschäftigte Adelige und machte sie stärker von königlicher Gunst abhängig.',
+      },
+      {
+        label: 'Grenze erkennen',
+        title: 'Absolut heißt nicht grenzenlos',
+        text: 'Auch Ludwig XIV. brauchte Beamte, Geldgeber, Gerichte und Verhandlungen. Der Begriff Absolutismus beschreibt einen Anspruch, keine völlig unbeschränkte Macht.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Welche politische Funktion hatte Versailles?',
+        options: [
+          'Es band den Adel an den König',
+          'Es war nur ein Bauernhof',
+          'Es ersetzte alle französischen Städte',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Der Hof bündelte Regierung, Selbstdarstellung und die Kontrolle über viele Adelige.',
+      },
+      {
+        question: 'Welche Belastung nennt die Szene?',
+        options: [
+          'Hohe Kosten für Hof und Kriege',
+          'Den Verlust aller Häfen',
+          'Die Abschaffung der Verwaltung',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Prachtentfaltung und lange Kriege beanspruchten die französischen Finanzen stark.',
+      },
+    ],
+  },
+  {
+    id: 14,
+    shortTitle: 'Aufklärung',
+    title: 'Wissenschaft und Aufklärung',
+    date: '17.–18. Jahrhundert',
+    place: 'Europa und Atlantikraum',
+    people: 'Galilei, Newton und Denker der Aufklärung',
+    imageTitle: 'Beobachten, rechnen, widersprechen',
+    imageSubtitle: 'Neue Methoden verändern Naturbild und Politik.',
+    duration: 31,
+    narration:
+      'Im 17. Jahrhundert richten Galilei und andere Forscher neue Instrumente auf Himmel und Natur. Newton beschreibt Bewegung und Schwerkraft mit mathematischen Regeln. Experimente, Messungen und gelehrte Netzwerke verändern, wie Wissen begründet wird. Im 18. Jahrhundert fragen Aufklärer auch politisch nach Vernunft, Rechten und Gewaltenteilung. Überlieferte Autoritäten müssen nun häufiger Belege liefern – ein für Autoritäten ausgesprochen lästiger Trend mit großer Zukunft.',
+    mapConcept:
+      'Europäische Wissenschaftszentren und Druckorte als Punkte; Brief- und Publikationswege verbinden Pisa/Florenz, London, Paris und weitere Zentren.',
+    mapDetails: [
+      'Florenz',
+      'London',
+      'Paris',
+      'Akademien',
+      'Druck- und Briefwege',
+    ],
+    imageConcept:
+      'Eine helle Arbeitsstube mit Teleskop, Prisma, Büchern und Briefen; mehrere Forschende diskutieren Beobachtungen statt eines einsamen Genies.',
+    discoveries: [
+      {
+        label: 'Methode erkennen',
+        title: 'Beobachtung plus Mathematik',
+        text: 'Neue Wissenschaft entstand nicht durch eine einzelne Erfindung. Instrumente, Experimente, Mathematik, Druck und Austausch wirkten zusammen.',
+      },
+      {
+        label: 'Politik weiterdenken',
+        title: 'Kritik an Autorität',
+        text: 'Aufklärer stritten über Vernunft, Toleranz, Rechte und die Teilung staatlicher Macht. Viele ihrer Ideen blieben zunächst auf privilegierte Gruppen begrenzt.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Womit beschreibt Newton Bewegung und Schwerkraft?',
+        options: [
+          'Mit mathematischen Regeln',
+          'Mit königlichen Befehlen',
+          'Mit Landkarten allein',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Newton formulierte Naturvorgänge in mathematischen Gesetzen.',
+      },
+      {
+        question: 'Welche politische Idee gehört zur Aufklärung?',
+        options: [
+          'Gewaltenteilung',
+          'Erbliche Leibeigenschaft als Naturgesetz',
+          'Verbot jeder Kritik',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Aufklärung diskutierte unter anderem Rechte, Toleranz und die Teilung staatlicher Macht.',
+      },
+    ],
+  },
+  {
+    id: 15,
+    shortTitle: 'Washington',
+    title: 'Die amerikanische Revolution',
+    date: '1775–1783',
+    place: 'Dreizehn Kolonien in Nordamerika',
+    people: 'George Washington und die Unabhängigkeitsbewegung',
+    imageTitle: 'Kolonien lösen sich von Großbritannien',
+    imageSubtitle:
+      'Unabhängigkeit und republikanische Ordnung entstehen im Krieg.',
+    duration: 31,
+    narration:
+      '1775 beginnt der Krieg zwischen Großbritannien und dreizehn nordamerikanischen Kolonien. Viele Kolonisten lehnen Steuern ohne politische Vertretung in London ab. 1776 erklärt der Kongress die Unabhängigkeit; George Washington führt die Armee. Französische Hilfe trägt entscheidend zum Sieg bei, 1783 erkennt Großbritannien die Vereinigten Staaten an. Freiheit wird zum großen Versprechen – für versklavte Menschen, Frauen und indigene Nationen wird es zunächst allerdings nur sehr begrenzt eingelöst.',
+    mapConcept:
+      'Die dreizehn Kolonien an der Atlantikküste; Boston, Philadelphia und Yorktown. Französische Hilfe kommt als Seeroute, Feldzüge nur mit wenigen Pfeilen.',
+    mapDetails: [
+      'Boston',
+      'Philadelphia',
+      'Yorktown',
+      'Dreizehn Kolonien',
+      'Französische Hilfe',
+    ],
+    imageConcept:
+      'Washington mit Offizieren und zivilen Vertretern über einer Karte; Soldaten im Hintergrund, französische Unterstützung durch Schiffe angedeutet.',
+    discoveries: [
+      {
+        label: 'Ursache verstehen',
+        title: 'Steuern ohne Vertretung',
+        text: 'Viele Kolonisten bestritten das Recht des Londoner Parlaments, sie zu besteuern, solange sie dort keine gewählten Abgeordneten hatten.',
+      },
+      {
+        label: 'Widerspruch sehen',
+        title: 'Freiheit mit Ausschlüssen',
+        text: 'Die Unabhängigkeitserklärung formulierte allgemeine Rechte. Sklaverei blieb jedoch bestehen, und politische Beteiligung war stark begrenzt.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Wer führt die amerikanische Kontinentalarmee?',
+        options: ['George Washington', 'Ludwig XIV.', 'Martin Luther'],
+        correctIndex: 0,
+        explanation:
+          'George Washington war Oberbefehlshaber der Armee und wurde später erster Präsident.',
+      },
+      {
+        question: 'Welche Hilfe war für den Sieg entscheidend?',
+        options: [
+          'Französische Militär- und Finanzhilfe',
+          'Mongolische Reiter',
+          'Osmanische Kanonen vor Konstantinopel',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Frankreich unterstützte die Aufständischen mit Geld, Soldaten und einer wichtigen Flotte.',
+      },
+    ],
+  },
+  {
+    id: 16,
+    shortTitle: 'Napoleon',
+    title: 'Revolution und Napoleon',
+    date: '1789–1815',
+    place: 'Frankreich und Europa',
+    people: 'Revolutionäre, Napoleon Bonaparte und europäische Gegner',
+    imageTitle: 'Die alte Ordnung gerät ins Wanken',
+    imageSubtitle:
+      'Revolutionäre Ideen und napoleonische Kriege verändern Europa.',
+    duration: 34,
+    narration:
+      '1789 stürzt die Französische Revolution die alte Ordnung. Die Nationalversammlung erklärt Menschen- und Bürgerrechte, 1792 wird die Monarchie abgeschafft. Es folgen Krieg, Terror und Machtkämpfe. 1799 übernimmt Napoleon Bonaparte die Regierung, krönt sich später zum Kaiser und beherrscht zeitweise große Teile Europas. Seine Feldzüge verbreiten Reformen, kosten aber unzählige Leben. 1815 wird Napoleon bei Waterloo endgültig besiegt. Die Herrscher kehren zurück – viele Ideen der Revolution bleiben.',
+    mapConcept:
+      'Frankreich 1789 und Napoleons wichtigste Feldzüge bis 1815. Europa bleibt als Grundkarte stabil; Ausdehnung zeitbezogen weich, Russland- und Waterloo-Route mit Pfeilen.',
+    mapDetails: [
+      'Paris',
+      'Frankreich',
+      'Europa um 1812',
+      'Russlandfeldzug',
+      'Waterloo',
+    ],
+    imageConcept:
+      'Eine geteilte, ruhige Szene: links Nationalversammlung und Erklärung der Rechte, rechts Napoleon über einer Europakarte; kein Schlachtenpanorama.',
+    discoveries: [
+      {
+        label: 'Revolution ordnen',
+        title: 'Rechte und Terror',
+        text: 'Die Revolution formulierte neue Rechte und beseitigte Privilegien. Zugleich radikalisierte sie sich, führte Krieg und ließ politische Gegner hinrichten.',
+      },
+      {
+        label: 'Napoleon bewerten',
+        title: 'Reformen durch Eroberung',
+        text: 'Napoleon verbreitete Rechts- und Verwaltungsreformen, errichtete aber zugleich eine persönliche Herrschaft und führte verlustreiche Eroberungskriege.',
+      },
+    ],
+    quiz: [
+      {
+        question: 'Was schafft Frankreich 1792 ab?',
+        options: ['Die Monarchie', 'Den Buchdruck', 'Die Atlantikschifffahrt'],
+        correctIndex: 0,
+        explanation:
+          '1792 wird Frankreich zur Republik und die Monarchie abgeschafft.',
+      },
+      {
+        question: 'Wo wird Napoleon 1815 endgültig besiegt?',
+        options: ['Bei Waterloo', 'Bei Zama', 'Auf dem Lechfeld'],
+        correctIndex: 0,
+        explanation:
+          'Die Niederlage bei Waterloo beendet Napoleons Rückkehr an die Macht.',
+      },
+    ],
+  },
+];

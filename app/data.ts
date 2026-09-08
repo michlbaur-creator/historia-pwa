@@ -9,13 +9,17 @@ export type HistoriaScene = {
   people: string;
   imageTitle?: string;
   imageSubtitle?: string;
+  mapConcept?: string;
+  mapDetails?: string[];
+  imageConcept?: string;
   duration: number;
   narration: string;
-  mainImage: string;
-  mapImage: string;
+  mainImage?: string;
+  mapImage?: string;
   video?: string;
   videoPlayback?: 'loop' | 'hold';
-  audio: string;
+  audio?: string;
+  caption?: string;
   discoveries: [HistoriaDiscovery, HistoriaDiscovery];
   quiz: [HistoriaQuiz, HistoriaQuiz];
 };
@@ -24,6 +28,7 @@ const asset = '/assets/historia/episode1';
 
 const media = (id: number) => ({
   audio: `${asset}/audio/scene${String(id).padStart(2, '0')}.m4a`,
+  caption: `${asset}/captions/scene${String(id).padStart(2, '0')}.vtt`,
   ...historiaLearning[id],
 });
 

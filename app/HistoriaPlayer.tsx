@@ -19,7 +19,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { historiaScenes } from './data';
+import { historiaScenes, type HistoriaScene } from './data';
 import styles from './historia.module.css';
 
 type Tab = 'text' | 'discover' | 'quiz';
@@ -48,7 +48,25 @@ function formatTime(value: number) {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 }
 
-export default function HistoriaPlayer() {
+type HistoriaPlayerProps = {
+  scenes?: HistoriaScene[];
+  episodeNumber?: 1 | 2;
+  episodeTitle?: string;
+  timelineLabels?: [string, string, string, string, string];
+};
+
+export default function HistoriaPlayer({
+  scenes = historiaScenes,
+  episodeNumber = 1,
+  episodeTitle = 'Pharaonen Griechen und Cäsaren',
+  timelineLabels = [
+    '3100 v. Chr.',
+    '1500 v. Chr.',
+    '500 v. Chr.',
+    '1',
+    '476 n. Chr.',
+  ],
+}: HistoriaPlayerProps) {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
@@ -62,7 +80,7 @@ export default function HistoriaPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingAudioStartRef = useRef(false);
   const swipeStartX = useRef<number | null>(null);
-  const scene = historiaScenes[sceneIndex];
+  const scene = scenes[sceneIndex];
 
   const image = showMap ? scene.mapImage : scene.mainImage;
   const activeDuration = audioDuration || scene.duration;
@@ -73,9 +91,25 @@ export default function HistoriaPlayer() {
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(
     () =>
-      ((sceneIndex + elapsed / activeDuration) / historiaScenes.length) * 100,
-    [activeDuration, elapsed, sceneIndex],
+      ((sceneIndex + elapsed / activeDuration) / scenes.length) * 100,
+    [activeDuration, elapsed, sceneIndex, scenes.length],
   );
+
+  useEffect(() => {
+    if (scene.audio || !playing) return;
+    const interval = window.setInterval(() => {
+      setElapsed((current) => {
+        const next = Math.min(scene.duration, current + 0.1);
+        if (next >= 4) setShowMap(false);
+        if (next >= scene.duration) {
+          window.clearInterval(interval);
+          window.setTimeout(finishAudio, 0);
+        }
+        return next;
+      });
+    }, 100);
+    return () => window.clearInterval(interval);
+  }, [playing, scene.audio, scene.duration, scene.id]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -128,7 +162,14 @@ export default function HistoriaPlayer() {
 
   function togglePlayback() {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!scene.audio || !audio) {
+      if (elapsed >= activeDuration) {
+        setElapsed(0);
+        setShowMap(true);
+      }
+      setPlaying((value) => !value);
+      return;
+    }
     if (audio.paused) {
       if (audio.ended) {
         audio.currentTime = 0;
@@ -141,7 +182,7 @@ export default function HistoriaPlayer() {
   }
 
   function finishAudio() {
-    if (sceneIndex < historiaScenes.length - 1) {
+    if (sceneIndex < scenes.length - 1) {
       pendingAudioStartRef.current = true;
       setElapsed(0);
       setAudioDuration(0);
@@ -158,7 +199,7 @@ export default function HistoriaPlayer() {
 
   function stepScene(direction: -1 | 1, startImmediately = false) {
     selectScene(
-      Math.max(0, Math.min(historiaScenes.length - 1, sceneIndex + direction)),
+      Math.max(0, Math.min(scenes.length - 1, sceneIndex + direction)),
       startImmediately,
     );
   }
@@ -173,7 +214,7 @@ export default function HistoriaPlayer() {
     if (event.pointerType !== 'touch' || swipeStartX.current === null) return;
     const distance = event.clientX - swipeStartX.current;
     swipeStartX.current = null;
-    if (distance < -48 && sceneIndex < historiaScenes.length - 1) {
+    if (distance < -48 && sceneIndex < scenes.length - 1) {
       stepScene(1, true);
     } else if (distance > 48 && sceneIndex > 0) {
       stepScene(-1, true);
@@ -182,47 +223,51 @@ export default function HistoriaPlayer() {
 
   return (
     <main className={styles.shell}>
-      <audio
-        key={scene.audio}
-        ref={audioRef}
-        src={scene.audio}
-        preload="metadata"
-        onLoadedMetadata={(event) => {
-          if (Number.isFinite(event.currentTarget.duration)) {
-            setAudioDuration(event.currentTarget.duration);
-          }
-        }}
-        onTimeUpdate={(event) => {
-          const current = event.currentTarget.currentTime;
-          setElapsed(current);
-          if (current >= 4) setShowMap(false);
-        }}
-        onCanPlay={(event) => {
-          if (!pendingAudioStartRef.current) return;
-          void event.currentTarget.play().catch(() => {
+      {scene.audio && (
+        <audio
+          key={scene.audio}
+          ref={audioRef}
+          src={scene.audio}
+          preload="metadata"
+          onLoadedMetadata={(event) => {
+            if (Number.isFinite(event.currentTarget.duration)) {
+              setAudioDuration(event.currentTarget.duration);
+            }
+          }}
+          onTimeUpdate={(event) => {
+            const current = event.currentTarget.currentTime;
+            setElapsed(current);
+            if (current >= 4) setShowMap(false);
+          }}
+          onCanPlay={(event) => {
+            if (!pendingAudioStartRef.current) return;
+            void event.currentTarget.play().catch(() => {
+              pendingAudioStartRef.current = false;
+              setPlaying(false);
+            });
+          }}
+          onPlay={() => {
             pendingAudioStartRef.current = false;
-            setPlaying(false);
-          });
-        }}
-        onPlay={() => {
-          pendingAudioStartRef.current = false;
-          setPlaying(true);
-        }}
-        onPause={(event) => {
-          if (!event.currentTarget.ended && !pendingAudioStartRef.current) {
-            setPlaying(false);
-          }
-        }}
-        onEnded={finishAudio}
-      >
-        <track
-          kind="captions"
-          src={`/assets/historia/episode1/captions/scene${String(scene.id).padStart(2, '0')}.vtt`}
-          srcLang="de"
-          label="Deutsch"
-          default
-        />
-      </audio>
+            setPlaying(true);
+          }}
+          onPause={(event) => {
+            if (!event.currentTarget.ended && !pendingAudioStartRef.current) {
+              setPlaying(false);
+            }
+          }}
+          onEnded={finishAudio}
+        >
+          {scene.caption && (
+            <track
+              kind="captions"
+              src={scene.caption}
+              srcLang="de"
+              label="Deutsch"
+              default
+            />
+          )}
+        </audio>
+      )}
       <header className={styles.header}>
         <div className={styles.brandLockup}>
           <span className={styles.brandMark} aria-hidden="true">
@@ -231,7 +276,7 @@ export default function HistoriaPlayer() {
           <div>
             <h1>Historia</h1>
             <p className={styles.subtitle}>
-              Episode 1 · Pharaonen Griechen und Cäsaren
+              Episode {episodeNumber} · {episodeTitle}
             </p>
             <p className={styles.seriesRelation}>
               Ein historischer Zoom in Episode 3 der Großen Zeitreise.
@@ -253,11 +298,9 @@ export default function HistoriaPlayer() {
         aria-label="Zeitstrahl der Episode"
       >
         <div className={styles.timelineScale} aria-hidden="true">
-          <span>3100 v. Chr.</span>
-          <span>1500 v. Chr.</span>
-          <span>500 v. Chr.</span>
-          <span>1</span>
-          <span>476 n. Chr.</span>
+          {timelineLabels.map((label) => (
+            <span key={label}>{label}</span>
+          ))}
         </div>
         <div className={styles.timelineViewport} ref={timelineRef}>
           <div className={styles.timelineRail}>
@@ -265,7 +308,7 @@ export default function HistoriaPlayer() {
               className={styles.timelineFill}
               style={{ width: `${timelineProgress}%` }}
             />
-            {historiaScenes.map((item, index) => (
+            {scenes.map((item, index) => (
               <button
                 className={`${styles.milestone} ${index < sceneIndex ? styles.past : ''}`}
                 key={item.id}
@@ -312,7 +355,7 @@ export default function HistoriaPlayer() {
               aria-hidden="true"
               className={styles.sceneVideo}
             />
-          ) : (
+          ) : image ? (
             <Image
               key={image}
               src={image}
@@ -326,6 +369,21 @@ export default function HistoriaPlayer() {
               sizes="(max-width: 980px) 100vw, 1120px"
               className={styles.sceneImage}
             />
+          ) : (
+            <div
+              className={`${styles.mediaDraft} ${showMap ? styles.mapDraft : styles.imageDraft}`}
+            >
+              <small>{showMap ? `Karte · ${scene.date}` : 'Hauptbild · Bildkonzept'}</small>
+              <strong>{showMap ? scene.place : scene.people}</strong>
+              <p>{showMap ? scene.mapConcept : scene.imageConcept}</p>
+              {showMap && scene.mapDetails && (
+                <ul>
+                  {scene.mapDetails.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           )}
           <div className={styles.imageShade} />
           <div className={styles.imageCaption}>
@@ -380,7 +438,7 @@ export default function HistoriaPlayer() {
           <button
             className={styles.nextControl}
             onClick={() => stepScene(1)}
-            disabled={sceneIndex === historiaScenes.length - 1}
+            disabled={sceneIndex === scenes.length - 1}
           >
             Weiter <ArrowRight aria-hidden="true" />
           </button>
@@ -388,8 +446,20 @@ export default function HistoriaPlayer() {
       </section>
 
       <nav className={styles.episodeNav} aria-label="Episoden">
-        <button className={styles.episodeActive}>Episode 1</button>
-        <button disabled>Episode 2</button>
+        {episodeNumber === 1 ? (
+          <button className={styles.episodeActive} onClick={() => selectScene(0)}>
+            Episode 1
+          </button>
+        ) : (
+          <Link href="/">Episode 1</Link>
+        )}
+        {episodeNumber === 2 ? (
+          <button className={styles.episodeActive} onClick={() => selectScene(0)}>
+            Episode 2
+          </button>
+        ) : (
+          <Link href="/episode-2">Episode 2</Link>
+        )}
         <button disabled>Episode 3</button>
       </nav>
 

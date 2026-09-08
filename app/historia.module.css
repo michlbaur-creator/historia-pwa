@@ -289,6 +289,74 @@
   animation: reveal 0.42s ease;
 }
 
+.mediaDraft {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(30px, 7vw, 80px);
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  animation: reveal 0.42s ease;
+}
+
+.mapDraft {
+  background:
+    radial-gradient(circle at 24% 30%, rgba(255, 235, 185, 0.22), transparent 24%),
+    linear-gradient(145deg, #68899a, #426a77 58%, #315462);
+}
+
+.imageDraft {
+  background:
+    radial-gradient(circle at 68% 28%, rgba(247, 199, 111, 0.28), transparent 27%),
+    linear-gradient(145deg, #b86a49, #855446 54%, #466971);
+}
+
+.mediaDraft small {
+  margin-bottom: 9px;
+  color: #fae4b8;
+  font-size: clamp(0.56rem, 1.2vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mediaDraft > strong {
+  max-width: 800px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.mediaDraft > p {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: clamp(0.68rem, 1.5vw, 0.9rem);
+  line-height: 1.5;
+}
+
+.mediaDraft ul {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 16px 0 0;
+  padding: 0;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.mediaDraft li {
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  font-size: clamp(0.52rem, 1.1vw, 0.65rem);
+}
+
 @keyframes reveal {
   from {
     opacity: 0.3;
@@ -350,6 +418,7 @@
 
 .controls button,
 .episodeNav button,
+.episodeNav a,
 .tabs button {
   border: 1px solid rgba(47, 113, 137, 0.18);
   cursor: pointer;
@@ -454,14 +523,21 @@
   margin-top: 12px;
 }
 
-.episodeNav button {
+.episodeNav button,
+.episodeNav a {
+  display: flex;
   min-height: 38px;
+  align-items: center;
+  justify-content: center;
   border-color: rgba(47, 113, 137, 0.25);
+  border-style: solid;
+  border-width: 1px;
   border-radius: 999px;
   background: rgba(255, 250, 240, 0.58);
   color: var(--muted);
   font-size: 0.69rem;
   font-weight: 550;
+  text-decoration: none;
 }
 
 .episodeNav .episodeActive {
@@ -855,7 +931,8 @@
   .episodeNav {
     gap: 5px;
   }
-  .episodeNav button {
+  .episodeNav button,
+  .episodeNav a {
     min-height: 36px;
     font-size: 0.64rem;
   }
