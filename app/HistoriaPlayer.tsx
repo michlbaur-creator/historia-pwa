@@ -74,6 +74,7 @@ export default function HistoriaPlayer({
   const [audioDuration, setAudioDuration] = useState(0);
   const [quizQuestion, setQuizQuestion] = useState(0);
   const [quizSelection, setQuizSelection] = useState<number | null>(null);
+  const [mapAnimationRun, setMapAnimationRun] = useState(0);
   const timelineRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -82,6 +83,10 @@ export default function HistoriaPlayer({
   const scene = scenes[sceneIndex];
 
   const image = showMap ? scene.mapImage : scene.mainImage;
+  const renderedImage =
+    showMap && image?.endsWith('.svg') && mapAnimationRun > 0
+      ? `${image}#play`
+      : image;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const imageTitle = scene.imageTitle ?? scene.people;
@@ -147,14 +152,16 @@ export default function HistoriaPlayer({
     });
   }, [sceneIndex]);
 
-  function selectScene(index: number, startImmediately = false) {
-    pendingAudioStartRef.current = startImmediately;
+  function selectScene(index: number) {
+    pendingAudioStartRef.current = false;
     audioRef.current?.pause();
+    videoRef.current?.pause();
     setSceneIndex(index);
     setElapsed(0);
     setAudioDuration(0);
     setShowMap(true);
-    setPlaying(startImmediately);
+    setPlaying(false);
+    setMapAnimationRun(0);
     setQuizQuestion(0);
     setQuizSelection(null);
   }
@@ -166,6 +173,7 @@ export default function HistoriaPlayer({
         setElapsed(0);
         setShowMap(true);
       }
+      if (!playing) setMapAnimationRun((value) => value + 1);
       setPlaying((value) => !value);
       return;
     }
@@ -174,6 +182,7 @@ export default function HistoriaPlayer({
         audio.currentTime = 0;
         if (videoRef.current) videoRef.current.currentTime = 0;
       }
+      setMapAnimationRun((value) => value + 1);
       void audio.play();
     } else {
       audio.pause();
@@ -181,25 +190,14 @@ export default function HistoriaPlayer({
   }
 
   function finishAudio() {
-    if (sceneIndex < scenes.length - 1) {
-      pendingAudioStartRef.current = true;
-      setElapsed(0);
-      setAudioDuration(0);
-      setShowMap(true);
-      setQuizQuestion(0);
-      setQuizSelection(null);
-      setSceneIndex((index) => index + 1);
-      setPlaying(true);
-      return;
-    }
+    pendingAudioStartRef.current = false;
     setPlaying(false);
     setElapsed(activeDuration);
   }
 
-  function stepScene(direction: -1 | 1, startImmediately = false) {
+  function stepScene(direction: -1 | 1) {
     selectScene(
       Math.max(0, Math.min(scenes.length - 1, sceneIndex + direction)),
-      startImmediately,
     );
   }
 
@@ -214,9 +212,9 @@ export default function HistoriaPlayer({
     const distance = event.clientX - swipeStartX.current;
     swipeStartX.current = null;
     if (distance < -48 && sceneIndex < scenes.length - 1) {
-      stepScene(1, true);
+      stepScene(1);
     } else if (distance > 48 && sceneIndex > 0) {
-      stepScene(-1, true);
+      stepScene(-1);
     }
   }
 
@@ -354,10 +352,10 @@ export default function HistoriaPlayer({
               aria-hidden="true"
               className={styles.sceneVideo}
             />
-          ) : image ? (
+          ) : renderedImage ? (
             <Image
-              key={image}
-              src={image}
+              key={`${renderedImage}-${mapAnimationRun}`}
+              src={renderedImage}
               alt={
                 showMap
                   ? `Karte zu ${scene.title}`
