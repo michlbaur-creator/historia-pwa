@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import styles from '../info.module.css';
 
 export const dynamic = 'force-static';
@@ -12,7 +11,7 @@ export default function Impressum() {
   return (
     <main className={styles.shell}>
       <article className={styles.page}>
-        <Link href="/">← Zurück zu Historia</Link>
+        <a href="/">← Zurück zu Historia</a>
         <p className={styles.eyebrow}>Rechtliches</p>
         <h1>Impressum &amp; Datenschutz</h1>
         <section>

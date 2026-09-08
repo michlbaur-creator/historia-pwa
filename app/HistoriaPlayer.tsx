@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   ArrowLeft,
   ArrowRight,
@@ -451,14 +450,14 @@ export default function HistoriaPlayer({
             Episode 1
           </button>
         ) : (
-          <Link href="/">Episode 1</Link>
+          <a href="/">Episode 1</a>
         )}
         {episodeNumber === 2 ? (
           <button className={styles.episodeActive} onClick={() => selectScene(0)}>
             Episode 2
           </button>
         ) : (
-          <Link href="/episode-2">Episode 2</Link>
+          <a href="/episode-2">Episode 2</a>
         )}
         <button disabled>Episode 3</button>
       </nav>
@@ -575,8 +574,8 @@ export default function HistoriaPlayer({
       <footer className={styles.footer}>
         <a href="https://mibaso.de">⌂ Alle Mibaso-Apps</a>
         <nav className={styles.footerLinks} aria-label="Fußnavigation">
-          <Link href="/ueber">Über mich</Link>
-          <Link href="/impressum">Impressum &amp; Datenschutz</Link>
+          <a href="/ueber">Über mich</a>
+          <a href="/impressum">Impressum &amp; Datenschutz</a>
         </nav>
         <small>
           © 2026 Michael Baur · Kontakt:{' '}

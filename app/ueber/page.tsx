@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import styles from '../info.module.css';
 
 export const dynamic = 'force-static';
@@ -21,7 +20,7 @@ export default function Ueber() {
           />
         </div>
         <div className={styles.aboutCopy}>
-          <Link href="/">← Zurück zu Historia</Link>
+          <a href="/">← Zurück zu Historia</a>
           <p className={styles.eyebrow}>Über mich</p>
           <h1>Hallo, ich bin Micha.</h1>
           <p className={styles.lead}>
