@@ -1,6 +1,8 @@
 import type { HistoriaScene } from './data';
 
-export const historiaEpisode2Scenes: HistoriaScene[] = [
+const episode2Asset = '/assets/historia/episode2';
+
+const episode2Scenes: HistoriaScene[] = [
   {
     id: 1,
     shortTitle: 'Kalifenreich',
@@ -887,3 +889,11 @@ export const historiaEpisode2Scenes: HistoriaScene[] = [
     ],
   },
 ];
+
+export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
+  (scene) => ({
+    ...scene,
+    mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
+    mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg`,
+  }),
+);

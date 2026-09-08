@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9c7d2"/>
+      <stop offset="1" stop-color="#8fb5c3"/>
+    </linearGradient>
+    <filter id="paper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="9" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
+      <feBlend in="SourceGraphic" in2="gray" mode="soft-light"/>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7.5 L0,15 Z" fill="#2f6f91"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7.5 L0,15 Z" fill="#668b6f"/>
+    </marker>
+  </defs>
+  <g filter="url(#paper)">
+    <rect width="1672" height="850" fill="url(#water)"/>
+    <path d="M0 0H960C920 105 884 208 880 310C874 386 852 418 796 430L500 470L0 500Z" fill="#eee5cf"/>
+    <path d="M0 500L500 470L796 430C826 435 842 456 820 479L712 516L900 538L886 850H0Z" fill="#eee5cf"/>
+    <path d="M1092 0H1672V850H1010C1019 730 1028 625 1024 535C1018 430 1042 305 1070 190Z" fill="#eee5cf"/>
+    <ellipse cx="320" cy="568" rx="390" ry="300" fill="#c66f54" opacity="0.25" filter="url(#soft)"/>
+    <path d="M520 420L520 742" stroke="#6b5e50" stroke-width="15" stroke-dasharray="26 13" opacity="0.9"/>
+    <path d="M130 515Q330 475 500 500" class="route" marker-end="url(#arrowBlue)"/>
+    <path d="M170 640Q330 590 505 570" class="route" marker-end="url(#arrowBlue)"/>
+    <path d="M210 745Q360 690 508 650" class="route" marker-end="url(#arrowBlue)"/>
+    <path d="M1080 175Q985 225 955 320Q915 395 784 438" class="shipRoute" marker-end="url(#arrowGreen)"/>
+    <circle cx="720" cy="570" r="7" class="point"/>
+    <circle cx="948" cy="286" r="7" class="point"/>
+  </g>
+  <text class="date" x="52" y="62">1453</text>
+  <text class="topic" x="1620" y="62" text-anchor="end">BELAGERUNG KONSTANTINOPELS</text>
+  <text class="label" x="548" y="392">THEODOSIANISCHE MAUERN</text>
+  <text class="label city" x="744" y="604">KONSTANTINOPEL</text>
+  <text class="label water" x="675" y="469">GOLDENES HORN</text>
+  <text class="label water" x="970" y="272">BOSPORUS</text>
+  <text class="label zone" x="112" y="790">OSMANISCHE BELAGERUNG</text>
+  <text class="routeLabel" x="902" y="374">SCHIFFE ÜBER LAND</text>
+  <line x1="0" y1="850" x2="1672" y2="850" stroke="#c8bea8" stroke-width="2"/>
+  <text class="chip" x="58" y="895">Landmauern</text>
+  <text class="chip" x="343" y="895">Goldenes Horn</text>
+  <text class="chip" x="628" y="895">Bosporus</text>
+  <text class="chip" x="913" y="895">Belagerung</text>
+  <style>
+    .date,.topic,.label,.routeLabel,.chip{font-family:Arial,Helvetica,sans-serif;fill:#243943;letter-spacing:.5px}
+    .date{font-size:34px;font-weight:700}.topic{font-size:27px;font-weight:700;fill:#436574}
+    .label{font-size:24px;font-weight:700;paint-order:stroke;stroke:#f4eddd;stroke-width:5px}.city{font-size:28px}.water{fill:#355f72}.zone{fill:#8d4d3c}.routeLabel{font-size:20px;font-weight:700;fill:#55765f}
+    .route,.shipRoute{fill:none;stroke-width:7;stroke-linecap:round}.route{stroke:#2f6f91}.shipRoute{stroke:#668b6f;stroke-dasharray:14 10}
+    .point{fill:#293d45;stroke:#f6f0e1;stroke-width:3}.chip{font-size:22px;font-weight:600;fill:#62777b}
+  </style>
+</svg>
