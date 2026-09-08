@@ -1,57 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941">
-  <defs>
-    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a9c7d2"/>
-      <stop offset="1" stop-color="#8fb5c3"/>
-    </linearGradient>
-    <filter id="paper" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="9" result="noise"/>
-      <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
-      <feBlend in="SourceGraphic" in2="gray" mode="soft-light"/>
-    </filter>
-    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="30"/>
-    </filter>
-    <marker id="arrowBlue" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M0,0 L14,7.5 L0,15 Z" fill="#2f6f91"/>
-    </marker>
-    <marker id="arrowGreen" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M0,0 L14,7.5 L0,15 Z" fill="#668b6f"/>
-    </marker>
-  </defs>
-  <g filter="url(#paper)">
-    <rect width="1672" height="850" fill="url(#water)"/>
-    <path d="M0 0H960C920 105 884 208 880 310C874 386 852 418 796 430L500 470L0 500Z" fill="#eee5cf"/>
-    <path d="M0 500L500 470L796 430C826 435 842 456 820 479L712 516L900 538L886 850H0Z" fill="#eee5cf"/>
-    <path d="M1092 0H1672V850H1010C1019 730 1028 625 1024 535C1018 430 1042 305 1070 190Z" fill="#eee5cf"/>
-    <ellipse cx="320" cy="568" rx="390" ry="300" fill="#c66f54" opacity="0.25" filter="url(#soft)"/>
-    <path d="M520 420L520 742" stroke="#6b5e50" stroke-width="15" stroke-dasharray="26 13" opacity="0.9"/>
-    <path d="M130 515Q330 475 500 500" class="route" marker-end="url(#arrowBlue)"/>
-    <path d="M170 640Q330 590 505 570" class="route" marker-end="url(#arrowBlue)"/>
-    <path d="M210 745Q360 690 508 650" class="route" marker-end="url(#arrowBlue)"/>
-    <path d="M1080 175Q985 225 955 320Q915 395 784 438" class="shipRoute" marker-end="url(#arrowGreen)"/>
-    <circle cx="720" cy="570" r="7" class="point"/>
-    <circle cx="948" cy="286" r="7" class="point"/>
-  </g>
-  <text class="date" x="52" y="62">1453</text>
-  <text class="topic" x="1620" y="62" text-anchor="end">BELAGERUNG KONSTANTINOPELS</text>
-  <text class="label" x="548" y="392">THEODOSIANISCHE MAUERN</text>
-  <text class="label city" x="744" y="604">KONSTANTINOPEL</text>
-  <text class="label water" x="675" y="469">GOLDENES HORN</text>
-  <text class="label water" x="970" y="272">BOSPORUS</text>
-  <text class="label zone" x="112" y="790">OSMANISCHE BELAGERUNG</text>
-  <text class="routeLabel" x="902" y="374">SCHIFFE ÜBER LAND</text>
-  <line x1="0" y1="850" x2="1672" y2="850" stroke="#c8bea8" stroke-width="2"/>
-  <text class="chip" x="58" y="895">Landmauern</text>
-  <text class="chip" x="343" y="895">Goldenes Horn</text>
-  <text class="chip" x="628" y="895">Bosporus</text>
-  <text class="chip" x="913" y="895">Belagerung</text>
-  <style>
-    .date,.topic,.label,.routeLabel,.chip{font-family:Arial,Helvetica,sans-serif;fill:#243943;letter-spacing:.5px}
-    .date{font-size:34px;font-weight:700}.topic{font-size:27px;font-weight:700;fill:#436574}
-    .label{font-size:24px;font-weight:700;paint-order:stroke;stroke:#f4eddd;stroke-width:5px}.city{font-size:28px}.water{fill:#355f72}.zone{fill:#8d4d3c}.routeLabel{font-size:20px;font-weight:700;fill:#55765f}
-    .route,.shipRoute{fill:none;stroke-width:7;stroke-linecap:round}.route{stroke:#2f6f91}.shipRoute{stroke:#668b6f;stroke-dasharray:14 10}
-    .point{fill:#293d45;stroke:#f6f0e1;stroke-width:3}.chip{font-size:22px;font-weight:600;fill:#62777b}
-  </style>
+  <defs><linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7c3cd"/><stop offset="1" stop-color="#86aebd"/></linearGradient><filter id="paper" x="-8%" y="-8%" width="116%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="3" seed="9" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter><marker id="arrow-blue" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#2f7194"/></marker><marker id="arrow-orange" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#cf6a46"/></marker><marker id="arrow-gold" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#d49a2f"/></marker><marker id="arrow-green" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#4f7f61"/></marker><marker id="arrow-violet" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#80689b"/></marker><marker id="arrow-red" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#ae4d4b"/></marker><marker id="arrow-slate" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L15,8 L0,16 Z" fill="#526b75"/></marker></defs>
+  <rect width="1672" height="941" fill="url(#water)"/>
+  <g filter="url(#paper)"><path d="M0 0H1000C950 120 915 240 905 350C895 415 850 455 790 470L0 530Z" fill="#efe4c9" stroke="#6c8790" stroke-width="2"/><path d="M0 530L790 470C842 475 870 510 832 545L690 590L900 625L885 941H0Z" fill="#efe4c9" stroke="#6c8790" stroke-width="2"/><path d="M1115 0H1672V941H1015C1035 790 1040 665 1030 555C1020 430 1046 295 1085 165Z" fill="#efe4c9" stroke="#6c8790" stroke-width="2"/></g>
+  <path d="M0 540L700 500L835 545L865 930H0Z" fill="#c7684e" opacity=".29"/>
+  <path d="M610 405L610 830" stroke="#62564a" stroke-width="17" stroke-dasharray="29 15"/>
+  <text class="wall" x="570" y="390" text-anchor="end">THEODOSIANISCHE LANDMAUERN</text>
+  <text class="water-label" x="770" y="516">GOLDENES HORN</text><text class="water-label" x="1115" y="220" transform="rotate(77 1115 220)">BOSPORUS</text>
+  <text class="city" x="760" y="700">KONSTANTINOPEL</text><text class="region" x="170" y="830">OSMANISCHES HEER</text>
+  <g style="--route-color:#cf6a46;--delay:.1s"><path class="route-ghost" d="M150 610Q370 555 600 580"/><path class="route-live route-draw" d="M150 610Q370 555 600 580" pathLength="1" marker-end="url(#arrow-orange)"/><g class="stage stage-animated" transform="translate(345 525)"><circle r="20"/><text class="stage-number" text-anchor="middle" y="8">1</text><text class="stage-year" x="31" y="8">BELAGERUNG · 6. APRIL</text></g></g>
+  <g style="--route-color:#4f7f61;--delay:.7s"><path class="route-ghost dashed" d="M1120 170Q1000 250 965 360Q900 445 760 500"/><path class="route-live dashed route-fade" d="M1120 170Q1000 250 965 360Q900 445 760 500" pathLength="1" marker-end="url(#arrow-green)"/><g class="stage stage-animated" transform="translate(1030 360)"><circle r="20"/><text class="stage-number" text-anchor="middle" y="8">2</text><text class="stage-year" x="31" y="8">SCHIFFE ÜBER LAND · 22. APRIL</text></g></g>
+  <g style="--route-color:#ae4d4b;--delay:1.3s"><path class="route-ghost" d="M210 760Q420 700 605 700"/><path class="route-live route-draw" d="M210 760Q420 700 605 700" pathLength="1" marker-end="url(#arrow-red)"/><g class="stage stage-animated" transform="translate(360 790)"><circle r="20"/><text class="stage-number" text-anchor="middle" y="8">3</text><text class="stage-year" x="31" y="8">STURM · 29. MAI</text></g></g>
+  <circle cx="760" cy="655" r="8" class="point"/><circle cx="960" cy="330" r="8" class="point"/>
+  <rect x="1" y="1" width="1670" height="939" fill="none" stroke="#d0c2a4" stroke-width="2"/><text class="date" x="40" y="62">APRIL BIS MAI 1453</text><text class="topic" x="1632" y="60" text-anchor="end">BELAGERUNG KONSTANTINOPELS</text>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#1f3037;letter-spacing:.4px}.date{font-size:42px;font-weight:800;paint-order:stroke;stroke:#f5ecd9;stroke-width:7px}.topic{font-size:27px;font-weight:700;fill:#365d6d;paint-order:stroke;stroke:#f5ecd9;stroke-width:6px}.region,.city,.wall,.water-label{font-weight:800;paint-order:stroke;stroke:#f4ead7;stroke-width:7px}.region{font-size:31px;fill:#8d4638}.city{font-size:35px}.wall{font-size:25px}.water-label{font-size:27px;fill:#365f71}.route-ghost,.route-live{fill:none;stroke:var(--route-color);stroke-width:10;stroke-linecap:round}.route-ghost{opacity:.24}.route-live{opacity:.98}.route-live.dashed,.route-ghost.dashed{stroke-dasharray:18 13}.stage circle{fill:var(--route-color);stroke:#fff4df;stroke-width:4}.stage-number{font-size:24px;font-weight:800;fill:white}.stage-year{font-size:24px;font-weight:800;paint-order:stroke;stroke:#f5ecd9;stroke-width:7px}.point{fill:#24353b;stroke:#fff4df;stroke-width:4}.route-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .62s ease-out forwards;animation-delay:var(--delay)}.route-fade,.stage-animated{opacity:0;animation:appear .25s ease-out forwards;animation-delay:calc(var(--delay) + .48s)}@keyframes draw{to{stroke-dashoffset:0}}@keyframes appear{to{opacity:1}}@media (prefers-reduced-motion:reduce){.route-draw{animation:none;stroke-dashoffset:0}.route-fade,.stage-animated{animation:none;opacity:1}}</style>
 </svg>
