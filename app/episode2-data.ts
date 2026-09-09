@@ -477,26 +477,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       'Seit 1337 kämpfen englische und französische Könige um Thronansprüche und Gebiete in Frankreich – mit langen Pausen, weshalb „Hundertjähriger Krieg“ fast schon ordentlich klingt. 1429 hilft Jeanne d’Arc, die Belagerung von Orléans zu brechen und Karl den Siebten krönen zu lassen. Sie wird gefangen genommen und 1431 hingerichtet. Frankreich gewinnt später fast alle umkämpften Gebiete zurück; Jeanne wird zur nationalen Symbolfigur.',
     mapConcept:
-      'Frankreich mit wechselnden englischen und französischen Einflussräumen als weiche Flächen; Orléans, Reims und Rouen werden markiert.',
+      'Natürliche Frankreichkarte nach dem freigegebenen Muster. Punkt 1 zeigt Orléans und das Ende der Belagerung 1429, Punkt 2 Reims und die Krönung Karls VII. im selben Jahr. Farbige Wege verbinden Chinon, Orléans und Reims; die spätere Gefangennahme und der Weg nach Rouen bleiben als gestrichelte Fortsetzung sichtbar.',
     mapDetails: [
-      'England',
-      'Orléans',
-      'Reims',
-      'Rouen',
-      'Wechselnde Machtbereiche',
+      '1 · Orléans · Ende der Belagerung 1429',
+      '2 · Reims · Krönung Karls VII. 1429',
+      'Jeannes Weg von Chinon über Orléans nach Reims',
     ],
     imageConcept:
       'Jeanne d’Arc vor Orléans zwischen Soldaten und Stadtmauern, entschlossen, aber nicht als übernatürliche Heldin inszeniert.',
     discoveries: [
       {
-        label: 'Begriff prüfen',
-        title: 'Mehr als hundert Jahre',
-        text: 'Der Krieg dauerte von 1337 bis 1453, wurde aber immer wieder durch Waffenruhen und ruhigere Phasen unterbrochen.',
+        label: 'Wendepunkt',
+        title: 'Orléans 1429',
+        text: 'Im Mai 1429 trägt Jeanne d’Arc dazu bei, die englische Belagerung von Orléans zu beenden. Der Erfolg stärkt die französische Seite militärisch und psychologisch – aus einer bedrängten Lage wird wieder eine echte Chance.',
       },
       {
-        label: 'Symbol verstehen',
-        title: 'Jeannes Wirkung',
-        text: 'Jeanne führte nicht allein Frankreich zum Sieg. Ihr Auftreten stärkte jedoch Moral und Legitimität Karls VII. in einem entscheidenden Moment.',
+        label: 'Krönung',
+        title: 'Karl VII. in Reims',
+        text: 'Im Juli 1429 wird Karl VII. in der Kathedrale von Reims gekrönt. Jeanne erreicht damit ein zentrales Ziel ihrer Mission: Der bisher umstrittene Thronanwärter erhält am traditionellen Krönungsort sichtbar königliche Legitimität.',
       },
     ],
     quiz: [
@@ -533,25 +531,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1453 belagert der erst 21-jährige Sultan Mehmed der Zweite Konstantinopel. Große Kanonen beschießen die berühmten Mauern, osmanische Schiffe werden sogar über Land ins Goldene Horn gezogen. Nach fast zwei Monaten fällt die Stadt. Der letzte byzantinische Kaiser stirbt im Kampf. Mehmed macht Konstantinopel zur osmanischen Hauptstadt. Das Byzantinische Reich endet – die Stadt am Bosporus bleibt ein politischer und wirtschaftlicher Schlüsselort.',
     mapConcept:
-      'Bosporus mit Konstantinopel, Goldenem Horn und osmanischem Umland. Belagerungslinien und der über Land geführte Schiffsweg werden markiert.',
+      'Natürliche Karte des Bosporusraums nach dem freigegebenen Muster. Punkt 1 zeigt Edirne als Ausgangspunkt der osmanischen Belagerung, Punkt 2 Konstantinopel als Ziel und späteres Machtzentrum. Der Heeresweg und der über Land geführte Schiffsweg zum Goldenen Horn werden farblich getrennt.',
     mapDetails: [
-      'Bosporus',
-      'Konstantinopel',
-      'Goldenes Horn',
-      'Osmanische Belagerung',
+      '1 · Edirne · Ausgangspunkt der Belagerung',
+      '2 · Konstantinopel · Eroberung am 29. Mai 1453',
+      'Heeresweg und Schiffsweg zum Goldenen Horn',
     ],
     imageConcept:
       'Mehmed II. beobachtet aus sicherer Entfernung die Belagerung; Mauern, Kanonen und Schiffe im Goldenen Horn bleiben räumlich klar lesbar.',
     discoveries: [
       {
-        label: 'Technik sehen',
-        title: 'Kanonen gegen Mauern',
-        text: 'Schwere Geschütze allein entschieden die Belagerung nicht, doch sie beschädigten Befestigungen, die viele frühere Angriffe abgewehrt hatten.',
+        label: 'Vorbereitung',
+        title: 'Von Edirne zur Belagerung',
+        text: 'Edirne ist Mehmeds Ausgangspunkt für den Feldzug. Dort werden schwere Geschütze vorbereitet, die anschließend mühsam nach Konstantinopel gebracht werden. Vor den berühmten Landmauern verstärken sie den Druck auf die Verteidiger.',
       },
       {
-        label: 'Ort verstehen',
-        title: 'Schlüssel am Bosporus',
-        text: 'Die Stadt kontrollierte eine wichtige Meerenge zwischen Schwarzem Meer und Mittelmeer sowie die Verbindung zwischen Europa und Asien.',
+        label: 'Eroberung',
+        title: 'Konstantinopel fällt',
+        text: 'Am 29. Mai 1453 fällt Konstantinopel nach fast zweimonatiger Belagerung. Mehmed macht die Stadt zur osmanischen Hauptstadt. Ihre Lage am Bosporus verbindet weiterhin Europa und Asien sowie Schwarzes Meer und Mittelmeer.',
       },
     ],
     quiz: [
