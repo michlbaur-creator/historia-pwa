@@ -585,20 +585,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1492 erreicht Kolumbus im Auftrag Spaniens Inseln der Karibik und glaubt, einen Weg nach Asien gefunden zu haben. Für die dort lebenden Menschen beginnt eine Katastrophe: Eroberung, Zwangsarbeit und eingeschleppte Krankheiten zerstören Gemeinschaften. Cortés besiegt mit indigenen Verbündeten das Aztekenreich, Pizarro nutzt eine Krise im Inkareich. Europa entdeckt also keine leere Welt – es dringt gewaltsam in längst bewohnte Welten ein.',
     mapConcept:
-      'Atlantikroute des Kolumbus in die Karibik; danach getrennte Punkte und Pfeile nach Tenochtitlan und Cajamarca/Cusco. Keine pauschale Kolonialfläche.',
-    mapDetails: ['Spanien', 'Karibik', 'Tenochtitlan', 'Cajamarca', 'Cusco'],
+      'Natürliche Atlantik- und Amerikakarte nach dem freigegebenen Muster. Punkt 1 zeigt Tenochtitlan und seine Eroberung 1521, Punkt 2 Cajamarca und die Gefangennahme Atahualpas 1532. Kolumbus’ Route in die Karibik und die beiden späteren Eroberungswege bleiben farblich getrennt.',
+    mapDetails: [
+      '1 · Tenochtitlan · Eroberung 1521',
+      '2 · Cajamarca · Gefangennahme Atahualpas 1532',
+      'Kolumbusroute 1492 und getrennte Eroberungswege',
+    ],
     imageConcept:
       'Eine erste Begegnung in der Karibik mit klarer Distanz und Unsicherheit; keine leere Landschaft und keine triumphale Erobererpose.',
     discoveries: [
       {
-        label: 'Sprache prüfen',
-        title: 'Keine „Entdeckung“ einer leeren Welt',
-        text: 'Amerika war seit Jahrtausenden bewohnt. „Entdeckung“ beschreibt deshalb nur die europäische Perspektive und verdeckt die Sicht der indigenen Gesellschaften.',
+        label: 'Bewohnte Welt',
+        title: 'Tenochtitlan 1521',
+        text: 'Tenochtitlan war eine der größten Städte ihrer Zeit – Amerika war keine leere Welt. Cortés eroberte die Stadt 1521 nicht mit wenigen Spaniern allein: Zahlreiche indigene Verbündete und eine Pockenepidemie waren entscheidend.',
       },
       {
-        label: 'Eroberung erklären',
-        title: 'Nicht nur wenige Spanier',
-        text: 'Cortés und Pizarro nutzten bestehende Konflikte, lokale Verbündete, Waffen und Krankheiten. Die Eroberungen hatten mehrere Ursachen.',
+        label: 'Innere Krise',
+        title: 'Cajamarca 1532',
+        text: 'Als Pizarro Cajamarca erreichte, hatte ein Bürgerkrieg das Inkareich geschwächt. Dort nahmen die Spanier Atahualpa gefangen. Auch diese Eroberung war kein einfacher Sieg einer kleinen Gruppe, sondern nutzte eine bestehende Krise aus.',
       },
     ],
     quiz: [
@@ -635,26 +639,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1517 kritisiert Martin Luther den Ablasshandel. Seine Thesen verbreiten sich dank des Buchdrucks schnell. Luther stellt die Autorität des Papstes infrage und übersetzt die Bibel ins Deutsche. Einige Fürsten schützen ihn – aus Überzeugung, aber auch aus politischem Interesse. Weitere Reformbewegungen entstehen, die katholische Kirche reagiert mit eigenen Reformen. Europa wird konfessionell gespalten. Aus einer theologischen Debatte ist ein Machtkampf mit sehr großer Auflage geworden.',
     mapConcept:
-      'Wittenberg als Ausgangspunkt; Druck- und Reisewege in wichtige Städte des Reiches und Europas. Konfessionelle Räume nur weich und zeitbezogen darstellen.',
+      'Natürliche Mitteleuropakarte nach dem freigegebenen Muster. Punkt 1 zeigt Wittenberg als Ausgangspunkt der öffentlichen Auseinandersetzung 1517, Punkt 2 Worms und den Reichstag 1521. Die Reise nach Worms und der anschließende Weg zur Wartburg werden farblich getrennt.',
     mapDetails: [
-      'Wittenberg',
-      'Worms',
-      'Rom',
-      'Druckwege',
-      'Reformationsräume',
+      '1 · Wittenberg · Thesen und Druckschriften ab 1517',
+      '2 · Worms · Reichstag und Wormser Edikt 1521',
+      'Reiseweg nach Worms und Schutz auf der Wartburg',
     ],
     imageConcept:
       'Luther in einer Druckerwerkstatt mit Flugschriften; Setzer, Leser und ein Bote zeigen, wie der Buchdruck die Debatte verbreitet.',
     discoveries: [
       {
         label: 'Medienwirkung',
-        title: 'Der Buchdruck beschleunigt',
-        text: 'Flugschriften und Übersetzungen machten theologische Streitfragen für viel mehr Menschen erreichbar und vervielfachten die Wirkung einzelner Texte.',
+        title: 'Wittenberg ab 1517',
+        text: 'Von Wittenberg aus verbreitet sich Luthers Kritik durch Flugschriften und gedruckte Texte. Der Buchdruck macht die theologischen Streitfragen für viel mehr Menschen erreichbar und vervielfacht ihre Wirkung.',
       },
       {
         label: 'Politik erkennen',
-        title: 'Glaube und Fürstenmacht',
-        text: 'Fürsten entschieden nicht nur aus Glaubensgründen. Die Reformation bot auch Chancen, kirchlichen Besitz und politische Selbstständigkeit zu gewinnen.',
+        title: 'Worms 1521',
+        text: 'Auf dem Reichstag in Worms soll Luther seine Schriften widerrufen. Danach wird über ihn die Reichsacht verhängt. Friedrich der Weise lässt ihn auf der Wartburg schützen – ein Beispiel dafür, wie eng Glaubensstreit und Fürstenpolitik verbunden sind.',
       },
     ],
     quiz: [
@@ -692,20 +694,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1618 werfen protestantische Adelige in Prag kaiserliche Statthalter aus einem Fenster. Der berühmte Fenstersturz löst nicht allein den Krieg aus, wird aber sein Startsignal. Aus Religions- und Verfassungskonflikten im Reich entsteht ein europäischer Machtkampf. Heere ziehen jahrzehntelang durch Mitteleuropa, plündern Dörfer und verbreiten Hunger und Seuchen. 1648 beendet der Westfälische Friede den Krieg und ordnet das Verhältnis von Kaiser, Reichsständen und Nachbarn neu.',
     mapConcept:
-      'Mitteleuropa mit Prag, wichtigen Feldzugsräumen und den Verhandlungsorten Münster und Osnabrück. Bewegungen als Pfeile, Verwüstungsräume weich schraffiert.',
-    mapDetails: ['Prag', 'Böhmen', 'Mitteleuropa', 'Münster', 'Osnabrück'],
+      'Natürliche Mitteleuropakarte nach dem freigegebenen Muster. Punkt 1 zeigt Prag und den Fenstersturz 1618, Punkt 2 die Friedensorte Münster und Osnabrück 1648. Eine rote Linie führt durch wichtige Kriegsräume, eine gestrichelte grüne Fortsetzung zu den Verhandlungsorten.',
+    mapDetails: [
+      '1 · Prag · Fenstersturz 1618',
+      '2 · Münster und Osnabrück · Westfälischer Friede 1648',
+      'Kriegsräume und Weg zu den Friedensorten',
+    ],
     imageConcept:
       'Ein erschöpftes Dorf nach dem Durchzug verschiedener Heere; Soldaten bleiben im Hintergrund, Zerstörung wird sichtbar, aber nicht drastisch gezeigt.',
     discoveries: [
       {
-        label: 'Ursachen ordnen',
-        title: 'Nicht nur Religion',
-        text: 'Konfessionelle Gegensätze waren wichtig. Ebenso ging es um Rechte der Reichsstände, die Macht des Kaisers und Interessen auswärtiger Staaten.',
+        label: 'Auftakt',
+        title: 'Prag 1618',
+        text: 'Der Prager Fenstersturz wird zum sichtbaren Startsignal des Krieges. Konfessionelle Gegensätze sind wichtig, doch ebenso geht es um die Rechte der Reichsstände, die Macht des Kaisers und die Interessen auswärtiger Staaten.',
       },
       {
         label: 'Frieden verstehen',
-        title: 'Zwei Städte, viele Verträge',
-        text: 'Der Westfälische Friede wurde in Münster und Osnabrück ausgehandelt. Er bestand aus mehreren Verträgen und veränderte die Ordnung Europas.',
+        title: 'Münster und Osnabrück 1648',
+        text: 'Der Westfälische Friede wird in Münster und Osnabrück ausgehandelt. Er besteht aus mehreren Verträgen, beendet den Krieg im Reich und verändert das Verhältnis von Kaiser, Reichsständen und europäischen Nachbarn.',
       },
     ],
     quiz: [

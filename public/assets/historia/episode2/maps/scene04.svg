@@ -29,7 +29,7 @@
     <text class="marker-title" x="30" y="-8" text-anchor="start">ROM</text>
     <text class="marker-subtitle" x="30" y="23" text-anchor="start">KAISERKRÖNUNG 962</text>
   </g>
-  <text class="date" x="40" y="64">955 UND 962</text>
+  <text class="date" x="40" y="64">955 und 962</text>
   <rect x="1" y="1" width="1670" height="939" fill="none" stroke="#c9b99a" stroke-width="2"/>
   <style>
     text{font-family:Arial,Helvetica,sans-serif;fill:#27353a;letter-spacing:.35px}
@@ -41,5 +41,5 @@
     .marker-title{font-size:29px;font-weight:800;paint-order:stroke;stroke:#f5ecd9;stroke-width:8px;stroke-linejoin:round}
     .marker-subtitle{font-size:22px;font-weight:700;fill:#40535a;paint-order:stroke;stroke:#f5ecd9;stroke-width:7px;stroke-linejoin:round}
   </style>
-  <style>.date{font-size:46px;font-weight:700;fill:#243238;paint-order:normal;stroke:none}</style>
+  <style>.date{font-size:46px;font-weight:700;fill:#243238;paint-order:normal;stroke:none}.region,.place text,.marker-title{paint-order:normal;stroke:none}</style>
 </svg>

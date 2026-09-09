@@ -50,7 +50,7 @@
     <text class="marker-title" x="-30" y="-8" text-anchor="end">DAMASKUS</text>
     <text class="marker-subtitle" x="-30" y="23" text-anchor="end">MACHTZENTRUM AB 661</text>
   </g>
-  <text class="date" x="40" y="64">KALIFENREICH · 622 BIS 750</text>
+  <text class="date" x="40" y="64">Kalifenreich · 622 bis 750</text>
   <rect x="1" y="1" width="1670" height="939" fill="none" stroke="#c9b99a" stroke-width="2"/>
   <style>
     text{font-family:Arial,Helvetica,sans-serif;fill:#27353a;letter-spacing:.35px}
@@ -65,5 +65,5 @@
     .marker-subtitle{font-size:22px;font-weight:700;fill:#40535a;paint-order:stroke;stroke:#f5ecd9;stroke-width:7px;stroke-linejoin:round}
     @keyframes draw{to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){#play:target .route-live{animation:none;stroke-dashoffset:0}}
   </style>
-  <style>.date{font-size:46px;font-weight:700;fill:#243238;paint-order:normal;stroke:none}</style>
+  <style>.date{font-size:46px;font-weight:700;fill:#243238;paint-order:normal;stroke:none}.region,.place text,.marker-title{paint-order:normal;stroke:none}</style>
 </svg>
