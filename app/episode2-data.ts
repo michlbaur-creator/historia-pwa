@@ -180,8 +180,12 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '955 besiegt König Otto der Erste ungarische Reiter auf dem Lechfeld. Der Sieg stärkt seine Stellung im Ostfrankenreich. Sieben Jahre später krönt ihn Papst Johannes der Zwölf in Rom zum Kaiser. Otto stützt sich auf Herzöge und besonders auf Bischöfe, die zugleich wichtige Reichsaufgaben übernehmen. Aus diesem Herrschaftsverband entwickelt sich später das Heilige Römische Reich – mit vielen Fürsten und entsprechend vielen Meinungen.',
     mapConcept:
-      'Ostfrankenreich mit Aachen, Lechfeld und Rom. Die Reise zur Kaiserkrönung wird als Linie gezeigt; Reichsräume bleiben bewusst weich abgegrenzt.',
-    mapDetails: ['Ostfrankenreich', 'Lechfeld 955', 'Rom 962', 'Herzogtümer'],
+      'Exakte physische Europakarte im Stil von Episode 1. Die ungefähre Ausdehnung von Ottos Reich ist weich markiert; Punkt 1 zeigt das Lechfeld 955, Punkt 2 Rom und die Kaiserkrönung 962. Keine Reiseroute.',
+    mapDetails: [
+      'Ungefähres Reich Ottos I. um 962',
+      '1 · Lechfeld 955',
+      '2 · Rom 962',
+    ],
     imageConcept:
       'Otto I. bei der Kaiserkrönung in Rom; Bischöfe und weltliche Große zeigen die beiden Stützen seiner Herrschaft.',
     discoveries: [
@@ -191,9 +195,9 @@ const episode2Scenes: HistoriaScene[] = [
         text: 'Ottos Sieg 955 beendet die großen ungarischen Raubzüge nach Westen und stärkt seinen Anspruch auf die Kaiserwürde.',
       },
       {
-        label: 'Herrschaft verstehen',
-        title: 'Kaiser ohne Hauptstadtstaat',
-        text: 'Das Reich war kein moderner Zentralstaat. Der Kaiser musste mit Herzögen, Bischöfen und anderen Großen immer wieder zusammenarbeiten.',
+        label: 'Kaiseridee',
+        title: 'Die Kaiserkrönung in Rom',
+        text: 'Am 2. Februar 962 krönt Papst Johannes XII. Otto in Rom zum Kaiser. Damit verbindet Otto sein ostfränkisches Königtum dauerhaft mit der römischen Kaiseridee – ein wichtiger Ausgangspunkt des späteren Heiligen Römischen Reiches.',
       },
     ],
     quiz: [
