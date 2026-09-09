@@ -753,13 +753,11 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       'Ludwig der Vierzehnte regiert Frankreich mehr als siebzig Jahre. Er lässt Versailles zum gewaltigen Hof ausbauen und bindet viele Adelige an seine Nähe. Minister und Beamte stärken die königliche Verwaltung, während Ludwigs Kriege Frankreichs Grenzen und Einfluss erweitern sollen. Die prachtvolle Selbstdarstellung trägt ihm den Namen Sonnenkönig ein. Doch Hof und Kriege kosten enorme Summen – selbst sehr heller Glanz wirft einen ziemlich langen Schatten.',
     mapConcept:
-      'Frankreich unter Ludwig XIV. mit Paris und Versailles; wichtige Kriegsräume an den Grenzen nur als datierte Pfeile und weiche Zonen.',
+      'Präzise Europakarte nach dem freigegebenen Muster. Punkt 1 zeigt Versailles als Hof- und Regierungszentrum, Punkt 2 Straßburg als Beispiel für Ludwigs territoriale Expansion. Frankreich wird nur weich und ungefähr hervorgehoben.',
     mapDetails: [
-      'Paris',
-      'Versailles',
-      'Frankreich',
-      'Grenzkriege',
-      'Europäische Rivalen',
+      '1 · Versailles · Hof und Regierungszentrum',
+      '2 · Straßburg · französische Besetzung 1681',
+      'Ungefähre Ausdehnung Frankreichs unter Ludwig XIV.',
     ],
     imageConcept:
       'Ludwig XIV. im Spiegelsaal von Versailles, umgeben von Adeligen und Beamten; Pracht und politische Kontrolle werden zugleich sichtbar.',
@@ -771,8 +769,8 @@ const episode2Scenes: HistoriaScene[] = [
       },
       {
         label: 'Grenze erkennen',
-        title: 'Absolut heißt nicht grenzenlos',
-        text: 'Auch Ludwig XIV. brauchte Beamte, Geldgeber, Gerichte und Verhandlungen. Der Begriff Absolutismus beschreibt einen Anspruch, keine völlig unbeschränkte Macht.',
+        title: 'Straßburg 1681',
+        text: 'Ludwig XIV. lässt Straßburg 1681 besetzen und erweitert damit Frankreichs Einfluss am Rhein. Doch auch seine Macht bleibt begrenzt: Kriege, Verwaltung und Hof benötigen enorme Summen, Beamte und Verhandlungen.',
       },
     ],
     quiz: [
@@ -813,26 +811,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       'Im 17. Jahrhundert richten Galilei und andere Forscher neue Instrumente auf Himmel und Natur. Newton beschreibt Bewegung und Schwerkraft mit mathematischen Regeln. Experimente, Messungen und gelehrte Netzwerke verändern, wie Wissen begründet wird. Im 18. Jahrhundert fragen Aufklärer auch politisch nach Vernunft, Rechten und Gewaltenteilung. Überlieferte Autoritäten müssen nun häufiger Belege liefern – ein für Autoritäten ausgesprochen lästiger Trend mit großer Zukunft.',
     mapConcept:
-      'Europäische Wissenschaftszentren und Druckorte als Punkte; Brief- und Publikationswege verbinden Pisa/Florenz, London, Paris und weitere Zentren.',
+      'Präzise Europakarte nach dem freigegebenen Muster. Punkt 1 zeigt London und Newtons Principia von 1687, Punkt 2 Paris als Zentrum der politischen Aufklärung. Eine gestrichelte Linie steht für Brief-, Druck- und Publikationswege.',
     mapDetails: [
-      'Florenz',
-      'London',
-      'Paris',
-      'Akademien',
-      'Druck- und Briefwege',
+      '1 · London · Newtons Principia 1687',
+      '2 · Paris · politische Aufklärung im 18. Jahrhundert',
+      'Brief-, Druck- und Publikationswege',
     ],
     imageConcept:
       'Eine helle Arbeitsstube mit Teleskop, Prisma, Büchern und Briefen; mehrere Forschende diskutieren Beobachtungen statt eines einsamen Genies.',
     discoveries: [
       {
         label: 'Methode erkennen',
-        title: 'Beobachtung plus Mathematik',
-        text: 'Neue Wissenschaft entstand nicht durch eine einzelne Erfindung. Instrumente, Experimente, Mathematik, Druck und Austausch wirkten zusammen.',
+        title: 'London 1687',
+        text: 'Newtons Principia erscheint 1687 in London. Neue Wissenschaft entsteht nicht durch eine einzelne Erfindung: Instrumente, Experimente, Mathematik, Druck und Austausch wirken zusammen.',
       },
       {
         label: 'Politik weiterdenken',
-        title: 'Kritik an Autorität',
-        text: 'Aufklärer stritten über Vernunft, Toleranz, Rechte und die Teilung staatlicher Macht. Viele ihrer Ideen blieben zunächst auf privilegierte Gruppen begrenzt.',
+        title: 'Paris im 18. Jahrhundert',
+        text: 'In Paris und darüber hinaus streiten Aufklärer über Vernunft, Toleranz, Rechte und die Teilung staatlicher Macht. Viele ihrer Ideen bleiben zunächst auf privilegierte Gruppen begrenzt.',
       },
     ],
     quiz: [
