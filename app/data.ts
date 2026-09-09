@@ -15,6 +15,9 @@ export type HistoriaScene = {
   duration: number;
   narration: string;
   mainImage?: string;
+  secondaryImage?: string;
+  secondaryImageTitle?: string;
+  secondaryImageSubtitle?: string;
   mapImage?: string;
   video?: string;
   videoPlayback?: 'loop' | 'hold';

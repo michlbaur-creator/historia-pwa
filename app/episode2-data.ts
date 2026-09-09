@@ -2,6 +2,77 @@ import type { HistoriaScene } from './data';
 
 const episode2Asset = '/assets/historia/episode2';
 
+const secondaryMedia: Record<
+  number,
+  Pick<
+    HistoriaScene,
+    'secondaryImage' | 'secondaryImageTitle' | 'secondaryImageSubtitle'
+  >
+> = {
+  1: {
+    secondaryImage: `${episode2Asset}/secondary/scene01.jpg`,
+    secondaryImageTitle: 'Damaskus als Machtzentrum',
+    secondaryImageSubtitle:
+      'Verwaltung und Boten verbinden das weit gespannte Kalifenreich.',
+  },
+  2: {
+    secondaryImage: `${episode2Asset}/secondary/scene02.jpg`,
+    secondaryImageTitle: 'Aachen als Herrschaftszentrum',
+    secondaryImageSubtitle:
+      'Winterpfalz, Hof und Verwaltung bündeln politische Macht.',
+  },
+  4: {
+    secondaryImage: `${episode2Asset}/secondary/scene04.jpg`,
+    secondaryImageTitle: 'Kaiserkrönung in Rom',
+    secondaryImageSubtitle:
+      'Geistliche und weltliche Macht verbinden sich in einem politischen Ritual.',
+  },
+  7: {
+    secondaryImage: `${episode2Asset}/secondary/scene07.jpg`,
+    secondaryImageTitle: 'Nach der Pest',
+    secondaryImageSubtitle:
+      'Arbeitskräftemangel verändert Löhne und alte Abhängigkeiten.',
+  },
+  8: {
+    secondaryImage: `${episode2Asset}/secondary/scene08.jpg`,
+    secondaryImageTitle: 'Die Krönung in Reims',
+    secondaryImageSubtitle:
+      'Das öffentliche Ritual stärkt die Stellung Karls VII.',
+  },
+  10: {
+    secondaryImage: `${episode2Asset}/secondary/scene10.jpg`,
+    secondaryImageTitle: 'Tenochtitlan vor der Eroberung',
+    secondaryImageSubtitle:
+      'Die Spanier treffen auf eine große, dicht bewohnte Metropole.',
+  },
+  12: {
+    secondaryImage: `${episode2Asset}/secondary/scene12.jpg`,
+    secondaryImageTitle: 'Verhandeln statt kämpfen',
+    secondaryImageSubtitle:
+      'In Münster und Osnabrück entsteht der Westfälische Friede.',
+  },
+  15: {
+    secondaryImage: `${episode2Asset}/secondary/scene15.jpg`,
+    secondaryImageTitle: 'Französische Hilfe vor Yorktown',
+    secondaryImageSubtitle:
+      'Flotte, Soldaten und Nachschub entscheiden den Krieg mit.',
+  },
+};
+
+const videoMedia: Record<
+  number,
+  Pick<HistoriaScene, 'video' | 'videoPlayback'>
+> = {
+  9: {
+    video: `${episode2Asset}/Videos/S9.mp4`,
+    videoPlayback: 'hold',
+  },
+  11: {
+    video: `${episode2Asset}/Videos/S11.mp4`,
+    videoPlayback: 'hold',
+  },
+};
+
 const episode2Scenes: HistoriaScene[] = [
   {
     id: 1,
@@ -904,6 +975,8 @@ const episode2Scenes: HistoriaScene[] = [
 export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
   (scene) => ({
     ...scene,
+    ...secondaryMedia[scene.id],
+    ...videoMedia[scene.id],
     mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
     mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg`,
   }),

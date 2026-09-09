@@ -280,6 +280,18 @@
   animation: reveal 0.42s ease;
 }
 
+.imageSequence {
+  position: absolute;
+  inset: 0;
+}
+
+.sequenceImage {
+  animation: none;
+  transition:
+    opacity 0.6s ease-in-out,
+    transform 0.9s ease-out;
+}
+
 .sceneVideo {
   position: absolute;
   inset: 0;

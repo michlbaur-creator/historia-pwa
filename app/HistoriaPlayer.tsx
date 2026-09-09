@@ -89,8 +89,18 @@ export default function HistoriaPlayer({
       : image;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
-  const imageTitle = scene.imageTitle ?? scene.people;
-  const imageSubtitle = scene.imageSubtitle ?? scene.place;
+  const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
+  const secondaryBlend =
+    !showMap && scene.secondaryImage && !scene.video
+      ? Math.min(1, Math.max(0, (sceneProgress - 0.54) / 0.12))
+      : 0;
+  const showingSecondary = secondaryBlend >= 0.5;
+  const imageTitle = showingSecondary
+    ? (scene.secondaryImageTitle ?? scene.imageTitle ?? scene.people)
+    : (scene.imageTitle ?? scene.people);
+  const imageSubtitle = showingSecondary
+    ? (scene.secondaryImageSubtitle ?? scene.imageSubtitle ?? scene.place)
+    : (scene.imageSubtitle ?? scene.place);
   const activeQuiz = scene.quiz[quizQuestion];
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(
@@ -352,6 +362,32 @@ export default function HistoriaPlayer({
               aria-hidden="true"
               className={styles.sceneVideo}
             />
+          ) : !showMap && scene.secondaryImage && scene.mainImage ? (
+            <div className={styles.imageSequence}>
+              <Image
+                src={scene.mainImage}
+                alt={`Historische Bildszene: ${scene.title}`}
+                fill
+                priority={sceneIndex === 0}
+                sizes="(max-width: 980px) 100vw, 1120px"
+                className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                style={{
+                  opacity: 1 - secondaryBlend,
+                  transform: `scale(${1 + secondaryBlend * 0.012})`,
+                }}
+              />
+              <Image
+                src={scene.secondaryImage}
+                alt={`Zweite historische Bildszene: ${scene.title}`}
+                fill
+                sizes="(max-width: 980px) 100vw, 1120px"
+                className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                style={{
+                  opacity: secondaryBlend,
+                  transform: `scale(${1.012 - secondaryBlend * 0.012})`,
+                }}
+              />
+            </div>
           ) : renderedImage ? (
             <Image
               key={`${renderedImage}-${mapAnimationRun}`}
