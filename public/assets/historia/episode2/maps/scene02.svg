@@ -41,4 +41,5 @@
     .marker-title{font-size:29px;font-weight:800;paint-order:stroke;stroke:#f5ecd9;stroke-width:8px;stroke-linejoin:round}
     .marker-subtitle{font-size:22px;font-weight:700;fill:#40535a;paint-order:stroke;stroke:#f5ecd9;stroke-width:7px;stroke-linejoin:round}
   </style>
+  <style>.date{font-size:46px;font-weight:700;fill:#243238;paint-order:normal;stroke:none}</style>
 </svg>

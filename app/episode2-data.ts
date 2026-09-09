@@ -369,26 +369,25 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1206 wird Temüdschin zum Dschingis Khan ausgerufen. Er einigt mongolische Gruppen, ordnet das Heer in feste Einheiten und setzt auf bewegliche Reiter, Kundschafter und klare Befehle. Seine Feldzüge erobern große Teile Zentralasiens und Nordchinas; Städte, die Widerstand leisten, werden oft brutal zerstört. Nach seinem Tod erweitern seine Nachfolger das Reich weiter. Die Karte wird riesig – der Preis für viele Eroberte ebenfalls.',
     mapConcept:
-      'Mongolisches Kerngebiet mit Karakorum; breite Pfeile nach Nordchina, Zentralasien und Westen. Spätere Ausdehnung gestrichelt statt als scheinpräzise Grenze.',
+      'Natürliche Eurasienkarte nach dem freigegebenen Muster der vorangegangenen Szenen. Die ungefähre Ausdehnung von Dschingis Khans Reich um 1227 ist weich markiert; Punkt 1 zeigt den Kuriltai am Onon 1206, Punkt 2 Zhongdu und die Einnahme 1215. Zwei zurückhaltende Feldzugspfeile führen nach Nordchina und Zentralasien.',
     mapDetails: [
-      'Mongolei',
-      'Karakorum',
-      'Nordchina',
-      'Zentralasien',
-      'Westliche Feldzüge',
+      'Ungefähres Reich Dschingis Khans um 1227',
+      '1 · Onon · Erhebung zum Großkhan 1206',
+      '2 · Zhongdu · Einnahme 1215',
+      'Feldzugsrichtungen nach Nordchina und Zentralasien',
     ],
     imageConcept:
       'Dschingis Khan vor einem beweglichen Reiterheer in offener Steppe; Boten, Ersatzpferde und geordnete Verbände betonen Organisation statt Heldenkult.',
     discoveries: [
       {
-        label: 'Erfolg erklären',
-        title: 'Tempo plus Organisation',
-        text: 'Die Mongolen waren nicht einfach nur gute Reiter. Aufklärung, feste Heeresgliederung, Signalgebung und mehrere Pferde je Kämpfer erhöhten ihre Beweglichkeit.',
+        label: 'Ausgangspunkt',
+        title: 'Am Onon zum Großkhan',
+        text: '1206 erhebt ein Kuriltai an den Quellen des Onon Temüdschin zum Dschingis Khan. Die geeinten Verbände organisiert er in festen Heeresabteilungen; Kundschafter, Signalgebung und mehrere Pferde je Kämpfer erhöhen ihre Beweglichkeit.',
       },
       {
-        label: 'Doppelte Folge',
-        title: 'Zerstörung und Verbindung',
-        text: 'Eroberungen vernichteten Städte und Menschenleben. Zugleich verband die spätere mongolische Herrschaft Handelswege quer durch Eurasien enger.',
+        label: 'Eroberung',
+        title: 'Zhongdu fällt 1215',
+        text: 'Nach langen Kämpfen gegen die Jin-Dynastie nehmen mongolische Truppen 1215 deren Hauptstadt Zhongdu, das heutige Beijing, ein. Die Eroberung zeigt: Das bewegliche Reiterheer kann auch befestigte Städte bezwingen – für die Bevölkerung mit verheerenden Folgen.',
       },
     ],
     quiz: [
@@ -424,26 +423,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       'Ab 1347 erreicht die Pest über Handelswege europäische Häfen. Das Bakterium Yersinia pestis verbreitet sich schnell; Flöhe, Nagetiere und wahrscheinlich weitere Übertragungswege spielen eine Rolle. In wenigen Jahren stirbt ein großer Teil der Bevölkerung Europas, auch Nordafrika und Asien sind schwer betroffen. Arbeit wird knapp, Löhne und soziale Beziehungen verändern sich. Die eng vernetzte Welt zeigt ihre Schattenseite – ohne auch nur einen Flugplan zu besitzen.',
     mapConcept:
-      'Handelsrouten aus Zentralasien über das Schwarze Meer und Mittelmeer nach Europa. Ausbreitung mit datierten Pfeilen und Hafenpunkten, nicht als harte Fläche.',
+      'Natürliche Karte von Europa und dem Mittelmeerraum nach dem freigegebenen Muster. Punkt 1 zeigt Kaffa am Schwarzen Meer 1346, Punkt 2 Messina 1347. Farbige Pfeile verfolgen die Ausbreitung entlang der See- und Handelswege, ohne eine scheinpräzise Fläche zu behaupten.',
     mapDetails: [
-      'Schwarzes Meer',
-      'Konstantinopel',
-      'Messina',
-      'Genua',
-      'Handelswege',
+      '1 · Kaffa · Pest im Schwarzmeerraum 1346',
+      '2 · Messina · Ankunft auf Sizilien 1347',
+      'Ausbreitung entlang der See- und Handelswege',
     ],
     imageConcept:
       'Ein mittelalterlicher Hafen mit ankommendem Handelsschiff und besorgten Menschen; Krankheit wird zurückhaltend und ohne drastische Leidensbilder gezeigt.',
     discoveries: [
       {
-        label: 'Ursache kennen',
-        title: 'Ein Bakterium, viele Wege',
-        text: 'Yersinia pestis verursacht die Pest. Flöhe und Nagetiere waren wichtige Überträger; bei bestimmten Formen konnte die Krankheit auch von Mensch zu Mensch gelangen.',
+        label: 'Ausgangspunkt',
+        title: 'Kaffa am Schwarzen Meer',
+        text: '1346 erfasst die Pest das Umfeld der genuesischen Handelsstadt Kaffa auf der Krim. Die lange erzählte Geschichte von verseuchten Leichen als Waffe ist umstritten; sicher ist, dass sich die Krankheit über die Handelsnetze des Schwarzen Meeres weiter ausbreitet.',
       },
       {
-        label: 'Folgen verstehen',
-        title: 'Wenn Arbeitskräfte fehlen',
-        text: 'Der massive Bevölkerungsverlust veränderte Besitz, Löhne und Abhängigkeiten. Die Folgen waren regional unterschiedlich und dauerten lange an.',
+        label: 'Ankunft',
+        title: 'Messina 1347',
+        text: '1347 erreicht die Pest den sizilianischen Hafen Messina. Von den eng verbundenen Mittelmeerhäfen breitet sie sich weiter nach West- und Nordeuropa aus. Schiffe befördern dabei nicht nur Waren und Menschen, sondern wahrscheinlich auch infizierte Nagetiere und Flöhe.',
       },
     ],
     quiz: [
