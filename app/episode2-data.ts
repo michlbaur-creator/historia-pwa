@@ -70,20 +70,24 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       'Am Weihnachtstag des Jahres 800 krönt Papst Leo der Dritte den Frankenkönig Karl in Rom zum Kaiser. Karl herrscht bereits über große Teile West- und Mitteleuropas. Grafen, Bischöfe und königliche Boten halten das Reich zusammen; Klöster und Hofschulen fördern Bildung und Schrift. Nach Karls Tod wird sein Reich geteilt. Die Kaiseridee bleibt jedoch – politische Wiederverwertung kann sehr langlebig sein.',
     mapConcept:
-      'Das Frankenreich um 800 als weich begrenzte Fläche mit Aachen, Rom und den wichtigsten Reichsteilen. Ein Weg verbindet Aachen und den Krönungsort Rom.',
-    mapDetails: ['Aachen', 'Rom', 'Frankenreich', 'Weg zur Kaiserkrönung'],
+      'Exakte physische Europakarte nach dem Prinzip von Szene 4. Die ungefähre Ausdehnung von Karls Reich ist weich markiert; Punkt 1 zeigt Aachen als politischen Mittelpunkt, Punkt 2 Rom und die Kaiserkrönung 800. Keine Reiseroute.',
+    mapDetails: [
+      'Ungefähres Frankenreich um 800',
+      '1 · Aachen · Winterpfalz und politisches Zentrum',
+      '2 · Rom · Kaiserkrönung 800',
+    ],
     imageConcept:
       'Die Kaiserkrönung in Alt-St. Peter: Karl und Leo III. im Mittelpunkt, umgeben von Geistlichen und fränkischen Großen, feierlich, aber nicht überladen.',
     discoveries: [
       {
+        label: 'Zentrum des Reiches',
+        title: 'Aachen als Winterpfalz',
+        text: 'Ab 794/795 nutzte Karl Aachen nahezu regelmäßig als Winterpfalz und machte die Stadt zum politischen Zentrum seines Reiches.',
+      },
+      {
         label: 'Macht verbinden',
         title: 'König und Papst',
         text: 'Die Krönung verbindet Karls militärisch errungene Herrschaft mit der religiösen Autorität des Papstes und belebt die weströmische Kaiseridee neu.',
-      },
-      {
-        label: 'Reich organisieren',
-        title: 'Boten statt Telefon',
-        text: 'Karl stützte sich auf Grafen, Bischöfe und kontrollierende Königsboten. Herrschaft über große Entfernungen blieb langsam und persönlich.',
       },
     ],
     quiz: [
