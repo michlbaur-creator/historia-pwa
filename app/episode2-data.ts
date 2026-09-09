@@ -16,20 +16,25 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '622 zieht Mohammed von Mekka nach Medina. Diese Hidschra beginnt die islamische Zeitrechnung. In Medina entsteht eine neue religiöse und politische Gemeinschaft. Nach Mohammeds Tod 632 einigen Kalifen große Teile Arabiens und erobern Syrien, Ägypten, Persien, Nordafrika und Spanien. Auf der Karte wächst das Reich erstaunlich schnell – regieren lässt sich so viel Gebiet allerdings nicht mit einem einzigen Kamelritt.',
     mapConcept:
-      'Arabien mit Mekka und Medina; anschließend Pfeile nach Syrien, Ägypten, Persien, Nordafrika und auf die Iberische Halbinsel. Keine scharf behaupteten Grenzen.',
-    mapDetails: ['Mekka', 'Medina', 'Damaskus', 'Bagdad', 'Ausbreitungswege'],
+      'Exakte physische Karte von der Iberischen Halbinsel bis zum Indus nach dem Prinzip der freigegebenen Karten. Punkt 1 zeigt Medina und die Hidschra 622, Punkt 2 Damaskus als Machtzentrum der Umayyaden. Die Ausbreitungsrichtungen sind als zeitlich getrennte, bewusst vereinfachte Pfeile dargestellt; keine scharf behaupteten Grenzen.',
+    mapDetails: [
+      '1 · Medina · Hidschra 622',
+      '2 · Damaskus · Machtzentrum ab 661',
+      'Ausbreitung unter den ersten Kalifen',
+      'West- und Ostexpansion unter den Umayyaden',
+    ],
     imageConcept:
       'Eine frühe Stadt- und Verwaltungsszene in Medina; Mohammed selbst wird aus Respekt nicht bildlich dargestellt. Boten und Karten deuten die spätere Ausbreitung an.',
     discoveries: [
       {
         label: 'Zeitpunkt verstehen',
-        title: 'Warum 622 zählt',
+        title: 'Medina und die Hidschra',
         text: 'Die Auswanderung Mohammeds von Mekka nach Medina heißt Hidschra. Sie markiert den Beginn der islamischen Zeitrechnung, nicht Mohammeds Geburt.',
       },
       {
         label: 'Ausbreitung verfolgen',
-        title: 'Glaube und Herrschaft',
-        text: 'Mohammeds Nachfolger waren religiöse und politische Führer. Ihre Heere eroberten in wenigen Generationen Gebiete auf drei Kontinenten.',
+        title: 'Damaskus als Machtzentrum',
+        text: 'Unter den Umayyaden wurde Damaskus zum politischen Zentrum. Von dort regierten Kalifen ein Reich, das sich in wenigen Generationen vom Atlantik bis zum Indus erstreckte.',
       },
     ],
     quiz: [
@@ -123,27 +128,25 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '793 überfallen nordische Seefahrer das Kloster Lindisfarne. Es folgen weitere Angriffe – aber die Wikinger rauben nicht nur. Sie handeln, siedeln und gründen Herrschaften. Ihre Schiffe erreichen Island, Grönland und Nordamerika; über russische Flüsse gelangen Händler bis Byzanz. Im 11. Jahrhundert regiert Knut der Große zeitweise England, Dänemark und Norwegen. Aus gefürchteten Fremden werden vielerorts Nachbarn mit ziemlich langen Reisewegen.',
     mapConcept:
-      'Skandinavien im Zentrum; Pfeile westwärts über Island und Grönland bis Nordamerika sowie ostwärts über Flüsse nach Kiew und Konstantinopel.',
+      'Exakte physische Karte des Nordatlantiks und Europas nach dem Prinzip der freigegebenen Karten. Punkt 1 zeigt Lindisfarne und den Überfall 793, Punkt 2 die nordische Siedlung L’Anse aux Meadows um 1000. Zeitlich beschriftete Wege führen von Skandinavien westwärts über Island und Grönland bis Nordamerika sowie ostwärts über die Flüsse Osteuropas bis Byzanz.',
     mapDetails: [
-      'Lindisfarne',
-      'Island',
-      'Grönland',
-      'Nordamerika',
-      'Kiew',
-      'Konstantinopel',
+      '1 · Lindisfarne · Überfall 793',
+      '2 · L’Anse aux Meadows · nordische Siedlung um 1000',
+      'Westweg über Island und Grönland',
+      'Ostweg über die Flüsse bis Byzanz',
     ],
     imageConcept:
       'Ein nordisches Langschiff erreicht einen lebhaften Handelsplatz. Waren, Werkzeuge und Siedler zeigen mehr als nur den bekannten Überfall.',
     discoveries: [
       {
-        label: 'Klischee prüfen',
-        title: 'Nicht nur Plünderer',
-        text: 'Wikinger waren Seefahrer aus Skandinavien, die je nach Ort und Zeit plünderten, handelten, siedelten oder als Söldner dienten.',
+        label: 'Auftakt',
+        title: 'Der Überfall auf Lindisfarne',
+        text: '793 greifen nordische Seefahrer das Kloster Lindisfarne vor der englischen Küste an. Der Überfall gilt häufig als Beginn der Wikingerzeit, obwohl Kontakte zwischen Skandinavien und anderen Regionen schon vorher bestanden.',
       },
       {
-        label: 'Routen lesen',
-        title: 'Westen und Osten',
-        text: 'Über den Atlantik erreichten sie Nordamerika. Flüsse führten sie zugleich durch Osteuropa bis zum Schwarzen Meer und nach Byzanz.',
+        label: 'Archäologie',
+        title: 'Nordamerika um das Jahr 1000',
+        text: 'In L’Anse aux Meadows auf Neufundland belegen Gebäudereste eine nordische Siedlung um das Jahr 1000. Damit ist sicher: Europäische Seefahrer erreichten Nordamerika lange vor Kolumbus.',
       },
     ],
     quiz: [
@@ -243,26 +246,26 @@ const episode2Scenes: HistoriaScene[] = [
     narration:
       '1095 ruft Papst Urban der Zweite zum Kreuzzug nach Jerusalem auf. Im folgenden Jahr ziehen Heere Richtung Osten; 1099 erobern Kreuzfahrer die Stadt und richten ein Blutbad an. Sie gründen mehrere Herrschaften. 1187 gewinnt Sultan Saladin Jerusalem zurück. Richard Löwenherz führt daraufhin den Dritten Kreuzzug, ohne die Stadt zu erobern. 1291 fällt der letzte große Kreuzfahrerstützpunkt. Zwei Jahrhunderte Krieg – eindeutig keine kurze Pilgerfahrt.',
     mapConcept:
-      'Pfeile von Westeuropa über Konstantinopel nach Jerusalem; Kreuzfahrerstaaten nur als weiche Flächen. Akkon und Saladins Machtzentrum werden markiert.',
+      'Exakte physische Karte Europas und des östlichen Mittelmeerraums nach dem Prinzip von Szene 4. Punkt 1 zeigt Clermont und den Aufruf 1095, Punkt 2 Jerusalem und die Eroberung 1099. Geprüfte Hauptrouten des Ersten Kreuzzugs führen getrennt über Ungarn und Italien, treffen am Bosporus zusammen und verlaufen durch Anatolien und Syrien nach Jerusalem.',
     mapDetails: [
-      'Clermont',
-      'Konstantinopel',
-      'Jerusalem',
-      'Akkon',
-      'Kreuzzugsrouten',
+      '1 · Clermont · Aufruf 1095',
+      '2 · Jerusalem · Eroberung 1099',
+      'Hauptroute über Ungarn',
+      'Hauptroute über Italien',
+      'Gemeinsamer Zug durch Anatolien und Syrien',
     ],
     imageConcept:
       'Eine angespannte Begegnung vor Jerusalem mit christlichen und muslimischen Heeren; keine triumphale Siegerpose und keine drastische Gewalt.',
     discoveries: [
       {
-        label: 'Motive unterscheiden',
-        title: 'Glaube, Land und Macht',
-        text: 'Religiöse Ziele verbanden sich mit politischen Interessen, Beutehoffnungen und persönlichem Ehrgeiz. Die Teilnehmer handelten nicht aus einem einzigen Grund.',
+        label: 'Ausgangspunkt',
+        title: 'Der Aufruf in Clermont',
+        text: '1095 ruft Papst Urban II. in Clermont zum bewaffneten Zug nach Jerusalem auf. Religiöse Ziele verbinden sich dabei mit politischen Interessen, Beutehoffnungen und persönlichem Ehrgeiz.',
       },
       {
         label: 'Folgen sehen',
-        title: 'Gewalt gegen viele Gruppen',
-        text: 'Kreuzzugsheere töteten nicht nur Muslime. Auch jüdische Gemeinden und Christen anderer Traditionen wurden Opfer von Gewalt.',
+        title: 'Jerusalem wechselt die Herrschaft',
+        text: '1099 erobern Kreuzfahrer Jerusalem und richten ein Blutbad an. In den Kreuzzügen werden Muslime, Juden und auch Christen anderer Traditionen Opfer von Gewalt. 1187 gewinnt Saladin die Stadt zurück.',
       },
     ],
     quiz: [
