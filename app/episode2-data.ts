@@ -2,6 +2,10 @@ import type { HistoriaScene } from './data';
 
 const episode2Asset = '/assets/historia/episode2';
 
+const episode2AudioScenes = new Set([
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+]);
+
 const secondaryMedia: Record<
   number,
   Pick<
@@ -978,6 +982,9 @@ export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
       ...videoMedia[scene.id],
       mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
       mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg${mapRevision}`,
+      audio: episode2AudioScenes.has(scene.id)
+        ? `${episode2Asset}/audio/scene${String(scene.id).padStart(2, '0')}.m4a`
+        : undefined,
     };
   },
 );
