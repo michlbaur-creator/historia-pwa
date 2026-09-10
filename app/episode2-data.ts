@@ -882,14 +882,14 @@ const episode2Scenes: HistoriaScene[] = [
       'Washington mit Offizieren und zivilen Vertretern über einer Karte; Soldaten im Hintergrund, französische Unterstützung durch Schiffe angedeutet.',
     discoveries: [
       {
-        label: 'Ursache verstehen',
-        title: 'Steuern ohne Vertretung',
-        text: 'Viele Kolonisten bestritten das Recht des Londoner Parlaments, sie zu besteuern, solange sie dort keine gewählten Abgeordneten hatten.',
+        label: 'Unabhängigkeit erklären',
+        title: 'Philadelphia 1776',
+        text: 'In Philadelphia erklärt der Kongress 1776 die Unabhängigkeit. Die Erklärung formuliert allgemeine Rechte – Sklaverei und politische Ausschlüsse bleiben jedoch bestehen.',
       },
       {
-        label: 'Widerspruch sehen',
-        title: 'Freiheit mit Ausschlüssen',
-        text: 'Die Unabhängigkeitserklärung formulierte allgemeine Rechte. Sklaverei blieb jedoch bestehen, und politische Beteiligung war stark begrenzt.',
+        label: 'Entscheidung im Krieg',
+        title: 'Yorktown 1781',
+        text: 'Bei Yorktown zwingen amerikanische und französische Truppen die britische Armee zur Kapitulation. Eine französische Flotte verhindert Hilfe über das Meer.',
       },
     ],
     quiz: [
@@ -940,13 +940,13 @@ const episode2Scenes: HistoriaScene[] = [
     discoveries: [
       {
         label: 'Revolution ordnen',
-        title: 'Rechte und Terror',
+        title: 'Paris 1789',
         text: 'Die Revolution formulierte neue Rechte und beseitigte Privilegien. Zugleich radikalisierte sie sich, führte Krieg und ließ politische Gegner hinrichten.',
       },
       {
         label: 'Napoleon bewerten',
-        title: 'Reformen durch Eroberung',
-        text: 'Napoleon verbreitete Rechts- und Verwaltungsreformen, errichtete aber zugleich eine persönliche Herrschaft und führte verlustreiche Eroberungskriege.',
+        title: 'Waterloo 1815',
+        text: 'Bei Waterloo endet Napoleons Rückkehr an die Macht. Er verbreitete Rechts- und Verwaltungsreformen, errichtete aber zugleich eine persönliche Herrschaft und führte verlustreiche Eroberungskriege.',
       },
     ],
     quiz: [
