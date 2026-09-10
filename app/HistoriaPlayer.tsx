@@ -49,7 +49,7 @@ function formatTime(value: number) {
 
 type HistoriaPlayerProps = {
   scenes?: HistoriaScene[];
-  episodeNumber?: 1 | 2;
+  episodeNumber?: 1 | 2 | 3;
   episodeTitle?: string;
   timelineLabels?: [string, string, string, string, string];
 };
@@ -104,8 +104,7 @@ export default function HistoriaPlayer({
   const activeQuiz = scene.quiz[quizQuestion];
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(
-    () =>
-      ((sceneIndex + elapsed / activeDuration) / scenes.length) * 100,
+    () => ((sceneIndex + elapsed / activeDuration) / scenes.length) * 100,
     [activeDuration, elapsed, sceneIndex, scenes.length],
   );
 
@@ -406,7 +405,9 @@ export default function HistoriaPlayer({
             <div
               className={`${styles.mediaDraft} ${showMap ? styles.mapDraft : styles.imageDraft}`}
             >
-              <small>{showMap ? `Karte · ${scene.date}` : 'Hauptbild · Bildkonzept'}</small>
+              <small>
+                {showMap ? `Karte · ${scene.date}` : 'Hauptbild · Bildkonzept'}
+              </small>
               <strong>{showMap ? scene.place : scene.people}</strong>
               <p>{showMap ? scene.mapConcept : scene.imageConcept}</p>
               {showMap && scene.mapDetails && (
@@ -480,20 +481,35 @@ export default function HistoriaPlayer({
 
       <nav className={styles.episodeNav} aria-label="Episoden">
         {episodeNumber === 1 ? (
-          <button className={styles.episodeActive} onClick={() => selectScene(0)}>
+          <button
+            className={styles.episodeActive}
+            onClick={() => selectScene(0)}
+          >
             Episode 1
           </button>
         ) : (
           <a href="/">Episode 1</a>
         )}
         {episodeNumber === 2 ? (
-          <button className={styles.episodeActive} onClick={() => selectScene(0)}>
+          <button
+            className={styles.episodeActive}
+            onClick={() => selectScene(0)}
+          >
             Episode 2
           </button>
         ) : (
           <a href="/episode-2">Episode 2</a>
         )}
-        <button disabled>Episode 3</button>
+        {episodeNumber === 3 ? (
+          <button
+            className={styles.episodeActive}
+            onClick={() => selectScene(0)}
+          >
+            Episode 3
+          </button>
+        ) : (
+          <a href="/episode-3">Episode 3</a>
+        )}
       </nav>
 
       <section className={styles.contentCard}>
@@ -547,7 +563,9 @@ export default function HistoriaPlayer({
                 <i aria-hidden="true">
                   {scene.quiz.map((_, index) => (
                     <b
-                      className={index === quizQuestion ? styles.quizDotActive : ''}
+                      className={
+                        index === quizQuestion ? styles.quizDotActive : ''
+                      }
                       key={index}
                     />
                   ))}
@@ -577,7 +595,9 @@ export default function HistoriaPlayer({
                 <output
                   className={`${styles.quizFeedback} ${quizIsCorrect ? styles.quizFeedbackCorrect : styles.quizFeedbackWrong}`}
                 >
-                  <strong>{quizIsCorrect ? 'Richtig.' : 'Noch nicht ganz.'}</strong>
+                  <strong>
+                    {quizIsCorrect ? 'Richtig.' : 'Noch nicht ganz.'}
+                  </strong>
                   <span>
                     {quizIsCorrect
                       ? activeQuiz.explanation

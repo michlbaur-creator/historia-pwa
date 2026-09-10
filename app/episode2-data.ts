@@ -85,7 +85,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Aus einer Glaubensgemeinschaft wird ein Großreich.',
     duration: 31,
     narration:
-      '622 zieht Mohammed von Mekka nach Medina. Diese Hidschra beginnt die islamische Zeitrechnung. In Medina entsteht eine neue religiöse und politische Gemeinschaft. Nach Mohammeds Tod 632 einigen Kalifen große Teile Arabiens und erobern Syrien, Ägypten, Persien, Nordafrika und Spanien. Auf der Karte wächst das Reich erstaunlich schnell – regieren lässt sich so viel Gebiet allerdings nicht mit einem einzigen Kamelritt.',
+      'Wir schreiben das Jahr 622. Mohammed zieht von Mekka nach Medina. Diese Reise heißt Hidschra und mit ihr beginnt die islamische Zeitrechnung. In Medina entsteht eine neue religiöse und politische Gemeinschaft. Nach Mohammeds Tod einigen die ersten Kalifen große Teile Arabiens und erobern Syrien, Ägypten, Persien, Nordafrika und Spanien. Auf unserer Karte wächst das Reich erstaunlich schnell – verwalten lässt sich so viel Land allerdings nicht mit einem einzigen Kamelritt.',
     mapConcept:
       'Exakte physische Karte von der Iberischen Halbinsel bis zum Indus nach dem Prinzip der freigegebenen Karten. Punkt 1 zeigt Medina und die Hidschra 622, Punkt 2 Damaskus als Machtzentrum der Umayyaden. Die Ausbreitungsrichtungen sind als zeitlich getrennte, bewusst vereinfachte Pfeile dargestellt; keine scharf behaupteten Grenzen.',
     mapDetails: [
@@ -144,7 +144,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Der Frankenkönig erhält eine neue, alte Würde.',
     duration: 29,
     narration:
-      'Am Weihnachtstag des Jahres 800 krönt Papst Leo der Dritte den Frankenkönig Karl in Rom zum Kaiser. Karl herrscht bereits über große Teile West- und Mitteleuropas. Grafen, Bischöfe und königliche Boten halten das Reich zusammen; Klöster und Hofschulen fördern Bildung und Schrift. Nach Karls Tod wird sein Reich geteilt. Die Kaiseridee bleibt jedoch – politische Wiederverwertung kann sehr langlebig sein.',
+      'Wir schreiben das Jahr 800. Es ist Weihnachten und wir sind in Rom. Papst Leo der Dritte setzt dem Frankenkönig Karl die Kaiserkrone auf. Karl beherrscht da längst große Teile West- und Mitteleuropas. Grafen, Bischöfe und königliche Boten sollen dieses riesige Reich zusammenhalten, Klöster und Hofschulen fördern Bildung und Schrift. Nach Karls Tod wird das Reich geteilt. Die Kaiseridee aber bleibt – gute Titel verschwinden offenbar nicht so schnell.',
     mapConcept:
       'Exakte physische Europakarte nach dem Prinzip von Szene 4. Die ungefähre Ausdehnung von Karls Reich ist weich markiert; Punkt 1 zeigt Aachen als politischen Mittelpunkt, Punkt 2 Rom und die Kaiserkrönung 800. Keine Reiseroute.',
     mapDetails: [
@@ -197,7 +197,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Nordische Schiffe verbinden erstaunlich ferne Küsten.',
     duration: 31,
     narration:
-      '793 überfallen nordische Seefahrer das Kloster Lindisfarne. Es folgen weitere Angriffe – aber die Wikinger rauben nicht nur. Sie handeln, siedeln und gründen Herrschaften. Ihre Schiffe erreichen Island, Grönland und Nordamerika; über russische Flüsse gelangen Händler bis Byzanz. Im 11. Jahrhundert regiert Knut der Große zeitweise England, Dänemark und Norwegen. Aus gefürchteten Fremden werden vielerorts Nachbarn mit ziemlich langen Reisewegen.',
+      'Wir schreiben das Jahr 793. Nordische Seefahrer überfallen das Kloster Lindisfarne – für viele beginnt damit die Wikingerzeit. Doch die Wikinger sind nicht nur Plünderer. Sie handeln, siedeln und gründen eigene Herrschaften. Ihre Schiffe erreichen Island, Grönland und sogar Nordamerika; über osteuropäische Flüsse kommen Händler bis nach Byzanz. Im 11. Jahrhundert regiert Knut der Große zeitweise England, Dänemark und Norwegen. Aus gefürchteten Fremden werden vielerorts Nachbarn mit erstaunlich langen Reisewegen.',
     mapConcept:
       'Exakte physische Karte des Nordatlantiks und Europas nach dem Prinzip der freigegebenen Karten. Punkt 1 zeigt Lindisfarne und den Überfall 793, Punkt 2 die nordische Siedlung L’Anse aux Meadows um 1000. Zeitlich beschriftete Wege führen von Skandinavien westwärts über Island und Grönland bis Nordamerika sowie ostwärts über die Flüsse Osteuropas bis Byzanz.',
     mapDetails: [
@@ -256,7 +256,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Aus königlicher Macht wird eine dauerhafte Reichsidee.',
     duration: 28,
     narration:
-      '955 besiegt König Otto der Erste ungarische Reiter auf dem Lechfeld. Der Sieg stärkt seine Stellung im Ostfrankenreich. Sieben Jahre später krönt ihn Papst Johannes der Zwölf in Rom zum Kaiser. Otto stützt sich auf Herzöge und besonders auf Bischöfe, die zugleich wichtige Reichsaufgaben übernehmen. Aus diesem Herrschaftsverband entwickelt sich später das Heilige Römische Reich – mit vielen Fürsten und entsprechend vielen Meinungen.',
+      'Wir schreiben das Jahr 955. König Otto der Erste besiegt ungarische Reiter auf dem Lechfeld und stärkt damit seine Stellung im Ostfrankenreich. Sieben Jahre später reist er nach Rom, wo ihn Papst Johannes der Zwölf zum Kaiser krönt. Otto stützt sich auf Herzöge und besonders auf Bischöfe, die wichtige Reichsaufgaben übernehmen. Aus seinem Herrschaftsverband entwickelt sich später das Heilige Römische Reich – mit vielen Fürsten und natürlich ebenso vielen Meinungen.',
     mapConcept:
       'Exakte physische Europakarte im Stil von Episode 1. Die ungefähre Ausdehnung von Ottos Reich ist weich markiert; Punkt 1 zeigt das Lechfeld 955, Punkt 2 Rom und die Kaiserkrönung 962. Keine Reiseroute.',
     mapDetails: [
@@ -315,7 +315,7 @@ const episode2Scenes: HistoriaScene[] = [
       'Religiöse Versprechen und Machtpolitik treiben lange Kriege an.',
     duration: 32,
     narration:
-      '1095 ruft Papst Urban der Zweite zum Kreuzzug nach Jerusalem auf. Im folgenden Jahr ziehen Heere Richtung Osten; 1099 erobern Kreuzfahrer die Stadt und richten ein Blutbad an. Sie gründen mehrere Herrschaften. 1187 gewinnt Sultan Saladin Jerusalem zurück. Richard Löwenherz führt daraufhin den Dritten Kreuzzug, ohne die Stadt zu erobern. 1291 fällt der letzte große Kreuzfahrerstützpunkt. Zwei Jahrhunderte Krieg – eindeutig keine kurze Pilgerfahrt.',
+      'Jetzt kommen wir zu einem sehr düsteren Kapitel. 1095 ruft Papst Urban der Zweite zum Kreuzzug nach Jerusalem auf. 1099 erobern Kreuzfahrer die Stadt, richten ein Blutbad an und gründen eigene Herrschaften. Später gewinnt Sultan Saladin Jerusalem zurück. Richard Löwenherz zieht daraufhin ebenfalls in den Krieg, kann die Stadt aber nicht erobern. Erst 1291 fällt der letzte große Kreuzfahrerstützpunkt. Fast zwei Jahrhunderte Gewalt – und Leid auf allen Seiten.',
     mapConcept:
       'Exakte physische Karte Europas und des östlichen Mittelmeerraums nach dem Prinzip von Szene 4. Punkt 1 zeigt Clermont und den Aufruf 1095, Punkt 2 Jerusalem und die Eroberung 1099. Geprüfte Hauptrouten des Ersten Kreuzzugs führen getrennt über Ungarn und Italien, treffen am Bosporus zusammen und verlaufen durch Anatolien und Syrien nach Jerusalem.',
     mapDetails: [
@@ -367,7 +367,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Strenge Organisation trägt Eroberungen über Eurasien.',
     duration: 30,
     narration:
-      '1206 wird Temüdschin zum Dschingis Khan ausgerufen. Er einigt mongolische Gruppen, ordnet das Heer in feste Einheiten und setzt auf bewegliche Reiter, Kundschafter und klare Befehle. Seine Feldzüge erobern große Teile Zentralasiens und Nordchinas; Städte, die Widerstand leisten, werden oft brutal zerstört. Nach seinem Tod erweitern seine Nachfolger das Reich weiter. Die Karte wird riesig – der Preis für viele Eroberte ebenfalls.',
+      'Wir schreiben das Jahr 1206 und reisen in die Mongolei. Temüdschin wird zum Dschingis Khan ausgerufen. Er einigt mongolische Gruppen und organisiert ein außergewöhnlich bewegliches Reiterheer mit Kundschaftern und klaren Befehlen. Seine Feldzüge erobern große Teile Zentralasiens und Nordchinas. Städte, die Widerstand leisten, werden oft brutal zerstört. Nach seinem Tod wächst das Reich noch weiter. Die Karte wird riesig – der Preis für die Eroberten leider ebenfalls.',
     mapConcept:
       'Natürliche Eurasienkarte nach dem freigegebenen Muster der vorangegangenen Szenen. Die ungefähre Ausdehnung von Dschingis Khans Reich um 1227 ist weich markiert; Punkt 1 zeigt den Kuriltai am Onon 1206, Punkt 2 Zhongdu und die Einnahme 1215. Zwei zurückhaltende Feldzugspfeile führen nach Nordchina und Zentralasien.',
     mapDetails: [
@@ -421,7 +421,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Handelswege verbinden Kontinente – auch für Erreger.',
     duration: 31,
     narration:
-      'Ab 1347 erreicht die Pest über Handelswege europäische Häfen. Das Bakterium Yersinia pestis verbreitet sich schnell; Flöhe, Nagetiere und wahrscheinlich weitere Übertragungswege spielen eine Rolle. In wenigen Jahren stirbt ein großer Teil der Bevölkerung Europas, auch Nordafrika und Asien sind schwer betroffen. Arbeit wird knapp, Löhne und soziale Beziehungen verändern sich. Die eng vernetzte Welt zeigt ihre Schattenseite – ohne auch nur einen Flugplan zu besitzen.',
+      'Wir schreiben das Jahr 1347. Über Handelswege erreicht die Pest europäische Häfen und breitet sich erschreckend schnell aus. Beim Bakterium Yersinia pestis spielen Flöhe, Nagetiere und wahrscheinlich weitere Übertragungswege eine Rolle. In wenigen Jahren stirbt ein großer Teil der europäischen Bevölkerung; auch Nordafrika und Asien sind schwer betroffen. Danach fehlen überall Arbeitskräfte, Löhne und soziale Beziehungen verändern sich. Die gut vernetzte Welt zeigt plötzlich ihre gefährliche Seite.',
     mapConcept:
       'Natürliche Karte von Europa und dem Mittelmeerraum nach dem freigegebenen Muster. Punkt 1 zeigt Kaffa am Schwarzen Meer 1346, Punkt 2 Messina 1347. Farbige Pfeile verfolgen die Ausbreitung entlang der See- und Handelswege, ohne eine scheinpräzise Fläche zu behaupten.',
     mapDetails: [
@@ -475,7 +475,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Jeanne d’Arc wird zur Symbolfigur Frankreichs.',
     duration: 31,
     narration:
-      'Seit 1337 kämpfen englische und französische Könige um Thronansprüche und Gebiete in Frankreich – mit langen Pausen, weshalb „Hundertjähriger Krieg“ fast schon ordentlich klingt. 1429 hilft Jeanne d’Arc, die Belagerung von Orléans zu brechen und Karl den Siebten krönen zu lassen. Sie wird gefangen genommen und 1431 hingerichtet. Frankreich gewinnt später fast alle umkämpften Gebiete zurück; Jeanne wird zur nationalen Symbolfigur.',
+      'Jetzt springen wir ins Jahr 1429. England und Frankreich kämpfen schon seit Jahrzehnten um den französischen Thron und um Land. Da tritt Jeanne d’Arc auf. Sie hilft, die Belagerung von Orléans zu beenden, und begleitet Karl den Siebten zu seiner Krönung. Kurz darauf wird sie gefangen genommen und 1431 hingerichtet. Frankreich gewinnt später fast alle umkämpften Gebiete zurück – Jeanne wird zur nationalen Symbolfigur.',
     mapConcept:
       'Natürliche Frankreichkarte nach dem freigegebenen Muster. Punkt 1 zeigt Orléans und das Ende der Belagerung 1429, Punkt 2 Reims und die Krönung Karls VII. im selben Jahr. Farbige Wege verbinden Chinon, Orléans und Reims; die spätere Gefangennahme und der Weg nach Rouen bleiben als gestrichelte Fortsetzung sichtbar.',
     mapDetails: [
@@ -529,7 +529,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Kanonen und Blockade brechen die Mauern Konstantinopels.',
     duration: 29,
     narration:
-      '1453 belagert der erst 21-jährige Sultan Mehmed der Zweite Konstantinopel. Große Kanonen beschießen die berühmten Mauern, osmanische Schiffe werden sogar über Land ins Goldene Horn gezogen. Nach fast zwei Monaten fällt die Stadt. Der letzte byzantinische Kaiser stirbt im Kampf. Mehmed macht Konstantinopel zur osmanischen Hauptstadt. Das Byzantinische Reich endet – die Stadt am Bosporus bleibt ein politischer und wirtschaftlicher Schlüsselort.',
+      'Wir schreiben das Jahr 1453 und stehen vor Konstantinopel. Der erst 21-jährige Sultan Mehmed der Zweite belagert die Stadt. Große Kanonen beschießen ihre berühmten Mauern, osmanische Schiffe werden sogar über Land ins Goldene Horn gezogen. Nach fast zwei Monaten fällt Konstantinopel, der letzte byzantinische Kaiser stirbt im Kampf. Das Byzantinische Reich endet und Mehmed macht die Stadt zur osmanischen Hauptstadt. Ihre Lage am Bosporus bleibt dabei so wertvoll wie eh und je.',
     mapConcept:
       'Natürliche Karte des Bosporusraums nach dem freigegebenen Muster. Punkt 1 zeigt Edirne als Ausgangspunkt der osmanischen Belagerung, Punkt 2 Konstantinopel als Ziel und späteres Machtzentrum. Der Heeresweg und der über Land geführte Schiffsweg zum Goldenen Horn werden farblich getrennt.',
     mapDetails: [
@@ -583,7 +583,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Spanische Expeditionen treffen auf große Reiche Amerikas.',
     duration: 32,
     narration:
-      '1492 erreicht Kolumbus im Auftrag Spaniens Inseln der Karibik und glaubt, einen Weg nach Asien gefunden zu haben. Für die dort lebenden Menschen beginnt eine Katastrophe: Eroberung, Zwangsarbeit und eingeschleppte Krankheiten zerstören Gemeinschaften. Cortés besiegt mit indigenen Verbündeten das Aztekenreich, Pizarro nutzt eine Krise im Inkareich. Europa entdeckt also keine leere Welt – es dringt gewaltsam in längst bewohnte Welten ein.',
+      'Wir schreiben das Jahr 1492. Kolumbus erreicht im Auftrag Spaniens Inseln der Karibik und glaubt tatsächlich, einen Weg nach Asien gefunden zu haben. Für die Menschen, die dort längst leben, beginnt eine Katastrophe: Eroberung, Zwangsarbeit und eingeschleppte Krankheiten zerstören ganze Gemeinschaften. Später besiegt Cortés mit indigenen Verbündeten das Aztekenreich, Pizarro nutzt eine Krise im Inkareich. Europa entdeckt keine leere Welt – es dringt gewaltsam in bewohnte Welten ein.',
     mapConcept:
       'Natürliche Atlantik- und Amerikakarte nach dem freigegebenen Muster. Punkt 1 zeigt Tenochtitlan und seine Eroberung 1521, Punkt 2 Cajamarca und die Gefangennahme Atahualpas 1532. Kolumbus’ Route in die Karibik und die beiden späteren Eroberungswege bleiben farblich getrennt.',
     mapDetails: [
@@ -637,7 +637,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Druckerpresse und Politik beschleunigen die Reformation.',
     duration: 30,
     narration:
-      '1517 kritisiert Martin Luther den Ablasshandel. Seine Thesen verbreiten sich dank des Buchdrucks schnell. Luther stellt die Autorität des Papstes infrage und übersetzt die Bibel ins Deutsche. Einige Fürsten schützen ihn – aus Überzeugung, aber auch aus politischem Interesse. Weitere Reformbewegungen entstehen, die katholische Kirche reagiert mit eigenen Reformen. Europa wird konfessionell gespalten. Aus einer theologischen Debatte ist ein Machtkampf mit sehr großer Auflage geworden.',
+      'Wir schreiben das Jahr 1517. Martin Luther kritisiert den Ablasshandel – und dank des Buchdrucks verbreiten sich seine Gedanken rasend schnell. Luther stellt die Autorität des Papstes infrage und übersetzt die Bibel ins Deutsche. Einige Fürsten schützen ihn, teils aus Überzeugung, teils aus eigenem Interesse. Weitere Reformbewegungen entstehen, die katholische Kirche reagiert mit eigenen Reformen und Europa spaltet sich in verschiedene Konfessionen. Aus einem Glaubensstreit wird ein politischer Machtkampf mit enormer Auflage.',
     mapConcept:
       'Natürliche Mitteleuropakarte nach dem freigegebenen Muster. Punkt 1 zeigt Wittenberg als Ausgangspunkt der öffentlichen Auseinandersetzung 1517, Punkt 2 Worms und den Reichstag 1521. Die Reise nach Worms und der anschließende Weg zur Wartburg werden farblich getrennt.',
     mapDetails: [
@@ -692,7 +692,7 @@ const episode2Scenes: HistoriaScene[] = [
       'Aus einem Konflikt im Reich wird ein europäischer Machtkampf.',
     duration: 31,
     narration:
-      '1618 werfen protestantische Adelige in Prag kaiserliche Statthalter aus einem Fenster. Der berühmte Fenstersturz löst nicht allein den Krieg aus, wird aber sein Startsignal. Aus Religions- und Verfassungskonflikten im Reich entsteht ein europäischer Machtkampf. Heere ziehen jahrzehntelang durch Mitteleuropa, plündern Dörfer und verbreiten Hunger und Seuchen. 1648 beendet der Westfälische Friede den Krieg und ordnet das Verhältnis von Kaiser, Reichsständen und Nachbarn neu.',
+      'Wir schreiben das Jahr 1618 und sind in Prag. Protestantische Adelige werfen zwei kaiserliche Statthalter aus einem Fenster. Dieser Fenstersturz ist nicht der einzige Grund für den Krieg, aber sein berühmtes Startsignal. Aus Streit um Religion, Reichsordnung und Macht wird ein europäischer Großkonflikt. Jahrzehntelang ziehen Heere durch Mitteleuropa, plündern Dörfer und verbreiten Hunger und Seuchen. Erst 1648 beendet der Westfälische Friede den Krieg und ordnet die Machtverhältnisse neu.',
     mapConcept:
       'Natürliche Mitteleuropakarte nach dem freigegebenen Muster. Punkt 1 zeigt Prag und den Fenstersturz 1618, Punkt 2 die Friedensorte Münster und Osnabrück 1648. Eine rote Linie führt durch wichtige Kriegsräume, eine gestrichelte grüne Fortsetzung zu den Verhandlungsorten.',
     mapDetails: [
@@ -751,7 +751,7 @@ const episode2Scenes: HistoriaScene[] = [
       'Versailles wird Bühne, Regierungssitz und Kontrollinstrument.',
     duration: 29,
     narration:
-      'Ludwig der Vierzehnte regiert Frankreich mehr als siebzig Jahre. Er lässt Versailles zum gewaltigen Hof ausbauen und bindet viele Adelige an seine Nähe. Minister und Beamte stärken die königliche Verwaltung, während Ludwigs Kriege Frankreichs Grenzen und Einfluss erweitern sollen. Die prachtvolle Selbstdarstellung trägt ihm den Namen Sonnenkönig ein. Doch Hof und Kriege kosten enorme Summen – selbst sehr heller Glanz wirft einen ziemlich langen Schatten.',
+      'Jetzt besuchen wir Ludwig den Vierzehnten. Er regiert Frankreich mehr als siebzig Jahre und lässt Versailles zu einem riesigen Hof ausbauen. Dort versammelt er viele Adelige um sich und macht sie von seiner Gunst abhängig. Minister und Beamte stärken die königliche Verwaltung, während Ludwigs Kriege Frankreichs Grenzen und Einfluss erweitern sollen. Seine prachtvolle Selbstdarstellung bringt ihm den Namen Sonnenkönig ein. Doch Hof und Kriege verschlingen enorme Summen – auch der hellste Glanz wirft einen langen Schatten.',
     mapConcept:
       'Präzise Europakarte nach dem freigegebenen Muster. Punkt 1 zeigt Versailles als Hof- und Regierungszentrum, Punkt 2 Straßburg als Beispiel für Ludwigs territoriale Expansion. Frankreich wird nur weich und ungefähr hervorgehoben.',
     mapDetails: [
@@ -809,7 +809,7 @@ const episode2Scenes: HistoriaScene[] = [
     imageSubtitle: 'Neue Methoden verändern Naturbild und Politik.',
     duration: 31,
     narration:
-      'Im 17. Jahrhundert richten Galilei und andere Forscher neue Instrumente auf Himmel und Natur. Newton beschreibt Bewegung und Schwerkraft mit mathematischen Regeln. Experimente, Messungen und gelehrte Netzwerke verändern, wie Wissen begründet wird. Im 18. Jahrhundert fragen Aufklärer auch politisch nach Vernunft, Rechten und Gewaltenteilung. Überlieferte Autoritäten müssen nun häufiger Belege liefern – ein für Autoritäten ausgesprochen lästiger Trend mit großer Zukunft.',
+      'Wir sind im 17. Jahrhundert. Galilei und andere Forscher richten neue Instrumente auf Himmel und Natur. Newton beschreibt Bewegung und Schwerkraft mit mathematischen Regeln. Plötzlich zählen Experimente, Messungen und überprüfbare Belege immer mehr. Im 18. Jahrhundert übertragen Aufklärer diese Denkweise auf Politik und Gesellschaft. Sie fragen nach Vernunft, Rechten und Gewaltenteilung. Herrscher und andere Autoritäten sollen ihre Ansprüche nun begründen – für manche eine ziemlich unbequeme neue Idee.',
     mapConcept:
       'Präzise Europakarte nach dem freigegebenen Muster. Punkt 1 zeigt London und Newtons Principia von 1687, Punkt 2 Paris als Zentrum der politischen Aufklärung. Eine gestrichelte Linie steht für Brief-, Druck- und Publikationswege.',
     mapDetails: [
@@ -868,7 +868,7 @@ const episode2Scenes: HistoriaScene[] = [
       'Unabhängigkeit und republikanische Ordnung entstehen im Krieg.',
     duration: 31,
     narration:
-      '1775 beginnt der Krieg zwischen Großbritannien und dreizehn nordamerikanischen Kolonien. Viele Kolonisten lehnen Steuern ohne politische Vertretung in London ab. 1776 erklärt der Kongress die Unabhängigkeit; George Washington führt die Armee. Französische Hilfe trägt entscheidend zum Sieg bei, 1783 erkennt Großbritannien die Vereinigten Staaten an. Freiheit wird zum großen Versprechen – für versklavte Menschen, Frauen und indigene Nationen wird es zunächst allerdings nur sehr begrenzt eingelöst.',
+      'Wir schreiben das Jahr 1775. Dreizehn nordamerikanische Kolonien beginnen ihren Krieg gegen Großbritannien. Viele Kolonisten wollen keine Steuern zahlen, solange sie im Londoner Parlament nicht vertreten sind. 1776 erklären sie ihre Unabhängigkeit, George Washington führt ihre Armee. Mit entscheidender französischer Hilfe gewinnen sie den Krieg; 1783 erkennt Großbritannien die Vereinigten Staaten an. Freiheit wird zum großen Versprechen – für versklavte Menschen, Frauen und indigene Nationen gilt es zunächst allerdings nur sehr eingeschränkt.',
     mapConcept:
       'Die dreizehn Kolonien an der Atlantikküste; Boston, Philadelphia und Yorktown. Französische Hilfe kommt als Seeroute, Feldzüge nur mit wenigen Pfeilen.',
     mapDetails: [
@@ -925,7 +925,7 @@ const episode2Scenes: HistoriaScene[] = [
       'Revolutionäre Ideen und napoleonische Kriege verändern Europa.',
     duration: 34,
     narration:
-      '1789 stürzt die Französische Revolution die alte Ordnung. Die Nationalversammlung erklärt Menschen- und Bürgerrechte, 1792 wird die Monarchie abgeschafft. Es folgen Krieg, Terror und Machtkämpfe. 1799 übernimmt Napoleon Bonaparte die Regierung, krönt sich später zum Kaiser und beherrscht zeitweise große Teile Europas. Seine Feldzüge verbreiten Reformen, kosten aber unzählige Leben. 1815 wird Napoleon bei Waterloo endgültig besiegt. Die Herrscher kehren zurück – viele Ideen der Revolution bleiben.',
+      'Wir schreiben das Jahr 1789. In Frankreich gerät die alte Ordnung ins Wanken. Die Revolution erklärt Menschen- und Bürgerrechte, schafft später die Monarchie ab und mündet zugleich in Krieg, Terror und Machtkämpfe. 1799 übernimmt Napoleon Bonaparte die Regierung. Er krönt sich zum Kaiser und beherrscht zeitweise große Teile Europas. Seine Feldzüge verbreiten Reformen, kosten aber unzählige Leben. 1815 wird Napoleon bei Waterloo besiegt. Die Herrscher kehren zurück – viele Ideen der Revolution bleiben trotzdem.',
     mapConcept:
       'Frankreich 1789 und Napoleons wichtigste Feldzüge bis 1815. Europa bleibt als Grundkarte stabil; Ausdehnung zeitbezogen weich, Russland- und Waterloo-Route mit Pfeilen.',
     mapDetails: [

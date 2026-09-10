@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Historia – klassische Weltgeschichte',
     description:
-      'Von Narmer bis Napoleon – kompakte Schlüsselszenen der Weltgeschichte.',
+      'Von Narmer bis zur Gegenwart – kompakte Schlüsselszenen der Weltgeschichte.',
     type: 'website',
     locale: 'de_DE',
     images: ['/og.png'],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Historia – klassische Weltgeschichte',
     description:
-      'Von Narmer bis Napoleon – kompakte Schlüsselszenen der Weltgeschichte.',
+      'Von Narmer bis zur Gegenwart – kompakte Schlüsselszenen der Weltgeschichte.',
     images: ['/og.png'],
   },
 };
