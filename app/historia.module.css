@@ -916,6 +916,9 @@
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
+  .mobileTallImageStage {
+    aspect-ratio: 3 / 2;
+  }
   .imageCaption strong {
     font-size: 1rem;
   }

@@ -341,7 +341,7 @@ export default function HistoriaPlayer({
 
       <section className={styles.player}>
         <div
-          className={styles.imageStage}
+          className={`${styles.imageStage} ${!showMap && episodeNumber === 3 && scene.id <= 3 ? styles.mobileTallImageStage : ''}`}
           onPointerDown={startSwipe}
           onPointerUp={finishSwipe}
           onPointerCancel={() => {

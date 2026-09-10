@@ -1,5 +1,7 @@
 import type { HistoriaScene } from './data';
 
+const episode3Asset = '/assets/historia/episode3';
+
 const episode3Scenes: HistoriaScene[] = [
   {
     id: 1,
@@ -13,6 +15,7 @@ const episode3Scenes: HistoriaScene[] = [
     duration: 32,
     narration:
       'Wir schreiben das späte 18. Jahrhundert und landen in Großbritannien. Hier bringen verbesserte Dampfmaschinen, etwa die von James Watt, Pumpen und Fabriken ordentlich auf Touren. Textilien entstehen in Massen, Eisenbahnen befördern Menschen und Waren immer schneller. Städte wachsen, die Produktion boomt. Für viele Arbeiter bedeutet das allerdings lange Tage und wenig Lohn. Die Maschine macht Tempo – den Feierabend erfindet sie leider nicht gleich mit.',
+    mapImage: `${episode3Asset}/maps/scene01.svg?v=20260910a`,
     mapConcept:
       'Natürliche Karte Großbritanniens und Westeuropas. Punkt 1 zeigt Manchester als frühes Fabrikzentrum, Punkt 2 die Strecke Stockton–Darlington von 1825. Wenige Linien verdeutlichen die Ausbreitung von Industrie und Eisenbahn auf den Kontinent.',
     mapDetails: [
@@ -68,8 +71,9 @@ const episode3Scenes: HistoriaScene[] = [
     duration: 31,
     narration:
       'Wir schreiben das Jahr 1848 – und in Europa liegt Aufruhr in der Luft. In Paris, Wien, Berlin und vielen weiteren Städten gehen Menschen auf die Straße. Sie fordern Verfassungen, Pressefreiheit und politische Mitbestimmung. In der Frankfurter Paulskirche berät erstmals ein gesamtdeutsches Parlament. Fürsten und Militär schlagen die Revolutionen zwar nieder. Ihre Ideen bleiben trotzdem unterwegs – Gedanken lassen sich eben deutlich schlechter verhaften als Menschen.',
+    mapImage: `${episode3Asset}/maps/scene02.svg?v=20260910a`,
     mapConcept:
-      'Natürliche Europakarte mit Punkt 1 Paris für den Revolutionsbeginn im Februar 1848 und Punkt 2 Frankfurt für die Nationalversammlung. Weitere Revolutionsorte erscheinen nur als kleine Punkte, nicht als zusätzliche Nummern.',
+      'Natürliche Europakarte mit Punkt 1 Paris für den Revolutionsbeginn im Februar 1848 und Punkt 2 Frankfurt für die Nationalversammlung. Wenige ruhige Pfeile deuten die Ausbreitung an; zusätzliche kleinteilige Ortsbeschriftungen entfallen.',
     mapDetails: [
       '1 · Paris · Februarrevolution 1848',
       '2 · Frankfurt · Nationalversammlung',
@@ -127,6 +131,7 @@ const episode3Scenes: HistoriaScene[] = [
     duration: 33,
     narration:
       'Jetzt springen wir ins Jahr 1861. Elf Südstaaten verlassen die Vereinigten Staaten, weil sie ihre Ordnung und damit die Versklavung von Millionen Menschen bewahren wollen. Präsident Abraham Lincoln kämpft für den Erhalt der Union und macht die Abschaffung der Sklaverei zum Kriegsziel. 1865 kapituliert der Süden, kurz darauf wird Lincoln ermordet. Die ehemaligen Sklaven sind nun frei – wirklich gleichberechtigt sind sie leider noch lange nicht.',
+    mapImage: `${episode3Asset}/maps/scene03.svg?v=20260910a`,
     mapConcept:
       'Natürliche Karte der Vereinigten Staaten mit den ungefähren Flächen von Union und Konföderation. Punkt 1 zeigt Fort Sumter und den Kriegsbeginn 1861, Punkt 2 Appomattox und die Kapitulation 1865.',
     mapDetails: [
