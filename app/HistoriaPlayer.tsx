@@ -84,7 +84,7 @@ export default function HistoriaPlayer({
 
   const image = showMap ? scene.mapImage : scene.mainImage;
   const renderedImage =
-    showMap && image?.endsWith('.svg') && mapAnimationRun > 0
+    showMap && image?.includes('.svg') && mapAnimationRun > 0
       ? `${image}#play`
       : image;
   const activeDuration = audioDuration || scene.duration;

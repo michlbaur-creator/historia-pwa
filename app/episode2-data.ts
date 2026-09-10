@@ -969,11 +969,15 @@ const episode2Scenes: HistoriaScene[] = [
 ];
 
 export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
-  (scene) => ({
-    ...scene,
-    ...secondaryMedia[scene.id],
-    ...videoMedia[scene.id],
-    mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
-    mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg`,
-  }),
+  (scene) => {
+    const mapRevision = scene.id >= 6 && scene.id <= 10 ? '?v=20260910b' : '';
+
+    return {
+      ...scene,
+      ...secondaryMedia[scene.id],
+      ...videoMedia[scene.id],
+      mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
+      mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg${mapRevision}`,
+    };
+  },
 );
