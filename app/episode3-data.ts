@@ -940,4 +940,9 @@ const episode3Scenes: HistoriaScene[] = [
   },
 ];
 
-export const historiaEpisode3Scenes = episode3Scenes;
+export const historiaEpisode3Scenes: HistoriaScene[] = episode3Scenes.map(
+  (scene) => ({
+    ...scene,
+    mainImage: `${episode3Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
+  }),
+);
