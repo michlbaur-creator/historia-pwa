@@ -944,5 +944,10 @@ export const historiaEpisode3Scenes: HistoriaScene[] = episode3Scenes.map(
   (scene) => ({
     ...scene,
     mainImage: `${episode3Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
+    ...(scene.id <= 16
+      ? {
+          mapImage: `${episode3Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg?v=20260911b`,
+        }
+      : {}),
   }),
 );
