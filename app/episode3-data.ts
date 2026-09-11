@@ -2,6 +2,28 @@ import type { HistoriaScene } from './data';
 
 const episode3Asset = '/assets/historia/episode3';
 
+const videoMedia: Record<
+  number,
+  Pick<HistoriaScene, 'video' | 'videoPlayback'>
+> = {
+  1: {
+    video: `${episode3Asset}/main/S1.mp4`,
+    videoPlayback: 'hold',
+  },
+  6: {
+    video: `${episode3Asset}/main/S6.mp4`,
+    videoPlayback: 'hold',
+  },
+  12: {
+    video: `${episode3Asset}/main/S12.mp4`,
+    videoPlayback: 'hold',
+  },
+  16: {
+    video: `${episode3Asset}/main/S16.mp4`,
+    videoPlayback: 'hold',
+  },
+};
+
 const episode3Scenes: HistoriaScene[] = [
   {
     id: 1,
@@ -943,6 +965,7 @@ const episode3Scenes: HistoriaScene[] = [
 export const historiaEpisode3Scenes: HistoriaScene[] = episode3Scenes.map(
   (scene) => ({
     ...scene,
+    ...videoMedia[scene.id],
     mainImage: `${episode3Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
     ...(scene.id <= 16
       ? {
