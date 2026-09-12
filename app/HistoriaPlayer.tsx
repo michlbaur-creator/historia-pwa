@@ -18,6 +18,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { flushSync } from 'react-dom';
 import { historiaScenes, type HistoriaScene } from './data';
 import styles from './historia.module.css';
 
@@ -161,18 +162,39 @@ export default function HistoriaPlayer({
   }, [sceneIndex]);
 
   function selectScene(index: number, autoPlay = false) {
+    const nextScene = scenes[index];
     pendingAudioStartRef.current = false;
     audioRef.current?.pause();
     videoRef.current?.pause();
     pendingAudioStartRef.current = autoPlay;
-    setSceneIndex(index);
-    setElapsed(0);
-    setAudioDuration(0);
-    setShowMap(true);
-    setPlaying(autoPlay);
-    setMapAnimationRun(autoPlay ? 1 : 0);
-    setQuizQuestion(0);
-    setQuizSelection(null);
+    flushSync(() => {
+      setSceneIndex(index);
+      setElapsed(0);
+      setAudioDuration(0);
+      setShowMap(true);
+      setPlaying(false);
+      setMapAnimationRun(autoPlay ? 1 : 0);
+      setQuizQuestion(0);
+      setQuizSelection(null);
+    });
+
+    if (!autoPlay) return;
+
+    if (!nextScene.audio) {
+      pendingAudioStartRef.current = false;
+      setPlaying(true);
+      return;
+    }
+
+    const nextAudio = audioRef.current;
+    if (!nextAudio) {
+      pendingAudioStartRef.current = false;
+    }
+
+    void nextAudio.play().catch(() => {
+      pendingAudioStartRef.current = false;
+      setPlaying(false);
+    });
   }
 
   function togglePlayback() {
