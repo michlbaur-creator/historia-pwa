@@ -82,11 +82,10 @@ export default function HistoriaPlayer({
   const swipeStartX = useRef<number | null>(null);
   const scene = scenes[sceneIndex];
 
-  const image = showMap ? scene.mapImage : scene.mainImage;
-  const renderedImage =
-    showMap && image?.includes('.svg') && mapAnimationRun > 0
-      ? `${image}#play`
-      : image;
+  const renderedMapImage =
+    scene.mapImage?.includes('.svg') && mapAnimationRun > 0
+      ? `${scene.mapImage}#play`
+      : scene.mapImage;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
@@ -140,7 +139,7 @@ export default function HistoriaPlayer({
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    if (!playing) {
+    if (!playing || showMap) {
       video.pause();
       return;
     }
@@ -348,77 +347,98 @@ export default function HistoriaPlayer({
             swipeStartX.current = null;
           }}
         >
-          {!showMap && scene.video ? (
-            <video
-              key={scene.video}
-              ref={videoRef}
-              src={scene.video}
-              poster={scene.mainImage}
-              preload="metadata"
-              playsInline
-              muted
-              loop={scene.videoPlayback !== 'hold'}
-              aria-hidden="true"
-              className={styles.sceneVideo}
-            />
-          ) : !showMap && scene.secondaryImage && scene.mainImage ? (
-            <div className={styles.imageSequence}>
+          <div
+            className={`${styles.visualLayer} ${styles.sceneVisualLayer} ${showMap ? styles.sceneVisualBehind : styles.sceneVisualActive}`}
+            aria-hidden={showMap}
+          >
+            {scene.video ? (
+              <video
+                key={scene.video}
+                ref={videoRef}
+                src={scene.video}
+                poster={scene.mainImage}
+                preload="metadata"
+                playsInline
+                muted
+                loop={scene.videoPlayback !== 'hold'}
+                aria-hidden="true"
+                className={styles.sceneVideo}
+              />
+            ) : scene.secondaryImage && scene.mainImage ? (
+              <div className={styles.imageSequence}>
+                <Image
+                  src={scene.mainImage}
+                  alt={`Historische Bildszene: ${scene.title}`}
+                  fill
+                  priority={sceneIndex === 0}
+                  sizes="(max-width: 980px) 100vw, 1120px"
+                  className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                  style={{
+                    opacity: 1 - secondaryBlend,
+                    transform: `scale(${1 + secondaryBlend * 0.012})`,
+                  }}
+                />
+                <Image
+                  src={scene.secondaryImage}
+                  alt={`Zweite historische Bildszene: ${scene.title}`}
+                  fill
+                  sizes="(max-width: 980px) 100vw, 1120px"
+                  className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                  style={{
+                    opacity: secondaryBlend,
+                    transform: `scale(${1.012 - secondaryBlend * 0.012})`,
+                  }}
+                />
+              </div>
+            ) : scene.mainImage ? (
               <Image
                 src={scene.mainImage}
                 alt={`Historische Bildszene: ${scene.title}`}
                 fill
                 priority={sceneIndex === 0}
                 sizes="(max-width: 980px) 100vw, 1120px"
-                className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                style={{
-                  opacity: 1 - secondaryBlend,
-                  transform: `scale(${1 + secondaryBlend * 0.012})`,
-                }}
+                className={styles.sceneImage}
               />
+            ) : (
+              <div className={`${styles.mediaDraft} ${styles.imageDraft}`}>
+                <small>Hauptbild · Bildkonzept</small>
+                <strong>{scene.people}</strong>
+                <p>{scene.imageConcept}</p>
+              </div>
+            )}
+          </div>
+
+          <div
+            className={`${styles.visualLayer} ${styles.mapVisualLayer} ${showMap ? styles.mapVisualActive : styles.mapVisualLeaving}`}
+            aria-hidden={!showMap}
+          >
+            {renderedMapImage ? (
               <Image
-                src={scene.secondaryImage}
-                alt={`Zweite historische Bildszene: ${scene.title}`}
+                key={`${renderedMapImage}-${mapAnimationRun}`}
+                src={renderedMapImage}
+                alt={`Karte zu ${scene.title}`}
                 fill
+                priority={sceneIndex === 0}
                 sizes="(max-width: 980px) 100vw, 1120px"
-                className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                style={{
-                  opacity: secondaryBlend,
-                  transform: `scale(${1.012 - secondaryBlend * 0.012})`,
-                }}
+                className={styles.sceneImage}
               />
-            </div>
-          ) : renderedImage ? (
-            <Image
-              key={`${renderedImage}-${mapAnimationRun}`}
-              src={renderedImage}
-              alt={
-                showMap
-                  ? `Karte zu ${scene.title}`
-                  : `Historische Bildszene: ${scene.title}`
-              }
-              fill
-              priority={sceneIndex === 0}
-              sizes="(max-width: 980px) 100vw, 1120px"
-              className={styles.sceneImage}
-            />
-          ) : (
-            <div
-              className={`${styles.mediaDraft} ${showMap ? styles.mapDraft : styles.imageDraft}`}
-            >
-              <small>
-                {showMap ? `Karte · ${scene.date}` : 'Hauptbild · Bildkonzept'}
-              </small>
-              <strong>{showMap ? scene.place : scene.people}</strong>
-              <p>{showMap ? scene.mapConcept : scene.imageConcept}</p>
-              {showMap && scene.mapDetails && (
-                <ul>
-                  {scene.mapDetails.map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
+            ) : (
+              <div className={`${styles.mediaDraft} ${styles.mapDraft}`}>
+                <small>
+                  {`Karte · ${scene.date}`}
+                </small>
+                <strong>{scene.place}</strong>
+                <p>{scene.mapConcept}</p>
+                {scene.mapDetails && (
+                  <ul>
+                    {scene.mapDetails.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
           <div className={styles.imageShade} />
           <div className={styles.imageCaption}>
             <div>
