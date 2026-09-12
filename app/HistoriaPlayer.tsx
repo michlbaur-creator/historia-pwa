@@ -80,6 +80,8 @@ export default function HistoriaPlayer({
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingAudioStartRef = useRef(false);
+  const audioRequestRef = useRef(0);
+  const [audioError, setAudioError] = useState('');
   const swipeStartX = useRef<number | null>(null);
   const scene = scenes[sceneIndex];
 
@@ -125,18 +127,6 @@ export default function HistoriaPlayer({
   }, [playing, scene.audio, scene.duration, scene.id]);
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio || (!playing && !pendingAudioStartRef.current)) return;
-    pendingAudioStartRef.current = true;
-    if (audio.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-      void audio.play().catch(() => {
-        pendingAudioStartRef.current = false;
-        setPlaying(false);
-      });
-    }
-  }, [playing, scene.id]);
-
-  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
@@ -163,6 +153,7 @@ export default function HistoriaPlayer({
 
   function selectScene(index: number, autoPlay = false) {
     const nextScene = scenes[index];
+    audioRequestRef.current += 1;
     pendingAudioStartRef.current = false;
     audioRef.current?.pause();
     videoRef.current?.pause();
@@ -173,11 +164,15 @@ export default function HistoriaPlayer({
       setAudioDuration(0);
       setShowMap(true);
       setPlaying(false);
+      setAudioError('');
       setMapAnimationRun(autoPlay ? 1 : 0);
       setQuizQuestion(0);
       setQuizSelection(null);
     });
 
+    // Keep the same media element (and its mobile playback permission), but
+    // explicitly select the new source before play() in this user gesture.
+    audioRef.current?.load();
     if (!autoPlay) return;
 
     if (!nextScene.audio) {
@@ -192,9 +187,18 @@ export default function HistoriaPlayer({
       return;
     }
 
-    void nextAudio.play().catch(() => {
+    startAudio(nextAudio);
+  }
+
+  function startAudio(audio: HTMLAudioElement) {
+    const request = ++audioRequestRef.current;
+    pendingAudioStartRef.current = true;
+    setAudioError('');
+    void audio.play().catch(() => {
+      if (request !== audioRequestRef.current) return;
       pendingAudioStartRef.current = false;
       setPlaying(false);
+      setAudioError('Der Ton konnte nicht starten. Bitte tippe auf „Szene starten“.');
     });
   }
 
@@ -215,8 +219,10 @@ export default function HistoriaPlayer({
         if (videoRef.current) videoRef.current.currentTime = 0;
       }
       setMapAnimationRun((value) => value + 1);
-      void audio.play();
+      startAudio(audio);
     } else {
+      audioRequestRef.current += 1;
+      pendingAudioStartRef.current = false;
       audio.pause();
     }
   }
@@ -253,9 +259,7 @@ export default function HistoriaPlayer({
 
   return (
     <main className={styles.shell}>
-      {scene.audio && (
         <audio
-          key={scene.audio}
           ref={audioRef}
           src={scene.audio}
           preload="metadata"
@@ -269,21 +273,20 @@ export default function HistoriaPlayer({
             setElapsed(current);
             if (current >= 4) setShowMap(false);
           }}
-          onCanPlay={(event) => {
-            if (!pendingAudioStartRef.current) return;
-            void event.currentTarget.play().catch(() => {
-              pendingAudioStartRef.current = false;
-              setPlaying(false);
-            });
-          }}
-          onPlay={() => {
+          onPlaying={(event) => {
+            if (event.currentTarget.paused) return;
             pendingAudioStartRef.current = false;
             setPlaying(true);
           }}
           onPause={(event) => {
-            if (!event.currentTarget.ended && !pendingAudioStartRef.current) {
+            if (event.currentTarget.paused && !event.currentTarget.ended && !pendingAudioStartRef.current) {
               setPlaying(false);
             }
+          }}
+          onError={() => {
+            pendingAudioStartRef.current = false;
+            setPlaying(false);
+            setAudioError('Die Tondatei konnte nicht geladen werden. Bitte versuche es erneut.');
           }}
           onEnded={finishAudio}
         >
@@ -297,7 +300,6 @@ export default function HistoriaPlayer({
             />
           )}
         </audio>
-      )}
       <header className={styles.header}>
         <div className={styles.brandLockup}>
           <span className={styles.brandMark} aria-hidden="true">
@@ -473,6 +475,7 @@ export default function HistoriaPlayer({
           </div>
         </div>
 
+        {audioError && <p role="status">{audioError}</p>}
         <div className={styles.controls}>
           <button
             className={styles.previousControl}
