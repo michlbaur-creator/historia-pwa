@@ -189,6 +189,7 @@ export default function HistoriaPlayer({
     const nextAudio = audioRef.current;
     if (!nextAudio) {
       pendingAudioStartRef.current = false;
+      return;
     }
 
     void nextAudio.play().catch(() => {
