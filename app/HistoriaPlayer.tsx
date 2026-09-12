@@ -160,16 +160,17 @@ export default function HistoriaPlayer({
     });
   }, [sceneIndex]);
 
-  function selectScene(index: number) {
+  function selectScene(index: number, autoPlay = false) {
     pendingAudioStartRef.current = false;
     audioRef.current?.pause();
     videoRef.current?.pause();
+    pendingAudioStartRef.current = autoPlay;
     setSceneIndex(index);
     setElapsed(0);
     setAudioDuration(0);
     setShowMap(true);
-    setPlaying(false);
-    setMapAnimationRun(0);
+    setPlaying(autoPlay);
+    setMapAnimationRun(autoPlay ? 1 : 0);
     setQuizQuestion(0);
     setQuizSelection(null);
   }
@@ -206,6 +207,7 @@ export default function HistoriaPlayer({
   function stepScene(direction: -1 | 1) {
     selectScene(
       Math.max(0, Math.min(scenes.length - 1, sceneIndex + direction)),
+      direction === 1,
     );
   }
 
