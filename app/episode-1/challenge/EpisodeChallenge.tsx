@@ -101,7 +101,7 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes 
         </div></div>
         <div><p className={styles.eyebrow}>Deine Episoden-Challenge</p><h1 id="challenge-title">{config.title}</h1></div>
       </div>
-      <p>Neun Fragen aus deiner Reise. Was ist hängen geblieben?</p>
+      <p>Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.</p>
       {!question ? <output>Deine Fragen werden zusammengestellt …</output> : <>
         <div className={styles.stairHead}><span>Deine Zeitstufen</span><span>{score} richtig · Bestwert {best}/9</span></div>
         <ol className={styles.stairs} aria-label="Quiztreppe mit neun Stufen">

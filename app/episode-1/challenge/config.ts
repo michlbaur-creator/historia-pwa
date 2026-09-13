@@ -22,4 +22,4 @@ export const challengeConfig = {
   },
 } as const;
 
-export const challengeBestKey = (episode: 1 | 2 | 3) => `historia-episode${episode}-challenge-best-v1`;
+export const challengeBestKey = (episode: 1 | 2 | 3) => `historia-episode${episode}-challenge-best-v2`;
