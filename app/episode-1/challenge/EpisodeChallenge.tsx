@@ -3,13 +3,14 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ArrowRight, RotateCcw, Volume2, VolumeX, Landmark } from 'lucide-react';
-import { historiaScenes } from '../../data';
+import { historiaScenes, type HistoriaScene } from '../../data';
 import { chooseQuestions, rankFor } from './questions';
+import { challengeConfig, challengeBestKey } from './config';
 import styles from './challenge.module.css';
 
-const bestKey = 'historia-episode1-challenge-best-v1';
-
-export default function EpisodeChallenge() {
+export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes }: { episode?: 1 | 2 | 3; scenes?: HistoriaScene[] }) {
+  const config = challengeConfig[episode];
+  const bestKey = challengeBestKey(episode);
   const [questions, setQuestions] = useState<ReturnType<typeof chooseQuestions>>([]);
   const [answers, setAnswers] = useState<number[]>([]);
   const [index, setIndex] = useState(0);
@@ -21,14 +22,14 @@ export default function EpisodeChallenge() {
   const contextRef = useRef<AudioContext | null>(null);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      setQuestions(chooseQuestions(historiaScenes));
+      setQuestions(chooseQuestions(scenes, Math.random, episode));
       try {
         const stored = Number(localStorage.getItem(bestKey));
         if (Number.isInteger(stored) && stored >= 0 && stored <= 9) setBest(stored);
       } catch { /* The quiz also works without browser storage. */ }
     });
     return () => { cancelAnimationFrame(frame); void contextRef.current?.close(); };
-  }, []);
+  }, [scenes, episode, bestKey]);
 
   const score = answers.filter((answer, i) => answer === questions[i]?.correctIndex).length;
   const question = questions[index];
@@ -54,7 +55,7 @@ export default function EpisodeChallenge() {
     requestAnimationFrame(() => heading.current?.focus());
   }
   function reset() {
-    setQuestions(chooseQuestions(historiaScenes));
+    setQuestions(chooseQuestions(scenes, Math.random, episode));
     setAnswers([]);
     setIndex(0);
     setFinished(false);
@@ -85,20 +86,20 @@ export default function EpisodeChallenge() {
 
   return <main className={styles.page}>
     <header className={styles.header}>
-      <a href="/">HISTORIA</a><a href="/">Zur Episode 1</a>
+      <a href="/">HISTORIA</a><a href={episode === 1 ? '/' : `/episode-${episode}`}>Zur Episode {episode}</a>
     </header>
     <section className={styles.card} aria-labelledby="challenge-title">
       <div className={styles.topline}>
-        <span>Episode 1 · Die klassische Welt</span>
+        <span>Episode {episode} · {config.theme}</span>
         <button onClick={() => setSound(!sound)} aria-pressed={sound} aria-label={sound ? 'Fanfare ausschalten' : 'Fanfare einschalten'}>
           {sound ? <Volume2 size={20} /> : <VolumeX size={20} />} Fanfare {sound ? 'an' : 'aus'}
         </button>
       </div>
       <div className={styles.titleRow}>
         <div className={styles.cubeStage} aria-hidden="true"><div className={styles.cube}>
-          <span><Landmark size={30} /></span><span>Ⅰ</span><span>✦</span>
+          <span><Landmark size={30} /></span><span>{['Ⅰ', 'Ⅱ', 'Ⅲ'][episode - 1]}</span><span>✦</span>
         </div></div>
-        <div><p className={styles.eyebrow}>Deine Episoden-Challenge</p><h1 id="challenge-title">Von den Pharaonen bis Westrom</h1></div>
+        <div><p className={styles.eyebrow}>Deine Episoden-Challenge</p><h1 id="challenge-title">{config.title}</h1></div>
       </div>
       <p>Neun Fragen aus deiner Reise. Was ist hängen geblieben?</p>
       {!question ? <output>Deine Fragen werden zusammengestellt …</output> : <>
@@ -117,9 +118,9 @@ export default function EpisodeChallenge() {
         </ol>
         {finished ? <div className={styles.result}>
           {score === 9 && <div className={styles.fireworks} aria-hidden="true">{Array.from({length: 16}, (_, i) => <i key={i} style={{ '--angle': `${i * 22.5}deg` } as CSSProperties} />)}</div>}
-          <p className={styles.eyebrow}>Dein Antike-Abzeichen · {score} von 9</p>
+          <p className={styles.eyebrow}>Dein {config.badge} · {score} von 9</p>
           <h2 ref={heading} tabIndex={-1}>{rankFor(score)}</h2>
-          <p>{score === 9 ? 'Alle neun richtig! Du hast die großen Wendepunkte der Antike im Blick.' : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
+          <p>{score === 9 ? config.success : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
           <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>
         </div> : <div className={styles.question}>
           <p className={styles.eyebrow}>Frage {index + 1} von 9</p>
@@ -140,10 +141,10 @@ export default function EpisodeChallenge() {
       </>}
     </section>
     <section className={styles.bridge} aria-labelledby="next-episode">
-      <p className={styles.eyebrow}>Deine Reise geht weiter · Episode 2</p>
-      <h2 id="next-episode">Neue Reiche, neue Zeiten</h2>
-      <p>Westrom ist Geschichte – aber die Welt bleibt in Bewegung. Im Osten besteht das Römische Reich weiter. In Episode 2 begegnest du der Ausbreitung des Islam, Karl dem Großen und den Wikingern. Später führen dich die Wege bis zur Französischen Revolution und zu Napoleon.</p>
-      <a className={styles.primary} href="/episode-2">Episode 2 beginnen <ArrowRight size={19} /></a>
+      <p className={styles.eyebrow}>{config.bridgeLabel}</p>
+      <h2 id="next-episode">{config.bridgeTitle}</h2>
+      <p>{config.bridgeText}</p>
+      <a className={styles.primary} href={config.href}>{config.action} <ArrowRight size={19} /></a>
       {!finished && <small>Du kannst auch ohne Quiz direkt weiterreisen.</small>}
     </section>
     <footer className={styles.footer}><a href="https://mibaso.de">⌂ Alle Mibaso-Apps</a><a href="/ueber">Über mich</a><a href="/impressum">Impressum &amp; Datenschutz</a></footer>

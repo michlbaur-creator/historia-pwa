@@ -11,6 +11,43 @@ async function loadTS(path) {
 const { chooseQuestions, rankFor } = await loadTS('../app/episode-1/challenge/questions.ts');
 const { historiaLearning } = await loadTS('../app/learning.ts');
 const scenes = Object.entries(historiaLearning).map(([id, data]) => ({ id: Number(id), title: `Szene ${id}`, ...data }));
+const { historiaEpisode2Scenes } = await loadTS('../app/episode2-data.ts');
+const { historiaEpisode3Scenes } = await loadTS('../app/episode3-data.ts');
+const { challengeConfig, challengeBestKey } = await loadTS('../app/episode-1/challenge/config.ts');
+
+for (const [episode, pool] of [[2, historiaEpisode2Scenes], [3, historiaEpisode3Scenes]]) {
+  test(`Episode ${episode}: 1000 rounds use only this episode, all eras and intact solutions`, () => {
+    const before = JSON.stringify(pool);
+    const seen = new Set();
+    for (let round = 0; round < 1000; round++) {
+      const questions = chooseQuestions(pool, Math.random, episode);
+      assert.equal(questions.length, 9);
+      assert.equal(new Set(questions.map(q => q.sceneId)).size, 9);
+      assert.equal(questions.filter(q => q.sceneId <= 5).length, 3);
+      assert.equal(questions.filter(q => q.sceneId >= 6 && q.sceneId <= 10).length, 3);
+      assert.equal(questions.filter(q => q.sceneId >= 11).length, 3);
+      for (const q of questions) {
+        const source = pool.find(s => s.id === q.sceneId);
+        assert.equal(q.topic, source.title);
+        const original = source.quiz.find(item => item.explanation === q.explanation);
+        assert.ok(original);
+        assert.equal(q.options.length, 3);
+        assert.equal(q.options[q.correctIndex], original.options[original.correctIndex]);
+        assert.doesNotMatch(q.question, /Oberägypten|Hammurabi|Qin Shihuangdi/);
+        seen.add(q.explanation);
+      }
+    }
+    assert.equal(seen.size, 32);
+    assert.equal(JSON.stringify(pool), before);
+  });
+}
+test('independent best scores and correct episode transitions', () => {
+  assert.equal(new Set([1,2,3].map(challengeBestKey)).size, 3);
+  assert.equal(challengeBestKey(1), 'historia-episode1-challenge-best-v1');
+  assert.equal(challengeConfig[1].href, '/episode-2');
+  assert.equal(challengeConfig[2].href, '/episode-3');
+  assert.equal(challengeConfig[3].href, '/');
+});
 
 test('1000 rounds: nine distinct scenes, balanced eras, discoveries and preserved answers', () => {
   for (let round = 0; round < 1000; round++) {

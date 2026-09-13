@@ -234,13 +234,13 @@ export default function HistoriaPlayer({
   }
 
   function stepScene(direction: -1 | 1) {
-    if (direction === 1 && episodeNumber === 1 && sceneIndex === scenes.length - 1) {
+    if (direction === 1 && sceneIndex === scenes.length - 1) {
       audioRequestRef.current += 1;
       pendingAudioStartRef.current = false;
       audioRef.current?.pause();
       videoRef.current?.pause();
       setPlaying(false);
-      window.location.assign('/episode-1/challenge/');
+      window.location.assign(`/episode-${episodeNumber}/challenge/`);
       return;
     }
     selectScene(
@@ -529,9 +529,8 @@ export default function HistoriaPlayer({
           <button
             className={styles.nextControl}
             onClick={() => stepScene(1)}
-            disabled={sceneIndex === scenes.length - 1 && episodeNumber !== 1}
           >
-            {episodeNumber === 1 && sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'} <ArrowRight aria-hidden="true" />
+            {sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'} <ArrowRight aria-hidden="true" />
           </button>
         </div>
       </section>
@@ -569,12 +568,12 @@ export default function HistoriaPlayer({
         )}
       </nav>
 
-      {episodeNumber === 1 && sceneIndex === scenes.length - 1 && (
+      {sceneIndex === scenes.length - 1 && (
         <section className={styles.finale}>
-          <p>Am Ende der klassischen Welt</p>
+          <p>Am Ende von Episode {episodeNumber}</p>
           <h2>Bereit für deine Episoden-Challenge?</h2>
-          <p>Neun Fragen von den Pharaonen bis Westrom. Danach geht deine Reise in Episode 2 weiter.</p>
-          <a href="/episode-1/challenge/">Zur Episode-1-Challenge <ArrowRight size={18} aria-hidden="true" /></a>
+          <p>{episodeNumber === 1 ? 'Neun Fragen von den Pharaonen bis Westrom. Danach geht deine Reise in Episode 2 weiter.' : episodeNumber === 2 ? 'Neun Fragen von der Hidschra bis Waterloo. Danach geht deine Reise in Episode 3 weiter.' : 'Neun Fragen von der Industrialisierung bis heute. Was ist dir von deiner Reise geblieben?'}</p>
+          <a href={`/episode-${episodeNumber}/challenge/`}>Zur Episode-{episodeNumber}-Challenge <ArrowRight size={18} aria-hidden="true" /></a>
         </section>
       )}
 
