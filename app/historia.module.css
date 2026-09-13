@@ -1,3 +1,7 @@
+.finale { width: min(1120px, 100%); margin: 20px auto; padding: 24px; background: #fffaf0; border: 1px solid #d6dcd0; border-radius: 24px; line-height: 1.6; }
+.finale h2 { font: 400 1.7rem Georgia, serif; color: #315d6a; }
+.finale a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 28px; background: #a74d31; color: white; text-decoration: none; }
+
 .shell {
   --sand: #f8ecd4;
   --paper: #fffaf0;

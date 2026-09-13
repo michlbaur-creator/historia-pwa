@@ -234,6 +234,15 @@ export default function HistoriaPlayer({
   }
 
   function stepScene(direction: -1 | 1) {
+    if (direction === 1 && episodeNumber === 1 && sceneIndex === scenes.length - 1) {
+      audioRequestRef.current += 1;
+      pendingAudioStartRef.current = false;
+      audioRef.current?.pause();
+      videoRef.current?.pause();
+      setPlaying(false);
+      window.location.assign('/episode-1/challenge/');
+      return;
+    }
     selectScene(
       Math.max(0, Math.min(scenes.length - 1, sceneIndex + direction)),
       direction === 1,
@@ -520,9 +529,9 @@ export default function HistoriaPlayer({
           <button
             className={styles.nextControl}
             onClick={() => stepScene(1)}
-            disabled={sceneIndex === scenes.length - 1}
+            disabled={sceneIndex === scenes.length - 1 && episodeNumber !== 1}
           >
-            Weiter <ArrowRight aria-hidden="true" />
+            {episodeNumber === 1 && sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'} <ArrowRight aria-hidden="true" />
           </button>
         </div>
       </section>
@@ -559,6 +568,15 @@ export default function HistoriaPlayer({
           <a href="/episode-3">Episode 3</a>
         )}
       </nav>
+
+      {episodeNumber === 1 && sceneIndex === scenes.length - 1 && (
+        <section className={styles.finale}>
+          <p>Am Ende der klassischen Welt</p>
+          <h2>Bereit für deine Episoden-Challenge?</h2>
+          <p>Neun Fragen von den Pharaonen bis Westrom. Danach geht deine Reise in Episode 2 weiter.</p>
+          <a href="/episode-1/challenge/">Zur Episode-1-Challenge <ArrowRight size={18} aria-hidden="true" /></a>
+        </section>
+      )}
 
       <section className={styles.contentCard}>
         <div className={styles.tabs} role="tablist" aria-label="Szeneninhalte">
