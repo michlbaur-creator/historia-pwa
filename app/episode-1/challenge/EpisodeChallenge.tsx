@@ -2,52 +2,66 @@
 /* oxlint-disable next/no-html-link-for-pages -- Full navigation is intentional for the static Vinext/Pages export, as in the shared player. */
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { ArrowRight, RotateCcw, Volume2, VolumeX, Landmark } from 'lucide-react';
+import { ArrowRight, RotateCcw, Volume2, VolumeX, Landmark, Printer, Sparkles } from 'lucide-react';
 import { historiaScenes, type HistoriaScene } from '../../data';
-import { chooseQuestions, rankFor } from './questions';
+import { chooseQuestions, chooseHyperQuestions, rankFor, hyperRankFor } from './questions';
 import { challengeConfig, challengeBestKey } from './config';
+import { useFanfare } from './useFanfare';
+import Certificate from './Certificate';
 import styles from './challenge.module.css';
 
-export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes }: { episode?: 1 | 2 | 3; scenes?: HistoriaScene[] }) {
+export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes, hyperPools }: { episode?: 1 | 2 | 3; scenes?: HistoriaScene[]; hyperPools?: HistoriaScene[][] }) {
+  const hyper = !!hyperPools;
+  const total = hyper ? 18 : 9;
   const config = challengeConfig[episode];
-  const bestKey = challengeBestKey(episode);
+  const bestKey = hyper ? 'historia-hyper-challenge-best-v1' : challengeBestKey(episode);
   const [questions, setQuestions] = useState<ReturnType<typeof chooseQuestions>>([]);
   const [answers, setAnswers] = useState<number[]>([]);
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const [best, setBest] = useState(0);
-  const [sound, setSound] = useState(false);
+  const sound = useFanfare();
+  const [name, setName] = useState('');
+  const [completionDate, setCompletionDate] = useState('');
+  const [celebration, setCelebration] = useState(0);
   const lock = useRef(false);
+  const advanceLock = useRef(false);
   const heading = useRef<HTMLHeadingElement>(null);
-  const contextRef = useRef<AudioContext | null>(null);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      setQuestions(chooseQuestions(scenes, Math.random, episode));
+      setQuestions(hyperPools ? chooseHyperQuestions(hyperPools) : chooseQuestions(scenes, Math.random, episode));
       try {
         const stored = Number(localStorage.getItem(bestKey));
-        if (Number.isInteger(stored) && stored >= 0 && stored <= 9) setBest(stored);
+        if (Number.isInteger(stored) && stored >= 0 && stored <= total) setBest(stored);
       } catch { /* The quiz also works without browser storage. */ }
     });
-    return () => { cancelAnimationFrame(frame); void contextRef.current?.close(); };
-  }, [scenes, episode, bestKey]);
+    return () => cancelAnimationFrame(frame);
+  }, [scenes, episode, bestKey, hyperPools, total]);
 
   const score = answers.filter((answer, i) => answer === questions[i]?.correctIndex).length;
   const question = questions[index];
   const answered = answers.length > index;
+  const rank = hyper ? hyperRankFor(score) : rankFor(score);
 
   function answer(option: number) {
     if (lock.current || answered || finished) return;
     lock.current = true;
+    advanceLock.current = false;
     setAnswers((previous) => [...previous, option]);
   }
   function next() {
-    if (!answered) return;
+    if (!answered || finished || advanceLock.current) return;
+    advanceLock.current = true;
     if (index === questions.length - 1) {
       setFinished(true);
+      setCompletionDate(new Date().toLocaleDateString('de-DE'));
       const nextBest = Math.max(best, score);
       setBest(nextBest);
       try { localStorage.setItem(bestKey, String(nextBest)); } catch { /* Optional. */ }
-      if (score === 9 && sound) celebrate();
+      if (hyper || score === total) {
+        setCelebration(value => value + 1);
+        if (sound.enabled) void sound.play(hyper);
+      }
     } else {
       setIndex(index + 1);
       lock.current = false;
@@ -55,60 +69,60 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes 
     requestAnimationFrame(() => heading.current?.focus());
   }
   function reset() {
-    setQuestions(chooseQuestions(scenes, Math.random, episode));
+    sound.stop();
+    setQuestions(hyperPools ? chooseHyperQuestions(hyperPools) : chooseQuestions(scenes, Math.random, episode));
     setAnswers([]);
     setIndex(0);
     setFinished(false);
+    setCompletionDate('');
+    setCelebration(0);
     lock.current = false;
+    advanceLock.current = false;
     requestAnimationFrame(() => heading.current?.focus());
   }
-  function celebrate() {
-    try {
-      const context = new AudioContext();
-      void contextRef.current?.close();
-      contextRef.current = context;
-      void context.resume().then(() => {
-        [261.63, 329.63, 392, 523.25].forEach((frequency, i) => {
-          const oscillator = context.createOscillator();
-          const gain = context.createGain();
-          const start = context.currentTime + i * 0.16;
-          oscillator.type = 'triangle';
-          oscillator.frequency.value = frequency;
-          gain.gain.setValueAtTime(0, start);
-          gain.gain.linearRampToValueAtTime(0.08, start + 0.03);
-          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.65);
-          oscillator.connect(gain); gain.connect(context.destination);
-          oscillator.start(start); oscillator.stop(start + 0.7);
-        });
-      }).catch(() => {});
-    } catch { /* No audio support: keep the visual result. */ }
+  function celebrateAgain() {
+    setCelebration(value => value + 1);
+    if (sound.enabled) void sound.play(hyper);
   }
 
-  return <main className={styles.page}>
+  return <main className={`${styles.page} ${hyper ? styles.hyperPage : ''} ${finished && hyper ? styles.printReady : ''}`}>
+    {hyper && finished && celebration > 0 && <div key={celebration} className={styles.confetti} aria-hidden="true">
+      {Array.from({ length: 110 }, (_, i) => <i key={i} style={{
+        '--x': `${(i * 37) % 101}%`, '--delay': `${(i % 17) * 0.13}s`,
+        '--drift': `${(i % 2 ? 1 : -1) * (30 + i % 90)}px`,
+        '--turn': `${180 + i * 43}deg`, '--color': ['#c66944', '#d6a336', '#38839a', '#558970', '#9773ab'][i % 5],
+      } as CSSProperties} />)}
+    </div>}
     <header className={styles.header}>
-      <a href="/">HISTORIA</a><a href={episode === 1 ? '/' : `/episode-${episode}`}>Zur Episode {episode}</a>
+      <a href="/">HISTORIA</a><a href={hyper ? '/episode-3/challenge/' : episode === 1 ? '/' : `/episode-${episode}`}>{hyper ? 'Zurück zu Episode 3' : `Zur Episode ${episode}`}</a>
     </header>
     <section className={styles.card} aria-labelledby="challenge-title">
       <div className={styles.topline}>
-        <span>Episode {episode} · {config.theme}</span>
-        <button onClick={() => setSound(!sound)} aria-pressed={sound} aria-label={sound ? 'Fanfare ausschalten' : 'Fanfare einschalten'}>
-          {sound ? <Volume2 size={20} /> : <VolumeX size={20} />} Fanfare {sound ? 'an' : 'aus'}
-        </button>
+        <span>{hyper ? 'Das große Finale · Alle drei Episoden' : `Episode ${episode} · ${config.theme}`}</span>
+        <div className={styles.soundControls}>
+          <button onClick={sound.toggle} aria-pressed={sound.enabled}>
+            {sound.enabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+            {sound.enabled ? 'Fanfare an · ausschalten' : 'Fanfare einschalten & probehören'}
+          </button>
+          {sound.enabled && <button onClick={() => void sound.play(hyper)}>Probehören</button>}
+        </div>
       </div>
+      {sound.error && <output>{sound.error}</output>}
+      <p className={styles.soundHint}>{hyper ? 'Beim Abschluss feiern wir – mit Ton, wenn du die Fanfare einschaltest.' : 'Bei 9/9 erklingt die Fanfare, wenn du sie oben einschaltest.'}</p>
       <div className={styles.titleRow}>
         <div className={styles.cubeStage} aria-hidden="true"><div className={styles.cube}>
-          <span><Landmark size={30} /></span><span>{['Ⅰ', 'Ⅱ', 'Ⅲ'][episode - 1]}</span><span>✦</span>
+          <span><Landmark size={30} /></span><span>{hyper ? 'Ⅰ–Ⅲ' : ['Ⅰ', 'Ⅱ', 'Ⅲ'][episode - 1]}</span><span>✦</span>
         </div></div>
-        <div><p className={styles.eyebrow}>Deine Episoden-Challenge</p><h1 id="challenge-title">{config.title}</h1></div>
+        <div><p className={styles.eyebrow}>{hyper ? 'Deine Historia Hyper-Challenge' : 'Deine Episoden-Challenge'}</p><h1 id="challenge-title">{hyper ? 'Einmal durch die Weltgeschichte' : config.title}</h1></div>
       </div>
-      <p>Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.</p>
+      <p>{hyper ? '18 knifflige Fragen, quer durch alle drei Episoden. Sechs je Episode, bunt gemischt – und am Ende wartet deine persönliche Urkunde.' : 'Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.'}</p>
       {!question ? <output>Deine Fragen werden zusammengestellt …</output> : <>
-        <div className={styles.stairHead}><span>Deine Zeitstufen</span><span>{score} richtig · Bestwert {best}/9</span></div>
-        <ol className={styles.stairs} aria-label="Quiztreppe mit neun Stufen">
+        <div className={styles.stairHead}><span>Deine Zeitstufen</span><span>{score} richtig · Bestwert {best}/{total}</span></div>
+        <ol className={`${styles.stairs} ${hyper ? styles.hyperStairs : ''}`} aria-label={`Quiztreppe mit ${total} Stufen`}>
           {questions.map((item, i) => {
             const done = answers.length > i;
             const correct = done && answers[i] === item.correctIndex;
-            return <li key={item.sceneId} style={{ '--height': `${38 + i * 5}px` } as CSSProperties}
+            return <li key={`${item.episode}-${item.sceneId}`} style={{ '--height': `${38 + (i % 9) * 5}px` } as CSSProperties}
               className={done ? correct ? styles.correct : styles.wrong : i === index && !finished ? styles.current : ''}
               aria-current={i === index && !finished ? 'step' : undefined}
               aria-label={`Frage ${i + 1}: ${done ? correct ? 'richtig' : 'falsch' : 'noch offen'}`}>
@@ -117,14 +131,17 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes 
           })}
         </ol>
         {finished ? <div className={styles.result}>
-          {score === 9 && <div className={styles.fireworks} aria-hidden="true">{Array.from({length: 16}, (_, i) => <i key={i} style={{ '--angle': `${i * 22.5}deg` } as CSSProperties} />)}</div>}
-          <p className={styles.eyebrow}>Dein {config.badge} · {score} von 9</p>
-          <h2 ref={heading} tabIndex={-1}>{rankFor(score)}</h2>
-          <p>{score === 9 ? config.success : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
-          <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>
+          {!hyper && score === total && <div key={celebration} className={styles.fireworks} aria-hidden="true">{Array.from({length: 24}, (_, i) => <i key={i} style={{ '--angle': `${i * 15}deg` } as CSSProperties} />)}</div>}
+          <p className={styles.eyebrow}>{hyper ? 'Dein großes Historia-Finale' : `Dein ${config.badge}`} · {score} von {total}</p>
+          <h2 ref={heading} tabIndex={-1}>{rank}</h2>
+          <p>{hyper ? (score === total ? 'Alle 18 richtig! Von der Antike bis in die Gegenwart: Du hast die Zusammenhänge im Blick. Das verdient einen großen Applaus!' : 'Geschafft! Du hast dich durch drei Episoden geknobelt. Feiere deinen Abschluss – und nimm die neu entdeckten Zusammenhänge mit.') : score === total ? config.success : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
+          <div className={styles.actions}>
+            <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>
+            {(hyper || score === total) && <button className={styles.primary} onClick={celebrateAgain}><Sparkles size={18} /> Noch einmal feiern</button>}
+          </div>
         </div> : <div className={styles.question}>
-          <p className={styles.eyebrow}>Frage {index + 1} von 9</p>
-          <p className={styles.topic}>{question.topic}</p>
+          <p className={styles.eyebrow}>Frage {index + 1} von {total}</p>
+          <p className={styles.topic}>{hyper ? `Episode ${question.episode} · ` : ''}{question.topic}</p>
           <h2 tabIndex={-1} ref={heading}>{question.question}</h2>
           <div className={styles.options}>{question.options.map((option, i) => <button key={option}
             disabled={answered} onClick={() => answer(i)}
@@ -135,18 +152,30 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes 
           {answered && <output className={styles.feedback}>
             <p>{answers[index] === question.correctIndex ? 'Richtig!' : `Nicht ganz. Richtig ist: ${question.options[question.correctIndex]}`}</p>
             <p>{question.explanation}</p>
-            <button className={styles.primary} onClick={next}>{index === 8 ? 'Ergebnis ansehen' : 'Nächste Frage'} <ArrowRight size={19} /></button>
+            <div className={styles.actions}><button className={styles.primary} onClick={next}>{index === total - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <ArrowRight size={19} /></button></div>
           </output>}
         </div>}
       </>}
     </section>
-    <section className={styles.bridge} aria-labelledby="next-episode">
+    {hyper && finished && <>
+      <section className={styles.bridge} aria-labelledby="certificate-title">
+        <p className={styles.eyebrow}>Zum Aufheben und Aufhängen</p>
+        <h2 id="certificate-title">Deine persönliche Urkunde</h2>
+        <label className={styles.nameLabel} htmlFor="certificate-name">Dein Name (freiwillig)</label>
+        <input className={styles.nameInput} id="certificate-name" maxLength={60} autoComplete="off" value={name} onChange={event => setName(event.target.value)} placeholder="Oder später von Hand eintragen" />
+        <small>Dein Name bleibt nur auf dieser Seite und wird nicht gespeichert oder übertragen. Beim Drucken erscheint ausschließlich die Urkunde.</small>
+        <div className={styles.actions}><button className={styles.primary} onClick={() => { sound.stop(); window.print(); }}><Printer size={19} /> Urkunde drucken</button></div>
+      </section>
+      <Certificate name={name} score={score} rank={rank} date={completionDate} />
+    </>}
+    {!hyper && <section className={styles.bridge} aria-labelledby="next-episode">
       <p className={styles.eyebrow}>{config.bridgeLabel}</p>
       <h2 id="next-episode">{config.bridgeTitle}</h2>
       <p>{config.bridgeText}</p>
-      <a className={styles.primary} href={config.href}>{config.action} <ArrowRight size={19} /></a>
+      <div className={styles.actions}><a className={styles.primary} href={config.href}>{config.action} <ArrowRight size={19} /></a></div>
       {!finished && <small>Du kannst auch ohne Quiz direkt weiterreisen.</small>}
-    </section>
+      {episode !== 3 && <a className={styles.hyperLink} href="/hyper-challenge/">Alle Episoden mischen: zur Hyper-Challenge →</a>}
+    </section>}
     <footer className={styles.footer}><a href="https://mibaso.de">⌂ Alle Mibaso-Apps</a><a href="/ueber">Über mich</a><a href="/impressum">Impressum &amp; Datenschutz</a></footer>
   </main>;
 }

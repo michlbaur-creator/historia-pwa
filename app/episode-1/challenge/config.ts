@@ -18,7 +18,7 @@ export const challengeConfig = {
     success: 'Alle neun richtig! Du erkennst wichtige Zusammenhänge auf dem Weg in unsere Gegenwart.',
     bridgeLabel: 'Drei Episoden · Deine Historia-Reise', bridgeTitle: 'In der Gegenwart angekommen',
     bridgeText: 'Von den Pharaonen bis heute: Du hast erlebt, wie Reiche entstehen, Menschen um Rechte kämpfen und Entscheidungen die Welt verändern. Unsere Reise endet hier – die Geschichte geht weiter. Welche Verbindung zwischen damals und heute ist dir besonders aufgefallen?',
-    href: '/', action: 'Historia noch einmal entdecken',
+    href: '/hyper-challenge/', action: 'Zur großen Hyper-Challenge',
   },
 } as const;
 

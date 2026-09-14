@@ -2,6 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import ts from 'typescript';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 async function moduleURL(url) {
   const source = await readFile(url, 'utf8');
@@ -13,7 +15,7 @@ async function moduleURL(url) {
   return `data:text/javascript;base64,${Buffer.from(resolved).toString('base64')}`;
 }
 async function loadTS(path) { return import(await moduleURL(new URL(path, import.meta.url))); }
-const { chooseQuestions, rankFor } = await loadTS('../app/episode-1/challenge/questions.ts');
+const { chooseQuestions, chooseHyperQuestions, rankFor, hyperRankFor } = await loadTS('../app/episode-1/challenge/questions.ts');
 const { challengeQuestions } = await loadTS('../app/episode-1/challenge/question-bank.ts');
 const { historiaLearning } = await loadTS('../app/learning.ts');
 const scenes = Object.entries(historiaLearning).map(([id, data]) => ({ id: Number(id), title: `Szene ${id}`, ...data }));
@@ -54,7 +56,7 @@ test('independent best scores and correct episode transitions', () => {
   assert.equal(challengeBestKey(1), 'historia-episode1-challenge-best-v2');
   assert.equal(challengeConfig[1].href, '/episode-2');
   assert.equal(challengeConfig[2].href, '/episode-3');
-  assert.equal(challengeConfig[3].href, '/');
+  assert.equal(challengeConfig[3].href, '/hyper-challenge/');
 });
 
 test('1000 rounds: nine distinct scenes, balanced eras, misconceptions and preserved answers', () => {
@@ -89,4 +91,98 @@ test('all source questions can be drawn over repeated rounds', () => {
   const seen = new Set();
   for (let i = 0; i < 1000; i++) chooseQuestions(scenes).forEach(q => seen.add(q.explanation));
   assert.equal(seen.size, 16);
+});
+
+test('Hyper: 1000 rounds, six per episode, two per era, 18 unique questions with preserved solutions', () => {
+  const pools = [scenes, historiaEpisode2Scenes, historiaEpisode3Scenes];
+  const before = JSON.stringify(pools);
+  const seen = new Set();
+  for (let round = 0; round < 1000; round++) {
+    const questions = chooseHyperQuestions(pools);
+    assert.equal(questions.length, 18);
+    assert.equal(new Set(questions.map(q => `${q.episode}-${q.sceneId}`)).size, 18);
+    for (const episode of [1, 2, 3]) {
+      const subset = questions.filter(q => q.episode === episode);
+      assert.equal(subset.length, 6);
+      assert.equal(subset.filter(q => q.sceneId <= 5).length, 2);
+      assert.equal(subset.filter(q => q.sceneId >= 6 && q.sceneId <= 10).length, 2);
+      assert.equal(subset.filter(q => q.sceneId >= 11).length, 2);
+      assert.ok(subset.some(q => q.tricky));
+    }
+    for (const q of questions) {
+      const original = challengeQuestions[q.episode][q.sceneId];
+      assert.equal(q.options[q.correctIndex], original.options[original.correctIndex]);
+      seen.add(`${q.episode}-${q.sceneId}`);
+    }
+  }
+  assert.equal(seen.size, 48);
+  assert.equal(JSON.stringify(pools), before);
+});
+
+test('Hyper ranks include honest participation results and reserve Champion for 18/18', () => {
+  for (let score = 0; score <= 18; score++) {
+    assert.equal(hyperRankFor(score), score === 18 ? 'Historia-Champion' : score >= 14 ? 'Zeitkenner' : score >= 10 ? 'Spurensucher' : 'Zeitstarter');
+  }
+});
+
+const { Fanfare } = await loadTS('../app/episode-1/challenge/fanfare.ts');
+function fakeContext() {
+  const sources = [];
+  const parameter = () => ({ value: 0, setValueAtTime() {}, linearRampToValueAtTime() {}, exponentialRampToValueAtTime() {} });
+  return {
+    state: 'suspended', currentTime: 0, destination: {}, sources, resumes: 0, closed: false,
+    async resume() { this.resumes++; this.state = 'running'; },
+    async close() { this.closed = true; this.state = 'closed'; },
+    createGain: () => ({ gain: parameter(), connect() {}, disconnect() {} }),
+    createBiquadFilter: () => ({ frequency: parameter(), connect() {}, disconnect() {} }),
+    createOscillator() {
+      const source = { frequency: parameter(), stopped: false, connect() {}, disconnect() {}, start() {}, stop() { this.stopped = true; } };
+      sources.push(source); return source;
+    },
+  };
+}
+test('Fanfare unlocks on play, reuses its context, and schedules drums and trumpets for the finale', async () => {
+  const context = fakeContext(); let creations = 0;
+  const player = new Fanfare(() => { creations++; return context; });
+  assert.equal(await player.play(), true);
+  assert.equal(context.sources.length, 4);
+  assert.equal(await player.play(true), true);
+  assert.equal(context.sources.length, 24);
+  assert.equal(creations, 1);
+  assert.equal(context.resumes, 2);
+  player.dispose();
+  assert.ok(context.closed);
+  assert.ok(context.sources.every(s => s.stopped));
+});
+test('Muting while mobile audio resumes prevents any delayed sound', async () => {
+  const context = fakeContext(); let resume;
+  context.resume = () => new Promise(resolve => { resume = () => { context.state = 'running'; resolve(); }; });
+  const player = new Fanfare(() => context);
+  const playing = player.play(true);
+  player.stop(); resume();
+  assert.equal(await playing, false);
+  assert.equal(context.sources.length, 0);
+  player.dispose();
+});
+test('Unsupported or blocked audio reports failure without crashing the quiz', async () => {
+  const player = new Fanfare(() => { throw Error('Unsupported'); });
+  assert.equal(await player.play(), false);
+  player.dispose();
+});
+
+test('Certificate renders the actual result, date and safely escaped name; blank names remain writable', async () => {
+  const source = (await readFile(new URL('../app/episode-1/challenge/Certificate.tsx', import.meta.url), 'utf8'))
+    .replace("import styles from './challenge.module.css';", 'const styles = new Proxy({}, { get: (_, key) => key });');
+  const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, jsx: ts.JsxEmit.ReactJSX } });
+  const compiled = outputText.replace('react/jsx-runtime', import.meta.resolve('react/jsx-runtime'));
+  const { default: Certificate } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+  const html = renderToStaticMarkup(createElement(Certificate, { name: '<script>Test</script>', score: 13, rank: 'Spurensucher', date: '14.9.2026' }));
+  assert.match(html, /13 von 18 Fragen richtig/);
+  assert.match(html, /Spurensucher/);
+  assert.match(html, /14\.9\.2026/);
+  assert.match(html, /&lt;script&gt;Test&lt;\/script&gt;/);
+  assert.doesNotMatch(html, /<script|<button|<input/);
+  const blank = renderToStaticMarkup(createElement(Certificate, { name: '', score: 0, rank: 'Zeitstarter', date: '14.9.2026' }));
+  assert.match(blank, /________________________/);
+  assert.match(blank, /0 von 18 Fragen richtig/);
 });
