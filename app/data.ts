@@ -1,4 +1,8 @@
-import { historiaLearning, type HistoriaDiscovery, type HistoriaQuiz } from './learning';
+import {
+  historiaLearning,
+  type HistoriaDiscovery,
+  type HistoriaQuiz,
+} from './learning';
 
 export type HistoriaScene = {
   id: number;
@@ -18,8 +22,15 @@ export type HistoriaScene = {
   secondaryImage?: string;
   secondaryImageTitle?: string;
   secondaryImageSubtitle?: string;
+  imageSequence?: {
+    src: string;
+    at: number;
+    title?: string;
+    subtitle?: string;
+  }[];
   mapImage?: string;
   video?: string;
+  videoStartAt?: number;
   videoPlayback?: 'loop' | 'hold';
   audio?: string;
   caption?: string;

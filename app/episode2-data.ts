@@ -981,6 +981,30 @@ export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
       ...secondaryMedia[scene.id],
       ...videoMedia[scene.id],
       mainImage: `${episode2Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
+      imageSequence:
+        scene.id === 12
+          ? [
+              {
+                src: `${episode2Asset}/secondary/scene12-prague.jpg`,
+                at: 0,
+                title: 'Der Prager Fenstersturz',
+                subtitle:
+                  '1618 werfen böhmische Protestanten kaiserliche Statthalter aus einem Fenster.',
+              },
+              {
+                src: `${episode2Asset}/main/scene12.jpg`,
+                at: 0.34,
+                title: scene.imageTitle,
+                subtitle: scene.imageSubtitle,
+              },
+              {
+                src: `${episode2Asset}/secondary/scene12.jpg`,
+                at: 0.7,
+                title: secondaryMedia[12].secondaryImageTitle,
+                subtitle: secondaryMedia[12].secondaryImageSubtitle,
+              },
+            ]
+          : undefined,
       mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg${mapRevision}`,
       audio: episode2AudioScenes.has(scene.id)
         ? `${episode2Asset}/audio/scene${String(scene.id).padStart(2, '0')}.m4a`

@@ -7,7 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Episode 3 – Nationen Weltkriege und Gegenwart | Historia',
   description:
-    '16 kompakte Schlüsselszenen von der Industrialisierung bis zur global vernetzten Gegenwart.',
+    '19 kompakte Schlüsselszenen von der Industrialisierung bis zur global vernetzten Gegenwart.',
 };
 
 export default function EpisodeThreePage() {

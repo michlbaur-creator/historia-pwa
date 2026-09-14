@@ -3,21 +3,30 @@ import type { HistoriaScene } from './data';
 const episode3Asset = '/assets/historia/episode3';
 
 // Complementary motifs use the existing second-half crossfade, as in Episode 2.
-const secondaryMedia: Record<number, Pick<HistoriaScene, 'secondaryImage' | 'secondaryImageTitle' | 'secondaryImageSubtitle'>> = {
+const secondaryMedia: Record<
+  number,
+  Pick<
+    HistoriaScene,
+    'secondaryImage' | 'secondaryImageTitle' | 'secondaryImageSubtitle'
+  >
+> = {
   2: {
     secondaryImage: `${episode3Asset}/secondary/scene02.jpg`,
     secondaryImageTitle: 'Ein Parlament in der Paulskirche',
-    secondaryImageSubtitle: '1848 beraten Abgeordnete in Frankfurt über Freiheit und Einheit.',
+    secondaryImageSubtitle:
+      '1848 beraten Abgeordnete in Frankfurt über Freiheit und Einheit.',
   },
   13: {
     secondaryImage: `${episode3Asset}/secondary/scene13.jpg`,
     secondaryImageTitle: 'Ghana wird unabhängig',
-    secondaryImageSubtitle: '1957 entsteht ein neuer Staat – weitere Länder Afrikas folgen.',
+    secondaryImageSubtitle:
+      '1957 entsteht ein neuer Staat – weitere Länder Afrikas folgen.',
   },
   15: {
     secondaryImage: `${episode3Asset}/secondary/scene15.jpg`,
     secondaryImageTitle: 'Die Mauer öffnet sich',
-    secondaryImageSubtitle: '1989 begegnen sich Menschen an der geöffneten Grenze in Berlin.',
+    secondaryImageSubtitle:
+      '1989 begegnen sich Menschen an der geöffneten Grenze in Berlin.',
   },
 };
 
@@ -981,17 +990,547 @@ const episode3Scenes: HistoriaScene[] = [
   },
 ];
 
-export const historiaEpisode3Scenes: HistoriaScene[] = episode3Scenes.map(
-  (scene) => ({
-    ...scene,
-    ...videoMedia[scene.id],
-    ...secondaryMedia[scene.id],
-    mainImage: `${episode3Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
-    audio: `${episode3Asset}/SprechertexteE3/${scene.id}.m4a`,
-    ...(scene.id <= 16
-      ? {
-          mapImage: `${episode3Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg?v=20260911b`,
-        }
-      : {}),
-  }),
+const italyScene: Partial<HistoriaScene> = {
+  shortTitle: 'Italien',
+  title: 'Italien wird geeint',
+  date: '1859–1870',
+  place: 'Turin, Sizilien und Rom',
+  people: 'Cavour, Garibaldi und Viktor Emanuel II.',
+  imageTitle: 'Ein Parlament für Italien',
+  imageSubtitle:
+    '1861 tritt in Turin das erste Parlament des neuen Königreichs zusammen.',
+  duration: 41,
+  narration:
+    'Wir bleiben im 19. Jahrhundert und reisen nach Italien. Die Halbinsel besteht noch aus mehreren Staaten, doch die Bewegung des Risorgimento drängt auf Einheit. Ministerpräsident Cavour verbindet Diplomatie mit Krieg, Garibaldis Freiwillige erobern Sizilien und den Süden. 1861 entsteht das Königreich Italien unter Viktor Emanuel dem Zweiten. Vollständig ist es noch nicht: Venetien kommt 1866 hinzu, Rom 1870. Die Einheit wächst also Schritt für Schritt – und aus sehr verschiedenen politischen Kräften.',
+  mainImage: `${episode3Asset}/secondary/scene04-italy.jpg`,
+  mapImage: `${episode3Asset}/maps/scene04-italy.svg?v=20260914a`,
+  mapConcept:
+    'Italienkarte mit Turin als Ort der Staatsgründung 1861 und Rom als Abschluss der Einigung 1870.',
+  mapDetails: [
+    '1 · Turin · Königreich Italien 1861',
+    '2 · Rom · Teil Italiens ab 1870',
+    'Venetien kommt 1866 hinzu',
+  ],
+  discoveries: [
+    {
+      label: 'Staatsgründung',
+      title: 'Turin 1861',
+      text: 'Im März 1861 tritt in Turin das erste gesamtitalienische Parlament zusammen. Viktor Emanuel II. wird König von Italien; Venetien und Rom gehören noch nicht dazu.',
+    },
+    {
+      label: 'Vollendung',
+      title: 'Rom 1870',
+      text: 'Als französische Truppen Rom im Krieg gegen Preußen nicht länger schützen, besetzen italienische Soldaten die Stadt. Rom wird Teil des Königreichs und später Hauptstadt.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Wann entsteht das Königreich Italien?',
+      options: ['1861', '1815', '1914'],
+      correctIndex: 0,
+      explanation:
+        '1861 wird das Königreich Italien ausgerufen; Venetien und Rom folgen später.',
+    },
+    {
+      question: 'Welche Kräfte tragen zur Einigung bei?',
+      options: [
+        'Diplomatie, Freiwilligenbewegung und Krieg',
+        'Nur eine Entscheidung des Papstes',
+        'Ausschließlich eine Volksabstimmung in Rom',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Cavours Politik, Garibaldis Freiwillige und militärische Konflikte wirken zusammen.',
+    },
+  ],
+};
+
+const bismarckScene: HistoriaScene = {
+  id: 5,
+  shortTitle: 'Bismarck',
+  title: 'Bismarck und die Gründung des Deutschen Reichs',
+  date: '1862–1871',
+  place: 'Preußen, Mitteleuropa und Versailles',
+  people: 'Otto von Bismarck und Wilhelm I.',
+  imageTitle: 'Kaiserproklamation in Versailles',
+  imageSubtitle:
+    '1871 entsteht ein deutscher Nationalstaat unter preußischer Führung.',
+  duration: 43,
+  narration:
+    'Nördlich der Alpen verfolgt Preußens Ministerpräsident Otto von Bismarck einen anderen Weg zur nationalen Einheit. Konflikte mit Dänemark 1864, Österreich 1866 und Frankreich 1870 und 1871 stärken Preußens Führung. Während des Kriegs gegen Frankreich rufen deutsche Fürsten Wilhelm den Ersten im Schloss Versailles zum Kaiser aus. Das neue Deutsche Reich schließt Österreich aus und besitzt ein Parlament, doch Kaiser und Regierung behalten große Macht. Nationale Einheit und demokratische Mitbestimmung sind also nicht dasselbe.',
+  mainImage: `${episode3Asset}/secondary/scene05-bismarck.jpg`,
+  mapImage: `${episode3Asset}/maps/scene05-bismarck.svg?v=20260914a`,
+  mapConcept:
+    'Mitteleuropakarte mit Berlin als preußischem Machtzentrum und Versailles als Ort der Kaiserproklamation 1871.',
+  mapDetails: [
+    '1 · Berlin · preußisches Machtzentrum',
+    '2 · Versailles · Kaiserproklamation 1871',
+    'Deutsches Reich ohne Österreich',
+  ],
+  discoveries: [
+    {
+      label: 'Machtpolitik',
+      title: 'Berlin und Preußen',
+      text: 'Bismarck regiert seit 1862 als preußischer Ministerpräsident. Durch Diplomatie und drei Kriege stärkt er Preußens Vorrang unter den deutschen Staaten.',
+    },
+    {
+      label: 'Reichsgründung',
+      title: 'Versailles 1871',
+      text: 'Am 18. Januar 1871 wird Wilhelm I. im Schloss Versailles zum deutschen Kaiser ausgerufen. Der Ort mitten im Krieg gegen Frankreich belastet das Verhältnis beider Staaten.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Welcher Staat führt die deutsche Einigung an?',
+      options: ['Preußen', 'Österreich', 'Frankreich'],
+      correctIndex: 0,
+      explanation:
+        'Bismarcks Politik macht Preußen zur führenden Macht im neuen Deutschen Reich.',
+    },
+    {
+      question: 'Was entsteht 1871?',
+      options: [
+        'Ein deutscher Nationalstaat ohne Österreich',
+        'Eine gemeinsame Republik mit Frankreich',
+        'Die Europäische Wirtschaftsgemeinschaft',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Das Deutsche Reich wird unter preußischer Führung und ohne Österreich gegründet.',
+    },
+  ],
+};
+
+const coldWarScene: Partial<HistoriaScene> = {
+  shortTitle: 'Luftbrücke',
+  title: 'Kalter Krieg und Berliner Luftbrücke',
+  date: '1945–1949',
+  place: 'Europa und Berlin',
+  people: 'USA, Sowjetunion, Westallierte und Berliner Bevölkerung',
+  imageTitle: 'Versorgung aus der Luft',
+  imageSubtitle:
+    'Die Westalliierten versorgen West-Berlin während der sowjetischen Blockade.',
+  duration: 42,
+  narration:
+    'Nach 1945 zerfällt das Bündnis gegen Hitler. Die USA und die Sowjetunion stehen für gegensätzliche politische und wirtschaftliche Ordnungen; Europa teilt sich in zwei Machtblöcke. 1948 sperrt die Sowjetunion die Landwege nach West-Berlin. Die Westalliierten antworten mit einer Luftbrücke und bringen fast ein Jahr lang Lebensmittel und Kohle in die Stadt. Die Blockade scheitert, doch die Teilung vertieft sich. Aus Deutschland entstehen 1949 zwei Staaten – mitten in einem nun kalten Konflikt.',
+  mapImage: `${episode3Asset}/maps/scene13-airlift.svg?v=20260914a`,
+  mapConcept:
+    'Europakarte mit den westlichen Besatzungszonen und West-Berlin sowie den Luftkorridoren während der Blockade.',
+  mapDetails: [
+    '1 · Frankfurt am Main · westliche Luftstützpunkte',
+    '2 · West-Berlin · Versorgung 1948/49',
+    'Luftkorridore durch die sowjetische Besatzungszone',
+  ],
+  discoveries: [
+    {
+      label: 'Konfrontation',
+      title: 'Geteiltes Europa',
+      text: 'Die USA und die Sowjetunion werden nach 1945 zu rivalisierenden Supermächten. Militärbündnisse, Aufrüstung und politische Kontrolle verfestigen die Teilung Europas.',
+    },
+    {
+      label: 'Versorgung',
+      title: 'West-Berlin 1948/49',
+      text: 'Während der Blockade landen in kurzen Abständen Transportflugzeuge in West-Berlin. Sie bringen Lebensmittel, Kohle und andere Güter, bis die Sowjetunion die Sperre im Mai 1949 beendet.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Warum entsteht 1948 die Berliner Luftbrücke?',
+      options: [
+        'Die Landwege nach West-Berlin sind blockiert',
+        'Berlin soll nach Amerika verlegt werden',
+        'Der Zweite Weltkrieg beginnt',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Die Westalliierten versorgen West-Berlin aus der Luft, nachdem die Sowjetunion die Landwege sperrt.',
+    },
+    {
+      question: 'Was kennzeichnet den Kalten Krieg?',
+      options: [
+        'Rivalität zweier Machtblöcke ohne direkten großen Krieg der Supermächte',
+        'Vollständige weltweite Friedenszeit',
+        'Ein Bündnis aller Staaten unter einer Regierung',
+      ],
+      correctIndex: 0,
+      explanation:
+        'USA und Sowjetunion vermeiden einen direkten großen Krieg, tragen ihre Rivalität aber weltweit aus.',
+    },
+  ],
+};
+
+const cubaScene: HistoriaScene = {
+  id: 14,
+  shortTitle: 'Kubakrise',
+  title: 'Die Kubakrise bringt die Welt an den Abgrund',
+  date: 'Oktober 1962',
+  place: 'Kuba, Washington und Moskau',
+  people: 'John F. Kennedy, Nikita Chruschtschow und Fidel Castro',
+  imageTitle: 'Dreizehn Tage unter höchster Spannung',
+  imageSubtitle:
+    'Kennedy und seine Berater prüfen Luftbilder sowjetischer Raketenstellungen.',
+  duration: 42,
+  narration:
+    'Im Oktober 1962 entdecken amerikanische Aufklärungsflugzeuge sowjetische Atomraketen auf Kuba – nur wenige Flugminuten von den USA entfernt. Präsident Kennedy verhängt eine Seeblockade, die er Quarantäne nennt. Dreizehn Tage lang droht die Krise zu einem Atomkrieg zu eskalieren. Schließlich zieht die Sowjetunion ihre Raketen ab. Die USA versprechen, Kuba nicht anzugreifen, und entfernen später heimlich eigene Raketen aus der Türkei. Beide Seiten erkennen, wie knapp Abschreckung und Katastrophe beieinanderliegen.',
+  mainImage: `${episode3Asset}/secondary/scene14-cuba.jpg`,
+  mapImage: `${episode3Asset}/maps/scene14-cuba.svg?v=20260914a`,
+  mapConcept:
+    'Atlantikkarte mit Washington und Kuba, sowjetischem Transportweg und amerikanischem Sperrring.',
+  mapDetails: [
+    '1 · Washington · Krisenentscheidung',
+    '2 · Kuba · sowjetische Raketenstellungen',
+    'Seesperre und sowjetische Transportroute',
+  ],
+  discoveries: [
+    {
+      label: 'Entdeckung',
+      title: 'Raketen auf Kuba',
+      text: 'Luftbilder zeigen im Oktober 1962 den Aufbau sowjetischer Raketenstellungen. Ihre Nähe zu den USA verändert das militärische Gleichgewicht und löst die Krise aus.',
+    },
+    {
+      label: 'Kompromiss',
+      title: 'Washington und Moskau',
+      text: 'Kennedy und Chruschtschow finden einen Ausweg: sowjetische Raketen verlassen Kuba, die USA versprechen keinen Angriff und bauen später ihre Jupiter-Raketen in der Türkei ab.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Was löst die Kubakrise 1962 aus?',
+      options: [
+        'Sowjetische Atomraketen auf Kuba',
+        'Die Berliner Luftbrücke',
+        'Der Fall der Berliner Mauer',
+      ],
+      correctIndex: 0,
+      explanation:
+        'US-Luftbilder belegen den Aufbau sowjetischer Raketenstellungen auf Kuba.',
+    },
+    {
+      question: 'Wie endet die unmittelbare Krise?',
+      options: [
+        'Mit einem ausgehandelten gegenseitigen Nachgeben',
+        'Mit einem Atomkrieg',
+        'Mit der Besetzung Moskaus',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Beide Seiten machen Zusagen und ziehen gefährliche Waffen zurück.',
+    },
+  ],
+};
+
+const ewgScene: Partial<HistoriaScene> = {
+  shortTitle: 'EWG',
+  title: 'Westeuropa wächst wirtschaftlich zusammen',
+  date: '1951–1957',
+  place: 'Paris, Luxemburg und Rom',
+  people:
+    'Belgien, Bundesrepublik, Frankreich, Italien, Luxemburg und Niederlande',
+  imageTitle: 'Die Verträge von Rom',
+  imageSubtitle:
+    'Sechs Staaten gründen 1957 die Europäische Wirtschaftsgemeinschaft.',
+  duration: 41,
+  narration:
+    'Nach zwei Weltkriegen suchen sechs westeuropäische Staaten einen neuen Weg: Sie wollen wichtige Industrien und Märkte so eng verbinden, dass ein neuer Krieg schwieriger wird. 1951 entsteht die Gemeinschaft für Kohle und Stahl. Mit den Römischen Verträgen gründen Belgien, die Bundesrepublik Deutschland, Frankreich, Italien, Luxemburg und die Niederlande 1957 die Europäische Wirtschaftsgemeinschaft. Zölle sollen fallen, Handel und Zusammenarbeit wachsen. Daraus entwickelt sich später die Europäische Union – langsam, vertraglich und nicht ohne Streit.',
+  mainImage: `${episode3Asset}/secondary/scene17-ewg.jpg`,
+  secondaryImage: undefined,
+  secondaryImageTitle: undefined,
+  secondaryImageSubtitle: undefined,
+  mapImage: `${episode3Asset}/maps/scene17-ewg.svg?v=20260914a`,
+  mapConcept:
+    'Europakarte mit den sechs EWG-Gründungsstaaten und den Vertragsorten Paris und Rom.',
+  mapDetails: [
+    '1 · Paris · Montanunion 1951',
+    '2 · Rom · EWG-Verträge 1957',
+    'Sechs Gründungsstaaten in Westeuropa',
+  ],
+  discoveries: [
+    {
+      label: 'Erster Schritt',
+      title: 'Kohle und Stahl',
+      text: 'Ab 1951 verwalten sechs Staaten Kohle- und Stahlmärkte gemeinsam. Gerade die für Krieg und Wiederaufbau wichtigen Industrien sollen nicht mehr rein national gegeneinander organisiert werden.',
+    },
+    {
+      label: 'Gemeinsamer Markt',
+      title: 'Rom 1957',
+      text: 'Die Römischen Verträge schaffen die EWG. Die Mitgliedstaaten bauen Zölle ab und vereinbaren einen gemeinsamen Markt; daraus entwickelt sich später die Europäische Union.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Was gründen sechs Staaten 1957?',
+      options: [
+        'Die Europäische Wirtschaftsgemeinschaft',
+        'Den Warschauer Pakt',
+        'Das Deutsche Kaiserreich',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Die Römischen Verträge schaffen 1957 die Europäische Wirtschaftsgemeinschaft.',
+    },
+    {
+      question: 'Welches Ziel verbindet die ersten Gemeinschaften?',
+      options: [
+        'Wirtschaftliche Zusammenarbeit und dauerhafter Frieden',
+        'Neue Kolonien außerhalb Europas',
+        'Die Abschaffung aller nationalen Regierungen',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Gemeinsame Märkte sollen Wohlstand fördern und neue Kriege zwischen Mitgliedstaaten erschweren.',
+    },
+  ],
+};
+
+const reunificationScene: HistoriaScene = {
+  id: 18,
+  shortTitle: 'Einheit',
+  title: 'Friedliche Revolution und Wiedervereinigung',
+  date: '1985–1991',
+  place: 'Leipzig, Berlin und Europa',
+  people: 'DDR-Bürger, Michail Gorbatschow und deutsche Regierungen',
+  imageTitle: 'Die Berliner Mauer öffnet sich',
+  imageSubtitle:
+    'Am 9. November 1989 fällt die Grenze – die staatliche Einheit folgt 1990.',
+  duration: 43,
+  narration:
+    'In der Sowjetunion beginnt Michail Gorbatschow ab 1985 mit Reformen. In Polen, Ungarn und anderen Staaten gerät die kommunistische Herrschaft unter Druck. Auch in der DDR fordern immer mehr Menschen Freiheit und freie Wahlen. Friedliche Demonstrationen, besonders in Leipzig, wachsen Woche für Woche. Am 9. November 1989 öffnet sich überraschend die Berliner Mauer. Elf Monate später, am 3. Oktober 1990, wird Deutschland wiedervereinigt. 1991 zerfällt schließlich auch die Sowjetunion – Europas politische Karte verändert sich grundlegend.',
+  mainImage: `${episode3Asset}/main/scene15.jpg`,
+  secondaryImage: `${episode3Asset}/secondary/scene15.jpg`,
+  secondaryImageTitle: 'Begegnung an der geöffneten Grenze',
+  secondaryImageSubtitle:
+    'Menschen aus Ost und West feiern gemeinsam am Brandenburger Tor.',
+  mapImage: `${episode3Asset}/maps/scene18-reunification.svg?v=20260914a`,
+  mapConcept:
+    'Mitteleuropakarte mit Leipzig als Zentrum der Montagsdemonstrationen und Berlin als Ort von Mauerfall und staatlicher Einheit.',
+  mapDetails: [
+    '1 · Leipzig · Montagsdemonstrationen 1989',
+    '2 · Berlin · Maueröffnung 1989',
+    'Deutsche Wiedervereinigung 1990',
+  ],
+  discoveries: [
+    {
+      label: 'Friedliche Revolution',
+      title: 'Leipzig 1989',
+      text: 'Die Montagsdemonstrationen werden zu einem Zentrum der friedlichen Revolution. Trotz des Risikos staatlicher Gewalt fordern Zehntausende Reformen, Reisefreiheit und politische Rechte.',
+    },
+    {
+      label: 'Zwei Daten',
+      title: 'Berlin 1989 und 1990',
+      text: 'Die Grenze öffnet sich am 9. November 1989. Die staatliche Wiedervereinigung folgt am 3. Oktober 1990 – Mauerfall und Einheit gehören zusammen, sind aber nicht dasselbe Ereignis.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Was geschieht am 9. November 1989?',
+      options: [
+        'Die Berliner Mauer öffnet sich',
+        'Die EWG wird gegründet',
+        'Die Sowjetunion entsteht',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Die Grenzübergänge in Berlin werden geöffnet; die staatliche Einheit folgt 1990.',
+    },
+    {
+      question: 'Warum heißt der Umbruch in der DDR friedliche Revolution?',
+      options: [
+        'Massenproteste erzwingen Wandel weitgehend ohne Gewalt',
+        'Eine ausländische Armee erobert Berlin',
+        'Die DDR-Regierung verbietet alle Demonstrationen erfolgreich',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Bürgerinnen und Bürger erreichen mit anhaltenden friedlichen Protesten tiefgreifenden politischen Wandel.',
+    },
+  ],
+};
+
+type Episode3ScenePlan = {
+  id: number;
+  sourceId?: number;
+  scene?: HistoriaScene;
+  override?: Partial<HistoriaScene>;
+  keepAudio?: boolean;
+};
+
+const episode3ScenePlan: Episode3ScenePlan[] = [
+  { id: 1, sourceId: 1, keepAudio: true },
+  { id: 2, sourceId: 2, keepAudio: true },
+  { id: 3, sourceId: 3, keepAudio: true },
+  { id: 4, sourceId: 4, override: italyScene },
+  { id: 5, scene: bismarckScene },
+  { id: 6, sourceId: 5, keepAudio: true },
+  {
+    id: 7,
+    sourceId: 6,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene07-sarajevo.jpg`,
+          at: 0,
+          title: 'Das Attentat von Sarajevo',
+          subtitle:
+            'Die Ermordung Franz Ferdinands löst die Julikrise von 1914 aus.',
+        },
+      ],
+      videoStartAt: 0.25,
+    },
+  },
+  { id: 8, sourceId: 7, keepAudio: true },
+  {
+    id: 9,
+    sourceId: 8,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/main/scene08.jpg`,
+          at: 0,
+          title: 'Krise der Republik',
+          subtitle:
+            'Inflation und Arbeitslosigkeit belasten die Weimarer Republik.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene09-weimar.jpg`,
+          at: 0.58,
+          title: 'Eine neue Demokratie',
+          subtitle: 'Frauen und Männer wählen 1919 die Nationalversammlung.',
+        },
+      ],
+    },
+  },
+  {
+    id: 10,
+    sourceId: 9,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/main/scene09.jpg`,
+          at: 0,
+          title: 'Propaganda und Ausgrenzung',
+          subtitle:
+            'Die Diktatur kontrolliert Öffentlichkeit und verfolgt Menschen.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene10-dictatorship.jpg`,
+          at: 0.56,
+          title: 'Demokratische Kontrolle wird beseitigt',
+          subtitle:
+            'Politische Gegner werden überwacht, verhaftet und ausgeschaltet.',
+        },
+      ],
+    },
+  },
+  {
+    id: 11,
+    sourceId: 10,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/main/scene10.jpg`,
+          at: 0,
+          title: 'Europa in Trümmern',
+          subtitle: 'Der Krieg zerstört Städte und Lebensgrundlagen.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene11-war.jpg`,
+          at: 0.55,
+          title: 'Flucht und Vertreibung',
+          subtitle:
+            'Der Krieg zwingt Millionen Menschen, ihre Heimat zu verlassen.',
+        },
+      ],
+    },
+  },
+  {
+    id: 12,
+    sourceId: 11,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/main/scene11.jpg`,
+          at: 0,
+          title: 'Die Orte der Vernichtung',
+          subtitle:
+            'Leere Gleise erinnern an Deportation und millionenfachen Mord.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene12-deportation.jpg`,
+          at: 0.55,
+          title: 'Deportation als Teil der Verfolgung',
+          subtitle: 'Züge bringen verfolgte Menschen in Ghettos und Lager.',
+        },
+      ],
+    },
+  },
+  { id: 13, sourceId: 12, override: coldWarScene },
+  { id: 14, scene: cubaScene },
+  { id: 15, sourceId: 13, keepAudio: true },
+  { id: 16, sourceId: 14, keepAudio: true },
+  { id: 17, sourceId: 15, override: ewgScene },
+  { id: 18, scene: reunificationScene },
+  {
+    id: 19,
+    sourceId: 16,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene19-september11.jpg`,
+          at: 0.22,
+          title: 'New York nach den Anschlägen',
+          subtitle:
+            'Helfer versorgen Menschen in Lower Manhattan im September 2001.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene19-financial-crisis.jpg`,
+          at: 0.42,
+          title: 'Die Finanzkrise 2008',
+          subtitle:
+            'Bankenkrise und Rezession treffen Unternehmen und Haushalte weltweit.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene19-pandemic.jpg`,
+          at: 0.61,
+          title: 'Die Pandemie ab 2020',
+          subtitle: 'Gesundheitsschutz prägt Alltag und öffentliche Räume.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene19-ukraine.jpg`,
+          at: 0.8,
+          title: 'Flucht aus der Ukraine',
+          subtitle:
+            'Russlands Großangriff vertreibt ab 2022 Millionen Menschen.',
+        },
+      ],
+      videoStartAt: 0,
+    },
+  },
+];
+
+export const historiaEpisode3Scenes: HistoriaScene[] = episode3ScenePlan.map(
+  (plan) => {
+    if (plan.scene) return plan.scene;
+    const sourceId = plan.sourceId as number;
+    const source = episode3Scenes.find((scene) => scene.id === sourceId);
+    if (!source) throw new Error(`Fehlende Episode-3-Quellszene ${sourceId}`);
+
+    return {
+      ...source,
+      ...videoMedia[sourceId],
+      ...secondaryMedia[sourceId],
+      id: plan.id,
+      mainImage: `${episode3Asset}/main/scene${String(sourceId).padStart(2, '0')}.jpg`,
+      mapImage: `${episode3Asset}/maps/scene${String(sourceId).padStart(2, '0')}.svg?v=20260911b`,
+      audio: plan.keepAudio
+        ? `${episode3Asset}/SprechertexteE3/${sourceId}.m4a`
+        : undefined,
+      ...plan.override,
+    };
+  },
 );

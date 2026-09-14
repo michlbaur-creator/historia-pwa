@@ -87,23 +87,67 @@ export default function HistoriaPlayer({
   const scene = scenes[sceneIndex];
 
   const renderedMapImage =
-    scene.mapImage?.includes('.svg') && mapAnimationRun > 0 && mapMode === 'auto'
+    scene.mapImage?.includes('.svg') &&
+    mapAnimationRun > 0 &&
+    mapMode === 'auto'
       ? `${scene.mapImage}#play`
       : scene.mapImage;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
-  const secondaryBlend =
-    !showMap && scene.secondaryImage && !scene.video
-      ? Math.min(1, Math.max(0, (sceneProgress - 0.54) / 0.12))
-      : 0;
-  const showingSecondary = secondaryBlend >= 0.5;
-  const imageTitle = showingSecondary
-    ? (scene.secondaryImageTitle ?? scene.imageTitle ?? scene.people)
-    : (scene.imageTitle ?? scene.people);
-  const imageSubtitle = showingSecondary
-    ? (scene.secondaryImageSubtitle ?? scene.imageSubtitle ?? scene.place)
-    : (scene.imageSubtitle ?? scene.place);
+  const legacySequence = scene.secondaryImage
+    ? [
+        ...(scene.mainImage
+          ? [
+              {
+                src: scene.mainImage,
+                at: 0,
+                title: scene.imageTitle,
+                subtitle: scene.imageSubtitle,
+              },
+            ]
+          : []),
+        {
+          src: scene.secondaryImage,
+          at: 0.54,
+          title: scene.secondaryImageTitle,
+          subtitle: scene.secondaryImageSubtitle,
+        },
+      ]
+    : [];
+  const imageSequence = scene.imageSequence?.length
+    ? scene.imageSequence
+    : legacySequence;
+  const activeImageIndex = imageSequence.reduce(
+    (found, cue, index) => (sceneProgress >= cue.at ? index : found),
+    -1,
+  );
+  const activeImage =
+    activeImageIndex >= 0 ? imageSequence[activeImageIndex] : undefined;
+  const previousImage =
+    activeImageIndex > 0 ? imageSequence[activeImageIndex - 1] : undefined;
+  const imageBlend = activeImage
+    ? Math.min(1, Math.max(0, (sceneProgress - activeImage.at) / 0.12))
+    : 0;
+  const captionImage = imageBlend >= 0.5 ? activeImage : previousImage;
+  const videoStartAt = scene.videoStartAt ?? 0;
+  const firstImageAfterVideo = imageSequence.find(
+    (cue) => cue.at >= videoStartAt,
+  )?.at;
+  const videoShouldPlay = Boolean(
+    scene.video &&
+      sceneProgress >= videoStartAt &&
+      (firstImageAfterVideo === undefined ||
+        sceneProgress < firstImageAfterVideo),
+  );
+  const videoOpacity = !scene.video || sceneProgress < videoStartAt
+    ? 0
+    : firstImageAfterVideo !== undefined && sceneProgress >= firstImageAfterVideo
+      ? 1 - imageBlend
+      : 1;
+  const imageTitle = captionImage?.title ?? scene.imageTitle ?? scene.people;
+  const imageSubtitle =
+    captionImage?.subtitle ?? scene.imageSubtitle ?? scene.place;
   const activeQuiz = scene.quiz[quizQuestion];
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(
@@ -130,7 +174,7 @@ export default function HistoriaPlayer({
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    if (!playing || showMap) {
+    if (!playing || showMap || !videoShouldPlay) {
       video.pause();
       return;
     }
@@ -138,7 +182,7 @@ export default function HistoriaPlayer({
     void video.play().catch(() => {
       // Das Hauptbild bleibt als Poster sichtbar, falls Video blockiert wird.
     });
-  }, [playing, scene.id, scene.videoPlayback, showMap]);
+  }, [playing, scene.id, scene.videoPlayback, showMap, videoShouldPlay]);
 
   useEffect(() => {
     const current = timelineRef.current?.querySelector<HTMLElement>(
@@ -198,7 +242,9 @@ export default function HistoriaPlayer({
       if (request !== audioRequestRef.current) return;
       pendingAudioStartRef.current = false;
       setPlaying(false);
-      setAudioError('Der Ton konnte nicht starten. Bitte tippe auf „Szene starten“.');
+      setAudioError(
+        'Der Ton konnte nicht starten. Bitte tippe auf „Szene starten“.',
+      );
     });
   }
 
@@ -270,46 +316,52 @@ export default function HistoriaPlayer({
 
   return (
     <main className={styles.shell}>
-        <audio
-          ref={audioRef}
-          src={scene.audio}
-          preload="metadata"
-          onLoadedMetadata={(event) => {
-            if (Number.isFinite(event.currentTarget.duration)) {
-              setAudioDuration(event.currentTarget.duration);
-            }
-          }}
-          onTimeUpdate={(event) => {
-            const current = event.currentTarget.currentTime;
-            setElapsed(current);
-          }}
-          onPlaying={(event) => {
-            if (event.currentTarget.paused) return;
-            pendingAudioStartRef.current = false;
-            setPlaying(true);
-          }}
-          onPause={(event) => {
-            if (event.currentTarget.paused && !event.currentTarget.ended && !pendingAudioStartRef.current) {
-              setPlaying(false);
-            }
-          }}
-          onError={() => {
-            pendingAudioStartRef.current = false;
+      <audio
+        ref={audioRef}
+        src={scene.audio}
+        preload="metadata"
+        onLoadedMetadata={(event) => {
+          if (Number.isFinite(event.currentTarget.duration)) {
+            setAudioDuration(event.currentTarget.duration);
+          }
+        }}
+        onTimeUpdate={(event) => {
+          const current = event.currentTarget.currentTime;
+          setElapsed(current);
+        }}
+        onPlaying={(event) => {
+          if (event.currentTarget.paused) return;
+          pendingAudioStartRef.current = false;
+          setPlaying(true);
+        }}
+        onPause={(event) => {
+          if (
+            event.currentTarget.paused &&
+            !event.currentTarget.ended &&
+            !pendingAudioStartRef.current
+          ) {
             setPlaying(false);
-            setAudioError('Die Tondatei konnte nicht geladen werden. Bitte versuche es erneut.');
-          }}
-          onEnded={finishAudio}
-        >
-          {scene.caption && (
-            <track
-              kind="captions"
-              src={scene.caption}
-              srcLang="de"
-              label="Deutsch"
-              default
-            />
-          )}
-        </audio>
+          }
+        }}
+        onError={() => {
+          pendingAudioStartRef.current = false;
+          setPlaying(false);
+          setAudioError(
+            'Die Tondatei konnte nicht geladen werden. Bitte versuche es erneut.',
+          );
+        }}
+        onEnded={finishAudio}
+      >
+        {scene.caption && (
+          <track
+            kind="captions"
+            src={scene.caption}
+            srcLang="de"
+            label="Deutsch"
+            default
+          />
+        )}
+      </audio>
       <header className={styles.header}>
         <div className={styles.brandLockup}>
           <span className={styles.brandMark} aria-hidden="true">
@@ -356,7 +408,8 @@ export default function HistoriaPlayer({
                 key={item.id}
                 style={
                   {
-                    '--milestone-color': timelineColors[index],
+                    '--milestone-color':
+                      timelineColors[index % timelineColors.length],
                   } as CSSProperties
                 }
                 onClick={() => selectScene(index)}
@@ -389,43 +442,56 @@ export default function HistoriaPlayer({
             aria-hidden={showMap}
           >
             {scene.video ? (
-              <video
-                key={scene.video}
-                ref={videoRef}
-                src={scene.video}
-                poster={scene.mainImage}
-                preload="metadata"
-                playsInline
-                muted
-                loop={scene.videoPlayback !== 'hold'}
-                aria-hidden="true"
-                className={styles.sceneVideo}
-              />
-            ) : scene.secondaryImage && scene.mainImage ? (
               <div className={styles.imageSequence}>
-                <Image
-                  src={scene.mainImage}
-                  alt={`Historische Bildszene: ${scene.title}`}
-                  fill
-                  priority={sceneIndex === 0}
-                  sizes="(max-width: 980px) 100vw, 1120px"
-                  className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                  style={{
-                    opacity: 1 - secondaryBlend,
-                    transform: `scale(${1 + secondaryBlend * 0.012})`,
-                  }}
+                <video
+                  key={scene.video}
+                  ref={videoRef}
+                  src={scene.video}
+                  poster={scene.mainImage}
+                  preload="metadata"
+                  playsInline
+                  muted
+                  loop={scene.videoPlayback !== 'hold'}
+                  aria-hidden="true"
+                  className={styles.sceneVideo}
+                  style={{ opacity: videoOpacity }}
                 />
-                <Image
-                  src={scene.secondaryImage}
-                  alt={`Zweite historische Bildszene: ${scene.title}`}
-                  fill
-                  sizes="(max-width: 980px) 100vw, 1120px"
-                  className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                  style={{
-                    opacity: secondaryBlend,
-                    transform: `scale(${1.012 - secondaryBlend * 0.012})`,
-                  }}
-                />
+                {activeImage ? (
+                  <Image
+                    key={activeImage.src}
+                    src={activeImage.src}
+                    alt={`Historische Bildszene: ${scene.title}`}
+                    fill
+                    sizes="(max-width: 980px) 100vw, 1120px"
+                    className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                    style={{ opacity: videoShouldPlay ? 0 : imageBlend }}
+                  />
+                ) : null}
+              </div>
+            ) : imageSequence.length ? (
+              <div className={styles.imageSequence}>
+                {previousImage ? (
+                  <Image
+                    src={previousImage.src}
+                    alt=""
+                    fill
+                    sizes="(max-width: 980px) 100vw, 1120px"
+                    className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                    style={{ opacity: 1 - imageBlend }}
+                  />
+                ) : null}
+                {activeImage ? (
+                  <Image
+                    key={activeImage.src}
+                    src={activeImage.src}
+                    alt={`Historische Bildszene: ${scene.title}`}
+                    fill
+                    priority={sceneIndex === 0}
+                    sizes="(max-width: 980px) 100vw, 1120px"
+                    className={`${styles.sceneImage} ${styles.sequenceImage}`}
+                    style={{ opacity: activeImageIndex === 0 ? 1 : imageBlend }}
+                  />
+                ) : null}
               </div>
             ) : scene.mainImage ? (
               <Image
@@ -461,9 +527,7 @@ export default function HistoriaPlayer({
               />
             ) : (
               <div className={`${styles.mediaDraft} ${styles.mapDraft}`}>
-                <small>
-                  {`Karte · ${scene.date}`}
-                </small>
+                <small>{`Karte · ${scene.date}`}</small>
                 <strong>{scene.place}</strong>
                 <p>{scene.mapConcept}</p>
                 {scene.mapDetails && (
@@ -528,11 +592,9 @@ export default function HistoriaPlayer({
               {formatTime(elapsed)} / {formatTime(activeDuration)}
             </span>
           </div>
-          <button
-            className={styles.nextControl}
-            onClick={() => stepScene(1)}
-          >
-            {sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'} <ArrowRight aria-hidden="true" />
+          <button className={styles.nextControl} onClick={() => stepScene(1)}>
+            {sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'}{' '}
+            <ArrowRight aria-hidden="true" />
           </button>
         </div>
       </section>
@@ -574,8 +636,17 @@ export default function HistoriaPlayer({
         <section className={styles.finale}>
           <p>Am Ende von Episode {episodeNumber}</p>
           <h2>Bereit für deine Episoden-Challenge?</h2>
-          <p>{episodeNumber === 1 ? 'Neun Fragen von den Pharaonen bis Westrom. Danach geht deine Reise in Episode 2 weiter.' : episodeNumber === 2 ? 'Neun Fragen von der Hidschra bis Waterloo. Danach geht deine Reise in Episode 3 weiter.' : 'Neun Fragen von der Industrialisierung bis heute. Was ist dir von deiner Reise geblieben?'}</p>
-          <a href={`/episode-${episodeNumber}/challenge/`}>Zur Episode-{episodeNumber}-Challenge <ArrowRight size={18} aria-hidden="true" /></a>
+          <p>
+            {episodeNumber === 1
+              ? 'Neun Fragen von den Pharaonen bis Westrom. Danach geht deine Reise in Episode 2 weiter.'
+              : episodeNumber === 2
+                ? 'Neun Fragen von der Hidschra bis Waterloo. Danach geht deine Reise in Episode 3 weiter.'
+                : 'Neun Fragen von der Industrialisierung bis heute. Was ist dir von deiner Reise geblieben?'}
+          </p>
+          <a href={`/episode-${episodeNumber}/challenge/`}>
+            Zur Episode-{episodeNumber}-Challenge{' '}
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </section>
       )}
 
