@@ -77,7 +77,7 @@ export const historiaScenes: HistoriaScene[] = [
     duration: 35,
     narration:
       'Jetzt springt die Karte nach Mesopotamien, in das Reich von Babylon um 1750 vor Christus. König Hammurabi lässt Rechtssätze auf einer großen Stele festhalten: zu Besitz, Handel, Familie und Strafen. Gleich sind vor diesem Recht allerdings längst nicht alle; der Rang zählt kräftig mit. Hammurabi hat die Gesetze nicht erfunden. Doch seine öffentlich sichtbare Sammlung wird zu einer der bekanntesten der Antike.',
-    mainImage: `${asset}/main/scene03.jpg`,
+    mainImage: `${asset}/main/scene03-v2.jpg`,
     mapImage: `${asset}/maps/scene03.jpg`,
     ...media(3),
   },
@@ -196,6 +196,7 @@ export const historiaScenes: HistoriaScene[] = [
     mainImage: `${asset}/main/scene11.jpg`,
     mapImage: `${asset}/maps/scene11.jpg`,
     video: `${asset}/videos/scene11.mp4`,
+    videoPlayback: 'hold',
     ...media(11),
   },
   {

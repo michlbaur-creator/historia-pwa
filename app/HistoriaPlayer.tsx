@@ -70,7 +70,8 @@ export default function HistoriaPlayer({
   const [sceneIndex, setSceneIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const [showMap, setShowMap] = useState(true);
+  const [mapMode, setMapMode] = useState<'auto' | 'map' | 'image'>('auto');
+  const showMap = mapMode === 'map' || (mapMode === 'auto' && elapsed < 5);
   const [tab, setTab] = useState<Tab>('discover');
   const [audioDuration, setAudioDuration] = useState(0);
   const [quizQuestion, setQuizQuestion] = useState(0);
@@ -86,7 +87,7 @@ export default function HistoriaPlayer({
   const scene = scenes[sceneIndex];
 
   const renderedMapImage =
-    scene.mapImage?.includes('.svg') && mapAnimationRun > 0
+    scene.mapImage?.includes('.svg') && mapAnimationRun > 0 && mapMode === 'auto'
       ? `${scene.mapImage}#play`
       : scene.mapImage;
   const activeDuration = audioDuration || scene.duration;
@@ -115,7 +116,6 @@ export default function HistoriaPlayer({
     const interval = window.setInterval(() => {
       setElapsed((current) => {
         const next = Math.min(scene.duration, current + 0.1);
-        if (next >= 4) setShowMap(false);
         if (next >= scene.duration) {
           window.clearInterval(interval);
           window.setTimeout(finishAudio, 0);
@@ -162,7 +162,7 @@ export default function HistoriaPlayer({
       setSceneIndex(index);
       setElapsed(0);
       setAudioDuration(0);
-      setShowMap(true);
+      setMapMode('auto');
       setPlaying(false);
       setAudioError('');
       setMapAnimationRun(autoPlay ? 1 : 0);
@@ -207,7 +207,7 @@ export default function HistoriaPlayer({
     if (!scene.audio || !audio) {
       if (elapsed >= activeDuration) {
         setElapsed(0);
-        setShowMap(true);
+        setMapMode('auto');
       }
       if (!playing) setMapAnimationRun((value) => value + 1);
       setPlaying((value) => !value);
@@ -216,6 +216,8 @@ export default function HistoriaPlayer({
     if (audio.paused) {
       if (audio.ended) {
         audio.currentTime = 0;
+        setElapsed(0);
+        setMapMode('auto');
         if (videoRef.current) videoRef.current.currentTime = 0;
       }
       setMapAnimationRun((value) => value + 1);
@@ -280,7 +282,6 @@ export default function HistoriaPlayer({
           onTimeUpdate={(event) => {
             const current = event.currentTarget.currentTime;
             setElapsed(current);
-            if (current >= 4) setShowMap(false);
           }}
           onPlaying={(event) => {
             if (event.currentTarget.paused) return;
@@ -376,7 +377,7 @@ export default function HistoriaPlayer({
 
       <section className={styles.player}>
         <div
-          className={`${styles.imageStage} ${!showMap && episodeNumber === 3 && scene.id <= 3 ? styles.mobileTallImageStage : ''}`}
+          className={`${styles.imageStage} ${mapMode !== 'auto' ? styles.manualMapView : ''} ${!showMap && episodeNumber === 3 && scene.id <= 3 ? styles.mobileTallImageStage : ''}`}
           onPointerDown={startSwipe}
           onPointerUp={finishSwipe}
           onPointerCancel={() => {
@@ -511,7 +512,8 @@ export default function HistoriaPlayer({
           </button>
           <button
             className={styles.mapControl}
-            onClick={() => setShowMap((value) => !value)}
+            onClick={() => setMapMode(showMap ? 'image' : 'map')}
+            aria-pressed={showMap}
           >
             {showMap ? 'Hauptbild' : 'Karte'}
           </button>

@@ -64,3 +64,10 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Der Finale-Kopf ist gekürzt, die Fanfare steht am Ergebnis. Während einer Runde zeigt die Treppe nur die neun Fragen des aktiven Blocks; das Gesamtergebnis zeigt wieder alle 18. In der lokalen Ansicht mit 744 × 1100 CSS-Pixeln lag der Weiter-Button nach einer Antwort vollständig sichtbar bei y=788–837. Keine Änderung an Quizlösungen oder Sprechertexten.
 - Drei neue, mit Built-in Imagegen erzeugte historische Rekonstruktionen ergänzen Episode 3: Szene 2 Paulskirche 1848, Szene 13 Accra/Ghana 1957 und Szene 15 Berliner Grenzöffnung 1989. JPEGs unter `public/assets/historia/episode3/secondary/`, exakte Prompts in `docs/episode3-zweitbilder-prompts.md`. Vorhandene Hauptbilder und Videos bleiben erhalten; die Zweitbilder nutzen die bestehende Überblendung in der zweiten Szenenhälfte.
 - Cache `historia-v42`. Nutzer hat Einbau und Veröffentlichung ausdrücklich beauftragt.
+
+## Kartensteuerung und Hammurabi-Bild – 14. September 2026
+
+- Gemeinsamer Player: automatische Kartenphase fünf statt vier Sekunden. Manueller Karten-/Bildwechsel ist animationsfrei und bleibt unabhängig von Sprecherfortschritt aktiv, bis erneut umgeschaltet oder eine Szene neu gestartet wird. SVG-Karten werden beim manuellen Öffnen ohne `#play` geladen.
+- Hammurabi-Hauptbild ist auf dem Server intakt; der gemeldete iPad-Ladefehler konnte nicht eindeutig reproduziert werden. Unverändertes Bild wird unter `scene03-v2.jpg` frisch geladen. Service Worker speichert nur erfolgreiche Antworten und liefert offline keine HTML-Startseite als Ersatz für fehlende Bilder. Cache `historia-v43`.
+- Hannibal (Episode 1, Szene 11) spielt sein vorhandenes Video einmal ab und hält auf dem letzten Frame. Im Browser bei 10,005 Sekunden mit `ended=true`, `paused=true`, `loop=false` bestätigt.
+- TypeScript, Produktions-Build, Pages-Export, 16 Quiztests und vier Offline-Medientests erfolgreich. Der Player-Linter meldet acht bereits im Ausgangsstand vorhandene Hinweise (Hook-Abhängigkeit, Medienuntertitel, Status-Element und bewusste HTML-Navigation); keine zusätzlichen Lintbefunde durch diese Änderung.

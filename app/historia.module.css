@@ -1087,3 +1087,8 @@
     transition: none;
   }
 }
+
+/* Manually inspecting a map is an immediate, persistent view, not a replay. */
+.manualMapView .visualLayer { transition: none; animation: none; }
+.manualMapView .mapVisualLeaving { opacity: 0; }
+.manualMapView .mapVisualActive { opacity: 1; }

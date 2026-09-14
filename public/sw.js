@@ -1,4 +1,4 @@
-const CACHE = 'historia-v42';
+const CACHE = 'historia-v43';
 const CORE = [
   '/',
   '/manifest.webmanifest',
@@ -30,14 +30,16 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        const copy = response.clone();
-        void caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+        if (response.ok) {
+          const copy = response.clone();
+          void caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+        }
         return response;
       })
       .catch(() =>
         caches
           .match(event.request)
-          .then((cached) => cached || caches.match('/')),
+          .then(async (cached) => cached || (event.request.mode === 'navigate' ? await caches.match('/') : undefined) || Response.error()),
       ),
   );
 });
