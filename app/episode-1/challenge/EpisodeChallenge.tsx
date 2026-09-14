@@ -126,27 +126,28 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
     <section className={styles.card} aria-labelledby="challenge-title">
       <div className={styles.topline}>
         <span>{hyper ? 'Das große Finale · Alle drei Episoden' : `Episode ${episode} · ${config.theme}`}</span>
-        <div className={styles.soundControls}>
+        {!hyper && <div className={styles.soundControls}>
           <button onClick={sound.toggle} aria-pressed={sound.enabled}>
             {sound.enabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
             {sound.enabled ? 'Fanfare an · ausschalten' : 'Fanfare einschalten & probehören'}
           </button>
           {sound.enabled && <button onClick={() => void sound.play(hyper)}>Probehören</button>}
-        </div>
+        </div>}
       </div>
       {sound.error && <output>{sound.error}</output>}
-      <p className={styles.soundHint}>{hyper ? 'Beim Abschluss feiern wir – mit Ton, wenn du die Fanfare einschaltest.' : 'Bei 9/9 erklingt die Fanfare, wenn du sie oben einschaltest.'}</p>
+      {!hyper && <p className={styles.soundHint}>Bei 9/9 erklingt die Fanfare, wenn du sie oben einschaltest.</p>}
       <div className={styles.titleRow}>
         <div className={styles.cubeStage} aria-hidden="true"><div className={styles.cube}>
           <span><Landmark size={30} /></span><span>{hyper ? 'Ⅰ–Ⅲ' : ['Ⅰ', 'Ⅱ', 'Ⅲ'][episode - 1]}</span><span>✦</span>
         </div></div>
-        <div><p className={styles.eyebrow}>{hyper ? 'Deine Historia Hyper-Challenge' : 'Deine Episoden-Challenge'}</p><h1 id="challenge-title">{hyper ? 'Einmal durch die Weltgeschichte' : config.title}</h1></div>
+        <div>{!hyper && <p className={styles.eyebrow}>Deine Episoden-Challenge</p>}<h1 id="challenge-title">{hyper ? 'Einmal durch die Weltgeschichte' : config.title}</h1></div>
       </div>
-      <p>{hyper ? '18 knifflige Fragen in zwei Blöcken mit je neun Fragen. Mit 9/9 in Block 1 schaltest du Block 2 frei. Dort bleibt Block 1 bei einer Wiederholung geschafft. Am Ende wartet deine persönliche Urkunde.' : 'Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.'}</p>
+      <p>{hyper ? 'Zwei Blöcke mit je neun Fragen. Mit 9/9 geht’s weiter – Block 1 bleibt geschafft.' : 'Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.'}</p>
       {!question ? <output>Deine Fragen werden zusammengestellt …</output> : <>
         <div className={styles.stairHead}><span>{hyper ? `Block ${block.number} von 2${block.number === 2 ? ' · Block 1 geschafft ✓' : ''}` : 'Deine Zeitstufen'}</span><span>{score} richtig · Bestwert {best}/{total}</span></div>
-        <ol className={`${styles.stairs} ${hyper ? styles.hyperStairs : ''}`} aria-label={`Quiztreppe mit ${total} Stufen`}>
+        <ol className={`${styles.stairs} ${hyper ? styles.hyperStairs : ''}`} aria-label={hyper && !finished ? `Block ${block.number}: neun Zeitstufen` : `Quiztreppe mit ${total} Stufen`}>
           {questions.map((item, i) => {
+            if (hyper && !finished && Math.floor(i / 9) !== block.number - 1) return null;
             const done = answers.length > i;
             const correct = done && answers[i] === item.correctIndex;
             return <li key={`${item.episode}-${item.sceneId}`} style={{ '--height': `${38 + (i % 9) * 5}px` } as CSSProperties}
@@ -168,6 +169,15 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
           <h2 ref={heading} tabIndex={-1}>{rank}</h2>
           <p>{hyper ? (score === total ? 'Alle 18 richtig! Von der Antike bis in die Gegenwart: Du hast die Zusammenhänge im Blick. Das verdient einen großen Applaus!' : 'Geschafft! Du hast dich durch drei Episoden geknobelt. Feiere deinen Abschluss – und nimm die neu entdeckten Zusammenhänge mit.') : score === total ? config.success : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
           {hyper && score < total && <p>Block 1 bleibt mit 9/9 geschafft. Wiederhole nur die neun Fragen aus Block 2, um Historia-Champion zu werden.</p>}
+          {hyper && <div className={styles.topline}>
+        <div className={styles.soundControls}>
+          <button onClick={sound.toggle} aria-pressed={sound.enabled}>
+            {sound.enabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+            {sound.enabled ? 'Fanfare an · ausschalten' : 'Fanfare einschalten & probehören'}
+          </button>
+          {sound.enabled && <button onClick={() => void sound.play(hyper)}>Probehören</button>}
+        </div>
+          </div>}
           <div className={styles.actions}>
             {hyper && score < total ? <button className={styles.secondary} onClick={retryBlock}><RotateCcw size={18} /> Block 2 wiederholen</button> : <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>}
             {(hyper || score === total) && <button className={styles.primary} onClick={celebrateAgain}><Sparkles size={18} /> Noch einmal feiern</button>}

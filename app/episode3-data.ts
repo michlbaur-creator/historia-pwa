@@ -2,6 +2,25 @@ import type { HistoriaScene } from './data';
 
 const episode3Asset = '/assets/historia/episode3';
 
+// Complementary motifs use the existing second-half crossfade, as in Episode 2.
+const secondaryMedia: Record<number, Pick<HistoriaScene, 'secondaryImage' | 'secondaryImageTitle' | 'secondaryImageSubtitle'>> = {
+  2: {
+    secondaryImage: `${episode3Asset}/secondary/scene02.jpg`,
+    secondaryImageTitle: 'Ein Parlament in der Paulskirche',
+    secondaryImageSubtitle: '1848 beraten Abgeordnete in Frankfurt über Freiheit und Einheit.',
+  },
+  13: {
+    secondaryImage: `${episode3Asset}/secondary/scene13.jpg`,
+    secondaryImageTitle: 'Ghana wird unabhängig',
+    secondaryImageSubtitle: '1957 entsteht ein neuer Staat – weitere Länder Afrikas folgen.',
+  },
+  15: {
+    secondaryImage: `${episode3Asset}/secondary/scene15.jpg`,
+    secondaryImageTitle: 'Die Mauer öffnet sich',
+    secondaryImageSubtitle: '1989 begegnen sich Menschen an der geöffneten Grenze in Berlin.',
+  },
+};
+
 const videoMedia: Record<
   number,
   Pick<HistoriaScene, 'video' | 'videoPlayback'>
@@ -966,6 +985,7 @@ export const historiaEpisode3Scenes: HistoriaScene[] = episode3Scenes.map(
   (scene) => ({
     ...scene,
     ...videoMedia[scene.id],
+    ...secondaryMedia[scene.id],
     mainImage: `${episode3Asset}/main/scene${String(scene.id).padStart(2, '0')}.jpg`,
     audio: `${episode3Asset}/SprechertexteE3/${scene.id}.m4a`,
     ...(scene.id <= 16

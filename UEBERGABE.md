@@ -58,3 +58,9 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Bei weniger als 9/9 lässt sich der jeweilige Block mit seinen bisherigen Fragen wiederholen. Beim Wiederholen von Block 2 bleiben die neun richtigen Antworten aus Block 1 innerhalb der laufenden Runde erhalten. Ein Neuladen startet wie bisher eine neue Runde.
 - Gestaltung, Fragenpool, Episoden-Challenges, Konfetti, optionale Fanfare und Druckurkunde bleiben erhalten. Nach Block 2 zeigt die Urkunde das tatsächliche Ergebnis; für Historia-Champion können nur die zweiten neun Fragen erneut versucht werden. Der Bestwert des Blockmodus verwendet einen getrennten Speicherschlüssel v2; frühere Werte werden nicht gelöscht.
 - Cache `historia-v41`. TypeScript, gezielter Linter, alle 16 Tests und Produktions-Build mit Pages-Export bestanden. Lokal vorbereitet, noch nicht veröffentlicht; Sichtprüfung durch Michael steht aus.
+
+## Kompaktes Finale und Episode-3-Zweitbilder – 14. September 2026
+
+- Der Finale-Kopf ist gekürzt, die Fanfare steht am Ergebnis. Während einer Runde zeigt die Treppe nur die neun Fragen des aktiven Blocks; das Gesamtergebnis zeigt wieder alle 18. In der lokalen Ansicht mit 744 × 1100 CSS-Pixeln lag der Weiter-Button nach einer Antwort vollständig sichtbar bei y=788–837. Keine Änderung an Quizlösungen oder Sprechertexten.
+- Drei neue, mit Built-in Imagegen erzeugte historische Rekonstruktionen ergänzen Episode 3: Szene 2 Paulskirche 1848, Szene 13 Accra/Ghana 1957 und Szene 15 Berliner Grenzöffnung 1989. JPEGs unter `public/assets/historia/episode3/secondary/`, exakte Prompts in `docs/episode3-zweitbilder-prompts.md`. Vorhandene Hauptbilder und Videos bleiben erhalten; die Zweitbilder nutzen die bestehende Überblendung in der zweiten Szenenhälfte.
+- Cache `historia-v42`. Nutzer hat Einbau und Veröffentlichung ausdrücklich beauftragt.

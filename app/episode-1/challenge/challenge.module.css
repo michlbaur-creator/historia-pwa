@@ -82,3 +82,15 @@
   .certificateEras { font-size: 11pt; }
   .certificate small { font-size: 9pt; }
 }
+
+/* Keep the active finale block compact without reducing readable answer text. */
+.hyperPage { padding-top: 16px; }
+.hyperPage .header { margin-bottom: 14px; }
+.hyperPage .card { padding: clamp(18px, 3vw, 26px); }
+.hyperPage .titleRow { margin-top: 8px; gap: 16px; }
+.hyperPage .cubeStage { height: 64px; }
+.hyperPage .stairHead { margin-top: 12px; }
+.hyperPage .stairs { margin-bottom: 16px; }
+.hyperPage .feedback { margin-top: 14px; }
+.hyperPage .feedback p { margin: 8px 0; }
+.hyperPage .feedback .actions { margin-top: 14px; }
