@@ -1,0 +1,53 @@
+# Historia – Übergabe für den nächsten Chat
+
+Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige Arbeiten sind gezielte Änderungen, kein neuer Gesamtentwurf.
+
+## Zuerst lesen und prüfen
+
+- Gemeinsames Projektgedächtnis: `/Users/michaelbaur/Documents/GitHub/mibaso-wissen/apps/historia.md`. Dessen ältere datierte Abschnitte sind Entwicklungsgeschichte; neuere Aussagen und dieses Protokoll ersetzen widersprüchliche Altstände.
+- Eigenständiges Historia-Repository im aktuellen Arbeitsverzeichnis: `/Users/michaelbaur/.codex/worktrees/eed6/Zeitreise-PWA/App/Historia`.
+- Origin: `https://github.com/michlbaur-creator/historia-pwa.git`, Branch `main`.
+- Nicht mit dem übergeordneten Repository `zeitreise-pwa` verwechseln! Dessen unversionierte Historia- und Austauschdateien nicht pauschal hinzufügen, entfernen oder committen.
+- Vor jeder Arbeit tatsächlichen Pfad, Git-Status und Remote prüfen. Der im alten Steckbrief genannte Documents-Pfad ist nicht der hier zuletzt verwendete Checkout.
+
+## Abgeschlossener Stand
+
+- Drei vollständige Episoden mit jeweils 16 Szenen, Karten, Bildern, vorhandenen Videos, Sprecheraufnahmen, Entdecken und Szenenquizzen.
+- Eigene Abschluss-Challenge je Episode mit neun anspruchsvolleren Fragen; anschließend Übergang zur nächsten Episode.
+- `/hyper-challenge/`: 18 gemischte Fragen, sechs je Episode; Konfetti, optional einschaltbare und probehörbare Fanfare sowie druckbare A4-Urkunde mit optionalem Namen und tatsächlichem Ergebnis.
+- Letzter geprüfter Commit: `63655ab` – „Historia Hyper-Challenge mit Fanfare und druckbarer Urkunde“. Michael hat selbst gepusht. Anschließender Push-Trockenlauf meldete „Everything up-to-date“. Das bestätigt den Git-Abgleich, nicht eine erneute Live-Deployment-Prüfung.
+- Historia-Checkout bei Übergabe sauber; dieses neue Protokoll ist die einzige neu hinzugefügte Datei.
+- Hauptadresse: `https://historia.mibaso.de`, Veröffentlichung über GitHub Pages. Letzte lokale Vorschau: `http://127.0.0.1:3001/hyper-challenge` (Serververfügbarkeit neu prüfen).
+
+## Unbedingt erhalten
+
+- Heller warmer Sand-/Braungrund, filigrane bläuliche Schrift, kein schweres Bold-Redesign. Header ohne eigenen Rahmen; kompakte Knöpfe „Große Zeitreise“ und „Anfang“.
+- Farbige Zeitstrahlkreise; orangefarbener Startknopf. Fortschrittsbalken innerhalb der kompakten Navigation unter dem Bild.
+- Natürlich wirkende, geografisch korrekte und unverzerrte Karten. Klar getrennte Länder; in Episode 2/3 genau zwei markante nummerierte Punkte passend zu Entdecken 1/2. Keine unlesbar kleinen Zusätze, keine Konturen um Ortsnamen, Jahreszahlen nicht pauschal in Großbuchstaben. Linien/Pfeile sparsam und zurückhaltend wie Episode 1, keine bedeutungslosen gestrichelten Verbindungen.
+- Höherer handyfreundlicher Bildausschnitt; vorhandene Bildunterschriften und genehmigte Texte erhalten.
+- Beim Öffnen ist „Entdecken“ aktiv. Danach gewählten Reiter beim Szenenwechsel erhalten.
+- In allen Episoden startet „Weiter“ bzw. Wischen nach links die nächste Szene samt Sprecher automatisch. Rückwärts und Zeitstrahlwahl bleiben manuell. Kein selbsttätiger Wechsel zur nächsten Szene am Szenenende.
+- Dauerhaftes Audioelement im Player erhalten: kein szenenabhängiger React-Key. Wiedergabe innerhalb der Nutzeraktion starten; Pause-Zustand erst bei echtem Start. Ältere Play-Fehler dürfen neueren Start nicht zurücksetzen.
+- Kartenflug-/Überblendung erhalten; reduzierte Bewegung respektieren. Videos stumm, mit Sprecher synchron, während Kartenphase pausiert. Bestehende szenenspezifische Loop-/Standbildregeln nicht pauschal ändern.
+- E2/E3-Sprechertexte sind freigegeben, umgangssprachlich und mit „du“ formuliert; sensible Geschichte respektvoll. Keine eigenmächtige Umschreibung oder neue Sprecheraufnahme.
+- Meldung über abfallenden Sprecherton wurde von Michael zurückgenommen: Aufnahmeproblem einzelner letzter Szenen, kein bestätigter Playerfehler. Keine Lautstärke-„Reparatur“ nötig.
+
+## Technische Orientierung
+
+- Vinext/React, statischer Pages-Export; `app/HistoriaPlayer.tsx` ist der gemeinsame Player.
+- Szenendaten: `app/data.ts`, `app/episode2-data.ts`, `app/episode3-data.ts`.
+- Gemeinsame Challenge-Logik/Styles und Fragenpool: `app/episode-1/challenge/`; Hyper-Einstieg: `app/hyper-challenge/`.
+- Medien unter `public/assets/historia/`; vorhandene Assets zuerst wiederverwenden.
+- Export: `scripts/prepare-pages.mjs`; neue Routen müssen als Pages-Unterverzeichnis mit `index.html` funktionieren. Normale HTML-Navigation zwischen Episoden beibehalten (frühere Probleme mit clientseitigen Links).
+- Letzter dokumentierter Service-Worker-Cache: `historia-v40`. Bei tatsächlich ausgelieferten Änderungen Cache-/Assetrevisionen prüfen; früher zeigten Vorschau und Handy wiederholt alte Karten.
+- Prüfen: `pnpm exec tsc --noEmit`, `node --test scripts/challenge.test.mjs`, gezielter Linter, `pnpm build` und `pnpm pages:prepare`.
+- Letzte Feature-Prüfung: TypeScript, gezielter Linter, 14 Tests und Pages-Build bestanden. Kein neuer Testlauf nur für diese Dokumentation.
+- Offen bleibt die ausdrückliche Bestätigung einer echten iPad-Hörprobe der neuen Fanfare und eines realen Urkundenausdrucks. Nicht als bereits verifiziert ausgeben.
+
+## Git-Zugang und Veröffentlichungen
+
+- GitHub CLI dauerhaft unter `/Users/michaelbaur/.local/bin/gh` installiert.
+- Aktives Konto `michlbaur-creator`, Anmeldung im macOS-Schlüsselbund bestätigt. GitHub-HTTPS nutzt den global eingerichteten gh-Credential-Helper; gilt auch für Zeitreise.
+- Niemals Tokens ausgeben, ins Repository schreiben oder aus dem Schlüsselbund extrahieren. Keine Bildschirmsperre deaktivieren.
+- Commit/Push nach Nutzerauftrag möglich, wenn Mac und Zugang verfügbar sind. Nach Neustart kann Entsperren nötig sein.
+- Änderungen gezielt prüfen und stagen, keine pauschalen Commits fremder Dateien. Veröffentlichung nach Sichtprüfung/Freigabe. Dieses Übergabeprotokoll wurde noch nicht committed oder gepusht.
