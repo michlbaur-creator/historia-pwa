@@ -51,3 +51,10 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Niemals Tokens ausgeben, ins Repository schreiben oder aus dem Schlüsselbund extrahieren. Keine Bildschirmsperre deaktivieren.
 - Commit/Push nach Nutzerauftrag möglich, wenn Mac und Zugang verfügbar sind. Nach Neustart kann Entsperren nötig sein.
 - Änderungen gezielt prüfen und stagen, keine pauschalen Commits fremder Dateien. Veröffentlichung nach Sichtprüfung/Freigabe. Dieses Übergabeprotokoll wurde noch nicht committed oder gepusht.
+
+## Großes Finale in zwei Blöcken (lokale Vorschau, 14. September 2026)
+
+- Die Hyper-Challenge enthält weiterhin dieselben 18 gemischten Fragen, jetzt in zwei Blöcken mit je neun Fragen. Erst 9/9 in Block 1 schaltet über ein Zwischenergebnis Block 2 frei.
+- Bei weniger als 9/9 lässt sich der jeweilige Block mit seinen bisherigen Fragen wiederholen. Beim Wiederholen von Block 2 bleiben die neun richtigen Antworten aus Block 1 innerhalb der laufenden Runde erhalten. Ein Neuladen startet wie bisher eine neue Runde.
+- Gestaltung, Fragenpool, Episoden-Challenges, Konfetti, optionale Fanfare und Druckurkunde bleiben erhalten. Nach Block 2 zeigt die Urkunde das tatsächliche Ergebnis; für Historia-Champion können nur die zweiten neun Fragen erneut versucht werden. Der Bestwert des Blockmodus verwendet einen getrennten Speicherschlüssel v2; frühere Werte werden nicht gelöscht.
+- Cache `historia-v41`. TypeScript, gezielter Linter, alle 16 Tests und Produktions-Build mit Pages-Export bestanden. Lokal vorbereitet, noch nicht veröffentlicht; Sichtprüfung durch Michael steht aus.

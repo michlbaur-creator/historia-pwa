@@ -186,3 +186,24 @@ test('Certificate renders the actual result, date and safely escaped name; blank
   assert.match(blank, /________________________/);
   assert.match(blank, /0 von 18 Fragen richtig/);
 });
+
+const { hyperBlockState, retryHyperBlock } = await loadTS('../app/episode-1/challenge/hyper-blocks.ts');
+test('Hyper block gate requires all nine correct; an incomplete block never passes', () => {
+  const questions = Array.from({ length: 18 }, () => ({ correctIndex: 1 }));
+  assert.equal(hyperBlockState(questions, Array(8).fill(1), 8).passed, false);
+  assert.equal(hyperBlockState(questions, [...Array(8).fill(1), 0], 8).passed, false);
+  assert.equal(hyperBlockState(questions, Array(9).fill(1), 8).passed, true);
+  assert.deepEqual(retryHyperBlock([...Array(8).fill(1), 0], 8), { answers: [], index: 0 });
+});
+test('Repeated retries of block two preserve the first nine answers and allow 18/18', () => {
+  const questions = Array.from({ length: 18 }, () => ({ correctIndex: 1 }));
+  const failed = [...Array(9).fill(1), ...Array(8).fill(1), 0];
+  const retry = retryHyperBlock(failed, 17);
+  assert.deepEqual(retry, { answers: Array(9).fill(1), index: 9 });
+  assert.equal(failed.length, 18);
+  assert.equal(hyperBlockState(questions, retry.answers, 9).score, 0);
+  assert.deepEqual(retryHyperBlock([...retry.answers, ...Array(9).fill(0)], 17), retry);
+  const completed = [...retry.answers, ...Array(9).fill(1)];
+  assert.equal(hyperBlockState(questions, completed, 17).passed, true);
+  assert.equal(hyperRankFor(completed.filter((answer, i) => answer === questions[i].correctIndex).length), 'Historia-Champion');
+});

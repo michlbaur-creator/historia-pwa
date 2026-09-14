@@ -1,4 +1,4 @@
-const CACHE = 'historia-v40';
+const CACHE = 'historia-v41';
 const CORE = [
   '/',
   '/manifest.webmanifest',

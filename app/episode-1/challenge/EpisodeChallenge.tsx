@@ -8,17 +8,19 @@ import { chooseQuestions, chooseHyperQuestions, rankFor, hyperRankFor } from './
 import { challengeConfig, challengeBestKey } from './config';
 import { useFanfare } from './useFanfare';
 import Certificate from './Certificate';
+import { hyperBlockState, retryHyperBlock } from './hyper-blocks';
 import styles from './challenge.module.css';
 
 export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes, hyperPools }: { episode?: 1 | 2 | 3; scenes?: HistoriaScene[]; hyperPools?: HistoriaScene[][] }) {
   const hyper = !!hyperPools;
   const total = hyper ? 18 : 9;
   const config = challengeConfig[episode];
-  const bestKey = hyper ? 'historia-hyper-challenge-best-v1' : challengeBestKey(episode);
+  const bestKey = hyper ? 'historia-hyper-challenge-best-v2' : challengeBestKey(episode);
   const [questions, setQuestions] = useState<ReturnType<typeof chooseQuestions>>([]);
   const [answers, setAnswers] = useState<number[]>([]);
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [blockResult, setBlockResult] = useState(false);
   const [best, setBest] = useState(0);
   const sound = useFanfare();
   const [name, setName] = useState('');
@@ -39,20 +41,23 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
   }, [scenes, episode, bestKey, hyperPools, total]);
 
   const score = answers.filter((answer, i) => answer === questions[i]?.correctIndex).length;
+  const block = hyperBlockState(questions, answers, index);
   const question = questions[index];
   const answered = answers.length > index;
   const rank = hyper ? hyperRankFor(score) : rankFor(score);
 
   function answer(option: number) {
-    if (lock.current || answered || finished) return;
+    if (lock.current || answered || finished || blockResult) return;
     lock.current = true;
     advanceLock.current = false;
     setAnswers((previous) => [...previous, option]);
   }
   function next() {
-    if (!answered || finished || advanceLock.current) return;
+    if (!answered || finished || blockResult || advanceLock.current) return;
     advanceLock.current = true;
-    if (index === questions.length - 1) {
+    if (hyper && index === 8) {
+      setBlockResult(true);
+    } else if (index === questions.length - 1) {
       setFinished(true);
       setCompletionDate(new Date().toLocaleDateString('de-DE'));
       const nextBest = Math.max(best, score);
@@ -68,10 +73,32 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
     }
     requestAnimationFrame(() => heading.current?.focus());
   }
+  function continueBlock() {
+    if (!blockResult || !block.passed) return;
+    setBlockResult(false);
+    setIndex(9);
+    lock.current = false;
+    advanceLock.current = false;
+    requestAnimationFrame(() => heading.current?.focus());
+  }
+  function retryBlock() {
+    sound.stop();
+    const retry = retryHyperBlock(answers, index);
+    setAnswers(retry.answers);
+    setIndex(retry.index);
+    setBlockResult(false);
+    setFinished(false);
+    setCompletionDate('');
+    setCelebration(0);
+    lock.current = false;
+    advanceLock.current = false;
+    requestAnimationFrame(() => heading.current?.focus());
+  }
   function reset() {
     sound.stop();
     setQuestions(hyperPools ? chooseHyperQuestions(hyperPools) : chooseQuestions(scenes, Math.random, episode));
     setAnswers([]);
+    setBlockResult(false);
     setIndex(0);
     setFinished(false);
     setCompletionDate('');
@@ -115,32 +142,38 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
         </div></div>
         <div><p className={styles.eyebrow}>{hyper ? 'Deine Historia Hyper-Challenge' : 'Deine Episoden-Challenge'}</p><h1 id="challenge-title">{hyper ? 'Einmal durch die Weltgeschichte' : config.title}</h1></div>
       </div>
-      <p>{hyper ? '18 knifflige Fragen, quer durch alle drei Episoden. Sechs je Episode, bunt gemischt – und am Ende wartet deine persönliche Urkunde.' : 'Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.'}</p>
+      <p>{hyper ? '18 knifflige Fragen in zwei Blöcken mit je neun Fragen. Mit 9/9 in Block 1 schaltest du Block 2 frei. Dort bleibt Block 1 bei einer Wiederholung geschafft. Am Ende wartet deine persönliche Urkunde.' : 'Neun knifflige Fragen aus deiner Reise. Lies genau – manchmal täuscht der erste Eindruck.'}</p>
       {!question ? <output>Deine Fragen werden zusammengestellt …</output> : <>
-        <div className={styles.stairHead}><span>Deine Zeitstufen</span><span>{score} richtig · Bestwert {best}/{total}</span></div>
+        <div className={styles.stairHead}><span>{hyper ? `Block ${block.number} von 2${block.number === 2 ? ' · Block 1 geschafft ✓' : ''}` : 'Deine Zeitstufen'}</span><span>{score} richtig · Bestwert {best}/{total}</span></div>
         <ol className={`${styles.stairs} ${hyper ? styles.hyperStairs : ''}`} aria-label={`Quiztreppe mit ${total} Stufen`}>
           {questions.map((item, i) => {
             const done = answers.length > i;
             const correct = done && answers[i] === item.correctIndex;
             return <li key={`${item.episode}-${item.sceneId}`} style={{ '--height': `${38 + (i % 9) * 5}px` } as CSSProperties}
-              className={done ? correct ? styles.correct : styles.wrong : i === index && !finished ? styles.current : ''}
-              aria-current={i === index && !finished ? 'step' : undefined}
+              className={done ? correct ? styles.correct : styles.wrong : i === index && !finished && !blockResult ? styles.current : ''}
+              aria-current={i === index && !finished && !blockResult ? 'step' : undefined}
               aria-label={`Frage ${i + 1}: ${done ? correct ? 'richtig' : 'falsch' : 'noch offen'}`}>
               {i + 1}<span aria-hidden="true">{done ? correct ? '✓' : '×' : '·'}</span>
             </li>;
           })}
         </ol>
-        {finished ? <div className={styles.result}>
+        {blockResult ? <div className={styles.result}>
+          <p className={styles.eyebrow}>Block 1 · {block.score} von 9 richtig</p>
+          <h2 ref={heading} tabIndex={-1}>{block.passed ? 'Block 1 geschafft!' : 'Noch einmal Block 1'}</h2>
+          <p>{block.passed ? 'Deine ersten neun richtigen Antworten stehen fest. Weiter geht’s mit den restlichen neun Fragen.' : 'Mit neun richtigen Antworten öffnet sich Block 2. Du kannst die Fragen aus Block 1 jetzt noch einmal versuchen.'}</p>
+          <div className={styles.actions}><button className={styles.primary} onClick={block.passed ? continueBlock : retryBlock}>{block.passed ? 'Block 2 beginnen' : 'Block 1 wiederholen'} <ArrowRight size={19} /></button></div>
+        </div> : finished ? <div className={styles.result}>
           {!hyper && score === total && <div key={celebration} className={styles.fireworks} aria-hidden="true">{Array.from({length: 24}, (_, i) => <i key={i} style={{ '--angle': `${i * 15}deg` } as CSSProperties} />)}</div>}
           <p className={styles.eyebrow}>{hyper ? 'Dein großes Historia-Finale' : `Dein ${config.badge}`} · {score} von {total}</p>
           <h2 ref={heading} tabIndex={-1}>{rank}</h2>
           <p>{hyper ? (score === total ? 'Alle 18 richtig! Von der Antike bis in die Gegenwart: Du hast die Zusammenhänge im Blick. Das verdient einen großen Applaus!' : 'Geschafft! Du hast dich durch drei Episoden geknobelt. Feiere deinen Abschluss – und nimm die neu entdeckten Zusammenhänge mit.') : score === total ? config.success : 'Jede Antwort bringt dich weiter. Mit einer neuen Fragenrunde kannst du deinen Bestwert verbessern.'}</p>
+          {hyper && score < total && <p>Block 1 bleibt mit 9/9 geschafft. Wiederhole nur die neun Fragen aus Block 2, um Historia-Champion zu werden.</p>}
           <div className={styles.actions}>
-            <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>
+            {hyper && score < total ? <button className={styles.secondary} onClick={retryBlock}><RotateCcw size={18} /> Block 2 wiederholen</button> : <button className={styles.secondary} onClick={reset}><RotateCcw size={18} /> Noch einmal spielen</button>}
             {(hyper || score === total) && <button className={styles.primary} onClick={celebrateAgain}><Sparkles size={18} /> Noch einmal feiern</button>}
           </div>
         </div> : <div className={styles.question}>
-          <p className={styles.eyebrow}>Frage {index + 1} von {total}</p>
+          <p className={styles.eyebrow}>{hyper ? `Block ${block.number} · Frage ${index % 9 + 1} von 9` : `Frage ${index + 1} von ${total}`}</p>
           <p className={styles.topic}>{hyper ? `Episode ${question.episode} · ` : ''}{question.topic}</p>
           <h2 tabIndex={-1} ref={heading}>{question.question}</h2>
           <div className={styles.options}>{question.options.map((option, i) => <button key={option}
@@ -152,7 +185,7 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
           {answered && <output className={styles.feedback}>
             <p>{answers[index] === question.correctIndex ? 'Richtig!' : `Nicht ganz. Richtig ist: ${question.options[question.correctIndex]}`}</p>
             <p>{question.explanation}</p>
-            <div className={styles.actions}><button className={styles.primary} onClick={next}>{index === total - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <ArrowRight size={19} /></button></div>
+            <div className={styles.actions}><button className={styles.primary} onClick={next}>{hyper && index === 8 ? 'Block 1 abschließen' : index === total - 1 ? 'Ergebnis ansehen' : 'Nächste Frage'} <ArrowRight size={19} /></button></div>
           </output>}
         </div>}
       </>}
