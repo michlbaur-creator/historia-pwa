@@ -1116,7 +1116,16 @@ const coldWarScene: Partial<HistoriaScene> = {
   narration:
     'Nach 1945 zerfällt das Bündnis gegen Hitler. Die USA und die Sowjetunion stehen für gegensätzliche politische und wirtschaftliche Ordnungen; Europa teilt sich in zwei Machtblöcke. 1948 sperrt die Sowjetunion die Landwege nach West-Berlin. Die Westalliierten antworten mit einer Luftbrücke und bringen fast ein Jahr lang Lebensmittel und Kohle in die Stadt. Die Blockade scheitert, doch die Teilung vertieft sich. Aus Deutschland entstehen 1949 zwei Staaten – mitten in einem nun kalten Konflikt.',
   audio: `${episode3Asset}/SprechertexteE3/neue/14.m4a`,
-  mapImage: `${episode3Asset}/maps/scene13-airlift.svg?v=20260914a`,
+  mapImage: `${episode3Asset}/maps/scene14-airlift-full.svg`,
+  imageSequence: [
+    {
+      src: `${episode3Asset}/maps/scene14-germany-division.svg`,
+      at: 0.64,
+      kind: 'map',
+      title: 'Deutschland wird geteilt',
+      subtitle: '1949 entstehen die Bundesrepublik Deutschland und die DDR.',
+    },
+  ],
   mapConcept:
     'Europakarte mit den westlichen Besatzungszonen und West-Berlin sowie den Luftkorridoren während der Blockade.',
   mapDetails: [
@@ -1177,7 +1186,21 @@ const cubaScene: HistoriaScene = {
     'Im Oktober 1962 entdecken amerikanische Aufklärungsflugzeuge sowjetische Atomraketen auf Kuba – nur wenige Flugminuten von den USA entfernt. Präsident Kennedy verhängt eine Seeblockade, die er Quarantäne nennt. Dreizehn Tage lang droht die Krise zu einem Atomkrieg zu eskalieren. Schließlich zieht die Sowjetunion ihre Raketen ab. Die USA versprechen, Kuba nicht anzugreifen, und entfernen später heimlich eigene Raketen aus der Türkei. Beide Seiten erkennen, wie knapp Abschreckung und Katastrophe beieinanderliegen.',
   audio: `${episode3Asset}/SprechertexteE3/neue/15.m4a`,
   mainImage: `${episode3Asset}/secondary/scene14-cuba.jpg`,
-  mapImage: `${episode3Asset}/maps/scene14-cuba.svg?v=20260914a`,
+  mapImage: `${episode3Asset}/maps/scene15-cuba-full.svg`,
+  imageSequence: [
+    {
+      src: `${episode3Asset}/secondary/scene14-cuba.jpg`,
+      at: 0,
+      title: 'Dreizehn Tage unter höchster Spannung',
+      subtitle: 'Kennedy und seine Berater prüfen die Lage.',
+    },
+    {
+      src: `${episode3Asset}/secondary/scene15-missile-withdrawal.jpg`,
+      at: 0.59,
+      title: 'Ein Ausweg aus der Krise',
+      subtitle: 'Die Sowjetunion zieht ihre Raketen aus Kuba ab.',
+    },
+  ],
   mapConcept:
     'Atlantikkarte mit Washington und Kuba, sowjetischem Transportweg und amerikanischem Sperrring.',
   mapDetails: [
@@ -1512,8 +1535,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
           src: `${episode3Asset}/secondary/scene07-bunker.jpg`,
           at: 0.68,
           title: 'Stellungskrieg an der Westfront',
-          subtitle:
-            'Schützengräben und Bunker prägen den zermürbenden Krieg.',
+          subtitle: 'Schützengräben und Bunker prägen den zermürbenden Krieg.',
         },
       ],
       videoStartAt: 0.25,
@@ -1524,6 +1546,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
     sourceId: 7,
     keepAudio: true,
     override: {
+      mapImage: `${episode3Asset}/maps/scene08-russia-full.svg`,
       imageSequence: [
         {
           src: `${episode3Asset}/main/scene07.jpg`,
@@ -1533,11 +1556,16 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
             '1917 übernehmen Lenins Bolschewiki in Petrograd die Macht.',
         },
         {
+          src: `${episode3Asset}/secondary/scene08-lenin.jpg`,
+          at: 0.27,
+          title: 'Lenin und die Bolschewiki',
+          subtitle: 'Die Revolution verändert Russland grundlegend.',
+        },
+        {
           src: `${episode3Asset}/secondary/scene08-stalinism.jpg`,
           at: 0.56,
           title: 'Stalinismus',
-          subtitle:
-            'Personenkult, Zwang und Terror prägen Stalins Diktatur.',
+          subtitle: 'Personenkult, Zwang und Terror prägen Stalins Diktatur.',
         },
       ],
     },
@@ -1564,7 +1592,27 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
       ],
     },
   },
-  { id: 10, scene: chancellorAppointmentScene },
+  {
+    id: 10,
+    scene: {
+      ...chancellorAppointmentScene,
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene10-negotiations.jpg`,
+          at: 0,
+          title: 'Verhandlungen hinter verschlossenen Türen',
+          subtitle:
+            'Konservative Politiker glauben, Hitler kontrollieren zu können.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene10-appointment.jpg`,
+          at: 0.5,
+          title: 'Hitler wird zum Reichskanzler ernannt',
+          subtitle: 'Hindenburg ernennt ihn am 30. Januar 1933.',
+        },
+      ],
+    },
+  },
   {
     id: 11,
     sourceId: 9,
@@ -1595,14 +1643,38 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
     override: {
       imageSequence: [
         {
-          src: `${episode3Asset}/main/scene10.jpg`,
+          src: `${episode3Asset}/maps/scene12-expansion-1.svg`,
           at: 0,
+          kind: 'map',
+          title: 'Kriegsausbreitung · 1939',
+        },
+        {
+          src: `${episode3Asset}/maps/scene12-expansion-2.svg`,
+          at: 0.21,
+          kind: 'map',
+          title: 'Kriegsausbreitung · 1940',
+        },
+        {
+          src: `${episode3Asset}/maps/scene12-expansion-3.svg`,
+          at: 0.32,
+          kind: 'map',
+          title: 'Kriegsausbreitung · 1941',
+        },
+        {
+          src: `${episode3Asset}/maps/scene12-expansion-4.svg`,
+          at: 0.43,
+          kind: 'map',
+          title: 'Kriegsausbreitung · 1942',
+        },
+        {
+          src: `${episode3Asset}/main/scene10.jpg`,
+          at: 0.58,
           title: 'Europa in Trümmern',
           subtitle: 'Der Krieg zerstört Städte und Lebensgrundlagen.',
         },
         {
           src: `${episode3Asset}/secondary/scene11-war.jpg`,
-          at: 0.55,
+          at: 0.79,
           title: 'Flucht und Vertreibung',
           subtitle:
             'Der Krieg zwingt Millionen Menschen, ihre Heimat zu verlassen.',
@@ -1634,8 +1706,63 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
   },
   { id: 14, sourceId: 12, override: coldWarScene },
   { id: 15, scene: { ...cubaScene, id: 15 } },
-  { id: 16, sourceId: 13, keepAudio: true },
-  { id: 17, sourceId: 14, keepAudio: true },
+  {
+    id: 16,
+    sourceId: 13,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene16-gandhi.jpg`,
+          at: 0,
+          title: 'Gandhi und der gewaltlose Widerstand',
+          subtitle:
+            'Historische Aufnahme des Salzmarsches von 1930 · gandhiserve.org / Wikimedia Commons',
+        },
+        {
+          src: `${episode3Asset}/main/scene13.jpg`,
+          at: 0.4,
+          title: 'Indien wird unabhängig',
+          subtitle: '1947 endet die britische Kolonialherrschaft.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene13.jpg`,
+          at: 0.59,
+          title: 'Ghana wird unabhängig',
+          subtitle:
+            '1957 entsteht ein neuer Staat – weitere Länder Afrikas folgen.',
+        },
+      ],
+    },
+  },
+  {
+    id: 17,
+    sourceId: 14,
+    keepAudio: true,
+    override: {
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene17-china.jpg`,
+          at: 0,
+          title: 'China · 1949',
+          subtitle: 'Mao ruft in Beijing die Volksrepublik China aus.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene17-korea.jpg`,
+          at: 0.47,
+          title: 'Korea · 1950–1953',
+          subtitle:
+            'Nord- und Südkorea kämpfen mit ausländischer Unterstützung.',
+        },
+        {
+          src: `${episode3Asset}/secondary/scene17-vietnam.jpg`,
+          at: 0.65,
+          title: 'Der Vietnamkrieg',
+          subtitle: 'Der Krieg prägt das Land bis 1975.',
+        },
+      ],
+    },
+  },
   { id: 18, sourceId: 15, override: ewgScene },
   { id: 19, scene: { ...reunificationScene, id: 19 } },
   {

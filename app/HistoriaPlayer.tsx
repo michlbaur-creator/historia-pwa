@@ -92,26 +92,27 @@ export default function HistoriaPlayer({
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
-  const legacySequence = scene.secondaryImage
-    ? [
-        ...(scene.mainImage
-          ? [
-              {
-                src: scene.mainImage,
-                at: 0,
-                title: scene.imageTitle,
-                subtitle: scene.imageSubtitle,
-              },
-            ]
-          : []),
-        {
-          src: scene.secondaryImage,
-          at: 0.54,
-          title: scene.secondaryImageTitle,
-          subtitle: scene.secondaryImageSubtitle,
-        },
-      ]
-    : [];
+  const legacySequence: NonNullable<HistoriaScene['imageSequence']> =
+    scene.secondaryImage
+      ? [
+          ...(scene.mainImage
+            ? [
+                {
+                  src: scene.mainImage,
+                  at: 0,
+                  title: scene.imageTitle,
+                  subtitle: scene.imageSubtitle,
+                },
+              ]
+            : []),
+          {
+            src: scene.secondaryImage,
+            at: 0.54,
+            title: scene.secondaryImageTitle,
+            subtitle: scene.secondaryImageSubtitle,
+          },
+        ]
+      : [];
   const imageSequence = scene.imageSequence?.length
     ? scene.imageSequence
     : legacySequence;
@@ -143,6 +144,7 @@ export default function HistoriaPlayer({
   const imageTitle = activeImage?.title ?? scene.imageTitle ?? scene.people;
   const imageSubtitle =
     activeImage?.subtitle ?? scene.imageSubtitle ?? scene.place;
+  const mapContentVisible = showMap || activeImage?.kind === 'map';
   const activeQuiz = scene.quiz[quizQuestion];
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(
@@ -531,13 +533,15 @@ export default function HistoriaPlayer({
               </div>
             )}
           </div>
-          <div className={styles.imageShade} />
-          <div className={styles.imageCaption}>
-            <div>
-              <strong>{imageTitle}</strong>
-              <span>{imageSubtitle}</span>
+          {!mapContentVisible && <div className={styles.imageShade} />}
+          {!mapContentVisible && (
+            <div className={styles.imageCaption}>
+              <div>
+                <strong>{imageTitle}</strong>
+                <span>{imageSubtitle}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {audioError && <p role="status">{audioError}</p>}

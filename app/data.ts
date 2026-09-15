@@ -23,6 +23,7 @@ export type HistoriaScene = {
   secondaryImageTitle?: string;
   secondaryImageSubtitle?: string;
   imageSequence?: {
+    kind?: 'image' | 'map';
     src: string;
     at: number;
     title?: string;

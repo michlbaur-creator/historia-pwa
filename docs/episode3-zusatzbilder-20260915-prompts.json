@@ -1,0 +1,38 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "lenin",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/lenin.png",
+      "prompt": "Use case: historical-scene. Asset type: educational history app full-frame landscape 16:9 image, 1536x864 or equivalent wide 16:9. Primary request: Vladimir Lenin, recognizable bald head and short goatee, at a modest wooden desk in Petrograd circa 1917, reviewing papers in a sober office, medium environmental portrait. Style: realistic historically plausible reconstruction, natural documentary color photography, muted warm earth colors, soft natural light, lifelike materials, balanced clear composition. No captions, no readable text, no watermark, no collage, no border. Historical education, not an authentic archival photo."
+    },
+    {
+      "name": "chancellor",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/chancellor.png",
+      "prompt": "Use case: historical-scene. Asset type: educational history app full-frame landscape 16:9 image, 1536x864 or equivalent wide 16:9. Primary request: Franz von Papen and Adolf Hitler in conservative political negotiations in a restrained German period office January 1933, sober tense meeting at table, dark civilian suits, no salutes, no glorifying framing, neutral historical education. Style: realistic historically plausible reconstruction, natural documentary color photography, muted warm earth colors, soft natural light, lifelike materials, balanced clear composition. No captions, no readable text, no watermark, no collage, no border. Historical education, not an authentic archival photo.",
+      "editPrompt": "Edit this historical educational reconstruction: keep the two people, faces, meeting table, period clothing, lighting and composition unchanged. Correct the anachronistic view outside window: replace the modern glass dome entirely with a simple muted 1933 Berlin neoclassical stone building facade and bare winter branches. No glass dome, no modern architecture. Preserve 16:9."
+    },
+    {
+      "name": "cuba",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/cuba.png",
+      "prompt": "Use case: historical-scene. Asset type: educational history app full-frame landscape 16:9 image, 1536x864 or equivalent wide 16:9. Primary request: Cuban missile crisis resolution, Soviet technicians dismantling and loading a long missile onto transport near a Cuban harbor late October 1962, tropical landscape and cargo ship, no launch or explosion, documentary atmosphere. Style: realistic historically plausible reconstruction, natural documentary color photography, muted warm earth colors, soft natural light, lifelike materials, balanced clear composition. No captions, no readable text, no watermark, no collage, no border. Historical education, not an authentic archival photo."
+    },
+    {
+      "name": "china",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/china.png",
+      "prompt": "Use case: historical-scene. Asset type: educational history app full-frame landscape 16:9 image, 1536x864 or equivalent wide 16:9. Primary request: Founding of People's Republic of China October 1949, Mao Zedong in grey Zhongshan suit speaking from Tiananmen rostrum, unmistakable Chinese imperial gate red columns and traditional golden tiled roof, restrained red flags, wider environmental framing making China clear, neutral educational reconstruction, no slogans. Style: realistic historically plausible reconstruction, natural documentary color photography, muted warm earth colors, soft natural light, lifelike materials, balanced clear composition. No captions, no readable text, no watermark, no collage, no border. Historical education, not an authentic archival photo.",
+      "editPrompt": "Edit this historical educational reconstruction: keep Mao, people, balcony, columns, lighting, composition and image format unchanged. Correct the background geographic error: replace the distant red Tiananmen-like gate and its roof with the open Tiananmen square as in 1949, low distant traditional Beijing buildings and trees, no duplicate gate facing this balcony. No modern buildings or captions."
+    },
+    {
+      "name": "korea",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/korea.png",
+      "prompt": "Historical educational reconstruction. Wide landscape 16:9 realistic muted color image of a Korean mountain village in 1952 during the Korean War. Traditional Korean tiled-roof houses and villagers on the road, distant military transport truck passing. Quiet sober documentary view conveying Korea, no injury, no weapons, no battle. Natural overcast light. No words or captions."
+    },
+    {
+      "name": "vietnam",
+      "path": "/Users/michaelbaur/Documents/Zeitreise-PWA/Austausch/Episode3/Zusatzbilder-2026-09-15/vietnam.png",
+      "prompt": "Use case: historical-scene. Asset type: educational history app full-frame landscape 16:9 image, 1536x864 or equivalent wide 16:9. Primary request: Vietnam War circa 1967, unmistakable Vietnamese rice paddies and palm trees, Vietnamese rural buildings and distant karst hills, American UH-1 Huey helicopter low above rice fields, a small group of US soldiers walking a dike, documentary non-graphic no shooting. Style: realistic historically plausible reconstruction, natural documentary color photography, muted warm earth colors, soft natural light, lifelike materials, balanced clear composition. No captions, no readable text, no watermark, no collage, no border. Historical education, not an authentic archival photo."
+    }
+  ],
+  "gandhi": "Generation rejected by tool public-figure moderation; use existing or licensed archival asset."
+}
