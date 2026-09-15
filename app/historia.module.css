@@ -1,6 +1,28 @@
-.finale { width: min(1120px, 100%); margin: 20px auto; padding: 24px; background: #fffaf0; border: 1px solid #d6dcd0; border-radius: 24px; line-height: 1.6; }
-.finale h2 { font: 400 1.7rem Georgia, serif; color: #315d6a; }
-.finale a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 28px; background: #a74d31; color: white; text-decoration: none; }
+.finale {
+  width: min(1120px, 100%);
+  margin: 20px auto;
+  padding: 24px;
+  background: #fffaf0;
+  border: 1px solid #d6dcd0;
+  border-radius: 24px;
+  line-height: 1.6;
+}
+.finale h2 {
+  font:
+    400 1.7rem Georgia,
+    serif;
+  color: #315d6a;
+}
+.finale a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 28px;
+  background: #a74d31;
+  color: white;
+  text-decoration: none;
+}
 
 .shell {
   --sand: #f8ecd4;
@@ -286,10 +308,9 @@
   overflow: hidden;
   transform-origin: 50% 45%;
   transition:
-    opacity 0.72s ease,
-    transform 0.94s cubic-bezier(0.22, 0.78, 0.24, 1),
-    filter 0.8s ease,
-    border-radius 0.8s ease;
+    opacity 0.48s ease-out,
+    transform 0.56s cubic-bezier(0.22, 0.72, 0.24, 1),
+    filter 0.48s ease-out;
   will-change: opacity, transform, filter;
 }
 
@@ -299,13 +320,12 @@
 }
 
 .sceneVisualBehind {
-  opacity: 0.22;
-  filter: brightness(0.76) saturate(0.78);
-  transform: scale(1.065);
+  opacity: 0.86;
+  filter: brightness(0.9) saturate(0.92);
+  transform: scale(1.018);
 }
 
 .sceneVisualActive {
-  animation: sceneEmerge 1.08s cubic-bezier(0.2, 0.74, 0.22, 1) both;
   opacity: 1;
   filter: none;
   transform: scale(1);
@@ -324,66 +344,15 @@
 }
 
 .mapVisualLeaving {
-  animation: mapFlyAway 1.16s cubic-bezier(0.2, 0.72, 0.18, 1) forwards;
-  border-radius: 28px;
   opacity: 0;
-  filter: blur(1px) saturate(0.84);
+  filter: brightness(1.02) saturate(0.96);
   pointer-events: none;
-  transform: translate3d(0, -38%, 80px) rotateX(11deg) rotateZ(-1.4deg)
-    scale(0.38);
-}
-
-@keyframes mapFlyAway {
-  0% {
-    border-radius: 0;
-    opacity: 1;
-    filter: none;
-    transform: translate3d(0, 0, 0) rotateX(0) rotateZ(0) scale(1);
-  }
-  52% {
-    border-radius: 22px;
-    opacity: 1;
-    filter: saturate(0.94);
-    transform: translate3d(0, -7%, 42px) rotateX(4deg) rotateZ(-0.4deg)
-      scale(0.76);
-  }
-  78% {
-    border-radius: 26px;
-    opacity: 0.72;
-    filter: blur(0.35px) saturate(0.88);
-    transform: translate3d(0, -20%, 64px) rotateX(8deg) rotateZ(-0.9deg)
-      scale(0.56);
-  }
-  100% {
-    border-radius: 28px;
-    opacity: 0;
-    filter: blur(1px) saturate(0.84);
-    transform: translate3d(0, -38%, 80px) rotateX(11deg) rotateZ(-1.4deg)
-      scale(0.38);
-  }
-}
-
-@keyframes sceneEmerge {
-  0% {
-    opacity: 0.22;
-    filter: brightness(0.76) saturate(0.78);
-    transform: scale(1.065);
-  }
-  58% {
-    opacity: 0.7;
-    filter: brightness(0.92) saturate(0.92);
-    transform: scale(1.022);
-  }
-  100% {
-    opacity: 1;
-    filter: none;
-    transform: scale(1);
-  }
+  transform: scale(1.025);
 }
 
 .sceneImage {
   object-fit: cover;
-  animation: reveal 0.42s ease;
+  animation: none;
 }
 
 .imageSequence {
@@ -393,9 +362,7 @@
 
 .sequenceImage {
   animation: none;
-  transition:
-    opacity 0.6s ease-in-out,
-    transform 0.9s ease-out;
+  transition: opacity 0.18s linear;
 }
 
 .sceneVideo {
@@ -404,7 +371,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: reveal 0.42s ease;
+  animation: none;
+  transition: opacity 0.18s linear;
 }
 
 .mediaDraft {
@@ -417,18 +385,26 @@
   flex-direction: column;
   color: white;
   text-align: center;
-  animation: reveal 0.42s ease;
+  animation: none;
 }
 
 .mapDraft {
   background:
-    radial-gradient(circle at 24% 30%, rgba(255, 235, 185, 0.22), transparent 24%),
+    radial-gradient(
+      circle at 24% 30%,
+      rgba(255, 235, 185, 0.22),
+      transparent 24%
+    ),
     linear-gradient(145deg, #68899a, #426a77 58%, #315462);
 }
 
 .imageDraft {
   background:
-    radial-gradient(circle at 68% 28%, rgba(247, 199, 111, 0.28), transparent 27%),
+    radial-gradient(
+      circle at 68% 28%,
+      rgba(247, 199, 111, 0.28),
+      transparent 27%
+    ),
     linear-gradient(145deg, #b86a49, #855446 54%, #466971);
 }
 
@@ -473,13 +449,6 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.09);
   font-size: clamp(0.52rem, 1.1vw, 0.65rem);
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0.3;
-    transform: scale(1.01);
-  }
 }
 
 .imageShade {
@@ -1089,6 +1058,13 @@
 }
 
 /* Manually inspecting a map is an immediate, persistent view, not a replay. */
-.manualMapView .visualLayer { transition: none; animation: none; }
-.manualMapView .mapVisualLeaving { opacity: 0; }
-.manualMapView .mapVisualActive { opacity: 1; }
+.manualMapView .visualLayer {
+  transition: none;
+  animation: none;
+}
+.manualMapView .mapVisualLeaving {
+  opacity: 0;
+}
+.manualMapView .mapVisualActive {
+  opacity: 1;
+}

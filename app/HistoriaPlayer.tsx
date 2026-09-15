@@ -43,6 +43,9 @@ const timelineColors = [
   '#557d88',
 ];
 
+const MAP_DISPLAY_SECONDS = 6;
+const MEDIA_CROSSFADE_SECONDS = 0.65;
+
 function formatTime(value: number) {
   const seconds = Math.max(0, Math.floor(value));
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
@@ -71,12 +74,12 @@ export default function HistoriaPlayer({
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [mapMode, setMapMode] = useState<'auto' | 'map' | 'image'>('auto');
-  const showMap = mapMode === 'map' || (mapMode === 'auto' && elapsed < 5);
+  const showMap =
+    mapMode === 'map' || (mapMode === 'auto' && elapsed < MAP_DISPLAY_SECONDS);
   const [tab, setTab] = useState<Tab>('discover');
   const [audioDuration, setAudioDuration] = useState(0);
   const [quizQuestion, setQuizQuestion] = useState(0);
   const [quizSelection, setQuizSelection] = useState<number | null>(null);
-  const [mapAnimationRun, setMapAnimationRun] = useState(0);
   const timelineRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -86,12 +89,7 @@ export default function HistoriaPlayer({
   const swipeStartX = useRef<number | null>(null);
   const scene = scenes[sceneIndex];
 
-  const renderedMapImage =
-    scene.mapImage?.includes('.svg') &&
-    mapAnimationRun > 0 &&
-    mapMode === 'auto'
-      ? `${scene.mapImage}#play`
-      : scene.mapImage;
+  const renderedMapImage = scene.mapImage;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
@@ -127,24 +125,67 @@ export default function HistoriaPlayer({
   const previousImage =
     activeImageIndex > 0 ? imageSequence[activeImageIndex - 1] : undefined;
   const imageBlend = activeImage
-    ? Math.min(1, Math.max(0, (sceneProgress - activeImage.at) / 0.12))
+    ? Math.min(
+        1,
+        Math.max(
+          0,
+          (elapsed - activeImage.at * activeDuration) / MEDIA_CROSSFADE_SECONDS,
+        ),
+      )
     : 0;
   const captionImage = imageBlend >= 0.5 ? activeImage : previousImage;
   const videoStartAt = scene.videoStartAt ?? 0;
   const firstImageAfterVideo = imageSequence.find(
-    (cue) => cue.at >= videoStartAt,
+    (cue) => cue.at > videoStartAt,
   )?.at;
+  const videoBlend = Math.min(
+    1,
+    Math.max(
+      0,
+      (elapsed - videoStartAt * activeDuration) / MEDIA_CROSSFADE_SECONDS,
+    ),
+  );
   const videoShouldPlay = Boolean(
     scene.video &&
-      sceneProgress >= videoStartAt &&
-      (firstImageAfterVideo === undefined ||
-        sceneProgress < firstImageAfterVideo),
+    sceneProgress >= videoStartAt &&
+    (firstImageAfterVideo === undefined ||
+      sceneProgress < firstImageAfterVideo),
   );
-  const videoOpacity = !scene.video || sceneProgress < videoStartAt
-    ? 0
-    : firstImageAfterVideo !== undefined && sceneProgress >= firstImageAfterVideo
-      ? 1 - imageBlend
-      : 1;
+  const videoOpacity =
+    !scene.video || sceneProgress < videoStartAt
+      ? 0
+      : firstImageAfterVideo !== undefined &&
+          sceneProgress >= firstImageAfterVideo
+        ? imageBlend < 1
+          ? 1
+          : 0
+        : 1;
+  const getSequenceImageOpacity = (index: number) => {
+    if (index === activeImageIndex) {
+      const cue = imageSequence[index];
+      const imageLeadsIntoVideo = Boolean(
+        scene.video &&
+        cue.at <= videoStartAt &&
+        sceneProgress >= videoStartAt &&
+        (firstImageAfterVideo === undefined ||
+          sceneProgress < firstImageAfterVideo),
+      );
+      if (imageLeadsIntoVideo) return 1 - videoBlend;
+      return index === 0 ? 1 : imageBlend;
+    }
+
+    if (index === activeImageIndex - 1) {
+      const nextCue = imageSequence[activeImageIndex];
+      const cueWasBeforeVideo = Boolean(
+        scene.video &&
+        imageSequence[index].at <= videoStartAt &&
+        nextCue.at > videoStartAt,
+      );
+      return cueWasBeforeVideo || imageBlend >= 1 ? 0 : 1;
+    }
+
+    return 0;
+  };
   const imageTitle = captionImage?.title ?? scene.imageTitle ?? scene.people;
   const imageSubtitle =
     captionImage?.subtitle ?? scene.imageSubtitle ?? scene.place;
@@ -209,7 +250,6 @@ export default function HistoriaPlayer({
       setMapMode('auto');
       setPlaying(false);
       setAudioError('');
-      setMapAnimationRun(autoPlay ? 1 : 0);
       setQuizQuestion(0);
       setQuizSelection(null);
     });
@@ -255,7 +295,6 @@ export default function HistoriaPlayer({
         setElapsed(0);
         setMapMode('auto');
       }
-      if (!playing) setMapAnimationRun((value) => value + 1);
       setPlaying((value) => !value);
       return;
     }
@@ -266,7 +305,6 @@ export default function HistoriaPlayer({
         setMapMode('auto');
         if (videoRef.current) videoRef.current.currentTime = 0;
       }
-      setMapAnimationRun((value) => value + 1);
       startAudio(audio);
     } else {
       audioRequestRef.current += 1;
@@ -456,42 +494,41 @@ export default function HistoriaPlayer({
                   className={styles.sceneVideo}
                   style={{ opacity: videoOpacity }}
                 />
-                {activeImage ? (
+                {imageSequence.map((image, index) => (
                   <Image
-                    key={activeImage.src}
-                    src={activeImage.src}
-                    alt={`Historische Bildszene: ${scene.title}`}
+                    key={image.src}
+                    src={image.src}
+                    alt={
+                      index === activeImageIndex
+                        ? `Historische Bildszene: ${scene.title}`
+                        : ''
+                    }
                     fill
+                    loading="eager"
                     sizes="(max-width: 980px) 100vw, 1120px"
                     className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                    style={{ opacity: videoShouldPlay ? 0 : imageBlend }}
+                    style={{ opacity: getSequenceImageOpacity(index) }}
                   />
-                ) : null}
+                ))}
               </div>
             ) : imageSequence.length ? (
               <div className={styles.imageSequence}>
-                {previousImage ? (
+                {imageSequence.map((image, index) => (
                   <Image
-                    src={previousImage.src}
-                    alt=""
+                    key={image.src}
+                    src={image.src}
+                    alt={
+                      index === activeImageIndex
+                        ? `Historische Bildszene: ${scene.title}`
+                        : ''
+                    }
                     fill
+                    loading="eager"
                     sizes="(max-width: 980px) 100vw, 1120px"
                     className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                    style={{ opacity: 1 - imageBlend }}
+                    style={{ opacity: getSequenceImageOpacity(index) }}
                   />
-                ) : null}
-                {activeImage ? (
-                  <Image
-                    key={activeImage.src}
-                    src={activeImage.src}
-                    alt={`Historische Bildszene: ${scene.title}`}
-                    fill
-                    priority={sceneIndex === 0}
-                    sizes="(max-width: 980px) 100vw, 1120px"
-                    className={`${styles.sceneImage} ${styles.sequenceImage}`}
-                    style={{ opacity: activeImageIndex === 0 ? 1 : imageBlend }}
-                  />
-                ) : null}
+                ))}
               </div>
             ) : scene.mainImage ? (
               <Image
@@ -517,7 +554,7 @@ export default function HistoriaPlayer({
           >
             {renderedMapImage ? (
               <Image
-                key={`${renderedMapImage}-${mapAnimationRun}`}
+                key={renderedMapImage}
                 src={renderedMapImage}
                 alt={`Karte zu ${scene.title}`}
                 fill

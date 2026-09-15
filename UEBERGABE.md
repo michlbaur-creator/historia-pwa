@@ -96,3 +96,10 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Die vorhandenen Aufnahmen aus `Austausch/Episode3/SprechertexteE3/neue Sprechertexte` sind den neun bisher stummen Szenen 4, 5, 9, 10, 14, 15, 18, 19 und 20 zugeordnet. Damit besitzen alle 20 Szenen von Episode 3 eine Sprecheraufnahme.
 - Die ursprünglichen Aufnahmen der unveränderten Quellszenen bleiben unverändert. Die neuen Dateien liegen getrennt unter `public/assets/historia/episode3/SprechertexteE3/neue/`, damit keine ältere, inhaltlich abweichende Tonspur überschrieben wird.
 - Cache `historia-v46`.
+
+## Ruhigere Karten- und Medienübergänge – 15. September 2026
+
+- Die automatische Karte bleibt in allen drei Episoden sechs statt fünf Sekunden sichtbar. Der bisherige räumliche Kartenflug ist durch eine kurze, zurückhaltende Überblendung mit minimaler Vergrößerung ersetzt; manuell geöffnete Karten bleiben weiterhin animationsfrei stehen.
+- Der Kartenabruf bleibt während Start und Übergang stabil und wird für die Animation nicht mehr mit einer Fragment-URL neu geladen. Dadurch entfällt das sichtbare Aufflackern vor dem Effekt.
+- Bildfolgen laden alle Motive der aktuellen Szene bereits während der Kartenphase. Neue Bilder und Videos blenden innerhalb von 0,65 Sekunden über das vollständig sichtbare Vorgängermedium, sodass der Bühnenhintergrund während des Wechsels nicht durchscheint.
+- Cache `historia-v47`. TypeScript, 20 Challenge-/Medientests und Produktions-Build mit Pages-Export bestanden. Die Vorschau wurde mit der gebauten Episode 3 geprüft: Karte nach fünf Sekunden noch sichtbar, stabiler unveränderter Kartenpfad, alle fünf Gegenwartsbilder vor dem ersten Wechsel vollständig geladen und geschlossene Bildüberblendung ohne leeren Zwischenzustand.
