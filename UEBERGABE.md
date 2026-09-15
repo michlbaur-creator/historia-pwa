@@ -103,3 +103,9 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Der Kartenabruf bleibt während Start und Übergang stabil und wird für die Animation nicht mehr mit einer Fragment-URL neu geladen. Dadurch entfällt das sichtbare Aufflackern vor dem Effekt.
 - Bildfolgen laden alle Motive der aktuellen Szene bereits während der Kartenphase. Neue Bilder und Videos blenden innerhalb von 0,65 Sekunden über das vollständig sichtbare Vorgängermedium, sodass der Bühnenhintergrund während des Wechsels nicht durchscheint.
 - Cache `historia-v47`. TypeScript, 20 Challenge-/Medientests und Produktions-Build mit Pages-Export bestanden. Die Vorschau wurde mit der gebauten Episode 3 geprüft: Karte nach fünf Sekunden noch sichtbar, stabiler unveränderter Kartenpfad, alle fünf Gegenwartsbilder vor dem ersten Wechsel vollständig geladen und geschlossene Bildüberblendung ohne leeren Zwischenzustand.
+
+## Einheitlicher kurzer Überblendeffekt – 15. September 2026
+
+- Sämtliche Wechsel zwischen Bildern sowie von Bild zu Video und Video zu Bild verwenden nun denselben einfachen 0,48-Sekunden-Überblendeffekt wie der Kartenwechsel. Zusätzliche Bewegungs- oder Mehrphasen-Effekte entfallen.
+- Bereits erschienene Bilder bleiben als deckende Ebene unter dem neu eingeblendeten Motiv liegen. Dadurch bleibt die Bühne während des gesamten Übergangs geschlossen und flackert nicht auf.
+- Cache `historia-v48`. TypeScript, 20 Challenge-/Medientests und Produktions-Build mit Pages-Export bestanden. In der gebauten Browser-Vorschau waren Ausgangs- und Folgebild vollständig vorgeladen; für beide bestätigte der Browser exakt `0.48s ease-out`, das Ausgangsbild blieb während des Wechsels deckend.

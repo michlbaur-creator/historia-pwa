@@ -44,7 +44,6 @@ const timelineColors = [
 ];
 
 const MAP_DISPLAY_SECONDS = 6;
-const MEDIA_CROSSFADE_SECONDS = 0.65;
 
 function formatTime(value: number) {
   const seconds = Math.max(0, Math.floor(value));
@@ -122,73 +121,28 @@ export default function HistoriaPlayer({
   );
   const activeImage =
     activeImageIndex >= 0 ? imageSequence[activeImageIndex] : undefined;
-  const previousImage =
-    activeImageIndex > 0 ? imageSequence[activeImageIndex - 1] : undefined;
-  const imageBlend = activeImage
-    ? Math.min(
-        1,
-        Math.max(
-          0,
-          (elapsed - activeImage.at * activeDuration) / MEDIA_CROSSFADE_SECONDS,
-        ),
-      )
-    : 0;
-  const captionImage = imageBlend >= 0.5 ? activeImage : previousImage;
   const videoStartAt = scene.videoStartAt ?? 0;
   const firstImageAfterVideo = imageSequence.find(
     (cue) => cue.at > videoStartAt,
   )?.at;
-  const videoBlend = Math.min(
-    1,
-    Math.max(
-      0,
-      (elapsed - videoStartAt * activeDuration) / MEDIA_CROSSFADE_SECONDS,
-    ),
-  );
   const videoShouldPlay = Boolean(
     scene.video &&
     sceneProgress >= videoStartAt &&
     (firstImageAfterVideo === undefined ||
       sceneProgress < firstImageAfterVideo),
   );
-  const videoOpacity =
-    !scene.video || sceneProgress < videoStartAt
-      ? 0
-      : firstImageAfterVideo !== undefined &&
-          sceneProgress >= firstImageAfterVideo
-        ? imageBlend < 1
-          ? 1
-          : 0
-        : 1;
+  const videoOpacity = scene.video && sceneProgress >= videoStartAt ? 1 : 0;
   const getSequenceImageOpacity = (index: number) => {
-    if (index === activeImageIndex) {
-      const cue = imageSequence[index];
-      const imageLeadsIntoVideo = Boolean(
-        scene.video &&
-        cue.at <= videoStartAt &&
-        sceneProgress >= videoStartAt &&
-        (firstImageAfterVideo === undefined ||
-          sceneProgress < firstImageAfterVideo),
-      );
-      if (imageLeadsIntoVideo) return 1 - videoBlend;
-      return index === 0 ? 1 : imageBlend;
+    if (index > activeImageIndex) return 0;
+    const cue = imageSequence[index];
+    if (scene.video && cue.at <= videoStartAt) {
+      return sceneProgress < videoStartAt ? 1 : 0;
     }
-
-    if (index === activeImageIndex - 1) {
-      const nextCue = imageSequence[activeImageIndex];
-      const cueWasBeforeVideo = Boolean(
-        scene.video &&
-        imageSequence[index].at <= videoStartAt &&
-        nextCue.at > videoStartAt,
-      );
-      return cueWasBeforeVideo || imageBlend >= 1 ? 0 : 1;
-    }
-
-    return 0;
+    return 1;
   };
-  const imageTitle = captionImage?.title ?? scene.imageTitle ?? scene.people;
+  const imageTitle = activeImage?.title ?? scene.imageTitle ?? scene.people;
   const imageSubtitle =
-    captionImage?.subtitle ?? scene.imageSubtitle ?? scene.place;
+    activeImage?.subtitle ?? scene.imageSubtitle ?? scene.place;
   const activeQuiz = scene.quiz[quizQuestion];
   const quizIsCorrect = quizSelection === activeQuiz.correctIndex;
   const timelineProgress = useMemo(

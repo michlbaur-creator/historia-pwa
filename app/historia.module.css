@@ -362,7 +362,7 @@
 
 .sequenceImage {
   animation: none;
-  transition: opacity 0.18s linear;
+  transition: opacity 0.48s ease-out;
 }
 
 .sceneVideo {
@@ -372,7 +372,7 @@
   height: 100%;
   object-fit: cover;
   animation: none;
-  transition: opacity 0.18s linear;
+  transition: opacity 0.48s ease-out;
 }
 
 .mediaDraft {
