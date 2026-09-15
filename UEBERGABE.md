@@ -90,3 +90,9 @@ Stand: 14. September 2026. Die App ist laut Michael im Prinzip fertig. Künftige
 - Die bisherige Weimar-Szene endet nun 1932 und beginnt wie gewünscht mit dem Wahlbild; das Inflations-/Krisenbild folgt. Die Ernennung Hitlers zum Reichskanzler ist eine neue Szene 10 mit eigenem zurückhaltendem Bild, Sprechertext, Karte, Entdecken-Inhalten und Quiz. Episode 3 umfasst dadurch 20 Szenen; Challenge-Nummerierung und Zeitgruppen wurden angepasst.
 - Die letzte Szene 20 beginnt mit einem neuen Motiv zu Hafen-, Kabel- und Datennetzen. Das bisherige wiederkehrende Eingangsmotiv samt zugehörigem Startvideo ist aus der sichtbaren Abfolge entfernt; die vier vorhandenen Gegenwartsbilder folgen weiter zeitlich geordnet.
 - Cache `historia-v45`. TypeScript, gezielter Linter, 16 automatisierte Challenge-/Medientests, Produktions-Build und Pages-Export bestehen. Noch nicht veröffentlicht. Die Browser-Sichtprüfung konnte wegen des gesperrten Macs nicht abgeschlossen werden.
+
+## Sprecheraufnahmen für die erweiterten Episode-3-Szenen – 15. September 2026
+
+- Die vorhandenen Aufnahmen aus `Austausch/Episode3/SprechertexteE3/neue Sprechertexte` sind den neun bisher stummen Szenen 4, 5, 9, 10, 14, 15, 18, 19 und 20 zugeordnet. Damit besitzen alle 20 Szenen von Episode 3 eine Sprecheraufnahme.
+- Die ursprünglichen Aufnahmen der unveränderten Quellszenen bleiben unverändert. Die neuen Dateien liegen getrennt unter `public/assets/historia/episode3/SprechertexteE3/neue/`, damit keine ältere, inhaltlich abweichende Tonspur überschrieben wird.
+- Cache `historia-v46`.

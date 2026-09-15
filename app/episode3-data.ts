@@ -1002,6 +1002,7 @@ const italyScene: Partial<HistoriaScene> = {
   duration: 41,
   narration:
     'Wir bleiben im 19. Jahrhundert und reisen nach Italien. Die Halbinsel besteht noch aus mehreren Staaten, doch die Bewegung des Risorgimento drängt auf Einheit. Ministerpräsident Cavour verbindet Diplomatie mit Krieg, Garibaldis Freiwillige erobern Sizilien und den Süden. 1861 entsteht das Königreich Italien unter Viktor Emanuel dem Zweiten. Vollständig ist es noch nicht: Venetien kommt 1866 hinzu, Rom 1870. Die Einheit wächst also Schritt für Schritt – und aus sehr verschiedenen politischen Kräften.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/4.m4a`,
   mainImage: `${episode3Asset}/secondary/scene04-italy.jpg`,
   mapImage: `${episode3Asset}/maps/scene04-italy.svg?v=20260914a`,
   mapConcept:
@@ -1058,6 +1059,7 @@ const bismarckScene: HistoriaScene = {
   duration: 43,
   narration:
     'Nördlich der Alpen verfolgt Preußens Ministerpräsident Otto von Bismarck einen anderen Weg zur nationalen Einheit. Konflikte mit Dänemark 1864, Österreich 1866 und Frankreich 1870 und 1871 stärken Preußens Führung. Während des Kriegs gegen Frankreich rufen deutsche Fürsten Wilhelm den Ersten im Schloss Versailles zum Kaiser aus. Das neue Deutsche Reich schließt Österreich aus und besitzt ein Parlament, doch Kaiser und Regierung behalten große Macht. Nationale Einheit und demokratische Mitbestimmung sind also nicht dasselbe.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/5.m4a`,
   mainImage: `${episode3Asset}/secondary/scene05-bismarck.jpg`,
   mapImage: `${episode3Asset}/maps/scene05-bismarck.svg?v=20260914a`,
   mapConcept:
@@ -1113,6 +1115,7 @@ const coldWarScene: Partial<HistoriaScene> = {
   duration: 42,
   narration:
     'Nach 1945 zerfällt das Bündnis gegen Hitler. Die USA und die Sowjetunion stehen für gegensätzliche politische und wirtschaftliche Ordnungen; Europa teilt sich in zwei Machtblöcke. 1948 sperrt die Sowjetunion die Landwege nach West-Berlin. Die Westalliierten antworten mit einer Luftbrücke und bringen fast ein Jahr lang Lebensmittel und Kohle in die Stadt. Die Blockade scheitert, doch die Teilung vertieft sich. Aus Deutschland entstehen 1949 zwei Staaten – mitten in einem nun kalten Konflikt.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/14.m4a`,
   mapImage: `${episode3Asset}/maps/scene13-airlift.svg?v=20260914a`,
   mapConcept:
     'Europakarte mit den westlichen Besatzungszonen und West-Berlin sowie den Luftkorridoren während der Blockade.',
@@ -1172,6 +1175,7 @@ const cubaScene: HistoriaScene = {
   duration: 42,
   narration:
     'Im Oktober 1962 entdecken amerikanische Aufklärungsflugzeuge sowjetische Atomraketen auf Kuba – nur wenige Flugminuten von den USA entfernt. Präsident Kennedy verhängt eine Seeblockade, die er Quarantäne nennt. Dreizehn Tage lang droht die Krise zu einem Atomkrieg zu eskalieren. Schließlich zieht die Sowjetunion ihre Raketen ab. Die USA versprechen, Kuba nicht anzugreifen, und entfernen später heimlich eigene Raketen aus der Türkei. Beide Seiten erkennen, wie knapp Abschreckung und Katastrophe beieinanderliegen.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/15.m4a`,
   mainImage: `${episode3Asset}/secondary/scene14-cuba.jpg`,
   mapImage: `${episode3Asset}/maps/scene14-cuba.svg?v=20260914a`,
   mapConcept:
@@ -1232,6 +1236,7 @@ const ewgScene: Partial<HistoriaScene> = {
   duration: 41,
   narration:
     'Nach zwei Weltkriegen suchen sechs westeuropäische Staaten einen neuen Weg: Sie wollen wichtige Industrien und Märkte so eng verbinden, dass ein neuer Krieg schwieriger wird. 1951 entsteht die Gemeinschaft für Kohle und Stahl. Mit den Römischen Verträgen gründen Belgien, die Bundesrepublik Deutschland, Frankreich, Italien, Luxemburg und die Niederlande 1957 die Europäische Wirtschaftsgemeinschaft. Zölle sollen fallen, Handel und Zusammenarbeit wachsen. Daraus entwickelt sich später die Europäische Union – langsam, vertraglich und nicht ohne Streit.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/18.m4a`,
   mainImage: `${episode3Asset}/secondary/scene17-ewg.jpg`,
   secondaryImage: undefined,
   secondaryImageTitle: undefined,
@@ -1295,6 +1300,7 @@ const reunificationScene: HistoriaScene = {
   duration: 43,
   narration:
     'In der Sowjetunion beginnt Michail Gorbatschow ab 1985 mit Reformen. In Polen, Ungarn und anderen Staaten gerät die kommunistische Herrschaft unter Druck. Auch in der DDR fordern immer mehr Menschen Freiheit und freie Wahlen. Friedliche Demonstrationen, besonders in Leipzig, wachsen Woche für Woche. Am 9. November 1989 öffnet sich überraschend die Berliner Mauer. Elf Monate später, am 3. Oktober 1990, wird Deutschland wiedervereinigt. 1991 zerfällt schließlich auch die Sowjetunion – Europas politische Karte verändert sich grundlegend.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/19.m4a`,
   mainImage: `${episode3Asset}/main/scene15.jpg`,
   secondaryImage: `${episode3Asset}/secondary/scene15.jpg`,
   secondaryImageTitle: 'Begegnung an der geöffneten Grenze',
@@ -1357,6 +1363,7 @@ const weimarScene: Partial<HistoriaScene> = {
   duration: 34,
   narration:
     'Wir schreiben das Jahr 1919. Deutschland bekommt eine demokratische Verfassung, und erstmals dürfen Frauen auf nationaler Ebene wählen. Doch einen ruhigen Start erlebt die Republik nicht: Niederlage, Versailler Vertrag und politische Gewalt belasten sie schwer. 1923 wird das Geld durch die Inflation beinahe wertlos. Danach stabilisiert sich die Lage für einige Jahre. Ab 1929 bringt die Weltwirtschaftskrise Massenarbeitslosigkeit und neue Not. Radikale Parteien gewinnen an Zustimmung, während demokratische Mehrheiten und das Vertrauen in den Staat zerbrechen.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/9.m4a`,
   mapConcept:
     'Karte Deutschlands und seiner Nachbarn nach 1919. Punkt 1 zeigt Versailles und den Friedensvertrag, Punkt 2 Berlin als Zentrum der demokratischen Republik und ihrer Krisen.',
   mapDetails: [
@@ -1415,6 +1422,7 @@ const chancellorAppointmentScene: HistoriaScene = {
   duration: 39,
   narration:
     'Anfang 1933 steckt die Weimarer Republik in einer schweren politischen Krise. Die NSDAP ist zwar die stärkste Partei, hat aber keine eigene Mehrheit, und bei der letzten Reichstagswahl sogar Stimmen verloren. Hinter den Kulissen verhandeln Hitler und konservative Politiker über eine neue Regierung. Franz von Papen glaubt, man könne Hitler im Amt einrahmen und kontrollieren. Reichspräsident Paul von Hindenburg lässt sich überzeugen und ernennt Hitler am 30. Januar 1933 zum Reichskanzler. Hitler wird also nicht direkt zum Kanzler gewählt. Konservative Eliten öffnen ihm den Weg zur Macht – eine folgenschwere Fehleinschätzung.',
+  audio: `${episode3Asset}/SprechertexteE3/neue/10.m4a`,
   mainImage: `${episode3Asset}/secondary/scene10-appointment.jpg`,
   mapImage: `${episode3Asset}/maps/scene10-appointment.svg?v=20260915a`,
   mapConcept:
@@ -1634,6 +1642,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
     id: 20,
     sourceId: 16,
     override: {
+      audio: `${episode3Asset}/SprechertexteE3/neue/20.m4a`,
       mainImage: undefined,
       imageTitle: 'Vernetzte Gegenwart',
       imageSubtitle:
