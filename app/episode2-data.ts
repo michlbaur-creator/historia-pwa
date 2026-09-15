@@ -49,12 +49,6 @@ const secondaryMedia: Record<
     secondaryImageSubtitle:
       'Die Spanier treffen auf eine große, dicht bewohnte Metropole.',
   },
-  12: {
-    secondaryImage: `${episode2Asset}/secondary/scene12.jpg`,
-    secondaryImageTitle: 'Verhandeln statt kämpfen',
-    secondaryImageSubtitle:
-      'In Münster und Osnabrück entsteht der Westfälische Friede.',
-  },
   15: {
     secondaryImage: `${episode2Asset}/secondary/scene15.jpg`,
     secondaryImageTitle: 'Französische Hilfe vor Yorktown',
@@ -1000,11 +994,18 @@ export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
               {
                 src: `${episode2Asset}/secondary/scene12.jpg`,
                 at: 0.7,
-                title: secondaryMedia[12].secondaryImageTitle,
-                subtitle: secondaryMedia[12].secondaryImageSubtitle,
+                title: 'Verhandeln statt kämpfen',
+                subtitle:
+                  'In Münster und Osnabrück entsteht der Westfälische Friede.',
               },
             ]
           : undefined,
+      secondaryImage:
+        scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImage,
+      secondaryImageTitle:
+        scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImageTitle,
+      secondaryImageSubtitle:
+        scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImageSubtitle,
       mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg${mapRevision}`,
       audio: episode2AudioScenes.has(scene.id)
         ? `${episode2Asset}/audio/scene${String(scene.id).padStart(2, '0')}.m4a`

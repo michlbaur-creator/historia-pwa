@@ -43,7 +43,7 @@ const { challengeConfig, challengeBestKey } = await loadTS(
 );
 
 function eraFor(episode, sceneId) {
-  if (episode === 3) return sceneId <= 6 ? 1 : sceneId <= 12 ? 2 : 3;
+  if (episode === 3) return sceneId <= 6 ? 1 : sceneId <= 13 ? 2 : 3;
   return sceneId <= 5 ? 1 : sceneId <= 10 ? 2 : 3;
 }
 
@@ -188,7 +188,7 @@ test('Hyper: 1000 rounds, six per episode, two per era, 18 unique questions with
       seen.add(`${q.episode}-${q.sceneId}`);
     }
   }
-  assert.equal(seen.size, 51);
+  assert.equal(seen.size, 52);
   assert.equal(JSON.stringify(pools), before);
 });
 

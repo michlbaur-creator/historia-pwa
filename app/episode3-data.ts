@@ -1346,6 +1346,122 @@ const reunificationScene: HistoriaScene = {
   ],
 };
 
+const weimarScene: Partial<HistoriaScene> = {
+  shortTitle: 'Weimar',
+  title: 'Die Weimarer Republik unter Druck',
+  date: '1919–1932',
+  place: 'Deutschland und Europa',
+  people: 'Demokraten, Gegner der Republik und die Bevölkerung',
+  imageTitle: 'Eine neue Demokratie',
+  imageSubtitle: 'Frauen und Männer wählen 1919 die Nationalversammlung.',
+  duration: 34,
+  narration:
+    'Wir schreiben das Jahr 1919. Deutschland bekommt eine demokratische Verfassung, und erstmals dürfen Frauen auf nationaler Ebene wählen. Doch einen ruhigen Start erlebt die Republik nicht: Niederlage, Versailler Vertrag und politische Gewalt belasten sie schwer. 1923 wird das Geld durch die Inflation beinahe wertlos. Danach stabilisiert sich die Lage für einige Jahre. Ab 1929 bringt die Weltwirtschaftskrise Massenarbeitslosigkeit und neue Not. Radikale Parteien gewinnen an Zustimmung, während demokratische Mehrheiten und das Vertrauen in den Staat zerbrechen.',
+  mapConcept:
+    'Karte Deutschlands und seiner Nachbarn nach 1919. Punkt 1 zeigt Versailles und den Friedensvertrag, Punkt 2 Berlin als Zentrum der demokratischen Republik und ihrer Krisen.',
+  mapDetails: [
+    '1 · Versailles · Friedensvertrag 1919',
+    '2 · Berlin · Parlament und Regierung',
+    'Deutschland in den Grenzen der Weimarer Republik',
+  ],
+  discoveries: [
+    {
+      label: 'Demokratischer Anfang',
+      title: 'Wahlen 1919',
+      text: 'Bei der Wahl zur Nationalversammlung dürfen erstmals alle Frauen und Männer ab 20 Jahren abstimmen. Die Weimarer Verfassung schafft eine parlamentarische Demokratie mit sozialen Grundrechten.',
+    },
+    {
+      label: 'Krisen der Republik',
+      title: 'Inflation und Arbeitslosigkeit',
+      text: 'Die Inflation von 1923 vernichtet Ersparnisse. Ab 1929 verschärft die Weltwirtschaftskrise die Arbeitslosigkeit und stärkt Parteien, die die Demokratie beseitigen wollen.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Welche Krise stärkt ab 1929 radikale Parteien besonders?',
+      options: [
+        'Die Weltwirtschaftskrise',
+        'Die Industrialisierung Englands',
+        'Die Kubakrise',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Massenarbeitslosigkeit und soziale Not untergraben das Vertrauen in die demokratischen Parteien.',
+    },
+    {
+      question: 'Welche Neuerung prägt die Wahl zur Nationalversammlung 1919?',
+      options: [
+        'Frauen und Männer dürfen auf nationaler Ebene wählen',
+        'Nur ehemalige Soldaten dürfen wählen',
+        'Der Reichskanzler wird direkt gewählt',
+      ],
+      correctIndex: 0,
+      explanation:
+        '1919 gilt bei einer nationalen Wahl erstmals das aktive und passive Wahlrecht für Frauen.',
+    },
+  ],
+};
+
+const chancellorAppointmentScene: HistoriaScene = {
+  id: 10,
+  shortTitle: 'Machtübergabe',
+  title: 'Hitler wird zum Reichskanzler ernannt',
+  date: 'Januar 1933',
+  place: 'Köln und Berlin',
+  people: 'Paul von Hindenburg, Adolf Hitler und konservative Politiker',
+  imageTitle: 'Die Ernennung am 30. Januar 1933',
+  imageSubtitle:
+    'Reichspräsident Hindenburg überträgt Hitler das Amt des Reichskanzlers.',
+  duration: 39,
+  narration:
+    'Anfang 1933 steckt die Weimarer Republik in einer schweren politischen Krise. Die NSDAP ist zwar die stärkste Partei, hat aber keine eigene Mehrheit, und bei der letzten Reichstagswahl sogar Stimmen verloren. Hinter den Kulissen verhandeln Hitler und konservative Politiker über eine neue Regierung. Franz von Papen glaubt, man könne Hitler im Amt einrahmen und kontrollieren. Reichspräsident Paul von Hindenburg lässt sich überzeugen und ernennt Hitler am 30. Januar 1933 zum Reichskanzler. Hitler wird also nicht direkt zum Kanzler gewählt. Konservative Eliten öffnen ihm den Weg zur Macht – eine folgenschwere Fehleinschätzung.',
+  mainImage: `${episode3Asset}/secondary/scene10-appointment.jpg`,
+  mapImage: `${episode3Asset}/maps/scene10-appointment.svg?v=20260915a`,
+  mapConcept:
+    'Deutschlandkarte mit Köln als Ort geheimer Koalitionsgespräche und Berlin als Ort der Ernennung zum Reichskanzler.',
+  mapDetails: [
+    '1 · Köln · Verhandlungen am 4. Januar 1933',
+    '2 · Berlin · Ernennung am 30. Januar 1933',
+    'Politische Machtübergabe ohne direkte Kanzlerwahl',
+  ],
+  discoveries: [
+    {
+      label: 'Verhandlungen',
+      title: 'Köln, 4. Januar 1933',
+      text: 'Hitler und Franz von Papen sprechen im Haus des Bankiers Kurt von Schröder über eine gemeinsame Regierung. Weitere Absprachen konservativer Eliten folgen.',
+    },
+    {
+      label: 'Ernennung',
+      title: 'Berlin, 30. Januar 1933',
+      text: 'Hindenburg ernennt Hitler zum Reichskanzler. Die NSDAP besitzt keine eigene parlamentarische Mehrheit; konservative Politiker glauben dennoch, Hitler kontrollieren zu können.',
+    },
+  ],
+  quiz: [
+    {
+      question: 'Wie gelangt Hitler am 30. Januar 1933 ins Amt?',
+      options: [
+        'Hindenburg ernennt ihn zum Reichskanzler',
+        'Er wird direkt zum Reichskanzler gewählt',
+        'Der Völkerbund setzt ihn ein',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Reichspräsident Hindenburg ernennt Hitler; eine direkte Wahl zum Reichskanzler gibt es nicht.',
+    },
+    {
+      question: 'Welche Fehleinschätzung begünstigt die Ernennung?',
+      options: [
+        'Konservative Politiker glauben, Hitler kontrollieren zu können',
+        'Die NSDAP habe keine politischen Gegner',
+        'Die Weltwirtschaftskrise sei bereits beendet',
+      ],
+      correctIndex: 0,
+      explanation:
+        'Papen und andere Konservative wollen Hitler für ihre Ziele nutzen und unterschätzen, wie schnell er ihre Kontrolle beseitigt.',
+    },
+  ],
+};
+
 type Episode3ScenePlan = {
   id: number;
   sourceId?: number;
@@ -1360,7 +1476,17 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
   { id: 3, sourceId: 3, keepAudio: true },
   { id: 4, sourceId: 4, override: italyScene },
   { id: 5, scene: bismarckScene },
-  { id: 6, sourceId: 5, keepAudio: true },
+  {
+    id: 6,
+    sourceId: 5,
+    keepAudio: true,
+    override: {
+      mainImage: `${episode3Asset}/secondary/scene06-conference.jpg`,
+      imageTitle: 'Die Berliner Konferenz 1884/85',
+      imageSubtitle:
+        'Europäische Mächte verhandeln über Afrika – ohne afrikanische Vertreter am Tisch.',
+    },
+  },
   {
     id: 7,
     sourceId: 6,
@@ -1374,35 +1500,65 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
           subtitle:
             'Die Ermordung Franz Ferdinands löst die Julikrise von 1914 aus.',
         },
+        {
+          src: `${episode3Asset}/secondary/scene07-bunker.jpg`,
+          at: 0.68,
+          title: 'Stellungskrieg an der Westfront',
+          subtitle:
+            'Schützengräben und Bunker prägen den zermürbenden Krieg.',
+        },
       ],
       videoStartAt: 0.25,
     },
   },
-  { id: 8, sourceId: 7, keepAudio: true },
   {
-    id: 9,
-    sourceId: 8,
+    id: 8,
+    sourceId: 7,
     keepAudio: true,
     override: {
       imageSequence: [
         {
-          src: `${episode3Asset}/main/scene08.jpg`,
+          src: `${episode3Asset}/main/scene07.jpg`,
           at: 0,
-          title: 'Krise der Republik',
+          title: 'Revolution in Russland',
           subtitle:
-            'Inflation und Arbeitslosigkeit belasten die Weimarer Republik.',
+            '1917 übernehmen Lenins Bolschewiki in Petrograd die Macht.',
         },
         {
-          src: `${episode3Asset}/secondary/scene09-weimar.jpg`,
-          at: 0.58,
-          title: 'Eine neue Demokratie',
-          subtitle: 'Frauen und Männer wählen 1919 die Nationalversammlung.',
+          src: `${episode3Asset}/secondary/scene08-stalinism.jpg`,
+          at: 0.56,
+          title: 'Stalinismus',
+          subtitle:
+            'Personenkult, Zwang und Terror prägen Stalins Diktatur.',
         },
       ],
     },
   },
   {
-    id: 10,
+    id: 9,
+    sourceId: 8,
+    override: {
+      ...weimarScene,
+      imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene09-weimar.jpg`,
+          at: 0,
+          title: 'Eine neue Demokratie',
+          subtitle: 'Frauen und Männer wählen 1919 die Nationalversammlung.',
+        },
+        {
+          src: `${episode3Asset}/main/scene08.jpg`,
+          at: 0.55,
+          title: 'Krise der Republik',
+          subtitle:
+            'Inflation und Arbeitslosigkeit belasten die Weimarer Republik.',
+        },
+      ],
+    },
+  },
+  { id: 10, scene: chancellorAppointmentScene },
+  {
+    id: 11,
     sourceId: 9,
     keepAudio: true,
     override: {
@@ -1425,7 +1581,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     sourceId: 10,
     keepAudio: true,
     override: {
@@ -1447,7 +1603,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
     },
   },
   {
-    id: 12,
+    id: 13,
     sourceId: 11,
     keepAudio: true,
     override: {
@@ -1468,18 +1624,30 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
       ],
     },
   },
-  { id: 13, sourceId: 12, override: coldWarScene },
-  { id: 14, scene: cubaScene },
-  { id: 15, sourceId: 13, keepAudio: true },
-  { id: 16, sourceId: 14, keepAudio: true },
-  { id: 17, sourceId: 15, override: ewgScene },
-  { id: 18, scene: reunificationScene },
+  { id: 14, sourceId: 12, override: coldWarScene },
+  { id: 15, scene: { ...cubaScene, id: 15 } },
+  { id: 16, sourceId: 13, keepAudio: true },
+  { id: 17, sourceId: 14, keepAudio: true },
+  { id: 18, sourceId: 15, override: ewgScene },
+  { id: 19, scene: { ...reunificationScene, id: 19 } },
   {
-    id: 19,
+    id: 20,
     sourceId: 16,
-    keepAudio: true,
     override: {
+      mainImage: undefined,
+      imageTitle: 'Vernetzte Gegenwart',
+      imageSubtitle:
+        'Häfen, Datenkabel und digitale Systeme verbinden die Welt.',
+      video: undefined,
+      videoPlayback: undefined,
       imageSequence: [
+        {
+          src: `${episode3Asset}/secondary/scene20-networks.jpg`,
+          at: 0,
+          title: 'Vernetzte Gegenwart',
+          subtitle:
+            'Häfen, Datenkabel und digitale Systeme verbinden die Welt.',
+        },
         {
           src: `${episode3Asset}/secondary/scene19-september11.jpg`,
           at: 0.22,
@@ -1508,7 +1676,7 @@ const episode3ScenePlan: Episode3ScenePlan[] = [
             'Russlands Großangriff vertreibt ab 2022 Millionen Menschen.',
         },
       ],
-      videoStartAt: 0,
+      videoStartAt: undefined,
     },
   },
 ];
@@ -1526,7 +1694,7 @@ export const historiaEpisode3Scenes: HistoriaScene[] = episode3ScenePlan.map(
       ...secondaryMedia[sourceId],
       id: plan.id,
       mainImage: `${episode3Asset}/main/scene${String(sourceId).padStart(2, '0')}.jpg`,
-      mapImage: `${episode3Asset}/maps/scene${String(sourceId).padStart(2, '0')}.svg?v=20260911b`,
+      mapImage: `${episode3Asset}/maps/scene${String(sourceId).padStart(2, '0')}.svg?v=20260915b`,
       audio: plan.keepAudio
         ? `${episode3Asset}/SprechertexteE3/${sourceId}.m4a`
         : undefined,

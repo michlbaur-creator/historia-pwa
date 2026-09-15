@@ -20,8 +20,8 @@ export function chooseQuestions(
     episode === 3
       ? [
           scenes.filter((scene) => scene.id <= 6),
-          scenes.filter((scene) => scene.id >= 7 && scene.id <= 12),
-          scenes.filter((scene) => scene.id >= 13),
+          scenes.filter((scene) => scene.id >= 7 && scene.id <= 13),
+          scenes.filter((scene) => scene.id >= 14),
         ]
       : [
           scenes.filter((scene) => scene.id <= 5),

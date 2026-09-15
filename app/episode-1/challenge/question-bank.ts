@@ -317,42 +317,50 @@ export const challengeQuestions: Record<
       'Stalins Diktatur stützte sich auf Kontrolle und Terror. Politische Gegnerschaft war nicht als freier Wettbewerb geschützt.',
     ),
     9: q(
-      'Wie gelangte Hitler 1933 unmittelbar ins Amt des Reichskanzlers?',
-      'Er wurde zum Reichskanzler ernannt.',
-      'Die Bevölkerung wählte ihn direkt zum Reichskanzler.',
-      'Eine schon 1932 bestehende absolute NSDAP-Mehrheit brachte ihn allein ins Amt.',
-      'Hindenburg ernannte Hitler. Eine direkte Wahl zum Kanzler gab es nicht; Wahlerfolge und Ernennung sind zu unterscheiden.',
+      'Warum geriet die Weimarer Republik ab 1929 besonders unter Druck?',
+      'Massenarbeitslosigkeit und soziale Not stärkten radikale Parteien.',
+      'Die Weltwirtschaftskrise machte demokratische Mehrheiten stabiler.',
+      'Die Inflation von 1923 begann erst nach dem Ende der Republik.',
+      'Die Weltwirtschaftskrise traf Deutschland hart. Arbeitslosigkeit und politische Blockaden schwächten das Vertrauen in die Demokratie.',
       true,
     ),
     10: q(
+      'Wie gelangte Hitler 1933 unmittelbar ins Amt des Reichskanzlers?',
+      'Hindenburg ernannte ihn zum Reichskanzler.',
+      'Die Bevölkerung wählte ihn direkt zum Reichskanzler.',
+      'Eine absolute NSDAP-Mehrheit brachte ihn automatisch ins Amt.',
+      'Hindenburg ernannte Hitler. Eine direkte Wahl zum Kanzler gab es nicht; konservative Eliten ermöglichten die Machtübergabe.',
+      true,
+    ),
+    11: q(
       'Warum war das Ermächtigungsgesetz ein entscheidender Schritt zur Diktatur?',
       'Es ermöglichte der Regierung Gesetze ohne das Parlament.',
       'Es machte die Regierung von freien Volksabstimmungen abhängig.',
       'Es stärkte die unabhängige Kontrolle durch den Reichstag.',
       'Das Gesetz entmachtete das Parlament entscheidend. Die Nationalsozialisten beseitigten demokratische Kontrolle und verfolgten Gegner.',
     ),
-    11: q(
+    12: q(
       'Warum ist 1941 für die Ausweitung des Zweiten Weltkriegs besonders wichtig?',
       'Der Angriff auf die Sowjetunion und der Kriegseintritt der USA weiteten ihn aus.',
       'Deutschland griff erstmals Polen an und begann den Krieg in Europa.',
       'Deutschland kapitulierte und die Kämpfe in Europa endeten.',
       '1939 begann der Krieg in Europa mit dem Angriff auf Polen. 1941 weiteten der Angriff auf die Sowjetunion und der Kriegseintritt der USA ihn entscheidend aus.',
     ),
-    12: q(
+    13: q(
       'Welche Aussage beschreibt die Tatorte des Holocaust zutreffend?',
       'Die Morde geschahen unter anderem in Vernichtungslagern und bei Massenerschießungen.',
       'Die Morde geschahen ausschließlich in einem einzigen Lager.',
       'Die Morde fanden ausschließlich innerhalb der deutschen Vorkriegsgrenzen statt.',
       'Der Holocaust war die systematische Ermordung der europäischen Juden. Tatorte waren unter anderem Vernichtungslager und Orte von Massenerschießungen.',
     ),
-    13: q(
+    14: q(
       'Warum war die Berliner Luftbrücke politisch bedeutsam?',
       'Sie hielt West-Berlin trotz der Blockade versorgt.',
       'Sie beendete sofort die Teilung Deutschlands.',
       'Sie verlegte West-Berlin in die westlichen Besatzungszonen.',
       'Die Luftbrücke überwand die sowjetische Blockade, vertiefte aber zugleich die Teilung.',
     ),
-    14: q(
+    15: q(
       'Warum endete die Kubakrise nicht einfach mit einem einseitigen sowjetischen Rückzug?',
       'Beide Seiten machten Zusagen und entfernten Raketen.',
       'Die USA besetzten Kuba und Moskau.',
@@ -360,28 +368,28 @@ export const challengeQuestions: Record<
       'Die Sowjetunion zog Raketen aus Kuba ab; die USA versprachen keinen Angriff und entfernten später Raketen aus der Türkei.',
       true,
     ),
-    15: q(
+    16: q(
       'Warum ist Indiens Unabhängigkeit 1947 keine Erfolgsgeschichte ohne Brüche?',
       'Sie war mit Teilung, Flucht und Gewalt verbunden.',
       'Sie ließ die britische Kolonialherrschaft unverändert.',
       'Sie vereinte unmittelbar alle ehemaligen Kolonien Asiens.',
       'Unabhängigkeit und die Teilung in Indien und Pakistan gehörten zusammen. Millionen Menschen erlebten Flucht und Gewalt.',
     ),
-    16: q(
+    17: q(
       'Was bedeutet „Stellvertreterkrieg“ bei Korea und Vietnam?',
       'Örtliche Konflikte wurden mit Unterstützung rivalisierender Großmächte ausgetragen.',
       'Die beteiligten Gesellschaften hatten keinerlei eigene Interessen.',
       'Die Supermächte kämpften ausschließlich auf ihrem eigenen Gebiet.',
       'Der Begriff beschreibt den Einfluss der Großmächte, darf aber eigene Interessen und Erfahrungen der Menschen vor Ort nicht verdecken.',
     ),
-    17: q(
+    18: q(
       'Was war die EWG bei ihrer Gründung 1957?',
       'Eine Wirtschaftsgemeinschaft von sechs Staaten',
       'Bereits ein europäischer Bundesstaat',
       'Ein Militärbündnis des Ostblocks',
       'Die EWG baute wirtschaftliche Schranken zwischen sechs Mitgliedstaaten ab. Die spätere EU entwickelte sich daraus.',
     ),
-    18: q(
+    19: q(
       'Welche zeitliche Unterscheidung stimmt?',
       'Mauerfall 1989 und Wiedervereinigung 1990 sind verschiedene Ereignisse.',
       'Am Tag des Mauerfalls war die staatliche Wiedervereinigung abgeschlossen.',
@@ -389,7 +397,7 @@ export const challengeQuestions: Record<
       'Die Mauer öffnete sich 1989. Die staatliche Wiedervereinigung folgte 1990 – ein zusammenhängender Prozess, aber nicht ein einziges Ereignis.',
       true,
     ),
-    19: q(
+    20: q(
       'Was kennzeichnet Russlands Angriff vom 24. Februar 2022?',
       'Er weitete den seit 2014 bestehenden Krieg gegen die Ukraine massiv aus.',
       'Er begann den Krieg ohne einen vorausgehenden Krieg seit 2014.',
