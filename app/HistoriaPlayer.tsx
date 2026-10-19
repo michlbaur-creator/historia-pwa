@@ -21,6 +21,11 @@ import {
 import { flushSync } from 'react-dom';
 import { historiaScenes, type HistoriaScene } from './data';
 import styles from './historia.module.css';
+import {
+  readingSections,
+  readingSectionAt,
+  videoPosition,
+} from './player-timing';
 
 type Tab = 'text' | 'discover' | 'quiz';
 
@@ -72,6 +77,10 @@ export default function HistoriaPlayer({
   const [sceneIndex, setSceneIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [quiet, setQuiet] = useState(false);
+  const [slow, setSlow] = useState(false);
+  const [preferencesReady, setPreferencesReady] = useState(false);
+  const playbackRate = quiet && slow ? 0.8 : 1;
   const [mapMode, setMapMode] = useState<'auto' | 'map' | 'image'>('auto');
   const showMap =
     mapMode === 'map' || (mapMode === 'auto' && elapsed < MAP_DISPLAY_SECONDS);
@@ -87,11 +96,16 @@ export default function HistoriaPlayer({
   const [audioError, setAudioError] = useState('');
   const swipeStartX = useRef<number | null>(null);
   const scene = scenes[sceneIndex];
+  const sections = useMemo(
+    () => readingSections(scene.narration),
+    [scene.narration],
+  );
 
   const renderedMapImage = scene.mapImage;
   const activeDuration = audioDuration || scene.duration;
   const progress = Math.min(100, (elapsed / activeDuration) * 100);
   const sceneProgress = activeDuration > 0 ? elapsed / activeDuration : 0;
+  const subtitle = readingSectionAt(sections, elapsed, activeDuration);
   const legacySequence: NonNullable<HistoriaScene['imageSequence']> =
     scene.secondaryImage
       ? [
@@ -153,10 +167,46 @@ export default function HistoriaPlayer({
   );
 
   useEffect(() => {
+    try {
+      const savedQuiet = localStorage.getItem('historia-quiet') === 'true';
+      const savedSlow = localStorage.getItem('historia-slow') === 'true';
+      if (audioRef.current) {
+        audioRef.current.muted = savedQuiet;
+        audioRef.current.playbackRate = savedQuiet && savedSlow ? 0.8 : 1;
+      }
+      setQuiet(savedQuiet);
+      setSlow(savedSlow);
+    } catch {
+      /* Playback remains usable when browser storage is disabled. */
+    }
+    setPreferencesReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = quiet;
+      audioRef.current.playbackRate = playbackRate;
+    }
+    if (videoRef.current) videoRef.current.playbackRate = playbackRate;
+  }, [quiet, playbackRate, scene.id]);
+
+  function changePreference(key: 'quiet' | 'slow', value: boolean) {
+    if (key === 'quiet') {
+      if (audioRef.current) audioRef.current.muted = value;
+      setQuiet(value);
+    } else setSlow(value);
+    try {
+      localStorage.setItem(`historia-${key}`, String(value));
+    } catch {
+      /* Optional persistence. */
+    }
+  }
+
+  useEffect(() => {
     if (scene.audio || !playing) return;
     const interval = window.setInterval(() => {
       setElapsed((current) => {
-        const next = Math.min(scene.duration, current + 0.1);
+        const next = Math.min(scene.duration, current + 0.1 * playbackRate);
         if (next >= scene.duration) {
           window.clearInterval(interval);
           window.setTimeout(finishAudio, 0);
@@ -165,21 +215,44 @@ export default function HistoriaPlayer({
       });
     }, 100);
     return () => window.clearInterval(interval);
-  }, [playing, scene.audio, scene.duration, scene.id]);
+  }, [playing, scene.audio, scene.duration, scene.id, playbackRate]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    if (!playing || showMap || !videoShouldPlay) {
+    video.playbackRate = playbackRate;
+    const target = videoPosition(
+      elapsed,
+      Math.max(MAP_DISPLAY_SECONDS, videoStartAt * activeDuration),
+      video.duration,
+      scene.videoPlayback === 'hold',
+    );
+    // Correct seeks and drift against the persistent audio clock, at either rate.
+    if (
+      video.readyState >= 1 &&
+      Math.abs(video.currentTime - target.time) > 0.35
+    ) {
+      video.currentTime = target.time;
+    }
+    if (!playing || showMap || !videoShouldPlay || target.finished) {
       video.pause();
       return;
     }
-    if (scene.videoPlayback === 'hold' && video.ended) return;
     void video.play().catch(() => {
       // Das Hauptbild bleibt als Poster sichtbar, falls Video blockiert wird.
     });
-  }, [playing, scene.id, scene.videoPlayback, showMap, videoShouldPlay]);
+  }, [
+    playing,
+    scene.id,
+    scene.videoPlayback,
+    showMap,
+    videoShouldPlay,
+    elapsed,
+    activeDuration,
+    videoStartAt,
+    playbackRate,
+  ]);
 
   useEffect(() => {
     const current = timelineRef.current?.querySelector<HTMLElement>(
@@ -231,6 +304,8 @@ export default function HistoriaPlayer({
   }
 
   function startAudio(audio: HTMLAudioElement) {
+    audio.muted = quiet;
+    audio.playbackRate = playbackRate;
     const request = ++audioRequestRef.current;
     pendingAudioStartRef.current = true;
     setAudioError('');
@@ -275,6 +350,12 @@ export default function HistoriaPlayer({
     setElapsed(activeDuration);
   }
 
+  function rewind() {
+    const next = Math.max(0, elapsed - 10);
+    if (audioRef.current && scene.audio) audioRef.current.currentTime = next;
+    setElapsed(next);
+  }
+
   function stepScene(direction: -1 | 1) {
     if (direction === 1 && sceneIndex === scenes.length - 1) {
       audioRequestRef.current += 1;
@@ -314,7 +395,10 @@ export default function HistoriaPlayer({
         ref={audioRef}
         src={scene.audio}
         preload="metadata"
+        muted={quiet}
         onLoadedMetadata={(event) => {
+          event.currentTarget.muted = quiet;
+          event.currentTarget.playbackRate = playbackRate;
           if (Number.isFinite(event.currentTarget.duration)) {
             setAudioDuration(event.currentTarget.duration);
           }
@@ -423,6 +507,32 @@ export default function HistoriaPlayer({
       </section>
 
       <section className={styles.player}>
+        <div className={styles.readingControls} aria-label="Lesemodus">
+          <button
+            type="button"
+            aria-pressed={quiet}
+            disabled={!preferencesReady}
+            onClick={() => changePreference('quiet', !quiet)}
+          >
+            🔇 Leise
+          </button>
+          {quiet && (
+            <button
+              type="button"
+              aria-pressed={slow}
+              onClick={() => changePreference('slow', !slow)}
+            >
+              Langsamer · 0,8×
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={rewind}
+            aria-label="10 Sekunden zurückspulen"
+          >
+            ↶ 10 Sek.
+          </button>
+        </div>
         <div
           className={`${styles.imageStage} ${mapMode !== 'auto' ? styles.manualMapView : ''} ${!showMap && episodeNumber === 3 && scene.id <= 3 ? styles.mobileTallImageStage : ''}`}
           onPointerDown={startSwipe}
@@ -544,6 +654,15 @@ export default function HistoriaPlayer({
           )}
         </div>
 
+        {quiet && (
+          <div
+            className={styles.readingSubtitles}
+            aria-label="Sprecheruntertitel"
+            aria-live="off"
+          >
+            <p>{subtitle}</p>
+          </div>
+        )}
         {audioError && <p role="status">{audioError}</p>}
         <div className={styles.controls}>
           <button
@@ -557,6 +676,7 @@ export default function HistoriaPlayer({
           <button
             className={styles.primaryControl}
             onClick={togglePlayback}
+            disabled={!preferencesReady}
             aria-label={playing ? 'Pause' : 'Abspielen'}
           >
             {playing ? (

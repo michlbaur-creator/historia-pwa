@@ -121,11 +121,11 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Was entstand unter Mohammeds Nachfolgern?',
         options: [
-          'Nur eine Handelsstadt',
           'Ein weitreichendes Kalifenreich',
+          'Nur eine Handelsstadt',
           'Das Heilige Römische Reich',
         ],
-        correctIndex: 1,
+        correctIndex: 0,
         explanation:
           'Die ersten Kalifen verbanden religiöse Führung mit politischer Herrschaft und erweiterten das Reich stark.',
       },
@@ -167,8 +167,8 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Wer krönt Karl im Jahr 800 zum Kaiser?',
-        options: ['Papst Leo III.', 'Sultan Mehmed II.', 'Otto I.'],
-        correctIndex: 0,
+        options: ['Sultan Mehmed II.', 'Papst Leo III.', 'Otto I.'],
+        correctIndex: 1,
         explanation: 'Papst Leo III. krönt Karl am Weihnachtstag 800 in Rom.',
       },
       {
@@ -222,22 +222,22 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Was taten Wikinger außer zu plündern?',
         options: [
-          'Sie handelten und siedelten',
-          'Sie bauten die Pyramiden',
           'Sie gründeten das Kalifenreich',
+          'Sie bauten die Pyramiden',
+          'Sie handelten und siedelten',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Handel, Siedlung und Herrschaft gehörten ebenso zur Wikingerzeit wie Überfälle.',
       },
       {
         question: 'Welche Räume verbanden ihre Routen?',
         options: [
-          'Nur Skandinavien und England',
           'Atlantik und Osteuropa',
+          'Nur Skandinavien und England',
           'Nur das Mittelmeer',
         ],
-        correctIndex: 1,
+        correctIndex: 0,
         explanation:
           'Ihre Wege reichten westwärts über den Atlantik und ostwärts über Flüsse bis nach Byzanz.',
       },
@@ -280,22 +280,22 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Welcher Sieg stärkt Otto I. vor seiner Kaiserkrönung?',
         options: [
-          'Der Sieg auf dem Lechfeld',
           'Der Sieg bei Waterloo',
+          'Der Sieg auf dem Lechfeld',
           'Die Einnahme Jerusalems',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Der Lechfeld-Sieg von 955 stärkt Ottos Königtum erheblich.',
       },
       {
         question: 'Auf wen stützt Otto seine Herrschaft besonders?',
         options: [
-          'Nur auf Bauern',
           'Auf Herzöge und Bischöfe',
+          'Nur auf Bauern',
           'Auf mongolische Reiter',
         ],
-        correctIndex: 1,
+        correctIndex: 0,
         explanation:
           'Herzöge und Bischöfe waren wichtige Träger der ottonischen Herrschaft.',
       },
@@ -340,15 +340,15 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Wer ruft 1095 zum Kreuzzug auf?',
-        options: ['Papst Urban II.', 'Dschingis Khan', 'Ludwig XIV.'],
-        correctIndex: 0,
+        options: ['Ludwig XIV.', 'Dschingis Khan', 'Papst Urban II.'],
+        correctIndex: 2,
         explanation:
           'Papst Urban II. ruft 1095 in Clermont zum bewaffneten Zug nach Jerusalem auf.',
       },
       {
         question: 'Wer gewinnt Jerusalem 1187 zurück?',
-        options: ['Richard Löwenherz', 'Saladin', 'Karl der Große'],
-        correctIndex: 1,
+        options: ['Saladin', 'Richard Löwenherz', 'Karl der Große'],
+        correctIndex: 0,
         explanation:
           'Sultan Saladin besiegt die Kreuzfahrer und gewinnt Jerusalem 1187 zurück.',
       },
@@ -452,11 +452,11 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Welche gesellschaftliche Folge nennt die Szene?',
         options: [
-          'Arbeit wird knapper',
           'Alle Städte verschwinden',
+          'Arbeit wird knapper',
           'Der Handel endet für immer',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Durch den Bevölkerungsverlust fehlten Arbeitskräfte; das veränderte unter anderem Löhne und Abhängigkeiten.',
       },
@@ -498,19 +498,19 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Welche Stadt wird 1429 mit Jeannes Hilfe entsetzt?',
-        options: ['Orléans', 'Rom', 'Wittenberg'],
-        correctIndex: 0,
+        options: ['Rom', 'Orléans', 'Wittenberg'],
+        correctIndex: 1,
         explanation:
           'Das Ende der Belagerung von Orléans wird zum Wendepunkt für die französische Seite.',
       },
       {
         question: 'Warum ist der Name „Hundertjähriger Krieg“ vereinfacht?',
         options: [
-          'Er dauerte länger und hatte Unterbrechungen',
           'Er dauerte nur zehn Jahre',
+          'Er dauerte länger und hatte Unterbrechungen',
           'Er fand nur auf See statt',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Der Konflikt erstreckte sich über 116 Jahre, allerdings nicht als ununterbrochener Krieg.',
       },
@@ -552,19 +552,19 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Wer erobert Konstantinopel 1453?',
-        options: ['Mehmed II.', 'Richard Löwenherz', 'George Washington'],
-        correctIndex: 0,
+        options: ['George Washington', 'Richard Löwenherz', 'Mehmed II.'],
+        correctIndex: 2,
         explanation:
           'Sultan Mehmed II. führt die erfolgreiche osmanische Belagerung.',
       },
       {
         question: 'Warum war Konstantinopel strategisch wichtig?',
         options: [
-          'Wegen seiner Lage am Bosporus',
           'Wegen seiner Lage in Amerika',
+          'Wegen seiner Lage am Bosporus',
           'Wegen seiner Kohleminen',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Die Stadt lag an einer zentralen Meerenge und verband Handels- und Machträume.',
       },
@@ -606,8 +606,8 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Was glaubte Kolumbus 1492 erreicht zu haben?',
-        options: ['Einen Weg nach Asien', 'Australien', 'Das Mongolenreich'],
-        correctIndex: 0,
+        options: ['Australien', 'Einen Weg nach Asien', 'Das Mongolenreich'],
+        correctIndex: 1,
         explanation:
           'Kolumbus hielt die Karibik zunächst für einen Teil der von ihm gesuchten Asienroute.',
       },
@@ -661,18 +661,18 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Was kritisiert Luther 1517 besonders?',
         options: [
-          'Den Ablasshandel',
-          'Die Dampfmaschine',
           'Die Kaiserkrönung Karls',
+          'Die Dampfmaschine',
+          'Den Ablasshandel',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Die Kritik am Ablasshandel steht am Anfang des öffentlich sichtbaren Konflikts.',
       },
       {
         question: 'Welches Medium beschleunigt die Verbreitung seiner Ideen?',
-        options: ['Der Buchdruck', 'Das Radio', 'Die Eisenbahn'],
-        correctIndex: 0,
+        options: ['Das Radio', 'Der Buchdruck', 'Die Eisenbahn'],
+        correctIndex: 1,
         explanation:
           'Gedruckte Flugschriften und Bücher verbreiteten Luthers Positionen in kurzer Zeit.',
       },
@@ -716,11 +716,11 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Welches Ereignis gilt 1618 als Startsignal?',
         options: [
-          'Der Prager Fenstersturz',
           'Die Boston Tea Party',
+          'Der Prager Fenstersturz',
           'Die Schlacht bei Waterloo',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Der Prager Fenstersturz wird zum sichtbaren Auftakt des langen Konflikts.',
       },
@@ -775,22 +775,22 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Welche politische Funktion hatte Versailles?',
         options: [
-          'Es band den Adel an den König',
-          'Es war nur ein Bauernhof',
           'Es ersetzte alle französischen Städte',
+          'Es war nur ein Bauernhof',
+          'Es band den Adel an den König',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Der Hof bündelte Regierung, Selbstdarstellung und die Kontrolle über viele Adelige.',
       },
       {
         question: 'Welche Belastung nennt die Szene?',
         options: [
-          'Hohe Kosten für Hof und Kriege',
-          'Den Verlust aller Häfen',
           'Die Abschaffung der Verwaltung',
+          'Den Verlust aller Häfen',
+          'Hohe Kosten für Hof und Kriege',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Prachtentfaltung und lange Kriege beanspruchten die französischen Finanzen stark.',
       },
@@ -833,22 +833,22 @@ const episode2Scenes: HistoriaScene[] = [
       {
         question: 'Womit beschreibt Newton Bewegung und Schwerkraft?',
         options: [
-          'Mit mathematischen Regeln',
-          'Mit königlichen Befehlen',
           'Mit Landkarten allein',
+          'Mit königlichen Befehlen',
+          'Mit mathematischen Regeln',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Newton formulierte Naturvorgänge in mathematischen Gesetzen.',
       },
       {
         question: 'Welche politische Idee gehört zur Aufklärung?',
         options: [
-          'Gewaltenteilung',
           'Erbliche Leibeigenschaft als Naturgesetz',
+          'Gewaltenteilung',
           'Verbot jeder Kritik',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Die Aufklärung diskutierte unter anderem Rechte, Toleranz und die Teilung staatlicher Macht.',
       },
@@ -893,8 +893,8 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Wer führt die amerikanische Kontinentalarmee?',
-        options: ['George Washington', 'Ludwig XIV.', 'Martin Luther'],
-        correctIndex: 0,
+        options: ['Martin Luther', 'Ludwig XIV.', 'George Washington'],
+        correctIndex: 2,
         explanation:
           'George Washington war Oberbefehlshaber der Armee und wurde später erster Präsident.',
       },
@@ -950,15 +950,15 @@ const episode2Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Was schafft Frankreich 1792 ab?',
-        options: ['Die Monarchie', 'Den Buchdruck', 'Die Atlantikschifffahrt'],
-        correctIndex: 0,
+        options: ['Die Atlantikschifffahrt', 'Den Buchdruck', 'Die Monarchie'],
+        correctIndex: 2,
         explanation:
           '1792 wird Frankreich zur Republik und die Monarchie abgeschafft.',
       },
       {
         question: 'Wo wird Napoleon 1815 endgültig besiegt?',
-        options: ['Bei Waterloo', 'Bei Zama', 'Auf dem Lechfeld'],
-        correctIndex: 0,
+        options: ['Auf dem Lechfeld', 'Bei Zama', 'Bei Waterloo'],
+        correctIndex: 2,
         explanation:
           'Die Niederlage bei Waterloo beendet Napoleons Rückkehr an die Macht.',
       },
@@ -1003,9 +1003,13 @@ export const historiaEpisode2Scenes: HistoriaScene[] = episode2Scenes.map(
       secondaryImage:
         scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImage,
       secondaryImageTitle:
-        scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImageTitle,
+        scene.id === 12
+          ? undefined
+          : secondaryMedia[scene.id]?.secondaryImageTitle,
       secondaryImageSubtitle:
-        scene.id === 12 ? undefined : secondaryMedia[scene.id]?.secondaryImageSubtitle,
+        scene.id === 12
+          ? undefined
+          : secondaryMedia[scene.id]?.secondaryImageSubtitle,
       mapImage: `${episode2Asset}/maps/scene${String(scene.id).padStart(2, '0')}.svg${mapRevision}`,
       audio: episode2AudioScenes.has(scene.id)
         ? `${episode2Asset}/audio/scene${String(scene.id).padStart(2, '0')}.m4a`

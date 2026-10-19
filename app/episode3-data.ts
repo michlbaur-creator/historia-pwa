@@ -90,19 +90,19 @@ const episode3Scenes: HistoriaScene[] = [
     quiz: [
       {
         question: 'Wo beginnt die Industrialisierung besonders früh?',
-        options: ['In Großbritannien', 'Im Römischen Reich', 'Im Inkareich'],
-        correctIndex: 0,
+        options: ['Im Inkareich', 'Im Römischen Reich', 'In Großbritannien'],
+        correctIndex: 2,
         explanation:
           'Großbritannien verfügt früh über Kapital, Rohstoffe, Märkte und technische Neuerungen für die Industrialisierung.',
       },
       {
         question: 'Welche wichtige Folge haben Fabriken und Eisenbahnen?',
         options: [
-          'Produktion und Transport werden schneller',
           'Städte verlieren ihre Einwohner',
+          'Produktion und Transport werden schneller',
           'Handarbeit verschwindet sofort vollständig',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Maschinen steigern die Produktion, während Eisenbahnen Menschen, Rohstoffe und Waren schneller befördern.',
       },
@@ -207,11 +207,11 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Welcher Konflikt steht im Zentrum des Bürgerkriegs?',
         options: [
-          'Die Zukunft der Sklaverei',
-          'Die Kaiserkrönung in Rom',
           'Der Bau der ersten Pyramide',
+          'Die Kaiserkrönung in Rom',
+          'Die Zukunft der Sklaverei',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Die Südstaaten verteidigten eine Gesellschaft und Wirtschaft, die wesentlich auf Sklaverei beruhte.',
       },
@@ -379,22 +379,22 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Warum führt das Attentat von Sarajevo zum großen Krieg?',
         options: [
-          'Bündnisse und politische Entscheidungen erzeugen eine Kettenreaktion',
-          'Alle Staaten hatten denselben Herrscher',
           'Der Krieg war nach einem Tag beendet',
+          'Alle Staaten hatten denselben Herrscher',
+          'Bündnisse und politische Entscheidungen erzeugen eine Kettenreaktion',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Ultimaten, Bündniszusagen und Mobilmachungen weiten die Krise Schritt für Schritt aus.',
       },
       {
         question: 'Was kennzeichnet die Westfront besonders?',
         options: [
-          'Ein langer Stellungskrieg',
-          'Ausschließlich Seeschlachten',
           'Kämpfe ohne moderne Waffen',
+          'Ausschließlich Seeschlachten',
+          'Ein langer Stellungskrieg',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Große Teile der Westfront erstarren in einem verlustreichen System aus Schützengräben.',
       },
@@ -437,11 +437,11 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Wer übernimmt im Oktober 1917 die Macht?',
         options: [
-          'Lenins Bolschewiki',
           'Die französische Nationalversammlung',
+          'Lenins Bolschewiki',
           'Die NATO',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Die Bolschewiki stürzen die provisorische Regierung und errichten schrittweise ihre Alleinherrschaft.',
       },
@@ -555,22 +555,22 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Wozu dient das Ermächtigungsgesetz von 1933?',
         options: [
-          'Es ermöglicht Regieren ohne parlamentarische Zustimmung',
           'Es führt freie Gewerkschaften ein',
+          'Es ermöglicht Regieren ohne parlamentarische Zustimmung',
           'Es beendet die Aufrüstung',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Das Gesetz wird zu einem zentralen Werkzeug für die Ausschaltung der parlamentarischen Demokratie.',
       },
       {
         question: 'Was bewirken die Nürnberger Gesetze?',
         options: [
-          'Sie entrechten jüdische Menschen',
-          'Sie stellen alle Bürger rechtlich gleich',
           'Sie gründen den Völkerbund',
+          'Sie stellen alle Bürger rechtlich gleich',
+          'Sie entrechten jüdische Menschen',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Die Gesetze machen die antisemitische Ausgrenzung zu staatlichem Recht.',
       },
@@ -626,11 +626,11 @@ const episode3Scenes: HistoriaScene[] = [
         question:
           'Welche Staaten bilden den Kern der späteren großen Allianz gegen Hitler?',
         options: [
-          'Großbritannien, USA und Sowjetunion',
-          'Deutschland, Italien und Japan',
           'Spanien, Portugal und Schweden',
+          'Deutschland, Italien und Japan',
+          'Großbritannien, USA und Sowjetunion',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Churchill, Roosevelt und Stalin führen die wichtigsten Mächte der Anti-Hitler-Koalition.',
       },
@@ -674,22 +674,22 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Was bezeichnet der Begriff Holocaust?',
         options: [
-          'Den systematischen Mord an etwa sechs Millionen europäischen Juden',
-          'Nur eine einzelne Schlacht',
           'Die Teilung Deutschlands nach 1945',
+          'Nur eine einzelne Schlacht',
+          'Den systematischen Mord an etwa sechs Millionen europäischen Juden',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Der Holocaust ist die systematische Verfolgung und Ermordung der europäischen Juden durch das nationalsozialistische Deutschland und seine Helfer.',
       },
       {
         question: 'Wo finden nationalsozialistische Massenmorde statt?',
         options: [
-          'Bei Erschießungen und in Vernichtungslagern',
           'Nur in einer einzigen Stadt',
+          'Bei Erschießungen und in Vernichtungslagern',
           'Ausschließlich nach dem Krieg',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Die Täter morden an vielen Orten: bei Massenerschießungen, in Ghettos und in eigens errichteten Vernichtungslagern.',
       },
@@ -792,11 +792,11 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Was begleitet die Unabhängigkeit Indiens 1947?',
         options: [
-          'Die Teilung in Indien und Pakistan',
           'Der Beitritt zum Römischen Reich',
+          'Die Teilung in Indien und Pakistan',
           'Die Gründung der Europäischen Gemeinschaft',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Die britische Kolonie wird in zwei Staaten geteilt; Flucht und Gewalt begleiten diesen Prozess.',
       },
@@ -858,11 +858,11 @@ const episode3Scenes: HistoriaScene[] = [
       {
         question: 'Warum gelten Korea und Vietnam als Stellvertreterkriege?',
         options: [
-          'Die Supermächte unterstützen gegnerische Seiten',
-          'Dort kämpfen nur europäische Ritter',
           'Beide Kriege finden ohne ausländische Beteiligung statt',
+          'Dort kämpfen nur europäische Ritter',
+          'Die Supermächte unterstützen gegnerische Seiten',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'USA, Sowjetunion und China unterstützen jeweils unterschiedliche Seiten, ohne einen direkten großen Krieg gegeneinander zu führen.',
       },
@@ -967,22 +967,22 @@ const episode3Scenes: HistoriaScene[] = [
         question:
           'Was macht Krisen der Gegenwart häufig besonders weitreichend?',
         options: [
-          'Die enge globale Vernetzung',
-          'Das Ende aller Handelswege',
           'Die vollständige politische Einheit der Welt',
+          'Das Ende aller Handelswege',
+          'Die enge globale Vernetzung',
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation:
           'Lieferketten, Finanzmärkte, Reisen und digitale Netze übertragen Folgen schnell über viele Grenzen hinweg.',
       },
       {
         question: 'Welches Ereignis beginnt am 24. Februar 2022?',
         options: [
-          'Russlands großangelegter Angriff auf die Ukraine',
           'Der Fall der Berliner Mauer',
+          'Russlands großangelegter Angriff auf die Ukraine',
           'Die Gründung der Europäischen Wirtschaftsgemeinschaft',
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation:
           'Russland weitet seinen seit 2014 bestehenden Krieg gegen die Ukraine 2022 zu einem großangelegten Angriff aus.',
       },
@@ -1027,19 +1027,19 @@ const italyScene: Partial<HistoriaScene> = {
   quiz: [
     {
       question: 'Wann entsteht das Königreich Italien?',
-      options: ['1861', '1815', '1914'],
-      correctIndex: 0,
+      options: ['1815', '1861', '1914'],
+      correctIndex: 1,
       explanation:
         '1861 wird das Königreich Italien ausgerufen; Venetien und Rom folgen später.',
     },
     {
       question: 'Welche Kräfte tragen zur Einigung bei?',
       options: [
-        'Diplomatie, Freiwilligenbewegung und Krieg',
-        'Nur eine Entscheidung des Papstes',
         'Ausschließlich eine Volksabstimmung in Rom',
+        'Nur eine Entscheidung des Papstes',
+        'Diplomatie, Freiwilligenbewegung und Krieg',
       ],
-      correctIndex: 0,
+      correctIndex: 2,
       explanation:
         'Cavours Politik, Garibaldis Freiwillige und militärische Konflikte wirken zusammen.',
     },
@@ -1084,8 +1084,8 @@ const bismarckScene: HistoriaScene = {
   quiz: [
     {
       question: 'Welcher Staat führt die deutsche Einigung an?',
-      options: ['Preußen', 'Österreich', 'Frankreich'],
-      correctIndex: 0,
+      options: ['Frankreich', 'Österreich', 'Preußen'],
+      correctIndex: 2,
       explanation:
         'Bismarcks Politik macht Preußen zur führenden Macht im neuen Deutschen Reich.',
     },
@@ -1224,22 +1224,22 @@ const cubaScene: HistoriaScene = {
     {
       question: 'Was löst die Kubakrise 1962 aus?',
       options: [
-        'Sowjetische Atomraketen auf Kuba',
         'Die Berliner Luftbrücke',
+        'Sowjetische Atomraketen auf Kuba',
         'Der Fall der Berliner Mauer',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         'US-Luftbilder belegen den Aufbau sowjetischer Raketenstellungen auf Kuba.',
     },
     {
       question: 'Wie endet die unmittelbare Krise?',
       options: [
-        'Mit einem ausgehandelten gegenseitigen Nachgeben',
         'Mit einem Atomkrieg',
+        'Mit einem ausgehandelten gegenseitigen Nachgeben',
         'Mit der Besetzung Moskaus',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         'Beide Seiten machen Zusagen und ziehen gefährliche Waffen zurück.',
     },
@@ -1288,11 +1288,11 @@ const ewgScene: Partial<HistoriaScene> = {
     {
       question: 'Was gründen sechs Staaten 1957?',
       options: [
-        'Die Europäische Wirtschaftsgemeinschaft',
-        'Den Warschauer Pakt',
         'Das Deutsche Kaiserreich',
+        'Den Warschauer Pakt',
+        'Die Europäische Wirtschaftsgemeinschaft',
       ],
-      correctIndex: 0,
+      correctIndex: 2,
       explanation:
         'Die Römischen Verträge schaffen 1957 die Europäische Wirtschaftsgemeinschaft.',
     },
@@ -1353,22 +1353,22 @@ const reunificationScene: HistoriaScene = {
     {
       question: 'Was geschieht am 9. November 1989?',
       options: [
-        'Die Berliner Mauer öffnet sich',
         'Die EWG wird gegründet',
+        'Die Berliner Mauer öffnet sich',
         'Die Sowjetunion entsteht',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         'Die Grenzübergänge in Berlin werden geöffnet; die staatliche Einheit folgt 1990.',
     },
     {
       question: 'Warum heißt der Umbruch in der DDR friedliche Revolution?',
       options: [
-        'Massenproteste erzwingen Wandel weitgehend ohne Gewalt',
         'Eine ausländische Armee erobert Berlin',
+        'Massenproteste erzwingen Wandel weitgehend ohne Gewalt',
         'Die DDR-Regierung verbietet alle Demonstrationen erfolgreich',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         'Bürgerinnen und Bürger erreichen mit anhaltenden friedlichen Protesten tiefgreifenden politischen Wandel.',
     },
@@ -1421,11 +1421,11 @@ const weimarScene: Partial<HistoriaScene> = {
     {
       question: 'Welche Neuerung prägt die Wahl zur Nationalversammlung 1919?',
       options: [
-        'Frauen und Männer dürfen auf nationaler Ebene wählen',
         'Nur ehemalige Soldaten dürfen wählen',
+        'Frauen und Männer dürfen auf nationaler Ebene wählen',
         'Der Reichskanzler wird direkt gewählt',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         '1919 gilt bei einer nationalen Wahl erstmals das aktive und passive Wahlrecht für Frauen.',
     },
@@ -1471,22 +1471,22 @@ const chancellorAppointmentScene: HistoriaScene = {
     {
       question: 'Wie gelangt Hitler am 30. Januar 1933 ins Amt?',
       options: [
-        'Hindenburg ernennt ihn zum Reichskanzler',
         'Er wird direkt zum Reichskanzler gewählt',
+        'Hindenburg ernennt ihn zum Reichskanzler',
         'Der Völkerbund setzt ihn ein',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
       explanation:
         'Reichspräsident Hindenburg ernennt Hitler; eine direkte Wahl zum Reichskanzler gibt es nicht.',
     },
     {
       question: 'Welche Fehleinschätzung begünstigt die Ernennung?',
       options: [
-        'Konservative Politiker glauben, Hitler kontrollieren zu können',
-        'Die NSDAP habe keine politischen Gegner',
         'Die Weltwirtschaftskrise sei bereits beendet',
+        'Die NSDAP habe keine politischen Gegner',
+        'Konservative Politiker glauben, Hitler kontrollieren zu können',
       ],
-      correctIndex: 0,
+      correctIndex: 2,
       explanation:
         'Papen und andere Konservative wollen Hitler für ihre Ziele nutzen und unterschätzen, wie schnell er ihre Kontrolle beseitigt.',
     },

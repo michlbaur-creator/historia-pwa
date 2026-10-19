@@ -33,15 +33,21 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wo liegt Oberägypten auf der Karte?',
-        options: ['Im Süden', 'Am Delta im Norden', 'In Mesopotamien'],
-        correctIndex: 0,
-        explanation: 'Oberägypten liegt im Süden; der Nil fließt von dort Richtung Norden.',
+        options: ['In Mesopotamien', 'Am Delta im Norden', 'Im Süden'],
+        correctIndex: 2,
+        explanation:
+          'Oberägypten liegt im Süden; der Nil fließt von dort Richtung Norden.',
       },
       {
         question: 'Was kontrolliert der Pharao im vereinigten Ägypten?',
-        options: ['Nur die Tempel', 'Land, Abgaben und Soldaten', 'Nur den Handel am Delta'],
+        options: [
+          'Nur die Tempel',
+          'Land, Abgaben und Soldaten',
+          'Nur den Handel am Delta',
+        ],
         correctIndex: 1,
-        explanation: 'Die Kontrolle über Land, Abgaben und Soldaten macht die neue Königsherrschaft stark.',
+        explanation:
+          'Die Kontrolle über Land, Abgaben und Soldaten macht die neue Königsherrschaft stark.',
       },
     ],
   },
@@ -61,15 +67,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Was machte den Bau der Großen Pyramide möglich?',
-        options: ['Planung, Fachwissen und viele Arbeitskräfte', 'Ein einziges Baujahr', 'Nur die Arbeit des Pharaos'],
-        correctIndex: 0,
-        explanation: 'Das Großprojekt brauchte Planung, Fachwissen und die Arbeit vieler Menschen.',
+        options: [
+          'Ein einziges Baujahr',
+          'Planung, Fachwissen und viele Arbeitskräfte',
+          'Nur die Arbeit des Pharaos',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Das Großprojekt brauchte Planung, Fachwissen und die Arbeit vieler Menschen.',
       },
       {
         question: 'Welche doppelte Bedeutung hatte die Große Pyramide?',
-        options: ['Marktplatz und Hafen', 'Festung und Straße', 'Grabmal und Zeichen der Macht'],
-        correctIndex: 2,
-        explanation: 'Sie war Grabmal des Königs und zugleich ein weithin sichtbares Machtsymbol.',
+        options: [
+          'Marktplatz und Hafen',
+          'Grabmal und Zeichen der Macht',
+          'Festung und Straße',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Sie war Grabmal des Königs und zugleich ein weithin sichtbares Machtsymbol.',
       },
     ],
   },
@@ -89,15 +105,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Worauf ließ Hammurabi Rechtssätze festhalten?',
-        options: ['Auf einer großen Stele', 'Auf einer Königsstraße', 'Auf den Stadtmauern von Athen'],
-        correctIndex: 0,
-        explanation: 'Die Rechtssätze wurden auf einer großen, öffentlich sichtbaren Stele festgehalten.',
+        options: [
+          'Auf den Stadtmauern von Athen',
+          'Auf einer Königsstraße',
+          'Auf einer großen Stele',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Die Rechtssätze wurden auf einer großen, öffentlich sichtbaren Stele festgehalten.',
       },
       {
         question: 'Waren vor Hammurabis Recht alle Menschen gleich?',
-        options: ['Ja, ohne Ausnahme', 'Nein, der Rang spielte eine Rolle', 'Nur Händler waren gleich'],
+        options: [
+          'Ja, ohne Ausnahme',
+          'Nein, der Rang spielte eine Rolle',
+          'Nur Händler waren gleich',
+        ],
         correctIndex: 1,
-        explanation: 'Der Rang eines Menschen beeinflusste, wie das Recht angewandt wurde.',
+        explanation:
+          'Der Rang eines Menschen beeinflusste, wie das Recht angewandt wurde.',
       },
     ],
   },
@@ -117,15 +143,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wie endet die Schlacht bei Kadesch?',
-        options: ['Mit einem klaren Sieg Ramses’', 'Ohne klaren Sieger', 'Mit der Eroberung Babylons'],
-        correctIndex: 1,
-        explanation: 'Ramses schlägt sich frei, aber einen eindeutigen Sieger gibt es nicht.',
+        options: [
+          'Ohne klaren Sieger',
+          'Mit einem klaren Sieg Ramses’',
+          'Mit der Eroberung Babylons',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Ramses schlägt sich frei, aber einen eindeutigen Sieger gibt es nicht.',
       },
       {
         question: 'Was schließen beide Mächte Jahre später?',
-        options: ['Einen Friedensvertrag', 'Den Attischen Seebund', 'Ein neues Perserreich'],
+        options: [
+          'Einen Friedensvertrag',
+          'Den Attischen Seebund',
+          'Ein neues Perserreich',
+        ],
         correctIndex: 0,
-        explanation: 'Ägypter und Hethiter beenden ihren Konflikt später mit einem Friedensvertrag.',
+        explanation:
+          'Ägypter und Hethiter beenden ihren Konflikt später mit einem Friedensvertrag.',
       },
     ],
   },
@@ -145,15 +181,21 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Welche Stadt erobert Kyros II.?',
-        options: ['Rom', 'Babylon', 'Athen'],
-        correctIndex: 1,
-        explanation: 'Mit der Eroberung Babylons wächst das Perserreich unter Kyros II. weiter.',
+        options: ['Babylon', 'Rom', 'Athen'],
+        correctIndex: 0,
+        explanation:
+          'Mit der Eroberung Babylons wächst das Perserreich unter Kyros II. weiter.',
       },
       {
         question: 'Wie organisiert Dareios I. das große Reich?',
-        options: ['Durch Provinzen, Straßen und Berichte', 'Nur durch seine Flotte', 'Durch die Auflösung aller Verwaltungen'],
-        correctIndex: 0,
-        explanation: 'Provinzen, gesicherte Straßen und berichtende Beamte verbinden Zentrum und Reich.',
+        options: [
+          'Durch die Auflösung aller Verwaltungen',
+          'Nur durch seine Flotte',
+          'Durch Provinzen, Straßen und Berichte',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Provinzen, gesicherte Straßen und berichtende Beamte verbinden Zentrum und Reich.',
       },
     ],
   },
@@ -173,15 +215,21 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wo scheitert Dareios’ Heer 490 v. Chr.?',
-        options: ['Bei Marathon', 'Bei Zama', 'Bei Actium'],
-        correctIndex: 0,
-        explanation: 'Der erste hier gezeigte persische Angriff scheitert bei Marathon.',
+        options: ['Bei Actium', 'Bei Zama', 'Bei Marathon'],
+        correctIndex: 2,
+        explanation:
+          'Der erste hier gezeigte persische Angriff scheitert bei Marathon.',
       },
       {
         question: 'Warum wird die Meerenge bei Salamis entscheidend?',
-        options: ['Dort zählen Größe und Masse noch mehr', 'Dort kann keine Flotte fahren', 'Dort zählt Beweglichkeit mehr als Größe'],
-        correctIndex: 2,
-        explanation: 'In der engen Meerenge kann die beweglichere griechische Flotte ihren Vorteil nutzen.',
+        options: [
+          'Dort zählen Größe und Masse noch mehr',
+          'Dort zählt Beweglichkeit mehr als Größe',
+          'Dort kann keine Flotte fahren',
+        ],
+        correctIndex: 1,
+        explanation:
+          'In der engen Meerenge kann die beweglichere griechische Flotte ihren Vorteil nutzen.',
       },
     ],
   },
@@ -201,15 +249,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wer darf in Athen in der Volksversammlung abstimmen?',
-        options: ['Alle Einwohner', 'Freie männliche Bürger', 'Nur die Soldaten Spartas'],
-        correctIndex: 1,
-        explanation: 'Die Beteiligung ist bemerkenswert, bleibt aber auf freie männliche Bürger begrenzt.',
+        options: [
+          'Freie männliche Bürger',
+          'Alle Einwohner',
+          'Nur die Soldaten Spartas',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Beteiligung ist bemerkenswert, bleibt aber auf freie männliche Bürger begrenzt.',
       },
       {
         question: 'Was baut Athen unter Perikles aus?',
-        options: ['Flotte und Akropolis', 'Königsstraße und Pyramide', 'Nur seine Landarmee'],
-        correctIndex: 0,
-        explanation: 'Flotte und Akropolis stehen für Athens politische und kulturelle Macht.',
+        options: [
+          'Nur seine Landarmee',
+          'Königsstraße und Pyramide',
+          'Flotte und Akropolis',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Flotte und Akropolis stehen für Athens politische und kulturelle Macht.',
       },
     ],
   },
@@ -229,15 +287,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Welche Stärke hat Athen im Peloponnesischen Krieg?',
-        options: ['Die Überlegenheit zur See', 'Die Überlegenheit an Land', 'Die Kontrolle über Persien'],
+        options: [
+          'Die Überlegenheit zur See',
+          'Die Überlegenheit an Land',
+          'Die Kontrolle über Persien',
+        ],
         correctIndex: 0,
-        explanation: 'Athen beherrscht das Meer, während Sparta an Land stärker ist.',
+        explanation:
+          'Athen beherrscht das Meer, während Sparta an Land stärker ist.',
       },
       {
         question: 'Was führt 404 v. Chr. zur Kapitulation Athens?',
-        options: ['Alexanders Einmarsch', 'Lysanders Blockade des Hafens', 'Ein Sieg bei Marathon'],
-        correctIndex: 1,
-        explanation: 'Spartas Feldherr Lysander blockiert den Hafen; Athen kapituliert.',
+        options: [
+          'Alexanders Einmarsch',
+          'Ein Sieg bei Marathon',
+          'Lysanders Blockade des Hafens',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Spartas Feldherr Lysander blockiert den Hafen; Athen kapituliert.',
       },
     ],
   },
@@ -257,15 +325,20 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wen besiegt Alexander bei der Eroberung des Perserreichs?',
-        options: ['Dareios III.', 'Hammurabi', 'Augustus'],
-        correctIndex: 0,
+        options: ['Hammurabi', 'Dareios III.', 'Augustus'],
+        correctIndex: 1,
         explanation: 'Alexander besiegt den Perserkönig Dareios III.',
       },
       {
         question: 'Was geschieht nach Alexanders Tod?',
-        options: ['Das Reich bleibt dauerhaft vereint', 'Seine Feldherren teilen das Reich', 'Rom übernimmt es sofort vollständig'],
+        options: [
+          'Das Reich bleibt dauerhaft vereint',
+          'Seine Feldherren teilen das Reich',
+          'Rom übernimmt es sofort vollständig',
+        ],
         correctIndex: 1,
-        explanation: 'Das riesige Reich überlebt Alexander nicht lange und wird unter seinen Feldherren aufgeteilt.',
+        explanation:
+          'Das riesige Reich überlebt Alexander nicht lange und wird unter seinen Feldherren aufgeteilt.',
       },
     ],
   },
@@ -285,15 +358,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Was lässt Qin Shihuangdi vereinheitlichen?',
-        options: ['Schriftzeichen, Maße, Münzen und Verwaltung', 'Nur die Kleidung', 'Die griechischen Stadtstaaten'],
+        options: [
+          'Schriftzeichen, Maße, Münzen und Verwaltung',
+          'Nur die Kleidung',
+          'Die griechischen Stadtstaaten',
+        ],
         correctIndex: 0,
-        explanation: 'Die gemeinsamen Standards und die Verwaltung sollen das geeinte Reich zusammenhalten.',
+        explanation:
+          'Die gemeinsamen Standards und die Verwaltung sollen das geeinte Reich zusammenhalten.',
       },
       {
         question: 'Welchen hohen Preis nennt der Sprechertext?',
-        options: ['Den Bau einer Flotte', 'Zwangsarbeit und harte Strafen', 'Den Verlust aller Straßen'],
-        correctIndex: 1,
-        explanation: 'Die neue Einheit wird mit Zwangsarbeit und harten Strafen durchgesetzt.',
+        options: [
+          'Den Bau einer Flotte',
+          'Den Verlust aller Straßen',
+          'Zwangsarbeit und harte Strafen',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Die neue Einheit wird mit Zwangsarbeit und harten Strafen durchgesetzt.',
       },
     ],
   },
@@ -313,15 +396,21 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Welchen Weg nimmt Hannibal nach Italien?',
-        options: ['Über die Alpen', 'Über den Indus', 'Durch die Meerenge von Salamis'],
+        options: [
+          'Über die Alpen',
+          'Über den Indus',
+          'Durch die Meerenge von Salamis',
+        ],
         correctIndex: 0,
-        explanation: 'Hannibals Heer zieht von Spanien über die Alpen nach Italien.',
+        explanation:
+          'Hannibals Heer zieht von Spanien über die Alpen nach Italien.',
       },
       {
         question: 'Wer besiegt Hannibal 202 v. Chr. bei Zama?',
-        options: ['Leonidas', 'Scipio', 'Lysander'],
-        correctIndex: 1,
-        explanation: 'Scipio besiegt Hannibal bei Zama; Rom wird zur führenden Macht im westlichen Mittelmeer.',
+        options: ['Leonidas', 'Lysander', 'Scipio'],
+        correctIndex: 2,
+        explanation:
+          'Scipio besiegt Hannibal bei Zama; Rom wird zur führenden Macht im westlichen Mittelmeer.',
       },
     ],
   },
@@ -341,15 +430,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Was löst Caesars Überschreiten des Rubikon aus?',
-        options: ['Den Bürgerkrieg gegen Pompeius', 'Den Bau der Großen Pyramide', 'Die Schlacht bei Salamis'],
+        options: [
+          'Den Bürgerkrieg gegen Pompeius',
+          'Den Bau der Großen Pyramide',
+          'Die Schlacht bei Salamis',
+        ],
         correctIndex: 0,
-        explanation: 'Mit dem Grenzübertritt beginnt Caesar den Bürgerkrieg gegen Pompeius.',
+        explanation:
+          'Mit dem Grenzübertritt beginnt Caesar den Bürgerkrieg gegen Pompeius.',
       },
       {
         question: 'Was geschieht nach Caesars Ermordung?',
-        options: ['Die Republik ist dauerhaft gerettet', 'Der nächste Bürgerkrieg beginnt', 'Caesar wird Augustus'],
-        correctIndex: 1,
-        explanation: 'Die Ermordung beendet die Machtkämpfe nicht; ein weiterer Bürgerkrieg folgt.',
+        options: [
+          'Der nächste Bürgerkrieg beginnt',
+          'Die Republik ist dauerhaft gerettet',
+          'Caesar wird Augustus',
+        ],
+        correctIndex: 0,
+        explanation:
+          'Die Ermordung beendet die Machtkämpfe nicht; ein weiterer Bürgerkrieg folgt.',
       },
     ],
   },
@@ -369,15 +468,22 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wer gewinnt die Seeschlacht bei Actium?',
-        options: ['Octavians Seite', 'Hannibals Seite', 'Das Heer Alexanders'],
-        correctIndex: 0,
-        explanation: 'Octavians Sieg entscheidet den Machtkampf in der römischen Welt.',
+        options: ['Hannibals Seite', 'Octavians Seite', 'Das Heer Alexanders'],
+        correctIndex: 1,
+        explanation:
+          'Octavians Sieg entscheidet den Machtkampf in der römischen Welt.',
       },
       {
-        question: 'Was wird nach der Niederlage von Antonius und Kleopatra aus Ägypten?',
-        options: ['Ein griechischer Stadtstaat', 'Eine römische Provinz', 'Teil des Perserreichs'],
+        question:
+          'Was wird nach der Niederlage von Antonius und Kleopatra aus Ägypten?',
+        options: [
+          'Ein griechischer Stadtstaat',
+          'Eine römische Provinz',
+          'Teil des Perserreichs',
+        ],
         correctIndex: 1,
-        explanation: 'Nach ihrem Tod wird Ägypten als Provinz in die römische Herrschaft eingegliedert.',
+        explanation:
+          'Nach ihrem Tod wird Ägypten als Provinz in die römische Herrschaft eingegliedert.',
       },
     ],
   },
@@ -397,15 +503,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Welche Macht bündelt Augustus in der Praxis?',
-        options: ['Macht über Heer, Provinzen und Politik', 'Nur die Aufsicht über Tempel', 'Nur den Handel in Ägypten'],
-        correctIndex: 0,
-        explanation: 'Die entscheidende Macht über Heer, Provinzen und Politik liegt bei Augustus.',
+        options: [
+          'Nur die Aufsicht über Tempel',
+          'Macht über Heer, Provinzen und Politik',
+          'Nur den Handel in Ägypten',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Die entscheidende Macht über Heer, Provinzen und Politik liegt bei Augustus.',
       },
       {
         question: 'Was bleibt unter Augustus auf dem Papier bestehen?',
-        options: ['Das Perserreich', 'Republik, Ämter und Senat', 'Der Attische Seebund'],
-        correctIndex: 1,
-        explanation: 'Die republikanischen Formen bleiben bestehen, obwohl Augustus tatsächlich allein herrscht.',
+        options: [
+          'Das Perserreich',
+          'Der Attische Seebund',
+          'Republik, Ämter und Senat',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Die republikanischen Formen bleiben bestehen, obwohl Augustus tatsächlich allein herrscht.',
       },
     ],
   },
@@ -425,15 +541,25 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
     quiz: [
       {
         question: 'Wie zeigt die Karte die frühe Ausbreitung des Christentums?',
-        options: ['Als geschlossene Fläche', 'Als Punkte und Wege', 'Nur als Grenze Judäas'],
-        correctIndex: 1,
-        explanation: 'Gemeinden entstehen an einzelnen Orten und werden durch Missionswege verbunden.',
+        options: [
+          'Als geschlossene Fläche',
+          'Nur als Grenze Judäas',
+          'Als Punkte und Wege',
+        ],
+        correctIndex: 2,
+        explanation:
+          'Gemeinden entstehen an einzelnen Orten und werden durch Missionswege verbunden.',
       },
       {
         question: 'Was sichern Konstantin und Licinius Christen 313 zu?',
-        options: ['Freie Religionsausübung', 'Die Herrschaft über Rom', 'Die Auflösung aller Gemeinden'],
-        correctIndex: 0,
-        explanation: 'Die zugesicherte freie Religionsausübung markiert einen wichtigen politischen Wandel.',
+        options: [
+          'Die Herrschaft über Rom',
+          'Freie Religionsausübung',
+          'Die Auflösung aller Gemeinden',
+        ],
+        correctIndex: 1,
+        explanation:
+          'Die zugesicherte freie Religionsausübung markiert einen wichtigen politischen Wandel.',
       },
     ],
   },
@@ -455,13 +581,19 @@ export const historiaLearning: Record<number, HistoriaLearning> = {
         question: 'Wer setzt 476 Romulus Augustulus ab?',
         options: ['Odoaker', 'Attila', 'Konstantin'],
         correctIndex: 0,
-        explanation: 'Odoaker setzt den jungen Kaiser ab; damit endet das weströmische Kaisertum.',
+        explanation:
+          'Odoaker setzt den jungen Kaiser ab; damit endet das weströmische Kaisertum.',
       },
       {
         question: 'Was besteht nach dem Ende Westroms weiter?',
-        options: ['Das Reich im Osten mit Konstantinopel', 'Das Reich Alexanders', 'Der Peloponnesische Bund'],
+        options: [
+          'Das Reich im Osten mit Konstantinopel',
+          'Das Reich Alexanders',
+          'Der Peloponnesische Bund',
+        ],
         correctIndex: 0,
-        explanation: 'Das Oströmische Reich mit Konstantinopel besteht noch fast tausend Jahre weiter.',
+        explanation:
+          'Das Oströmische Reich mit Konstantinopel besteht noch fast tausend Jahre weiter.',
       },
     ],
   },
