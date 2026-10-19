@@ -3,12 +3,12 @@ export function readingSections(text: string): string[] {
   const sections: string[] = [];
   let current = '';
   for (const word of text.match(/\S+\s*/g) ?? []) {
-    if (current && current.length + word.length > 115) {
+    if (current && current.length + word.length > 200) {
       sections.push(current);
       current = '';
     }
     current += word;
-    if (current.length >= 45 && /[.!?;:][“”»)]?\s*$/.test(current)) {
+    if (current.length >= 130 && /[.!?;:][“”»)]?\s*$/.test(current)) {
       sections.push(current);
       current = '';
     }

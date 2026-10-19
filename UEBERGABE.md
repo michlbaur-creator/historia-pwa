@@ -2,6 +2,14 @@
 
 Stand: 19. Oktober 2026. Die App ist laut Michael im Prinzip fertig. Künftige Arbeiten sind gezielte Änderungen, kein neuer Gesamtentwurf. Ältere datierte Abschnitte unten dokumentieren frühere Entwicklungsstände.
 
+## Längere Leseabschnitte – 19. Oktober 2026
+
+- Auf Michas Wunsch zusammenhängende Abschnitte von bis zu 200 statt 115 Zeichen; Satzgrenzen bevorzugt ab 130 Zeichen. Die proportionalen Zeitanteile werden mit der Abschnittslänge größer, sodass die Texte länger stehen bleiben. Alle Wörter bleiben unverändert und vollständig enthalten.
+- Etwas kleinere Schrift: 20–32 statt 22–38 px. Textbreite auf 44ch begrenzt, dadurch in großer Ansicht überwiegend drei bis vier Zeilen; auf schmalen Handys entsprechend mehr. Kurze Schlussabschnitte können weniger Zeilen haben.
+- Die zuvor verdoppelte Fensterhöhe bleibt in absoluten Größen erhalten; sie schrumpft durch die kleinere Schrift nicht mit. Leise-Modus weiter ausschließlich mit Normaltempo.
+- TypeScript, 25 Tests und Produktionsbuild erfolgreich; Darstellung in iPhone-Ansicht, Querformat und großer Ansicht geprüft.
+- Cache `historia-v52`. Micha hat am 19. Oktober 2026 die grundsätzliche Browser-Freigabe für diese und künftige Arbeiten erteilt. Browserprüfungen benötigen keine neue Einzelbestätigung; sonstiger Desktopzugriff ist davon getrennt.
+
 ## Korrektur des Leise-Modus – 19. Oktober 2026
 
 - Auf Michas Rückmeldung Tempo 0,8 vollständig entfernt. Audio und Video laufen immer mit Normaltempo 1; ein eventuell früher gespeicherter `historia-slow`-Wert wird ignoriert.

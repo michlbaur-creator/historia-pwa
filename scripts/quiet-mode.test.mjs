@@ -52,7 +52,7 @@ test('Every reading section is short and together they contain the complete orig
   for (const scene of episodes.flat()) {
     const sections = readingSections(scene.narration);
     assert.equal(sections.join(''), scene.narration);
-    assert.ok(sections.every((s) => s.trim().length > 0 && s.length <= 115));
+    assert.ok(sections.every((s) => s.trim().length > 0 && s.length <= 200));
     assert.equal(readingSectionAt(sections, 0, 60), sections[0]);
     assert.equal(readingSectionAt(sections, 60, 60), sections.at(-1));
     for (let t = 0; t <= 60; t += 0.25)
