@@ -534,7 +534,7 @@
 .readingSubtitles {
   display: grid;
   align-items: center;
-  min-height: 5.5em;
+  min-height: 11em;
   margin-top: 10px;
   padding: 14px 20px;
   border-radius: 14px;

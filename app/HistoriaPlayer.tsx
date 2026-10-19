@@ -78,9 +78,7 @@ export default function HistoriaPlayer({
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [quiet, setQuiet] = useState(false);
-  const [slow, setSlow] = useState(false);
   const [preferencesReady, setPreferencesReady] = useState(false);
-  const playbackRate = quiet && slow ? 0.8 : 1;
   const [mapMode, setMapMode] = useState<'auto' | 'map' | 'image'>('auto');
   const showMap =
     mapMode === 'map' || (mapMode === 'auto' && elapsed < MAP_DISPLAY_SECONDS);
@@ -169,13 +167,11 @@ export default function HistoriaPlayer({
   useEffect(() => {
     try {
       const savedQuiet = localStorage.getItem('historia-quiet') === 'true';
-      const savedSlow = localStorage.getItem('historia-slow') === 'true';
       if (audioRef.current) {
         audioRef.current.muted = savedQuiet;
-        audioRef.current.playbackRate = savedQuiet && savedSlow ? 0.8 : 1;
+        audioRef.current.playbackRate = 1;
       }
       setQuiet(savedQuiet);
-      setSlow(savedSlow);
     } catch {
       /* Playback remains usable when browser storage is disabled. */
     }
@@ -185,18 +181,16 @@ export default function HistoriaPlayer({
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = quiet;
-      audioRef.current.playbackRate = playbackRate;
+      audioRef.current.playbackRate = 1;
     }
-    if (videoRef.current) videoRef.current.playbackRate = playbackRate;
-  }, [quiet, playbackRate, scene.id]);
+    if (videoRef.current) videoRef.current.playbackRate = 1;
+  }, [quiet, scene.id]);
 
-  function changePreference(key: 'quiet' | 'slow', value: boolean) {
-    if (key === 'quiet') {
-      if (audioRef.current) audioRef.current.muted = value;
-      setQuiet(value);
-    } else setSlow(value);
+  function changeQuiet(value: boolean) {
+    if (audioRef.current) audioRef.current.muted = value;
+    setQuiet(value);
     try {
-      localStorage.setItem(`historia-${key}`, String(value));
+      localStorage.setItem('historia-quiet', String(value));
     } catch {
       /* Optional persistence. */
     }
@@ -206,7 +200,7 @@ export default function HistoriaPlayer({
     if (scene.audio || !playing) return;
     const interval = window.setInterval(() => {
       setElapsed((current) => {
-        const next = Math.min(scene.duration, current + 0.1 * playbackRate);
+        const next = Math.min(scene.duration, current + 0.1);
         if (next >= scene.duration) {
           window.clearInterval(interval);
           window.setTimeout(finishAudio, 0);
@@ -215,13 +209,13 @@ export default function HistoriaPlayer({
       });
     }, 100);
     return () => window.clearInterval(interval);
-  }, [playing, scene.audio, scene.duration, scene.id, playbackRate]);
+  }, [playing, scene.audio, scene.duration, scene.id]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    video.playbackRate = playbackRate;
+    video.playbackRate = 1;
     const target = videoPosition(
       elapsed,
       Math.max(MAP_DISPLAY_SECONDS, videoStartAt * activeDuration),
@@ -251,7 +245,6 @@ export default function HistoriaPlayer({
     elapsed,
     activeDuration,
     videoStartAt,
-    playbackRate,
   ]);
 
   useEffect(() => {
@@ -305,7 +298,7 @@ export default function HistoriaPlayer({
 
   function startAudio(audio: HTMLAudioElement) {
     audio.muted = quiet;
-    audio.playbackRate = playbackRate;
+    audio.playbackRate = 1;
     const request = ++audioRequestRef.current;
     pendingAudioStartRef.current = true;
     setAudioError('');
@@ -398,7 +391,7 @@ export default function HistoriaPlayer({
         muted={quiet}
         onLoadedMetadata={(event) => {
           event.currentTarget.muted = quiet;
-          event.currentTarget.playbackRate = playbackRate;
+          event.currentTarget.playbackRate = 1;
           if (Number.isFinite(event.currentTarget.duration)) {
             setAudioDuration(event.currentTarget.duration);
           }
@@ -512,19 +505,10 @@ export default function HistoriaPlayer({
             type="button"
             aria-pressed={quiet}
             disabled={!preferencesReady}
-            onClick={() => changePreference('quiet', !quiet)}
+            onClick={() => changeQuiet(!quiet)}
           >
             🔇 Leise
           </button>
-          {quiet && (
-            <button
-              type="button"
-              aria-pressed={slow}
-              onClick={() => changePreference('slow', !slow)}
-            >
-              Langsamer · 0,8×
-            </button>
-          )}
           <button
             type="button"
             onClick={rewind}

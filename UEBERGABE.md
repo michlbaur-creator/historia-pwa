@@ -2,6 +2,12 @@
 
 Stand: 19. Oktober 2026. Die App ist laut Michael im Prinzip fertig. Künftige Arbeiten sind gezielte Änderungen, kein neuer Gesamtentwurf. Ältere datierte Abschnitte unten dokumentieren frühere Entwicklungsstände.
 
+## Korrektur des Leise-Modus – 19. Oktober 2026
+
+- Auf Michas Rückmeldung Tempo 0,8 vollständig entfernt. Audio und Video laufen immer mit Normaltempo 1; ein eventuell früher gespeicherter `historia-slow`-Wert wird ignoriert.
+- Das Untertitelfenster besitzt die doppelte Mindesthöhe: 11em statt 5,5em. Schriftgröße, vollständiger Sprechertext, Stummschaltung und übrige Bedienung bleiben erhalten.
+- Cache `historia-v51`. Browserprüfung für diese Korrektur von Micha ausdrücklich genehmigt. Der nachfolgende Abschnitt dokumentiert die Erstfassung mit der inzwischen entfernten Tempo-Option.
+
 ## Leise-Modus und ausgeglichene Szenenquizze – 19. Oktober 2026
 
 - Aktueller Umfang: Episode 1 und 2 je 16 Szenen, Episode 3 20 Szenen. Alle Sprecheraufnahmen und freigegebenen Sprechertexte bleiben unverändert.
