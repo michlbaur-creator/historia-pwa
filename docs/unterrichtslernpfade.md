@@ -1,6 +1,6 @@
-# Vier Unterrichts-Lernpfade – lokale Vorschau
+# Vier Unterrichts-Lernpfade – veröffentlicht
 
-Stand: 20. Oktober 2026. **Themenvorschlag und technische Vorschau, nicht veröffentlicht.**
+Stand: 20. Oktober 2026. **Von Micha bestätigt und auf historia.mibaso.de veröffentlicht (Cache v53).**
 Grundlage: Historia `4c60321` / `historia-v52`; Zeitreise v155 (`958aa803`).
 
 ## Auswahl und Begründung
@@ -59,3 +59,10 @@ Aufruf der Browserprüfungen: `PLAYWRIGHT_PACKAGE` auf die vorhandene Playwright
 ## Offen / Veröffentlichung
 
 Micha hat Themenwahl und Vorschau am 20. Oktober 2026 bestätigt und die Sicherung in GitHub beauftragt. Unterrichtserprobung, echte iOS-/Safari-Geräteprüfung und AirPrint stehen aus. Keine neuen oder fehlenden Medien für die ausgewählten Stationen. Für GitHub auf Branch `codex/historia-lernpfade` vorbereitet. Cache v53 für die spätere Veröffentlichung vorbereitet. Ein Push auf diesen Branch löst keine Pages-Veröffentlichung aus; die Übernahme nach `main` veröffentlicht automatisch. Historia bleibt ein eigenständiges Repository; Zeitreise wurde nicht verändert.
+
+
+## Vier Lernpfade veröffentlicht – 20. Oktober 2026
+
+Nach Michas ausdrücklichem Auftrag zur Veröffentlichung wurde PR #1 zusammengeführt. Ausgelieferter Commit `61c32db2e398919e298b7dcc0599dfbb3d99971c`, Cache `historia-v53`; GitHub-Pages-Lauf `39436807778` mit Build und Deployment erfolgreich. Der vorherige Installationsfehler für `core-js` wurde durch die explizite Deaktivierung seines nicht benötigten Installationsskripts behoben.
+
+Live-Browserprüfung auf https://historia.mibaso.de bestätigt zwei Einstiege, vier chronologisch geordnete Einheiten unter https://historia.mibaso.de/lernpfade/, HTTP 200 für alle vier Einzelrouten, tatsächlich laufende Originalaufnahme, gespeicherte Stummschaltung, 390-px-Layout ohne Überbreite, freie Episode 1 und keine JavaScript-Fehler. Öffentlicher Service Worker liefert v53. Unterrichtserprobung und echte iOS-/AirPrint-Prüfung weiterhin offen. Historische Aussagen „nur Vorschau“, „main unverändert“ und „Veröffentlichung ausstehend“ sind für diese Lernpfade damit überholt. Zeitreise und die zusätzliche Historia-Sites-Kopie wurden nicht verändert.

@@ -158,3 +158,10 @@ Micha hat die Vorschau mit „sieht gut aus“ bestätigt und die Ablage in GitH
 ## Veröffentlichung der Lernpfade beauftragt – 20. Oktober 2026
 
 Micha hat ausdrücklich auch die Veröffentlichung an Codex übertragen. Pull Request #1 wurde nach `main` zusammengeführt (`6e64b2a`). Der erste Pages-Lauf `39436567093` stoppte vor dem Build mit `ERR_PNPM_IGNORED_BUILDS` für das transitive `core-js` der PDF-Bibliothek. Wie in Zeitreise v155 wird dessen nicht benötigtes Installationsskript in `pnpm-workspace.yaml` ausdrücklich mit `core-js: false` deaktiviert; die bestehenden erlaubten Buildskripte bleiben erhalten. Cache v53.
+
+
+## Vier Lernpfade veröffentlicht – 20. Oktober 2026
+
+Nach Michas ausdrücklichem Auftrag zur Veröffentlichung wurde PR #1 zusammengeführt. Ausgelieferter Commit `61c32db2e398919e298b7dcc0599dfbb3d99971c`, Cache `historia-v53`; GitHub-Pages-Lauf `39436807778` mit Build und Deployment erfolgreich. Der vorherige Installationsfehler für `core-js` wurde durch die explizite Deaktivierung seines nicht benötigten Installationsskripts behoben.
+
+Live-Browserprüfung auf https://historia.mibaso.de bestätigt zwei Einstiege, vier chronologisch geordnete Einheiten unter https://historia.mibaso.de/lernpfade/, HTTP 200 für alle vier Einzelrouten, tatsächlich laufende Originalaufnahme, gespeicherte Stummschaltung, 390-px-Layout ohne Überbreite, freie Episode 1 und keine JavaScript-Fehler. Öffentlicher Service Worker liefert v53. Unterrichtserprobung und echte iOS-/AirPrint-Prüfung weiterhin offen. Historische Aussagen „nur Vorschau“, „main unverändert“ und „Veröffentlichung ausstehend“ sind für diese Lernpfade damit überholt. Zeitreise und die zusätzliche Historia-Sites-Kopie wurden nicht verändert.
