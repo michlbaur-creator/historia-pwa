@@ -153,3 +153,8 @@ Vorschau `http://127.0.0.1:3015/lernpfade/`. Änderungen ausschließlich im eige
 ## GitHub-Sicherung der Lernpfade – 20. Oktober 2026
 
 Micha hat die Vorschau mit „sieht gut aus“ bestätigt und die Ablage in GitHub beauftragt, damit er selbst veröffentlichen kann. Die geprüften Änderungen werden auf `codex/historia-lernpfade` gesichert. Ein Push auf `main` würde laut `.github/workflows/pages.yml` automatisch veröffentlichen; deshalb bleibt `main` unverändert. Cache v53 ist für die spätere Übernahme vorbereitet. Veröffentlichung erst durch Übernahme nach `main`; echte iOS-/AirPrint-Prüfung und Unterrichtserprobung weiterhin offen. Dieser Eintrag ersetzt den älteren Status „Sichtfreigabe steht aus / Cache v52 / kein Push“ für die Lernpfad-Vorschau.
+
+
+## Veröffentlichung der Lernpfade beauftragt – 20. Oktober 2026
+
+Micha hat ausdrücklich auch die Veröffentlichung an Codex übertragen. Pull Request #1 wurde nach `main` zusammengeführt (`6e64b2a`). Der erste Pages-Lauf `39436567093` stoppte vor dem Build mit `ERR_PNPM_IGNORED_BUILDS` für das transitive `core-js` der PDF-Bibliothek. Wie in Zeitreise v155 wird dessen nicht benötigtes Installationsskript in `pnpm-workspace.yaml` ausdrücklich mit `core-js: false` deaktiviert; die bestehenden erlaubten Buildskripte bleiben erhalten. Cache v53.
