@@ -11,12 +11,12 @@ const base = process.env.HISTORIA_PREVIEW || 'http://127.0.0.1:3001';
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     const audio = () => page.locator('audio');
-    const quiet = () => page.getByRole('button', { name: '🔇 Leise', exact: true });
+    const quiet = () => page.getByRole('button', { name: /Ton: (an|aus)/ });
     const subtitle = () => page.locator('[aria-label="Sprecheruntertitel"]');
     async function ready() { await page.waitForFunction(() => !document.querySelector('[aria-label="Lesemodus"] button')?.disabled); }
     async function seek(time) { await audio().evaluate((a,t) => { a.currentTime=t; a.dispatchEvent(new Event('timeupdate')); }, time); await page.waitForTimeout(450); }
     async function noOverflow() { assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)); }
-    await page.goto(base+'/'); await ready();
+    await page.goto(base+'/entdecken/'); await ready();
     await quiet().click();
     assert.equal(await audio().evaluate(a=>a.muted), true);
     assert.ok(await subtitle().isVisible());
@@ -53,7 +53,7 @@ const base = process.env.HISTORIA_PREVIEW || 'http://127.0.0.1:3001';
     assert.equal(await audio().evaluate(a=>a.paused),false);
     assert.equal(await audio().evaluate(a=>a.playbackRate),1);
     await quiet().click(); await page.reload(); await ready();
-    assert.equal(await quiet().getAttribute('aria-pressed'),'true');
+    assert.equal(await quiet().getAttribute('aria-pressed'),'false');
     assert.equal(await audio().evaluate(a=>a.playbackRate),1);
     for(const route of ['/episode-2/','/episode-3/']) {
       await page.goto(base+route); await ready();
@@ -80,9 +80,9 @@ const base = process.env.HISTORIA_PREVIEW || 'http://127.0.0.1:3001';
     assert.deepEqual(errors,[]);
     const blocked = await browser.newContext({...devices['iPhone 13'],serviceWorkers:'block'});
     await blocked.addInitScript(()=>{Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage disabled');}});});
-    const fallback=await blocked.newPage(); await fallback.goto(base+'/');
+    const fallback=await blocked.newPage(); await fallback.goto(base+'/entdecken/');
     await fallback.waitForFunction(()=>!document.querySelector('[aria-label="Lesemodus"] button')?.disabled);
-    await fallback.getByRole('button',{name:'🔇 Leise',exact:true}).click();
+    await fallback.getByRole('button',{name:/Ton: (an|aus)/}).click();
     assert.equal(await fallback.locator('audio').evaluate(a=>a.muted),true);
     console.log('PASS: iPhone viewport, quiet persistence across episodes/reload, same audio node on Weiter, normal-speed audio/video sync, pause, rewind, video hold/restart, subtitles, landscape, beamer, blocked storage, no JS errors.');
   } finally { await browser.close(); }

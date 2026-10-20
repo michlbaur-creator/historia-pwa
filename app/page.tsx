@@ -1,5 +1,2 @@
-import HistoriaPlayer from './HistoriaPlayer';
-
-export default function Home() {
-  return <HistoriaPlayer />;
-}
+import Welcome from "./Welcome";
+export default function Home(){return <Welcome/>;}
