@@ -135,3 +135,21 @@ Stand: 19. Oktober 2026. Die App ist laut Michael im Prinzip fertig. Künftige A
 - Sämtliche Wechsel zwischen Bildern sowie von Bild zu Video und Video zu Bild verwenden nun denselben einfachen 0,48-Sekunden-Überblendeffekt wie der Kartenwechsel. Zusätzliche Bewegungs- oder Mehrphasen-Effekte entfallen.
 - Bereits erschienene Bilder bleiben als deckende Ebene unter dem neu eingeblendeten Motiv liegen. Dadurch bleibt die Bühne während des gesamten Übergangs geschlossen und flackert nicht auf.
 - Cache `historia-v48`. TypeScript, 20 Challenge-/Medientests und Produktions-Build mit Pages-Export bestanden. In der gebauten Browser-Vorschau waren Ausgangs- und Folgebild vollständig vorgeladen; für beide bestätigte der Browser exakt `0.48s ease-out`, das Ausgangsbild blieb während des Wechsels deckend.
+
+
+## Vier Unterrichts-Lernpfade – lokale Vorschau, 20. Oktober 2026
+
+Auftrag: vier chronologisch geordnete, eigenständige Einheiten nach Zeitreise v155; vollständige Vorschau, **noch keine Veröffentlichung**. Vorschlag: (1) Macht und Mitbestimmung in der Antike, (2) Glaube und Herrschaft im Mittelalter, (3) Herrschaft hinterfragen – Rechte erkämpfen, (4) Demokratie unter Druck (Weimar bis Holocaust). 24 unveränderte Originalszenen aus den 52 vorhandenen, je fünf Stationen und zehn Originalfragen. Konkrete Szenen-/Fragenzuordnung, Begründung, Prüfungen und offene Punkte in `docs/unterrichtslernpfade.md` im Historia-Repository.
+
+Neue gleichwertige Einstiege und `/lernpfade/`; freie Episode 1 unter `/entdecken/`, alte Startparameter kompatibel. Getrennte neue Lernpässe `historia-lernpfad-{antike|mittelalter|rechte|demokratie}-v1`, Stationsbestwerte, Fortsetzen, freie Wahl, Wiederholen und bestätigtes Rücksetzen. Bestehende Challenge-Speicherkennungen und Inhalte unverändert. Gemeinsamer Historia-Player mit dauerhaftem Audioelement, direktem Szenen-/Stationsstart, ruhigem Check/Ergebnis und einheitlichem „Ton: an/aus“ (`historia-quiet`). Bestehende Medien, Kartenphase, Bildfolgen und vollständige Originaltexte wiederverwendet.
+
+Ablauf 4/22/9/5 Minuten, weiterhin Richtwert; Papieraufgabe und Besprechung ohne automatische Benotung. Vierter Pfad lehrkraftbegleitet, keine Jubelanimationen. Urkunden mit tatsächlichem Stand, optionalem Namen, Browserdruck und lokaler A4-PDF/native Dateifreigabe nach Zeitreise v155.
+
+28 Tests, TypeScript, Linter der neuen Unterrichtskomponenten und statischer Produktionsbuild/Pages-Export erfolgreich. Alle vier Pfade im Browser komplett durchlaufen; 390-px-Layout, Ton/Autostart, Persistenz, Fehler, Wiederholen, Rücksetzen, gesperrter Speicher und Urkunden geprüft. Bestands-Browserprüfung bestätigt die freien Episoden einschließlich Audio-/Videosynchronität, Pause, Rücksprung und Video-Hold. Vier PDFs tatsächlich erzeugt und visuell gerendert, Sonderzeichen korrekt. Kein echter iOS-/AirPrint-Test und keine Unterrichtserprobung.
+
+Vorschau `http://127.0.0.1:3015/lernpfade/`. Änderungen ausschließlich im eigenständigen Historia-Checkout `/Users/michaelbaur/.codex/worktrees/eed6/Zeitreise-PWA/App/Historia`; kein Push/Deploy. Cache v52 unverändert; vor späterer Veröffentlichung erhöhen. Themenwahl und Sichtfreigabe durch Micha stehen aus. Zeitreise unverändert.
+
+
+## GitHub-Sicherung der Lernpfade – 20. Oktober 2026
+
+Micha hat die Vorschau mit „sieht gut aus“ bestätigt und die Ablage in GitHub beauftragt, damit er selbst veröffentlichen kann. Die geprüften Änderungen werden auf `codex/historia-lernpfade` gesichert. Ein Push auf `main` würde laut `.github/workflows/pages.yml` automatisch veröffentlichen; deshalb bleibt `main` unverändert. Cache v53 ist für die spätere Übernahme vorbereitet. Veröffentlichung erst durch Übernahme nach `main`; echte iOS-/AirPrint-Prüfung und Unterrichtserprobung weiterhin offen. Dieser Eintrag ersetzt den älteren Status „Sichtfreigabe steht aus / Cache v52 / kein Push“ für die Lernpfad-Vorschau.

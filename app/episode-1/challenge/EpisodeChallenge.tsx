@@ -121,7 +121,7 @@ export default function EpisodeChallenge({ episode = 1, scenes = historiaScenes,
       } as CSSProperties} />)}
     </div>}
     <header className={styles.header}>
-      <a href="/">HISTORIA</a><a href={hyper ? '/episode-3/challenge/' : episode === 1 ? '/' : `/episode-${episode}`}>{hyper ? 'Zurück zu Episode 3' : `Zur Episode ${episode}`}</a>
+      <a href="/">HISTORIA</a><a href={hyper ? '/episode-3/challenge/' : episode === 1 ? '/entdecken/' : `/episode-${episode}`}>{hyper ? 'Zurück zu Episode 3' : `Zur Episode ${episode}`}</a>
     </header>
     <section className={styles.card} aria-labelledby="challenge-title">
       <div className={styles.topline}>

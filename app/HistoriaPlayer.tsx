@@ -1,3 +1,4 @@
+/* oxlint-disable next/no-html-link-for-pages -- Historia uses full page navigation because client navigation failed in the static export. */
 'use client';
 
 import Image from 'next/image';
@@ -14,6 +15,8 @@ import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
   useEffect,
+  useImperativeHandle,
+  type Ref,
   useMemo,
   useRef,
   useState,
@@ -55,7 +58,17 @@ function formatTime(value: number) {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 }
 
+export type HistoriaPlayerHandle = {
+  select: (id: number) => void;
+  pause: () => void;
+};
 type HistoriaPlayerProps = {
+  ref?: Ref<HistoriaPlayerHandle>;
+  lesson?: {
+    onStep: (direction: -1 | 1) => void;
+    nextLabel: string;
+    previousDisabled: boolean;
+  };
   scenes?: HistoriaScene[];
   episodeNumber?: 1 | 2 | 3;
   episodeTitle?: string;
@@ -63,6 +76,8 @@ type HistoriaPlayerProps = {
 };
 
 export default function HistoriaPlayer({
+  ref,
+  lesson,
   scenes = historiaScenes,
   episodeNumber = 1,
   episodeTitle = 'Pharaonen Griechen und Cäsaren',
@@ -186,6 +201,28 @@ export default function HistoriaPlayer({
     if (videoRef.current) videoRef.current.playbackRate = 1;
   }, [quiet, scene.id]);
 
+  useImperativeHandle(ref, () => ({
+    select: (id) => {
+      const index = scenes.findIndex((s) => s.id === id);
+      if (index >= 0) selectScene(index, true);
+    },
+    pause: () => {
+      audioRequestRef.current += 1;
+      pendingAudioStartRef.current = false;
+      audioRef.current?.pause();
+      videoRef.current?.pause();
+      setPlaying(false);
+    },
+  }));
+  useEffect(() => {
+    if (lesson) return;
+    const id = Number(new URLSearchParams(window.location.search).get('scene'));
+    const index = scenes.findIndex((s) => s.id === id);
+    if (index >= 0) queueMicrotask(() => selectScene(index));
+    // URL scene selection is applied only on initial page entry.
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function changeQuiet(value: boolean) {
     if (audioRef.current) audioRef.current.muted = value;
     setQuiet(value);
@@ -297,7 +334,12 @@ export default function HistoriaPlayer({
   }
 
   function startAudio(audio: HTMLAudioElement) {
-    audio.muted = quiet;
+    let muted = quiet;
+    try {
+      muted = localStorage.getItem('historia-quiet') === 'true';
+    } catch {}
+    audio.muted = muted;
+    setQuiet(muted);
     audio.playbackRate = 1;
     const request = ++audioRequestRef.current;
     pendingAudioStartRef.current = true;
@@ -350,6 +392,10 @@ export default function HistoriaPlayer({
   }
 
   function stepScene(direction: -1 | 1) {
+    if (lesson) {
+      lesson.onStep(direction);
+      return;
+    }
     if (direction === 1 && sceneIndex === scenes.length - 1) {
       audioRequestRef.current += 1;
       pendingAudioStartRef.current = false;
@@ -382,8 +428,9 @@ export default function HistoriaPlayer({
     }
   }
 
+  const PlayerRoot = lesson ? 'div' : 'main';
   return (
-    <main className={styles.shell}>
+    <PlayerRoot className={styles.shell}>
       <audio
         ref={audioRef}
         src={scene.audio}
@@ -433,32 +480,37 @@ export default function HistoriaPlayer({
           />
         )}
       </audio>
-      <header className={styles.header}>
-        <div className={styles.brandLockup}>
-          <span className={styles.brandMark} aria-hidden="true">
-            <Clock3 strokeWidth={2} />
-          </span>
-          <div>
-            <h1>Historia</h1>
-            <p className={styles.subtitle}>
-              Episode {episodeNumber} · {episodeTitle}
-            </p>
-            <p className={styles.seriesRelation}>
-              Ein historischer Zoom in Episode 3 der Großen Zeitreise.
-            </p>
+      {!lesson && (
+        <header className={styles.header}>
+          <div className={styles.brandLockup}>
+            <span className={styles.brandMark} aria-hidden="true">
+              <Clock3 strokeWidth={2} />
+            </span>
+            <div>
+              <h1>Historia</h1>
+              <p className={styles.subtitle}>
+                Episode {episodeNumber} · {episodeTitle}
+              </p>
+              <p className={styles.seriesRelation}>
+                Ein historischer Zoom in Episode 3 der Großen Zeitreise.
+              </p>
+            </div>
           </div>
-        </div>
-        <nav className={styles.headerActions} aria-label="Direktnavigation">
-          <a href="https://evo.mibaso.de/episode-3/?start=1">
-            Große Zeitreise <ExternalLink aria-hidden="true" />
-          </a>
-          <button type="button" onClick={() => selectScene(0)}>
-            <RotateCcw aria-hidden="true" /> Anfang
-          </button>
-        </nav>
-      </header>
+          <nav className={styles.headerActions} aria-label="Direktnavigation">
+            <a href="/">Start</a>
+            <a href="/lernpfade/">Unterricht</a>
+            <a href="https://evo.mibaso.de/episode-3/?start=1">
+              Große Zeitreise <ExternalLink aria-hidden="true" />
+            </a>
+            <button type="button" onClick={() => selectScene(0)}>
+              <RotateCcw aria-hidden="true" /> Anfang
+            </button>
+          </nav>
+        </header>
+      )}
 
       <section
+        hidden={Boolean(lesson)}
         className={styles.timelineCard}
         aria-label="Zeitstrahl der Episode"
       >
@@ -503,11 +555,11 @@ export default function HistoriaPlayer({
         <div className={styles.readingControls} aria-label="Lesemodus">
           <button
             type="button"
-            aria-pressed={quiet}
+            aria-pressed={!quiet}
             disabled={!preferencesReady}
             onClick={() => changeQuiet(!quiet)}
           >
-            🔇 Leise
+            {quiet ? '🔇 Ton: aus' : '🔊 Ton: an'}
           </button>
           <button
             type="button"
@@ -648,11 +700,13 @@ export default function HistoriaPlayer({
           </div>
         )}
         {audioError && <p role="status">{audioError}</p>}
-        <div className={styles.controls}>
+        <div
+          className={`${styles.controls} ${lesson ? 'lesson-controls' : ''}`}
+        >
           <button
             className={styles.previousControl}
             onClick={() => stepScene(-1)}
-            disabled={sceneIndex === 0}
+            disabled={lesson ? lesson.previousDisabled : sceneIndex === 0}
             aria-label="Vorherige Szene"
           >
             <ArrowLeft aria-hidden="true" />
@@ -692,13 +746,21 @@ export default function HistoriaPlayer({
             </span>
           </div>
           <button className={styles.nextControl} onClick={() => stepScene(1)}>
-            {sceneIndex === scenes.length - 1 ? 'Challenge' : 'Weiter'}{' '}
+            {lesson
+              ? lesson.nextLabel
+              : sceneIndex === scenes.length - 1
+                ? 'Challenge'
+                : 'Weiter'}{' '}
             <ArrowRight aria-hidden="true" />
           </button>
         </div>
       </section>
 
-      <nav className={styles.episodeNav} aria-label="Episoden">
+      <nav
+        hidden={Boolean(lesson)}
+        className={styles.episodeNav}
+        aria-label="Episoden"
+      >
         {episodeNumber === 1 ? (
           <button
             className={styles.episodeActive}
@@ -707,7 +769,7 @@ export default function HistoriaPlayer({
             Episode 1
           </button>
         ) : (
-          <a href="/">Episode 1</a>
+          <a href="/entdecken/">Episode 1</a>
         )}
         {episodeNumber === 2 ? (
           <button
@@ -731,7 +793,7 @@ export default function HistoriaPlayer({
         )}
       </nav>
 
-      {sceneIndex === scenes.length - 1 && (
+      {!lesson && sceneIndex === scenes.length - 1 && (
         <section className={styles.finale}>
           <p>Am Ende von Episode {episodeNumber}</p>
           <h2>Bereit für deine Episoden-Challenge?</h2>
@@ -766,6 +828,7 @@ export default function HistoriaPlayer({
             Entdecken
           </button>
           <button
+            hidden={Boolean(lesson)}
             role="tab"
             aria-selected={tab === 'quiz'}
             onClick={() => setTab('quiz')}
@@ -862,7 +925,7 @@ export default function HistoriaPlayer({
         </div>
       </section>
 
-      <footer className={styles.footer}>
+      <footer hidden={Boolean(lesson)} className={styles.footer}>
         <a href="https://mibaso.de">⌂ Alle Mibaso-Apps</a>
         <nav className={styles.footerLinks} aria-label="Fußnavigation">
           <a href="/ueber">Über mich</a>
@@ -873,6 +936,6 @@ export default function HistoriaPlayer({
           <a href="mailto:mibaur@me.com">mibaur@me.com</a>
         </small>
       </footer>
-    </main>
+    </PlayerRoot>
   );
 }
